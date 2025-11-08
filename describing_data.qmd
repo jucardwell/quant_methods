@@ -1,0 +1,220 @@
+# Describing Data
+
+In this chapter, we will apply what we know about describing data to explore three datasets. Descriptive statistics are a set of tools that allow us to summarize a given dataset based on various characteristics.
+
+We will use the following spatial data:
+
+-   **North Carolina census tract rurality definitions (RUCA codes) from the USDA Economic Research Service and North Carolina Rural Center.** These two sources offer differing definitions of rurality. RUCA codes establish urban cores and the census tracts that are the most economically integrated with those cores through commuting. The North Carolina Rural Center defines rurality by a population density threshold (rural \< 250 people per square mile).
+
+-   **Climate Normals (1991-2020) from the National Climatic Data Center (NCDC)**. These Climate Normals represent 30-year averages of various climate variables, updated every decade.
+
+-   **American Community Survey (ACS) 5-Year Estimates (2019-2023) from the U.S. Census Bureau.** The ACS provides detailed demographic, social, and economic information collected annually and averaged over a five-year period.
+
+The last two datasets are **aggregated summaries** rather than raw measurements. The Climate Normals are **temporal averages**,meaning that the data represent the average conditions over a 30-year period. The ACS data are **spatial averages**, which summarize individual responses within defined geographic areas. This is a requirement for many spatial datasets, even when individual-level data is available, to maintain anonymity.
+
+As a result, when we analyze these datasets, we are working with information that has already been statistically summarized over time and space, and our own statistical descriptions will be **second-order summaries** that describe patterns in data that have already been aggregated.
+
+**To follow along with this tutorial, download the .Rmd template here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.**
+
+```{r, include=FALSE}
+## load necessary libraries
+library(tidyverse)
+library(gt)
+library(sf)
+library(e1071)
+library(tmap)
+
+## read in the data
+rurality <- st_read("data/nc_tracts_rurality.geojson")
+climate_normals <- st_read("data/climate_normals.geojson")
+acs_tract_nc <- st_read("data/nc_tract_acs_2023.geojson")
+
+```
+
+## Orienting Ourselves to the Datasets
+
+The 'glimpse()' function provides a quick overview of the structure and contents of a dataset. It displays the data types of each column and a preview of the data, making it easier to understand the dataset at a glance.
+
+```{r}
+## glimpse at the rurality data
+glimpse(rurality)
+
+## glimpse at the climate normals data
+glimpse(climate_normals)
+
+#glimpse at acs data
+glimpse(acs_tract_nc)
+```
+
+# Describing Rurality
+
+Open the rurality table by double clicking in the environment.
+
+**Q1. What does each observation (each row) represent? How do you know?**
+
+**Q2. Look at the ruca_code variable. What level of measurement is this variable? How does that restrict what descriptive statistics we can calculate about the data?**
+
+## Creating a Basic Table for Descriptive Statistics
+
+The 'gt' package in R is a tool to create "presentation-ready" tables.
+
+```{r}
+## create a basic table of descriptive statistics for RUCA codes
+rurality |> st_drop_geometry() |> 
+  group_by(ruca_code) |>
+  summarise(n = n())  |>  gt() 
+
+```
+
+**Q3. What is the mode of the ruca_code?**
+
+## Visualizing Descriptive Statistics
+
+Our descriptive statistics table has given us some useful information about our dataset. Visualizing our data can help us understand our descriptive statistics better.
+
+### Bar Chart
+
+A bar chart displays the count of each observations in a group. It is a useful visualization for nominal/categorical data.
+
+```{r}
+#this creates the grouped dataset
+grouped_rural <- rurality |> st_drop_geometry() |> 
+  group_by(ruca_code) |>
+  summarise(Count = n()) 
+
+#this plots the bar plot (note that the coord_flip swtiches the axis which is better for labeling in this case)
+ggplot(grouped_rural, aes(x=ruca_code, y=Count)) + 
+  geom_bar(stat = "identity") + coord_flip() + labs(
+    x = "RUCA Code Category",
+    y = "Number of Census Tracts",
+  )
+```
+
+### Map
+
+```{r, warning=F, message=F}
+#here's our first map. Note that I'm using the raw data, not the grouped data.
+tm_shape(rurality) + tm_polygons("ruca_code")
+```
+
+**Q4: What spatial patterns can you see in RUCA codes across NC? What does this map tell us that we can't learn from the descriptive statistics table and non-spatial visualizations?**
+
+# Describing Climate Normals
+
+**Q5. What does each row in this dataset represent? How do you know?**
+
+## Creating a Basic Table for Descriptive Statistics
+
+```{r}
+## create a basic table of descriptive statistics for climate normals
+climate_normals |> st_drop_geometry() |>
+  select(summer_temp) |>
+  summarise(
+    n = n(),
+    num_na = sum(is.na(summer_temp)), 
+    mean_temp = mean(summer_temp, na.rm = TRUE),
+    median_temp = median(summer_temp, na.rm = TRUE),
+    sd_temp = sd(summer_temp, na.rm = TRUE),
+    variance_temp = var(summer_temp, na.rm = TRUE),
+    mean_dev = mean(abs(summer_temp - mean(summer_temp, na.rm = TRUE)), na.rm = TRUE),
+    cv_temp = sd_temp / mean_temp,
+    min_temp = min(summer_temp, na.rm = TRUE),
+    max_temp = max(summer_temp, na.rm = TRUE),
+    skewness = skewness(summer_temp, na.rm = TRUE), 
+    kurtosis = kurtosis(summer_temp, na.rm = TRUE)
+                               
+  ) |> pivot_longer(everything(), names_to = "Statistic", values_to = "Value") |>
+  gt() |>
+  tab_header(
+    title = "US Summer Temperatures (1991-2020)",
+  ) %>%
+  fmt_number(
+    columns = everything(),
+    decimals = 2
+  )
+```
+
+**Q6: Based on the descriptive statistics in the table, describe the overall distribution of summer temperatures across the U.S., including central tendency, variability, and evidence of skewness or outliers.**
+
+## Visualizing Descriptive Statistics
+
+### Histogram
+
+A histogram is a graph that displays the frequency of observations within user-set "bins". This can give us an understanding of the distribution of our data
+
+```{r}
+## create a histogram of summer temperatures
+
+ggplot(climate_normals, aes(x = summer_temp)) +
+  geom_histogram(binwidth = 1, fill = "lightgrey", color = "black", alpha = 0.7) +
+  labs(
+    title = "Histogram of Summer Temperatures (1991-2020)",
+    x = "Summer Temperature (°F)",
+    y = "Frequency"
+  ) 
+
+```
+
+### Cumulative Frequency Plot
+
+```{r}
+ggplot(climate_normals, aes(x = summer_temp)) + stat_ecdf() +
+  labs(
+    title = "Cumulative Frequency Plot of Summer Temperatures (1991-2020)",
+    x = "Summer Temperature (°F)",
+    y = "Cumulative Frequency"
+  )
+```
+
+### Boxplot
+
+A boxplot is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. It can also highlight outliers in the data.
+
+```{r}
+ggplot(climate_normals, aes(y = summer_temp)) +
+  geom_boxplot(fill = "lightgrey") +
+  labs(
+    title = "Boxplot of Summer Temperatures (1991-2020)",
+    y = "Summer Temperature (°F)"
+  )
+```
+
+### Violin Plot
+
+A violin plot is a method of plotting numeric data and can be understood as a combination of a boxplot and a kernel density plot. It shows the distribution of the data across different values.
+
+```{r}
+ggplot(climate_normals, aes(x = 1, y = summer_temp)) +
+  geom_violin(fill = "lightgrey", bw = 1.2)  + geom_boxplot(width=0.1) +
+  labs(
+    title = "Violin Plot of Summer Temperatures (1991-2020)",
+    y = "Summer Temperature (°F)"
+  ) + theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+```
+
+**Q7: What unique information does each of the four visualizations (histogram, cumulative frequency plot, boxplot, and violin plot) reveal about the distribution of summer temperatures?**
+
+### Map
+
+```{r}
+tm_shape(climate_normals) + tm_dots("summer_temp")
+```
+
+**Q8: What does this map show us about the pattern of summer temperature across the U.S**
+
+# Mini Challenge
+
+This challenge will ask you to create some basic descriptive statistics for **a single variable** in the ACS census tract data.
+
+1.  Open the acs_tract_nc object. You can scroll over to see all the available variables. [This file](https://docs.google.com/spreadsheets/d/1aI2YqE_Tc69ekA48e5jmbyVMXv5uszl-/edit?usp=sharing&ouid=101338019870957132383&rtpof=true&sd=true) will tell you what each variable name means.
+2.  Select a variable that is interesting to you
+3.  Using the code above, as well as the R Basics chapter, create a descriptive statistics table in a new code chunk
+4.  Using the code above, as well as the R Basics chapter, create at least one non-map data visualization
+5.  Using the code above, as well as the R Basics chapter, create a map of your variable
+6.  Answer the following questions:
+    -   Q9. What did you learn about your variable?
+    -   Q10. What did you learn about the spatial pattern of your variable?
+
+# 

@@ -1,0 +1,31 @@
+project:
+  type: book
+
+book:
+  title: "quant_methods"
+  author: "Julia Cardwell"
+  date: "10/22/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - schedule.qmd
+    - competencies.qmd
+    - basic_R.qmd
+    - describing_data.qmd
+    - describing_spatial_data.qmd
+    - lab_1.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

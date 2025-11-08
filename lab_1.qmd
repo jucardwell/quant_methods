@@ -1,0 +1,7 @@
+# Lab 3
+
+## Overview
+
+In this two-part lab, you will practice what you have learned in the **Describing Data** and **Describing Spatial Data** tutorials to continue to explore data on rurality, climate, and demographic data.
+
+This lab is designed to assess the **Concept 3 Competencies**

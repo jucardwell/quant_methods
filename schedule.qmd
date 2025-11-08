@@ -1,0 +1,52 @@
+| Date       | Topic                                | Reading | Due     |
+|------------|--------------------------------------|---------|---------|
+| 2026-01-07 | Introduction to Class                |         |         |
+| 2026-01-09 | Class Contract                       |         |         |
+| 2026-01-12 | How do we think about space?         |         |         |
+| 2026-01-14 | The Quantitative Revolution          |         |         |
+| 2026-01-16 | Early Laws                           |         |         |
+| 2026-01-19 | NO CLASS                             |         |         |
+| 2026-01-21 | The Problem with Space               |         |         |
+| 2026-01-23 | The Problem with Space               |         | Lab #1  |
+| 2026-01-26 | Describing Data                      |         |         |
+| 2026-01-28 | Describing Data                      |         |         |
+| 2026-01-30 | Describing Data                      |         | Lab #2  |
+| 2026-02-02 | Describing Spatial Data              |         |         |
+| 2026-02-04 | Describing Spatial Data              |         |         |
+| 2026-02-06 | Describing Spatial Data              |         |         |
+| 2026-02-09 | NO CLASS                             |         |         |
+| 2026-02-11 | **Case Study #1**                    |         |         |
+| 2026-02-13 | What is probability?                 |         | Lab #3  |
+| 2026-02-16 | Probability Mapping                  |         |         |
+| 2026-02-18 | How do we take a sample?             |         |         |
+| 2026-02-20 | Discrete Probability Distributions   |         |         |
+| 2026-02-23 | Discrete Probability Distributions   |         |         |
+| 2026-02-25 | Continuous Probability Distributions |         |         |
+| 2026-02-27 | Continuous Probability Distributions |         |         |
+| 2026-03-02 | Global Autocorrelation               |         |         |
+| 2026-03-04 | Local Autocorrelation                |         |         |
+| 2026-03-06 | Point Pattern Analysis               |         | Lab #4  |
+| 2026-03-09 | FLEX                                 |         |         |
+| 2026-03-11 | **Case Study #2**                    |         |         |
+| 2026-03-13 | FLEX                                 |         | Lab #5  |
+| 2026-03-16 | NO CLASS                             |         |         |
+| 2026-03-18 | NO CLASS                             |         |         |
+| 2026-03-20 | NO CLASS                             |         |         |
+| 2026-03-23 | Forming Hypotheses                   |         |         |
+| 2026-03-25 | Spatial is Special (natural samples) |         |         |
+| 2026-03-27 | Hypothesis Testing #1                |         |         |
+| 2026-03-30 | Hypothesis Testing #2                |         |         |
+| 2026-04-01 | Hypothesis Testing #3                |         |         |
+| 2026-04-03 | NO CLASS                             |         |         |
+| 2026-04-06 | Hypothesis Testing #4                |         | Lab #6A |
+| 2026-04-08 | Hypothesis Testing #5                |         |         |
+| 2026-04-10 | Pick the Test                        |         |         |
+| 2026-04-13 | Correlation                          |         |         |
+| 2026-04-15 | Spatial Correlation                  |         |         |
+| 2026-04-17 | Spatial Correlation                  |         | Lab #6B |
+| 2026-04-20 | Bringing it Together                 |         |         |
+| 2026-04-22 |                                      |         |         |
+| 2026-04-24 |                                      | Lab #7  |         |
+| 2026-04-27 | **Case Study #3**                    |         |         |
+
+# Schedule

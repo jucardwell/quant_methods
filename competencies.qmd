@@ -1,0 +1,29 @@
+## **Tier 1- Foundations**
+
+### **Concept 1: The Quantitative Revolution**
+
+**Guiding Question**: Why did geography become a quantitative discipline, and how did it change how we study space?
+
+-   Describe the origins of the Quantitative Revolution in geography and how political and academic pressures pushed geography towards a “spatial science” 
+-   Identify assumptions built into quantitative reasoning (measurability, objectivity, universality)
+-   Reflect on critiques and limits of the revolution from human and critical geographers
+-   Interpret early spatial models (e.g., gravity model, rank-size rule)
+
+### **Concept 2: The Problem of Spatial Data**
+
+**Guiding Question**: Why is spatial data different, and how does it challenge traditional statistics?
+
+-   Explain how spatial dependence, spatial heterogeneity, and distance decay influence the structure and interpretation of spatial data
+-   Evaluate issues of scale, zoning, and aggregation (MAUP) 
+-   Connect the “spatial problem” to violations of independence in classical inference
+
+### **Concept 3: Descriptive Statistics and Spatial Description**
+
+**Guiding Question:** How do we summarize and describe variation in geographic data?
+
+-   Classify different types of geographic data and variables (e.g., primary vs. secondary, individual vs. aggregated, qualitative vs. quantitative, level of measurement), and explain how these distinctions influence analysis
+-   Explain and evaluate measurement quality in geographic data, including precision, accuracy, validity, and reliability.
+-   Summarize and interpret attribute data using descriptive statistics (central tendency, dispersion, shape) and data visualizations
+-   Use maps to visually analyze spatial patterns
+-   Compute and interpret spatial descriptive statistics (mean center, standard distance, standard deviational ellipse) and explain how they extend non-spatial descriptive measures.
+-   Identify unusual values, skewed distributions, and outliers in attributes and geographic space, and explain their analytical implications.

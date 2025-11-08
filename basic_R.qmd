@@ -1,0 +1,96 @@
+# Working in R and R Studio
+
+This is NOT a coding class, but we will be using R for our data analysis. Because of this, while I don't expect you to be able to generate code independently, I do expect you to develop a competency in navigating the RStudio environment and modifying code that I give you to complete specific tasks. This chapter will introduce you to R and RStudio.
+
+RStudio is an Integrated Development Environment (IDE) for R. RStudio provides a user-friendly interface for working with R code. R is an open-source programming language that has excellent capabilities for analyzing and visualizing spatial data.
+
+## Downloading and Installing R and RStudio
+
+To use R and RStudio, you will need to download and install both programs on your computer.
+
+-   [Download R](https://cran.rstudio.com/) (make sure to download the correct version for your operating system)
+
+-   [Download RStudio](https://posit.co/download/rstudio-desktop/)
+
+Once you have downloaded and installed RStudio, open up the application. We need to change one global setting before we start. **You only need to do this once!** Navigate **Tools** \> **Global Options**, unclick “Restore .RData into Workspace at Startup” and choosing **Never** on the “Save workspace to .RData on exit”.
+
+## The RStudio Environment
+
+The RStudio environment consists of four panels.
+
+1.  **Source**: This is where you can edit R files (either .R or .Rmd) and run R code.
+2.  **Console:** The console is an interactive R environment, where you can easily run R commands. Commands written in the console are not saved into any file. It can be good to use the console for quickly testing R code
+3.  **Environment:** This is where R objects made during each session will appear.
+4.  **Output:** This is where charts and graphs will appear.
+
+![RStudio Panes](images/rstudio-panes-labeled.jpeg)
+
+## Creating and Saving Files
+
+In this class, we will primarily be working with .Rmd files. An R Markdown or .Rmd is a document format that is designed to easily integrate text and code. This means that you can easily type answers to questions, descriptions of code outputs, and other assignment tasks within the same document as your code.
+
+**I will provide you a .Rmd template to use for each in-class exercise and lab. You should save these files into a GEOG391 folder on your computer (not in the downloads folder please!)**
+
+## Downloading Packages
+
+R packages extend the functionality of Base R and must be downloaded. We will use a small set of libraries in this class.
+
+-   tmap: This is the main mapping package we will use
+-   gt: We will use this package to create nice tables
+-   tidyverse: This is the package we will use to create "tidy" analysis workflows. Tidyverse also includes ggplot2 which will be our main package to create graphics
+-   sf: This package allows us to read and manipulate spatial datasets
+
+You should copy and paste each of these commands into the **Console** one by one to download the packages.
+
+```{r, eval=F}
+
+install.packages("tmap")
+install.packages("tidyverse")
+install.packages("gt")
+install.packages("sf")
+
+```
+
+Once you have downloaded the packages, you will need to load them every time you want to use them. **I will always tell you what packages to load!**
+
+# Mini Challenge
+
+Download your first .Rmd template for this class **(very exciting)! Save this file into your GEOG391 folder.**
+
+## Basic .Rmd Functionality
+
+Welcome to your first .Rmd! Each .Rmd starts with a header, where you can change the name and the date.
+
+A .Rmd is made up of two main components: code chunks (this is where you write code) and text (any words that are outside of a code chunk). Any time you are writing code, it needs to be in a code chunk. Chunks can then be **run** to execute the code within the chunk. The idea of *chunking* is to group code that accomplishes a single, related task into one code chunk. When you begin a new step or process in your workflow, you start a new chunk.
+
+Your .Rmd template already has a header (where you can change the name and date) and two code chunks. The first code chunk is the **SET UP CHUNK.** The second code chunk is the **LIBRARY AND DATA CHUNK.** To load the libraries and data, you should **RUN CODE CHUNK**.
+
+![](images/run_codechunk.png)
+
+If everything is working, 'parks' should appear in your environment. The 'parks' dataset is now an "object".
+
+We can view objects by double clicking the object in the environment. A data table should appear with all the information about the parks.
+
+![](images/view_object.png)
+
+Add a new code chunk and add the code below to create your first map. Every command that you create should have a **comment (#)** above that explains what that command is doing. If you **run** that chunk, a map should appear below.
+
+![](images/clipboard-854771614.png)
+
+## Knitting a .Rmd
+
+Knitting a .Rmd means that you create a rendered .html including your code, output, and text. To knit your document, click the knit button. It will create a .html in whatever folder you have the .Rmd saved in (hopefully your GEOG391 folder!)
+
+![](images/knit.png)
+
+When your knitted document opens, it should look something like this
+
+![](images/knitted_final.png)
+
+## Adding Text and Formatting a .Rmd
+
+The great thing about working in .Rmds is that you can create nicely formatted documents that merge code and text. At the bottom of the .Rmd is some tips for formatting nice-looking documents. Play around with adding some heading and text to your document.
+
+Sometimes we want to modify what code and output actually appears in our knitted document. The commands at the bottom of the document explain which chunk modifiers to. **See if you can figure out how to change the map chunk to not include the code in the knitted document.**
+
+After you are done working in your .Rmd, make sure to save it!
