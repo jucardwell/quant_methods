@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this chapter, we will apply what we know about describing data to explore three datasets. Descriptive statistics are a set of tools that allow us to summarize a given dataset based on various characteristics.</p>
 <p>We will use the following spatial data:</p>
 <ul>
-<li><p><strong>North Carolina census tract rurality definitions (RUCA codes) from the USDA Economic Research Service and North Carolina Rural Center.</strong> These two sources offer differing definitions of rurality. RUCA codes establish urban cores and the census tracts that are the most economically integrated with those cores through commuting. The North Carolina Rural Center defines rurality by a population density threshold (rural &lt; 250 people per square mile).</p></li>
+<li><p><strong>North Carolina census tract rurality definitions (RUCA codes) from the USDA Economic Research Service.</strong> RUCA codes establish urban cores and the census tracts that are the most economically integrated with those cores through commuting.</p></li>
 <li><p><strong>Climate Normals (1991-2020) from the National Climatic Data Center (NCDC)</strong>. These Climate Normals represent 30-year averages of various climate variables, updated every decade.</p></li>
 <li><p><strong>American Community Survey (ACS) 5-Year Estimates (2019-2023) from the U.S. Census Bureau.</strong> The ACS provides detailed demographic, social, and economic information collected annually and averaged over a five-year period.</p></li>
 </ul>
@@ -367,23 +367,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ruca_code) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())  <span class="sc">|&gt;</span>  <span class="fu">gt</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="agozsdiaft" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#agozsdiaft table {
+<div id="fpzztrzsce" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fpzztrzsce table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#agozsdiaft thead, #agozsdiaft tbody, #agozsdiaft tfoot, #agozsdiaft tr, #agozsdiaft td, #agozsdiaft th {
+#fpzztrzsce thead, #fpzztrzsce tbody, #fpzztrzsce tfoot, #fpzztrzsce tr, #fpzztrzsce td, #fpzztrzsce th {
   border-style: none;
 }
 
-#agozsdiaft p {
+#fpzztrzsce p {
   margin: 0;
   padding: 0;
 }
 
-#agozsdiaft .gt_table {
+#fpzztrzsce .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -409,12 +409,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_caption {
+#fpzztrzsce .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#agozsdiaft .gt_title {
+#fpzztrzsce .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -426,7 +426,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#agozsdiaft .gt_subtitle {
+#fpzztrzsce .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -438,7 +438,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#agozsdiaft .gt_heading {
+#fpzztrzsce .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -450,13 +450,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_bottom_border {
+#fpzztrzsce .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_col_headings {
+#fpzztrzsce .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -471,7 +471,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_col_heading {
+#fpzztrzsce .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -491,7 +491,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#agozsdiaft .gt_column_spanner_outer {
+#fpzztrzsce .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -503,15 +503,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#agozsdiaft .gt_column_spanner_outer:first-child {
+#fpzztrzsce .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#agozsdiaft .gt_column_spanner_outer:last-child {
+#fpzztrzsce .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#agozsdiaft .gt_column_spanner {
+#fpzztrzsce .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -523,11 +523,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#agozsdiaft .gt_spanner_row {
+#fpzztrzsce .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#agozsdiaft .gt_group_heading {
+#fpzztrzsce .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +553,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#agozsdiaft .gt_empty_group_heading {
+#fpzztrzsce .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -568,15 +568,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#agozsdiaft .gt_from_md > :first-child {
+#fpzztrzsce .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#agozsdiaft .gt_from_md > :last-child {
+#fpzztrzsce .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#agozsdiaft .gt_row {
+#fpzztrzsce .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -595,7 +595,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#agozsdiaft .gt_stub {
+#fpzztrzsce .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -608,7 +608,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#agozsdiaft .gt_stub_row_group {
+#fpzztrzsce .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -622,15 +622,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#agozsdiaft .gt_row_group_first td {
+#fpzztrzsce .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#agozsdiaft .gt_row_group_first th {
+#fpzztrzsce .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#agozsdiaft .gt_summary_row {
+#fpzztrzsce .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -640,16 +640,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#agozsdiaft .gt_first_summary_row {
+#fpzztrzsce .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_first_summary_row.thick {
+#fpzztrzsce .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#agozsdiaft .gt_last_summary_row {
+#fpzztrzsce .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +659,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_grand_summary_row {
+#fpzztrzsce .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -669,7 +669,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#agozsdiaft .gt_first_grand_summary_row {
+#fpzztrzsce .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -679,7 +679,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_last_grand_summary_row_top {
+#fpzztrzsce .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -689,11 +689,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_striped {
+#fpzztrzsce .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#agozsdiaft .gt_table_body {
+#fpzztrzsce .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -702,7 +702,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_footnotes {
+#fpzztrzsce .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -716,7 +716,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_footnote {
+#fpzztrzsce .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -725,7 +725,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#agozsdiaft .gt_sourcenotes {
+#fpzztrzsce .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -739,7 +739,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#agozsdiaft .gt_sourcenote {
+#fpzztrzsce .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -747,72 +747,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#agozsdiaft .gt_left {
+#fpzztrzsce .gt_left {
   text-align: left;
 }
 
-#agozsdiaft .gt_center {
+#fpzztrzsce .gt_center {
   text-align: center;
 }
 
-#agozsdiaft .gt_right {
+#fpzztrzsce .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#agozsdiaft .gt_font_normal {
+#fpzztrzsce .gt_font_normal {
   font-weight: normal;
 }
 
-#agozsdiaft .gt_font_bold {
+#fpzztrzsce .gt_font_bold {
   font-weight: bold;
 }
 
-#agozsdiaft .gt_font_italic {
+#fpzztrzsce .gt_font_italic {
   font-style: italic;
 }
 
-#agozsdiaft .gt_super {
+#fpzztrzsce .gt_super {
   font-size: 65%;
 }
 
-#agozsdiaft .gt_footnote_marks {
+#fpzztrzsce .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#agozsdiaft .gt_asterisk {
+#fpzztrzsce .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#agozsdiaft .gt_indent_1 {
+#fpzztrzsce .gt_indent_1 {
   text-indent: 5px;
 }
 
-#agozsdiaft .gt_indent_2 {
+#fpzztrzsce .gt_indent_2 {
   text-indent: 10px;
 }
 
-#agozsdiaft .gt_indent_3 {
+#fpzztrzsce .gt_indent_3 {
   text-indent: 15px;
 }
 
-#agozsdiaft .gt_indent_4 {
+#fpzztrzsce .gt_indent_4 {
   text-indent: 20px;
 }
 
-#agozsdiaft .gt_indent_5 {
+#fpzztrzsce .gt_indent_5 {
   text-indent: 25px;
 }
 
-#agozsdiaft .katex-display {
+#fpzztrzsce .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#agozsdiaft div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fpzztrzsce div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -954,23 +954,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span></span>
 <span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="imbqokxptx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#imbqokxptx table {
+<div id="spwddjaqgw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#spwddjaqgw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#imbqokxptx thead, #imbqokxptx tbody, #imbqokxptx tfoot, #imbqokxptx tr, #imbqokxptx td, #imbqokxptx th {
+#spwddjaqgw thead, #spwddjaqgw tbody, #spwddjaqgw tfoot, #spwddjaqgw tr, #spwddjaqgw td, #spwddjaqgw th {
   border-style: none;
 }
 
-#imbqokxptx p {
+#spwddjaqgw p {
   margin: 0;
   padding: 0;
 }
 
-#imbqokxptx .gt_table {
+#spwddjaqgw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -996,12 +996,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_caption {
+#spwddjaqgw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#imbqokxptx .gt_title {
+#spwddjaqgw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1013,7 +1013,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#imbqokxptx .gt_subtitle {
+#spwddjaqgw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1025,7 +1025,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#imbqokxptx .gt_heading {
+#spwddjaqgw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1037,13 +1037,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_bottom_border {
+#spwddjaqgw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_col_headings {
+#spwddjaqgw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1058,7 +1058,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_col_heading {
+#spwddjaqgw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1078,7 +1078,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#imbqokxptx .gt_column_spanner_outer {
+#spwddjaqgw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1090,15 +1090,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#imbqokxptx .gt_column_spanner_outer:first-child {
+#spwddjaqgw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#imbqokxptx .gt_column_spanner_outer:last-child {
+#spwddjaqgw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#imbqokxptx .gt_column_spanner {
+#spwddjaqgw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1110,11 +1110,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#imbqokxptx .gt_spanner_row {
+#spwddjaqgw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#imbqokxptx .gt_group_heading {
+#spwddjaqgw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1140,7 +1140,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#imbqokxptx .gt_empty_group_heading {
+#spwddjaqgw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1155,15 +1155,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#imbqokxptx .gt_from_md > :first-child {
+#spwddjaqgw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#imbqokxptx .gt_from_md > :last-child {
+#spwddjaqgw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#imbqokxptx .gt_row {
+#spwddjaqgw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1182,7 +1182,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#imbqokxptx .gt_stub {
+#spwddjaqgw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1195,7 +1195,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#imbqokxptx .gt_stub_row_group {
+#spwddjaqgw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1209,15 +1209,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#imbqokxptx .gt_row_group_first td {
+#spwddjaqgw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#imbqokxptx .gt_row_group_first th {
+#spwddjaqgw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#imbqokxptx .gt_summary_row {
+#spwddjaqgw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1227,16 +1227,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#imbqokxptx .gt_first_summary_row {
+#spwddjaqgw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_first_summary_row.thick {
+#spwddjaqgw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#imbqokxptx .gt_last_summary_row {
+#spwddjaqgw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1246,7 +1246,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_grand_summary_row {
+#spwddjaqgw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1256,7 +1256,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#imbqokxptx .gt_first_grand_summary_row {
+#spwddjaqgw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1266,7 +1266,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_last_grand_summary_row_top {
+#spwddjaqgw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1276,11 +1276,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_striped {
+#spwddjaqgw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#imbqokxptx .gt_table_body {
+#spwddjaqgw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1289,7 +1289,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_footnotes {
+#spwddjaqgw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1303,7 +1303,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_footnote {
+#spwddjaqgw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1312,7 +1312,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#imbqokxptx .gt_sourcenotes {
+#spwddjaqgw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1326,7 +1326,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#imbqokxptx .gt_sourcenote {
+#spwddjaqgw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1334,72 +1334,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#imbqokxptx .gt_left {
+#spwddjaqgw .gt_left {
   text-align: left;
 }
 
-#imbqokxptx .gt_center {
+#spwddjaqgw .gt_center {
   text-align: center;
 }
 
-#imbqokxptx .gt_right {
+#spwddjaqgw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#imbqokxptx .gt_font_normal {
+#spwddjaqgw .gt_font_normal {
   font-weight: normal;
 }
 
-#imbqokxptx .gt_font_bold {
+#spwddjaqgw .gt_font_bold {
   font-weight: bold;
 }
 
-#imbqokxptx .gt_font_italic {
+#spwddjaqgw .gt_font_italic {
   font-style: italic;
 }
 
-#imbqokxptx .gt_super {
+#spwddjaqgw .gt_super {
   font-size: 65%;
 }
 
-#imbqokxptx .gt_footnote_marks {
+#spwddjaqgw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#imbqokxptx .gt_asterisk {
+#spwddjaqgw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#imbqokxptx .gt_indent_1 {
+#spwddjaqgw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#imbqokxptx .gt_indent_2 {
+#spwddjaqgw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#imbqokxptx .gt_indent_3 {
+#spwddjaqgw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#imbqokxptx .gt_indent_4 {
+#spwddjaqgw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#imbqokxptx .gt_indent_5 {
+#spwddjaqgw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#imbqokxptx .katex-display {
+#spwddjaqgw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#imbqokxptx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#spwddjaqgw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1576,7 +1576,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <ol type="1">
 <li>Open the acs_tract_nc object. You can scroll over to see all the available variables. <a href="https://docs.google.com/spreadsheets/d/1aI2YqE_Tc69ekA48e5jmbyVMXv5uszl-/edit?usp=sharing&amp;ouid=101338019870957132383&amp;rtpof=true&amp;sd=true">This file</a> will tell you what each variable name means.</li>
 <li>Select a variable that is interesting to you</li>
-<li>Using the code above, as well as the R Basics chapter, create a descriptive statistics table in a new code chunk</li>
+<li>Using the code above, as well as the Command Compendium, create a descriptive statistics table in a new code chunk</li>
 <li>Using the code above, as well as the R Basics chapter, create at least one non-map data visualization</li>
 <li>Using the code above, as well as the R Basics chapter, create a map of your variable</li>
 <li>Answer the following questions:

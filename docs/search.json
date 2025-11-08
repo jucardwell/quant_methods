@@ -234,7 +234,7 @@
     "href": "lab_1.html",
     "title": "7  Lab 3",
     "section": "",
-    "text": "7.1 Overview\nIn this two-part lab, you will practice what you have learned in the Describing Data and Describing Spatial Data tutorials to continue to explore data on rurality, climate, and demographic data.\nThis lab is designed to assess the Concept 3 Competencies",
+    "text": "7.1 Overview\nIn the Describing Data tutorial we worked with spatial datasets describing the rurality of North Carolina census tracts, summer temperatures across the United States, and a demographic variable measured at the census tract level in North Carolina. Spatial data is often aggregated to specific geographic units (for instance, to protect individual privacy or simplify a complex dataset). This aggregation influences the descriptive statistics we calculate.\nIn this lab, you will examine demographic and climate data at a different level of spatial aggregation and observe how the descriptive statistics change as a result (remember the underlying data values are not changing, only the geographic units used to summarize them). You will also explore an alternative way of defining “rural” and compare how this definition shapes your interpretation of the data.\nRemember that you can use the Command Compendium to help you modify R commands",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Lab 3</span>"
     ]
@@ -257,6 +257,26 @@
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
       "References"
+    ]
+  },
+  {
+    "objectID": "lab_1.html#specifications",
+    "href": "lab_1.html#specifications",
+    "title": "7  Lab 3",
+    "section": "7.2 Specifications",
+    "text": "7.2 Specifications\nThis lab is designed to assess the Concept 3 Competencies. You’ll be evaluated on the following specifications:\n\n\n\n\n\n\nSpecification\n\n\n\n\nHTML and RMD versions the R Markdown file have been submitted.\n\n\nThe RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.\n\n\nDescribing Rurality: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation\n\n\nDescribing Climate: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation\n\n\nDescribing Demographics: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Lab 3</span>"
+    ]
+  },
+  {
+    "objectID": "lab_1.html#lab-instructions",
+    "href": "lab_1.html#lab-instructions",
+    "title": "7  Lab 3",
+    "section": "7.3 Lab Instructions",
+    "text": "7.3 Lab Instructions\n\nCreate a new .Rmd named “LASTNAME_lab3.Rmd”. Save it into your GEOG391 folder.\nRemove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:\n\n## load necessary libraries\nlibrary(tidyverse)\nlibrary(gt)\nlibrary(sf)\nlibrary(e1071)\nlibrary(tmap)\n\n\n#read in data\nrurality &lt;- st_read(\"https://drive.google.com/uc?export=download&id=1aVDPgiZLUnKGb5k2SQo7ScDO2WNvX3Nd\")\ncounty_climate_normals &lt;- st_read(\"https://drive.google.com/uc?export=download&id=1sf0cmMaeHGra7AQheYAjTiC3wGCzB4FG\")\nacs_county_nc &lt;- st_read(\"https://drive.google.com/uc?export=download&id=1Cv9iUFFi2RPvDBiuYGolY7dDuUR7_raN\")\n\nAdd “Describing Rurality” as a third-level header. In this section you will compute descriptive statistics and visualizations for North Carolina census tracts using the North Carolina Rural Center’s definition of rurality (rural = fewer than 250 people per square mile). The NC Rural Center variable is named nc_rural_center in the dataset. Add a code chunk below your header. Your code chunk should:\n\nCreate a descriptive statistics table of rurality by census tract\nCreate a bar chart of rurality by census tract\nCreate a map of rurality by census tract\n\nBelow your chunk, you should write 1-2 paragraphs that do the following:\n\nDescribe what the bar chart and descriptive statistics tell us about the data\nDescribe what the map tells us about the spatial pattern of the data\nCompare the NC Rural Center definition of rural with the USDA RUCA codes, describing how the descriptive statistics differ and how the spatial patterns differ across the state\n\nAdd “Describing Climate” as a third-level header. In this section you will compute descriptive statistics and visualizations for average summer temperatures per county in the U.S. Add a code chunk below your header. Your code chunk should:\n\nCreate a descriptive statistics table of average summer temperature by U.S county\nCreate two appropriate non-map data visualizations of average summer temperature by U.S. county\nCreate a map of average of summer temperature by U.S. county\n\nBelow your chunk, you should write 1-2 paragraphs that do the following:\n\nDescribe what the descriptive statistics table and data visualizations tell us about average summer temperature (make sure to discuss central tendency, dispersion, shape)\nDescribe what the map tells us about the spatial pattern of the data\nCompare the county-level data results to latitude/longitude (point-level) data, noting\n\nDifferences in descriptive statistics, visualizations, and spatial patterns\nHow these differences may relate to the scale or aggregation of the data\n\n\nAdd “Describing Demographics” as a third-level header. In this section you will compute descriptive statistics and visualizations for your selected variable in Mini Challenge #1. Add a code chunk below your header. Your code chunk should:\n\nCreate a descriptive statistics table of your variable by NC county\nCreate two appropriate non-map data visualizations of your variable by NC county\nCreate a map of your variable by NC county\n\nBelow your chunk, you should write 1-2 paragraphs that do the following:\n\nDescribe what the descriptive statistics table and data visualizations tell us about your variable (make sure to discuss central tendency, dispersion, shape)\nDescribe what the map tells us about the spatial pattern of the data\nCompare the county-level data results to the census tract data, noting\n\nDifferences in descriptive statistics, visualizations, and spatial patterns\nHow these differences may relate to the scale or aggregation of the data",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Lab 3</span>"
     ]
   }
 ]

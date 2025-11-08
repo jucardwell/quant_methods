@@ -4,7 +4,7 @@ In this chapter, we will apply what we know about describing data to explore thr
 
 We will use the following spatial data:
 
--   **North Carolina census tract rurality definitions (RUCA codes) from the USDA Economic Research Service and North Carolina Rural Center.** These two sources offer differing definitions of rurality. RUCA codes establish urban cores and the census tracts that are the most economically integrated with those cores through commuting. The North Carolina Rural Center defines rurality by a population density threshold (rural \< 250 people per square mile).
+-   **North Carolina census tract rurality definitions (RUCA codes) from the USDA Economic Research Service.** RUCA codes establish urban cores and the census tracts that are the most economically integrated with those cores through commuting.
 
 -   **Climate Normals (1991-2020) from the National Climatic Data Center (NCDC)**. These Climate Normals represent 30-year averages of various climate variables, updated every decade.
 
@@ -210,7 +210,7 @@ This challenge will ask you to create some basic descriptive statistics for **a 
 
 1.  Open the acs_tract_nc object. You can scroll over to see all the available variables. [This file](https://docs.google.com/spreadsheets/d/1aI2YqE_Tc69ekA48e5jmbyVMXv5uszl-/edit?usp=sharing&ouid=101338019870957132383&rtpof=true&sd=true) will tell you what each variable name means.
 2.  Select a variable that is interesting to you
-3.  Using the code above, as well as the R Basics chapter, create a descriptive statistics table in a new code chunk
+3.  Using the code above, as well as the Command Compendium, create a descriptive statistics table in a new code chunk
 4.  Using the code above, as well as the R Basics chapter, create at least one non-map data visualization
 5.  Using the code above, as well as the R Basics chapter, create a map of your variable
 6.  Answer the following questions:

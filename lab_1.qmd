@@ -2,6 +2,83 @@
 
 ## Overview
 
-In this two-part lab, you will practice what you have learned in the **Describing Data** and **Describing Spatial Data** tutorials to continue to explore data on rurality, climate, and demographic data.
+In the [**Describing Data**](https://jucardwell.github.io/quant_methods/describing_data.html) tutorial we worked with spatial datasets describing the rurality of North Carolina census tracts, summer temperatures across the United States, and a demographic variable measured at the census tract level in North Carolina. Spatial data is often aggregated to specific geographic units (for instance, to protect individual privacy or simplify a complex dataset). This aggregation influences the descriptive statistics we calculate.
 
-This lab is designed to assess the **Concept 3 Competencies**
+In this lab, you will examine demographic and climate data at a different level of spatial aggregation and observe how the descriptive statistics change as a result (**remember the underlying data values are not changing, only the geographic units used to summarize them**). You will also explore an alternative way of defining “rural” and compare how this definition shapes your interpretation of the data.
+
+*Remember that you can use the **Command Compendium** to help you modify R commands*
+
+## Specifications
+
+This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+
+| Specification |
+|-------------------------------------------------------------|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
+| Describing Rurality: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
+| Describing Climate: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
+| Describing Demographics: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
+
+## Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab3.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    ## load necessary libraries
+    library(tidyverse)
+    library(gt)
+    library(sf)
+    library(e1071)
+    library(tmap)
+
+
+    #read in data
+    rurality <- st_read("https://drive.google.com/uc?export=download&id=1aVDPgiZLUnKGb5k2SQo7ScDO2WNvX3Nd")
+    county_climate_normals <- st_read("https://drive.google.com/uc?export=download&id=1sf0cmMaeHGra7AQheYAjTiC3wGCzB4FG")
+    acs_county_nc <- st_read("https://drive.google.com/uc?export=download&id=1Cv9iUFFi2RPvDBiuYGolY7dDuUR7_raN")
+
+
+    ```
+
+3.  Add "Describing Rurality" as a third-level header. In this section you will compute descriptive statistics and visualizations for North Carolina census tracts using the North Carolina Rural Center's definition of rurality (rural = fewer than 250 people per square mile). The NC Rural Center variable is named nc_rural_center in the dataset. Add a code chunk below your header. Your code chunk should:
+
+    -   Create a descriptive statistics table of rurality by census tract
+    -   Create a bar chart of rurality by census tract
+    -   Create a map of rurality by census tract
+
+4.  Below your chunk, you should write 1-2 paragraphs that do the following:
+
+    -   Describe what the bar chart and descriptive statistics tell us about the data
+    -   Describe what the map tells us about the spatial pattern of the data
+    -   Compare the NC Rural Center definition of rural with the USDA RUCA codes, describing how the descriptive statistics differ and how the spatial patterns differ across the state
+
+5.  Add "Describing Climate" as a third-level header. In this section you will compute descriptive statistics and visualizations for average summer temperatures per county in the U.S. Add a code chunk below your header. Your code chunk should:
+
+    -   Create a descriptive statistics table of average summer temperature by U.S county
+    -   Create two appropriate non-map data visualizations of average summer temperature by U.S. county
+    -   Create a map of average of summer temperature by U.S. county
+
+6.  Below your chunk, you should write 1-2 paragraphs that do the following:
+
+    -   Describe what the descriptive statistics table and data visualizations tell us about average summer temperature (make sure to discuss central tendency, dispersion, shape)
+    -   Describe what the map tells us about the spatial pattern of the data
+    -   Compare the county-level data results to latitude/longitude (point-level) data, noting
+        -   Differences in descriptive statistics, visualizations, and spatial patterns
+        -   How these differences may relate to the scale or aggregation of the data
+
+7.  Add "Describing Demographics" as a third-level header. In this section you will compute descriptive statistics and visualizations for your selected variable in Mini Challenge #1. Add a code chunk below your header. Your code chunk should:
+
+    -   Create a descriptive statistics table of your variable by NC county
+    -   Create two appropriate non-map data visualizations of your variable by NC county
+    -   Create a map of your variable by NC county
+
+8.  Below your chunk, you should write 1-2 paragraphs that do the following:
+
+    -   Describe what the descriptive statistics table and data visualizations tell us about your variable (make sure to discuss central tendency, dispersion, shape)
+    -   Describe what the map tells us about the spatial pattern of the data
+    -   Compare the county-level data results to the census tract data, noting
+        -   Differences in descriptive statistics, visualizations, and spatial patterns
+        -   How these differences may relate to the scale or aggregation of the data
