@@ -1,0 +1,262 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "quant_methods",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "2  Schedule",
+    "section": "",
+    "text": "Date\nTopic\nReading\nDue\n\n\n\n\n2026-01-07\nIntroduction to Class\n\n\n\n\n2026-01-09\nClass Contract\n\n\n\n\n2026-01-12\nHow do we think about space?\n\n\n\n\n2026-01-14\nThe Quantitative Revolution\n\n\n\n\n2026-01-16\nEarly Laws\n\n\n\n\n2026-01-19\nNO CLASS\n\n\n\n\n2026-01-21\nThe Problem with Space\n\n\n\n\n2026-01-23\nThe Problem with Space\n\nLab #1\n\n\n2026-01-26\nDescribing Data\n\n\n\n\n2026-01-28\nDescribing Data\n\n\n\n\n2026-01-30\nDescribing Data\n\nLab #2\n\n\n2026-02-02\nDescribing Spatial Data\n\n\n\n\n2026-02-04\nDescribing Spatial Data\n\n\n\n\n2026-02-06\nDescribing Spatial Data\n\n\n\n\n2026-02-09\nNO CLASS\n\n\n\n\n2026-02-11\nCase Study #1\n\n\n\n\n2026-02-13\nWhat is probability?\n\nLab #3\n\n\n2026-02-16\nProbability Mapping\n\n\n\n\n2026-02-18\nHow do we take a sample?\n\n\n\n\n2026-02-20\nDiscrete Probability Distributions\n\n\n\n\n2026-02-23\nDiscrete Probability Distributions\n\n\n\n\n2026-02-25\nContinuous Probability Distributions\n\n\n\n\n2026-02-27\nContinuous Probability Distributions\n\n\n\n\n2026-03-02\nGlobal Autocorrelation\n\n\n\n\n2026-03-04\nLocal Autocorrelation\n\n\n\n\n2026-03-06\nPoint Pattern Analysis\n\nLab #4\n\n\n2026-03-09\nFLEX\n\n\n\n\n2026-03-11\nCase Study #2\n\n\n\n\n2026-03-13\nFLEX\n\nLab #5\n\n\n2026-03-16\nNO CLASS\n\n\n\n\n2026-03-18\nNO CLASS\n\n\n\n\n2026-03-20\nNO CLASS\n\n\n\n\n2026-03-23\nForming Hypotheses\n\n\n\n\n2026-03-25\nSpatial is Special (natural samples)\n\n\n\n\n2026-03-27\nHypothesis Testing #1\n\n\n\n\n2026-03-30\nHypothesis Testing #2\n\n\n\n\n2026-04-01\nHypothesis Testing #3\n\n\n\n\n2026-04-03\nNO CLASS\n\n\n\n\n2026-04-06\nHypothesis Testing #4\n\nLab #6A\n\n\n2026-04-08\nHypothesis Testing #5\n\n\n\n\n2026-04-10\nPick the Test\n\n\n\n\n2026-04-13\nCorrelation\n\n\n\n\n2026-04-15\nSpatial Correlation\n\n\n\n\n2026-04-17\nSpatial Correlation\n\nLab #6B\n\n\n2026-04-20\nBringing it Together\n\n\n\n\n2026-04-22\n\n\n\n\n\n2026-04-24\n\nLab #7\n\n\n\n2026-04-27\nCase Study #3",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Schedule</span>"
+    ]
+  },
+  {
+    "objectID": "competencies.html",
+    "href": "competencies.html",
+    "title": "3  Tier 1- Foundations",
+    "section": "",
+    "text": "3.0.1 Concept 1: The Quantitative Revolution\nGuiding Question: Why did geography become a quantitative discipline, and how did it change how we study space?\n\nDescribe the origins of the Quantitative Revolution in geography and how political and academic pressures pushed geography towards a “spatial science” \nIdentify assumptions built into quantitative reasoning (measurability, objectivity, universality)\nReflect on critiques and limits of the revolution from human and critical geographers\nInterpret early spatial models (e.g., gravity model, rank-size rule)\n\n\n\n3.0.2 Concept 2: The Problem of Spatial Data\nGuiding Question: Why is spatial data different, and how does it challenge traditional statistics?\n\nExplain how spatial dependence, spatial heterogeneity, and distance decay influence the structure and interpretation of spatial data\nEvaluate issues of scale, zoning, and aggregation (MAUP) \nConnect the “spatial problem” to violations of independence in classical inference\n\n\n\n3.0.3 Concept 3: Descriptive Statistics and Spatial Description\nGuiding Question: How do we summarize and describe variation in geographic data?\n\nClassify different types of geographic data and variables (e.g., primary vs. secondary, individual vs. aggregated, qualitative vs. quantitative, level of measurement), and explain how these distinctions influence analysis\nExplain and evaluate measurement quality in geographic data, including precision, accuracy, validity, and reliability.\nSummarize and interpret attribute data using descriptive statistics (central tendency, dispersion, shape) and data visualizations\nUse maps to visually analyze spatial patterns\nCompute and interpret spatial descriptive statistics (mean center, standard distance, standard deviational ellipse) and explain how they extend non-spatial descriptive measures.\nIdentify unusual values, skewed distributions, and outliers in attributes and geographic space, and explain their analytical implications.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>**Tier 1- Foundations**</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html",
+    "href": "basic_R.html",
+    "title": "4  Working in R and R Studio",
+    "section": "",
+    "text": "4.1 Downloading and Installing R and RStudio\nThis is NOT a coding class, but we will be using R for our data analysis. Because of this, while I don’t expect you to be able to generate code independently, I do expect you to develop a competency in navigating the RStudio environment and modifying code that I give you to complete specific tasks. This chapter will introduce you to R and RStudio.\nRStudio is an Integrated Development Environment (IDE) for R. RStudio provides a user-friendly interface for working with R code. R is an open-source programming language that has excellent capabilities for analyzing and visualizing spatial data.\nTo use R and RStudio, you will need to download and install both programs on your computer.\nOnce you have downloaded and installed RStudio, open up the application. We need to change one global setting before we start. You only need to do this once! Navigate Tools &gt; Global Options, unclick “Restore .RData into Workspace at Startup” and choosing Never on the “Save workspace to .RData on exit”.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html#downloading-and-installing-r-and-rstudio",
+    "href": "basic_R.html#downloading-and-installing-r-and-rstudio",
+    "title": "4  Working in R and R Studio",
+    "section": "",
+    "text": "Download R (make sure to download the correct version for your operating system)\nDownload RStudio",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html#the-rstudio-environment",
+    "href": "basic_R.html#the-rstudio-environment",
+    "title": "4  Working in R and R Studio",
+    "section": "4.2 The RStudio Environment",
+    "text": "4.2 The RStudio Environment\nThe RStudio environment consists of four panels.\n\nSource: This is where you can edit R files (either .R or .Rmd) and run R code.\nConsole: The console is an interactive R environment, where you can easily run R commands. Commands written in the console are not saved into any file. It can be good to use the console for quickly testing R code\nEnvironment: This is where R objects made during each session will appear.\nOutput: This is where charts and graphs will appear.\n\n\n\n\nRStudio Panes",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html#creating-and-saving-files",
+    "href": "basic_R.html#creating-and-saving-files",
+    "title": "4  Working in R and R Studio",
+    "section": "4.3 Creating and Saving Files",
+    "text": "4.3 Creating and Saving Files\nIn this class, we will primarily be working with .Rmd files. An R Markdown or .Rmd is a document format that is designed to easily integrate text and code. This means that you can easily type answers to questions, descriptions of code outputs, and other assignment tasks within the same document as your code.\nI will provide you a .Rmd template to use for each in-class exercise and lab. You should save these files into a GEOG391 folder on your computer (not in the downloads folder please!)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html#downloading-packages",
+    "href": "basic_R.html#downloading-packages",
+    "title": "4  Working in R and R Studio",
+    "section": "4.4 Downloading Packages",
+    "text": "4.4 Downloading Packages\nR packages extend the functionality of Base R and must be downloaded. We will use a small set of libraries in this class.\n\ntmap: This is the main mapping package we will use\ngt: We will use this package to create nice tables\ntidyverse: This is the package we will use to create “tidy” analysis workflows. Tidyverse also includes ggplot2 which will be our main package to create graphics\nsf: This package allows us to read and manipulate spatial datasets\n\nYou should copy and paste each of these commands into the Console one by one to download the packages.\n\ninstall.packages(\"tmap\")\ninstall.packages(\"tidyverse\")\ninstall.packages(\"gt\")\ninstall.packages(\"sf\")\n\nOnce you have downloaded the packages, you will need to load them every time you want to use them. I will always tell you what packages to load!",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html#basic-.rmd-functionality",
+    "href": "basic_R.html#basic-.rmd-functionality",
+    "title": "4  Working in R and R Studio",
+    "section": "5.1 Basic .Rmd Functionality",
+    "text": "5.1 Basic .Rmd Functionality\nWelcome to your first .Rmd! Each .Rmd starts with a header, where you can change the name and the date.\nA .Rmd is made up of two main components: code chunks (this is where you write code) and text (any words that are outside of a code chunk). Any time you are writing code, it needs to be in a code chunk. Chunks can then be run to execute the code within the chunk. The idea of chunking is to group code that accomplishes a single, related task into one code chunk. When you begin a new step or process in your workflow, you start a new chunk.\nYour .Rmd template already has a header (where you can change the name and date) and two code chunks. The first code chunk is the SET UP CHUNK. The second code chunk is the LIBRARY AND DATA CHUNK. To load the libraries and data, you should RUN CODE CHUNK.\n\nIf everything is working, ‘parks’ should appear in your environment. The ‘parks’ dataset is now an “object”.\nWe can view objects by double clicking the object in the environment. A data table should appear with all the information about the parks.\n\nAdd a new code chunk and add the code below to create your first map. Every command that you create should have a comment (#) above that explains what that command is doing. If you run that chunk, a map should appear below.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html#knitting-a-.rmd",
+    "href": "basic_R.html#knitting-a-.rmd",
+    "title": "4  Working in R and R Studio",
+    "section": "5.2 Knitting a .Rmd",
+    "text": "5.2 Knitting a .Rmd\nKnitting a .Rmd means that you create a rendered .html including your code, output, and text. To knit your document, click the knit button. It will create a .html in whatever folder you have the .Rmd saved in (hopefully your GEOG391 folder!)\n\nWhen your knitted document opens, it should look something like this",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "basic_R.html#adding-text-and-formatting-a-.rmd",
+    "href": "basic_R.html#adding-text-and-formatting-a-.rmd",
+    "title": "4  Working in R and R Studio",
+    "section": "5.3 Adding Text and Formatting a .Rmd",
+    "text": "5.3 Adding Text and Formatting a .Rmd\nThe great thing about working in .Rmds is that you can create nicely formatted documents that merge code and text. At the bottom of the .Rmd is some tips for formatting nice-looking documents. Play around with adding some heading and text to your document.\nSometimes we want to modify what code and output actually appears in our knitted document. The commands at the bottom of the document explain which chunk modifiers to. See if you can figure out how to change the map chunk to not include the code in the knitted document.\nAfter you are done working in your .Rmd, make sure to save it!",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Working in R and R Studio</span>"
+    ]
+  },
+  {
+    "objectID": "describing_data.html",
+    "href": "describing_data.html",
+    "title": "5  Describing Data",
+    "section": "",
+    "text": "5.1 Orienting Ourselves to the Datasets\nIn this chapter, we will apply what we know about describing data to explore three datasets. Descriptive statistics are a set of tools that allow us to summarize a given dataset based on various characteristics.\nWe will use the following spatial data:\nThe last two datasets are aggregated summaries rather than raw measurements. The Climate Normals are temporal averages,meaning that the data represent the average conditions over a 30-year period. The ACS data are spatial averages, which summarize individual responses within defined geographic areas. This is a requirement for many spatial datasets, even when individual-level data is available, to maintain anonymity.\nAs a result, when we analyze these datasets, we are working with information that has already been statistically summarized over time and space, and our own statistical descriptions will be second-order summaries that describe patterns in data that have already been aggregated.\nTo follow along with this tutorial, download the .Rmd template here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.\nThe ‘glimpse()’ function provides a quick overview of the structure and contents of a dataset. It displays the data types of each column and a preview of the data, making it easier to understand the dataset at a glance.\n## glimpse at the rurality data\nglimpse(rurality)\n\nRows: 2,672\nColumns: 4\n$ GEOID           &lt;chr&gt; \"37141920300\", \"37141990100\", \"37071031600\", \"37071031…\n$ ruca_code       &lt;chr&gt; \"Metropolitan high commuting\", \"Not coded\", \"Metropoli…\n$ nc_rural_center &lt;chr&gt; \"Rural\", \"Rural\", \"Not Rural\", \"Not Rural\", \"Rural\", \"…\n$ geometry        &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-78.15648 3..., MULTIPOLY…\n\n## glimpse at the climate normals data\nglimpse(climate_normals)\n\nRows: 469,758\nColumns: 2\n$ summer_temp &lt;dbl&gt; 56.25781, 56.25312, 56.27656, 56.40313, 56.46875, 57.36875…\n$ geometry    &lt;POINT [°]&gt; POINT (-124.6875 48.0625), POINT (-124.6875 48.10417…\n\n#glimpse at acs data\nglimpse(acs_tract_nc)\n\nRows: 2,672\nColumns: 54\n$ STATEFP          &lt;chr&gt; \"37\", \"37\", \"37\", \"37\", \"37\", \"37\", \"37\", \"37\", \"37\",…\n$ COUNTYFP         &lt;chr&gt; \"031\", \"031\", \"031\", \"031\", \"031\", \"031\", \"031\", \"119…\n$ TRACTCE          &lt;chr&gt; \"970402\", \"970502\", \"970805\", \"970903\", \"970101\", \"97…\n$ GEOID            &lt;chr&gt; \"37031970402\", \"37031970502\", \"37031970805\", \"3703197…\n$ NAME             &lt;chr&gt; \"9704.02\", \"9705.02\", \"9708.05\", \"9709.03\", \"9701.01\"…\n$ NAMELSAD         &lt;chr&gt; \"Census Tract 9704.02\", \"Census Tract 9705.02\", \"Cens…\n$ MTFCC            &lt;chr&gt; \"G5020\", \"G5020\", \"G5020\", \"G5020\", \"G5020\", \"G5020\",…\n$ FUNCSTAT         &lt;chr&gt; \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\"…\n$ ALAND            &lt;dbl&gt; 2395384, 6094915, 139248627, 5864308, 28018671, 97430…\n$ AWATER           &lt;dbl&gt; 1553995, 4244211, 421209, 30151466, 35773987, 1568180…\n$ INTPTLAT         &lt;chr&gt; \"+34.7239933\", \"+34.7517653\", \"+34.7817392\", \"+34.701…\n$ INTPTLON         &lt;chr&gt; \"-076.7087383\", \"-076.7387561\", \"-077.0184797\", \"-076…\n$ tract_name       &lt;chr&gt; \"Census Tract 9704.02, Carteret County, North Carolin…\n$ total_pop        &lt;dbl&gt; 1309, 2177, 1694, 1211, 965, 4244, 2306, 2720, 6076, …\n$ median_age       &lt;dbl&gt; 39.3, 56.1, 43.3, 62.1, 48.4, 55.9, 42.3, 28.3, 29.7,…\n$ pct_white        &lt;dbl&gt; 64.17, 93.11, 85.36, 85.47, 86.22, 72.64, 72.94, 6.32…\n$ pct_black        &lt;dbl&gt; 21.01, 2.30, 0.00, 0.66, 3.21, 17.86, 9.71, 45.96, 30…\n$ pct_aian         &lt;dbl&gt; 0.15, 0.00, 0.41, 0.41, 0.00, 2.00, 0.00, 0.00, 0.05,…\n$ pct_asian        &lt;dbl&gt; 0.00, 0.00, 1.89, 0.00, 0.00, 0.00, 4.68, 2.90, 1.50,…\n$ pct_nhpi         &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.17, 1.32, 0.00,…\n$ pct_other_race   &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00, 0.00, 1.06, 0.22, 0.00, 0.00,…\n$ pct_two_races    &lt;dbl&gt; 12.15, 0.32, 10.68, 12.80, 0.83, 3.79, 8.24, 1.69, 0.…\n$ pct_hisp         &lt;dbl&gt; 2.52, 4.27, 1.65, 0.66, 9.74, 2.64, 4.03, 41.80, 63.8…\n$ pct_family_hh    &lt;dbl&gt; 39.31, 64.53, 73.30, 64.78, 65.03, 64.45, 62.60, 61.2…\n$ married_fam      &lt;dbl&gt; 19.08, 55.75, 55.45, 61.55, 45.08, 55.44, 42.31, 28.3…\n$ male_hh          &lt;dbl&gt; 3.71, 0.00, 3.81, 0.48, 9.84, 3.64, 2.88, 9.40, 8.66,…\n$ female_hh        &lt;dbl&gt; 16.52, 8.77, 14.03, 2.75, 10.11, 5.37, 17.40, 23.56, …\n$ pct_nonfam_hh    &lt;dbl&gt; 60.69, 35.47, 26.70, 35.22, 34.97, 35.55, 37.40, 38.7…\n$ nonfam_male_hh   &lt;dbl&gt; 37.00, 16.13, 15.26, 14.22, 18.31, 17.25, 13.37, 13.7…\n$ nonfam_fem_hh    &lt;dbl&gt; 23.69, 19.34, 11.44, 21.00, 16.67, 18.30, 24.04, 25.0…\n$ av_hh_size       &lt;dbl&gt; 1.64, 2.05, 2.31, 1.96, 2.37, 2.03, 2.21, 3.01, 2.89,…\n$ pct_less_hs      &lt;dbl&gt; 17.40, 7.95, 9.49, 0.00, 8.64, 18.64, 6.50, 19.05, 29…\n$ pct_hs           &lt;dbl&gt; 52.21, 53.92, 69.15, 41.87, 67.83, 59.63, 61.34, 60.9…\n$ pc_bach          &lt;dbl&gt; 30.38, 38.13, 21.36, 58.13, 23.54, 21.73, 32.17, 19.9…\n$ pct_unemp        &lt;dbl&gt; 5.67, 0.41, 0.86, 1.47, 1.45, 0.13, 0.95, 5.91, 8.52,…\n$ med_hh_inc       &lt;dbl&gt; 45391, 86583, 66548, 96198, 58750, 67195, 63393, 4844…\n$ gini_index       &lt;dbl&gt; 0.4094, 0.4039, 0.4377, 0.4689, 0.5036, 0.4248, 0.462…\n$ pct_owner        &lt;dbl&gt; 41.87, 87.64, 81.47, 86.11, 81.42, 70.29, 62.98, 25.1…\n$ pct_renter       &lt;dbl&gt; 58.13, 12.36, 18.53, 13.89, 18.58, 29.71, 37.02, 74.8…\n$ pct_vacant       &lt;dbl&gt; 19.57, 10.09, 18.90, 78.84, 45.29, 14.68, 8.29, 6.22,…\n$ med_year_built   &lt;dbl&gt; 1962, 1985, 1997, 1988, 1965, 1994, 1984, 1983, 1986,…\n$ pct_gas          &lt;dbl&gt; 18.95, 13.02, 7.36, 13.41, 31.15, 2.30, 3.56, 49.89, …\n$ pct_electric     &lt;dbl&gt; 77.21, 85.66, 85.01, 84.81, 53.83, 96.26, 95.67, 49.7…\n$ med_house_val    &lt;dbl&gt; 234100, 329900, 208800, 669300, 168500, 262600, 23640…\n$ med_rent         &lt;dbl&gt; 781, 1241, 1133, 1489, 1000, 762, 1184, 1355, 1309, 2…\n$ pct_pov          &lt;dbl&gt; 26.02, 4.10, 9.63, 4.21, 16.63, 9.50, 18.35, 16.09, 1…\n$ pct_drive_work   &lt;dbl&gt; 90.34, 89.37, 87.40, 75.43, 78.46, 85.78, 94.20, 86.3…\n$ pct_public_trans &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 4.12, 3.60,…\n$ bike_walk        &lt;dbl&gt; 3.22, 0.00, 2.95, 0.00, 2.25, 0.00, 1.40, 2.22, 0.00,…\n$ pct_wfh          &lt;dbl&gt; 6.44, 7.95, 8.17, 24.57, 8.36, 10.30, 4.12, 5.43, 11.…\n$ av_commute       &lt;dbl&gt; 17, 20, 26, 28, 32, 17, 23, 19, 25, 24, 25, 23, 25, 2…\n$ pct_no_veh       &lt;dbl&gt; 27.53, 0.57, 0.00, 3.07, 4.92, 2.97, 3.94, 7.52, 7.90…\n$ no_health_insur  &lt;dbl&gt; 19.39, 7.21, 15.13, 4.29, 7.85, 16.02, 6.16, 14.72, 4…\n$ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MULTIPOL…",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Describing Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_data.html#creating-a-basic-table-for-descriptive-statistics",
+    "href": "describing_data.html#creating-a-basic-table-for-descriptive-statistics",
+    "title": "5  Describing Data",
+    "section": "6.1 Creating a Basic Table for Descriptive Statistics",
+    "text": "6.1 Creating a Basic Table for Descriptive Statistics\nThe ‘gt’ package in R is a tool to create “presentation-ready” tables.\n\n## create a basic table of descriptive statistics for RUCA codes\nrurality |&gt; st_drop_geometry() |&gt; \n  group_by(ruca_code) |&gt;\n  summarise(n = n())  |&gt;  gt() \n\n\n\n\n\n\n\nruca_code\nn\n\n\n\n\nMetropolitan core\n1436\n\n\nMetropolitan high commuting\n406\n\n\nMetropolitan low commuting\n87\n\n\nMicropolitan core\n218\n\n\nMicropolitan high commuting\n134\n\n\nMicropolitan low commuting\n79\n\n\nNot coded\n12\n\n\nRural area\n225\n\n\nSmall town core\n39\n\n\nSmall town high commuting\n20\n\n\nSmall town low commuting\n16\n\n\n\n\n\n\n\nQ3. What is the mode of the ruca_code?",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Describing Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_data.html#visualizing-descriptive-statistics",
+    "href": "describing_data.html#visualizing-descriptive-statistics",
+    "title": "5  Describing Data",
+    "section": "6.2 Visualizing Descriptive Statistics",
+    "text": "6.2 Visualizing Descriptive Statistics\nOur descriptive statistics table has given us some useful information about our dataset. Visualizing our data can help us understand our descriptive statistics better.\n\n6.2.1 Bar Chart\nA bar chart displays the count of each observations in a group. It is a useful visualization for nominal/categorical data.\n\n#this creates the grouped dataset\ngrouped_rural &lt;- rurality |&gt; st_drop_geometry() |&gt; \n  group_by(ruca_code) |&gt;\n  summarise(Count = n()) \n\n#this plots the bar plot (note that the coord_flip swtiches the axis which is better for labeling in this case)\nggplot(grouped_rural, aes(x=ruca_code, y=Count)) + \n  geom_bar(stat = \"identity\") + coord_flip() + labs(\n    x = \"RUCA Code Category\",\n    y = \"Number of Census Tracts\",\n  )\n\n\n\n\n\n\n\n\n\n\n6.2.2 Map\n\n#here's our first map. Note that I'm using the raw data, not the grouped data.\ntm_shape(rurality) + tm_polygons(\"ruca_code\")\n\n\n\n\n\n\n\n\nQ4: What spatial patterns can you see in RUCA codes across NC? What does this map tell us that we can’t learn from the descriptive statistics table and non-spatial visualizations?",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Describing Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_data.html#creating-a-basic-table-for-descriptive-statistics-1",
+    "href": "describing_data.html#creating-a-basic-table-for-descriptive-statistics-1",
+    "title": "5  Describing Data",
+    "section": "7.1 Creating a Basic Table for Descriptive Statistics",
+    "text": "7.1 Creating a Basic Table for Descriptive Statistics\n\n## create a basic table of descriptive statistics for climate normals\nclimate_normals |&gt; st_drop_geometry() |&gt;\n  select(summer_temp) |&gt;\n  summarise(\n    n = n(),\n    num_na = sum(is.na(summer_temp)), \n    mean_temp = mean(summer_temp, na.rm = TRUE),\n    median_temp = median(summer_temp, na.rm = TRUE),\n    sd_temp = sd(summer_temp, na.rm = TRUE),\n    variance_temp = var(summer_temp, na.rm = TRUE),\n    mean_dev = mean(abs(summer_temp - mean(summer_temp, na.rm = TRUE)), na.rm = TRUE),\n    cv_temp = sd_temp / mean_temp,\n    min_temp = min(summer_temp, na.rm = TRUE),\n    max_temp = max(summer_temp, na.rm = TRUE),\n    skewness = skewness(summer_temp, na.rm = TRUE), \n    kurtosis = kurtosis(summer_temp, na.rm = TRUE)\n                               \n  ) |&gt; pivot_longer(everything(), names_to = \"Statistic\", values_to = \"Value\") |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"US Summer Temperatures (1991-2020)\",\n  ) %&gt;%\n  fmt_number(\n    columns = everything(),\n    decimals = 2\n  )\n\n\n\n\n\n\n\nUS Summer Temperatures (1991-2020)\n\n\nStatistic\nValue\n\n\n\n\nn\n469,758.00\n\n\nnum_na\n0.00\n\n\nmean_temp\n71.86\n\n\nmedian_temp\n71.55\n\n\nsd_temp\n7.64\n\n\nvariance_temp\n58.36\n\n\nmean_dev\n6.26\n\n\ncv_temp\n0.11\n\n\nmin_temp\n29.91\n\n\nmax_temp\n98.04\n\n\nskewness\n−0.09\n\n\nkurtosis\n−0.25\n\n\n\n\n\n\n\nQ6: Based on the descriptive statistics in the table, describe the overall distribution of summer temperatures across the U.S., including central tendency, variability, and evidence of skewness or outliers.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Describing Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_data.html#visualizing-descriptive-statistics-1",
+    "href": "describing_data.html#visualizing-descriptive-statistics-1",
+    "title": "5  Describing Data",
+    "section": "7.2 Visualizing Descriptive Statistics",
+    "text": "7.2 Visualizing Descriptive Statistics\n\n7.2.1 Histogram\nA histogram is a graph that displays the frequency of observations within user-set “bins”. This can give us an understanding of the distribution of our data\n\n## create a histogram of summer temperatures\n\nggplot(climate_normals, aes(x = summer_temp)) +\n  geom_histogram(binwidth = 1, fill = \"lightgrey\", color = \"black\", alpha = 0.7) +\n  labs(\n    title = \"Histogram of Summer Temperatures (1991-2020)\",\n    x = \"Summer Temperature (°F)\",\n    y = \"Frequency\"\n  ) \n\n\n\n\n\n\n\n\n\n\n7.2.2 Cumulative Frequency Plot\n\nggplot(climate_normals, aes(x = summer_temp)) + stat_ecdf() +\n  labs(\n    title = \"Cumulative Frequency Plot of Summer Temperatures (1991-2020)\",\n    x = \"Summer Temperature (°F)\",\n    y = \"Cumulative Frequency\"\n  )\n\n\n\n\n\n\n\n\n\n\n7.2.3 Boxplot\nA boxplot is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. It can also highlight outliers in the data.\n\nggplot(climate_normals, aes(y = summer_temp)) +\n  geom_boxplot(fill = \"lightgrey\") +\n  labs(\n    title = \"Boxplot of Summer Temperatures (1991-2020)\",\n    y = \"Summer Temperature (°F)\"\n  )\n\n\n\n\n\n\n\n\n\n\n7.2.4 Violin Plot\nA violin plot is a method of plotting numeric data and can be understood as a combination of a boxplot and a kernel density plot. It shows the distribution of the data across different values.\n\nggplot(climate_normals, aes(x = 1, y = summer_temp)) +\n  geom_violin(fill = \"lightgrey\", bw = 1.2)  + geom_boxplot(width=0.1) +\n  labs(\n    title = \"Violin Plot of Summer Temperatures (1991-2020)\",\n    y = \"Summer Temperature (°F)\"\n  ) + theme(axis.title.x=element_blank(),\n        axis.text.x=element_blank(),\n        axis.ticks.x=element_blank())\n\n\n\n\n\n\n\n\nQ7: What unique information does each of the four visualizations (histogram, cumulative frequency plot, boxplot, and violin plot) reveal about the distribution of summer temperatures?\n\n\n7.2.5 Map\n\ntm_shape(climate_normals) + tm_dots(\"summer_temp\")\n\n\n\n\n\n\n\n\nQ8: What does this map show us about the pattern of summer temperature across the U.S",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Describing Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_spatial_data.html",
+    "href": "describing_spatial_data.html",
+    "title": "6  Describing Spatial Data",
+    "section": "",
+    "text": "6.1 Loading Libraries and Reading in Data\nIn this chapter, we will build on the descriptive tools we learned in the Describing Data chapter. Spatial descriptive statistics summarize spatial patterns, not just patterns in value.\nWe will use the following spatial data:\nTo follow along with this tutorial, save this data into your “data” subfolder in your “describing data” folder. Create and dave a new .Rmd called “describing_spatial_data.Rmd” in your “desciribing data folder”. Whenever you see lines of code, copy them into your own .Rmd.\nNorth Carolina census tract rurality definitions (RUCA codes) from the USDA Economic Research Service and North Carolina Rural Center. These two sources offer differing definitions of rurality. RUCA codes establish urban cores and the census tracts that are the most economically integrated with those cores through commuting. The North Carolina Rural Center defines rurality by a population density threshold (rural &lt; 250 people per square mile).\nThe last two datasets are aggregated summaries rather than raw measurements. The Climate Normals are temporal averages,meaning that the data represent the average conditions over a 30-year period. The ACS data are spatial averages, which summarize individual responses within defined geographic areas. This is a requirement for many spatial datasets, even when individual-level data is available, to maintain anonymity.\nAs a result, when we analyze these datasets, we are working with information that has already been statistically summarized over time and space, and our own statistical descriptions will be second-order summaries that describe patterns in data that have already been aggregated.\nTo follow along with this tutorial, create a folder called “describing_data” and a subfolder called “data”. Save the data into the “data” subfolder, and create and save a .Rmd called “describing_data.Rmd” in the “describing_data” folder. Whenever you see lines of code, copy these into your own document.\n## load necessary libraries\nlibrary(tidyverse)\nlibrary(gt)\nlibrary(sf)\nlibrary(e1071)\nlibrary(tmap)\n\n## read in the data\nrurality &lt;- st_read(\"data/nc_tracts_rurality.geojson\")\n\nReading layer `nc_tracts_rurality' from data source \n  `/Users/juliacardwell/Documents/quant_methods/data/nc_tracts_rurality.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 2672 features and 3 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -84.32182 ymin: 33.75288 xmax: -75.40012 ymax: 36.58814\nGeodetic CRS:  NAD83\n\nclimate_normals &lt;- st_read(\"data/climate_normals.geojson\")\n\nReading layer `climate_normals' from data source \n  `/Users/juliacardwell/Documents/quant_methods/data/climate_normals.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 469758 features and 1 field\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -124.6875 ymin: 24.5625 xmax: -67.02083 ymax: 49.35417\nGeodetic CRS:  WGS 84\n\nacs_tract_nc &lt;- st_read(\"data/nc_tract_acs_2023.geojson\")\n\nReading layer `nc_tract_acs_2023' from data source \n  `/Users/juliacardwell/Documents/quant_methods/data/nc_tract_acs_2023.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 2672 features and 53 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -84.32182 ymin: 33.75288 xmax: -75.40012 ymax: 36.58814\nGeodetic CRS:  NAD83",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Describing Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_spatial_data.html#orienting-ourselves-to-the-datasets",
+    "href": "describing_spatial_data.html#orienting-ourselves-to-the-datasets",
+    "title": "6  Describing Spatial Data",
+    "section": "6.2 Orienting Ourselves to the Datasets",
+    "text": "6.2 Orienting Ourselves to the Datasets\nThe ‘glimpse()’ function provides a quick overview of the structure and contents of a dataset. It displays the data types of each column and a preview of the data, making it easier to understand the dataset at a glance.\n\n## glimpse at the rurality data\nglimpse(rurality)\n\nRows: 2,672\nColumns: 4\n$ GEOID           &lt;chr&gt; \"37141920300\", \"37141990100\", \"37071031600\", \"37071031…\n$ ruca_code       &lt;chr&gt; \"Metropolitan high commuting\", \"Not coded\", \"Metropoli…\n$ nc_rural_center &lt;chr&gt; \"Rural\", \"Rural\", \"Not Rural\", \"Not Rural\", \"Rural\", \"…\n$ geometry        &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-78.15648 3..., MULTIPOLY…\n\n## glimpse at the climate normals data\nglimpse(climate_normals)\n\nRows: 469,758\nColumns: 2\n$ summer_temp &lt;dbl&gt; 56.25781, 56.25312, 56.27656, 56.40313, 56.46875, 57.36875…\n$ geometry    &lt;POINT [°]&gt; POINT (-124.6875 48.0625), POINT (-124.6875 48.10417…\n\n#glimpse at acs data\nglimpse(acs_tract_nc)\n\nRows: 2,672\nColumns: 54\n$ STATEFP          &lt;chr&gt; \"37\", \"37\", \"37\", \"37\", \"37\", \"37\", \"37\", \"37\", \"37\",…\n$ COUNTYFP         &lt;chr&gt; \"031\", \"031\", \"031\", \"031\", \"031\", \"031\", \"031\", \"119…\n$ TRACTCE          &lt;chr&gt; \"970402\", \"970502\", \"970805\", \"970903\", \"970101\", \"97…\n$ GEOID            &lt;chr&gt; \"37031970402\", \"37031970502\", \"37031970805\", \"3703197…\n$ NAME             &lt;chr&gt; \"9704.02\", \"9705.02\", \"9708.05\", \"9709.03\", \"9701.01\"…\n$ NAMELSAD         &lt;chr&gt; \"Census Tract 9704.02\", \"Census Tract 9705.02\", \"Cens…\n$ MTFCC            &lt;chr&gt; \"G5020\", \"G5020\", \"G5020\", \"G5020\", \"G5020\", \"G5020\",…\n$ FUNCSTAT         &lt;chr&gt; \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\", \"S\"…\n$ ALAND            &lt;dbl&gt; 2395384, 6094915, 139248627, 5864308, 28018671, 97430…\n$ AWATER           &lt;dbl&gt; 1553995, 4244211, 421209, 30151466, 35773987, 1568180…\n$ INTPTLAT         &lt;chr&gt; \"+34.7239933\", \"+34.7517653\", \"+34.7817392\", \"+34.701…\n$ INTPTLON         &lt;chr&gt; \"-076.7087383\", \"-076.7387561\", \"-077.0184797\", \"-076…\n$ tract_name       &lt;chr&gt; \"Census Tract 9704.02, Carteret County, North Carolin…\n$ total_pop        &lt;dbl&gt; 1309, 2177, 1694, 1211, 965, 4244, 2306, 2720, 6076, …\n$ median_age       &lt;dbl&gt; 39.3, 56.1, 43.3, 62.1, 48.4, 55.9, 42.3, 28.3, 29.7,…\n$ pct_white        &lt;dbl&gt; 64.17, 93.11, 85.36, 85.47, 86.22, 72.64, 72.94, 6.32…\n$ pct_black        &lt;dbl&gt; 21.01, 2.30, 0.00, 0.66, 3.21, 17.86, 9.71, 45.96, 30…\n$ pct_aian         &lt;dbl&gt; 0.15, 0.00, 0.41, 0.41, 0.00, 2.00, 0.00, 0.00, 0.05,…\n$ pct_asian        &lt;dbl&gt; 0.00, 0.00, 1.89, 0.00, 0.00, 0.00, 4.68, 2.90, 1.50,…\n$ pct_nhpi         &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.17, 1.32, 0.00,…\n$ pct_other_race   &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00, 0.00, 1.06, 0.22, 0.00, 0.00,…\n$ pct_two_races    &lt;dbl&gt; 12.15, 0.32, 10.68, 12.80, 0.83, 3.79, 8.24, 1.69, 0.…\n$ pct_hisp         &lt;dbl&gt; 2.52, 4.27, 1.65, 0.66, 9.74, 2.64, 4.03, 41.80, 63.8…\n$ pct_family_hh    &lt;dbl&gt; 39.31, 64.53, 73.30, 64.78, 65.03, 64.45, 62.60, 61.2…\n$ married_fam      &lt;dbl&gt; 19.08, 55.75, 55.45, 61.55, 45.08, 55.44, 42.31, 28.3…\n$ male_hh          &lt;dbl&gt; 3.71, 0.00, 3.81, 0.48, 9.84, 3.64, 2.88, 9.40, 8.66,…\n$ female_hh        &lt;dbl&gt; 16.52, 8.77, 14.03, 2.75, 10.11, 5.37, 17.40, 23.56, …\n$ pct_nonfam_hh    &lt;dbl&gt; 60.69, 35.47, 26.70, 35.22, 34.97, 35.55, 37.40, 38.7…\n$ nonfam_male_hh   &lt;dbl&gt; 37.00, 16.13, 15.26, 14.22, 18.31, 17.25, 13.37, 13.7…\n$ nonfam_fem_hh    &lt;dbl&gt; 23.69, 19.34, 11.44, 21.00, 16.67, 18.30, 24.04, 25.0…\n$ av_hh_size       &lt;dbl&gt; 1.64, 2.05, 2.31, 1.96, 2.37, 2.03, 2.21, 3.01, 2.89,…\n$ pct_less_hs      &lt;dbl&gt; 17.40, 7.95, 9.49, 0.00, 8.64, 18.64, 6.50, 19.05, 29…\n$ pct_hs           &lt;dbl&gt; 52.21, 53.92, 69.15, 41.87, 67.83, 59.63, 61.34, 60.9…\n$ pc_bach          &lt;dbl&gt; 30.38, 38.13, 21.36, 58.13, 23.54, 21.73, 32.17, 19.9…\n$ pct_unemp        &lt;dbl&gt; 5.67, 0.41, 0.86, 1.47, 1.45, 0.13, 0.95, 5.91, 8.52,…\n$ med_hh_inc       &lt;dbl&gt; 45391, 86583, 66548, 96198, 58750, 67195, 63393, 4844…\n$ gini_index       &lt;dbl&gt; 0.4094, 0.4039, 0.4377, 0.4689, 0.5036, 0.4248, 0.462…\n$ pct_owner        &lt;dbl&gt; 41.87, 87.64, 81.47, 86.11, 81.42, 70.29, 62.98, 25.1…\n$ pct_renter       &lt;dbl&gt; 58.13, 12.36, 18.53, 13.89, 18.58, 29.71, 37.02, 74.8…\n$ pct_vacant       &lt;dbl&gt; 19.57, 10.09, 18.90, 78.84, 45.29, 14.68, 8.29, 6.22,…\n$ med_year_built   &lt;dbl&gt; 1962, 1985, 1997, 1988, 1965, 1994, 1984, 1983, 1986,…\n$ pct_gas          &lt;dbl&gt; 18.95, 13.02, 7.36, 13.41, 31.15, 2.30, 3.56, 49.89, …\n$ pct_electric     &lt;dbl&gt; 77.21, 85.66, 85.01, 84.81, 53.83, 96.26, 95.67, 49.7…\n$ med_house_val    &lt;dbl&gt; 234100, 329900, 208800, 669300, 168500, 262600, 23640…\n$ med_rent         &lt;dbl&gt; 781, 1241, 1133, 1489, 1000, 762, 1184, 1355, 1309, 2…\n$ pct_pov          &lt;dbl&gt; 26.02, 4.10, 9.63, 4.21, 16.63, 9.50, 18.35, 16.09, 1…\n$ pct_drive_work   &lt;dbl&gt; 90.34, 89.37, 87.40, 75.43, 78.46, 85.78, 94.20, 86.3…\n$ pct_public_trans &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 4.12, 3.60,…\n$ bike_walk        &lt;dbl&gt; 3.22, 0.00, 2.95, 0.00, 2.25, 0.00, 1.40, 2.22, 0.00,…\n$ pct_wfh          &lt;dbl&gt; 6.44, 7.95, 8.17, 24.57, 8.36, 10.30, 4.12, 5.43, 11.…\n$ av_commute       &lt;dbl&gt; 17, 20, 26, 28, 32, 17, 23, 19, 25, 24, 25, 23, 25, 2…\n$ pct_no_veh       &lt;dbl&gt; 27.53, 0.57, 0.00, 3.07, 4.92, 2.97, 3.94, 7.52, 7.90…\n$ no_health_insur  &lt;dbl&gt; 19.39, 7.21, 15.13, 4.29, 7.85, 16.02, 6.16, 14.72, 4…\n$ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MULTIPOL…",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Describing Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_spatial_data.html#creating-a-basic-table-for-descriptive-statistics",
+    "href": "describing_spatial_data.html#creating-a-basic-table-for-descriptive-statistics",
+    "title": "6  Describing Spatial Data",
+    "section": "7.1 Creating a Basic Table for Descriptive Statistics",
+    "text": "7.1 Creating a Basic Table for Descriptive Statistics\nThe ‘gt’ package in R is a tool to create “presentation-ready” tables.\n\n## create a basic table of descriptive statistics for RUCA codes\nrurality |&gt; st_drop_geometry() |&gt; \n  group_by(ruca_code) |&gt;\n  summarise(n = n())  |&gt;  gt() \n\n\n\n\n\n\n\nruca_code\nn\n\n\n\n\nMetropolitan core\n1436\n\n\nMetropolitan high commuting\n406\n\n\nMetropolitan low commuting\n87\n\n\nMicropolitan core\n218\n\n\nMicropolitan high commuting\n134\n\n\nMicropolitan low commuting\n79\n\n\nNot coded\n12\n\n\nRural area\n225\n\n\nSmall town core\n39\n\n\nSmall town high commuting\n20\n\n\nSmall town low commuting\n16\n\n\n\n\n\n\n\nQ3. What is the mode of the ruca_code?",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Describing Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_spatial_data.html#visualizing-descriptive-statistics",
+    "href": "describing_spatial_data.html#visualizing-descriptive-statistics",
+    "title": "6  Describing Spatial Data",
+    "section": "7.2 Visualizing Descriptive Statistics",
+    "text": "7.2 Visualizing Descriptive Statistics\nOur descriptive statistics table has given us some useful information about our dataset. Visualizing our data can help us understand our descriptive statistics better.\n\n7.2.1 Bar Chart\nA bar chart displays the count of each observations in a group. It is a useful visualization for nominal/categorical data.\n\n#this creates the grouped dataset\ngrouped_rural &lt;- rurality |&gt; st_drop_geometry() |&gt; \n  group_by(ruca_code) |&gt;\n  summarise(Count = n()) \n\n#this plots the bar plot (note that the coord_flip swtiches the axis which is better for labeling in this case)\nggplot(grouped_rural, aes(x=ruca_code, y=Count)) + \n  geom_bar(stat = \"identity\") + coord_flip() + labs(\n    x = \"RUCA Code Category\",\n    y = \"Number of Census Tracts\",\n  )\n\n\n\n\n\n\n\n\n\n\n7.2.2 Map\n\n#here's our first map. Note that I'm using the raw data, not the grouped data.\ntm_shape(rurality) + tm_polygons(\"ruca_code\")\n\n\n\n\n\n\n\n\nQ4: What does the map show us that we can’t see from the descriptive statistics table or the bar chart?",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Describing Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_spatial_data.html#creating-a-basic-table-for-descriptive-statistics-1",
+    "href": "describing_spatial_data.html#creating-a-basic-table-for-descriptive-statistics-1",
+    "title": "6  Describing Spatial Data",
+    "section": "8.1 Creating a Basic Table for Descriptive Statistics",
+    "text": "8.1 Creating a Basic Table for Descriptive Statistics\n\n## create a basic table of descriptive statistics for climate normals\nclimate_normals |&gt; st_drop_geometry() |&gt;\n  select(summer_temp) |&gt;\n  summarise(\n    n = n(),\n    num_na = sum(is.na(summer_temp)), \n    mean_temp = mean(summer_temp, na.rm = TRUE),\n    median_temp = median(summer_temp, na.rm = TRUE),\n    sd_temp = sd(summer_temp, na.rm = TRUE),\n    variance_temp = var(summer_temp, na.rm = TRUE),\n    mean_dev = mean(abs(summer_temp - mean(summer_temp, na.rm = TRUE)), na.rm = TRUE),\n    cv_temp = sd_temp / mean_temp,\n    min_temp = min(summer_temp, na.rm = TRUE),\n    max_temp = max(summer_temp, na.rm = TRUE),\n    skewness = skewness(summer_temp, na.rm = TRUE), \n    kurtosis = kurtosis(summer_temp, na.rm = TRUE)\n                               \n  ) |&gt; pivot_longer(everything(), names_to = \"Statistic\", values_to = \"Value\") |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"US Summer Temperatures (1991-2020)\",\n  ) %&gt;%\n  fmt_number(\n    columns = everything(),\n    decimals = 2\n  )\n\n\n\n\n\n\n\nUS Summer Temperatures (1991-2020)\n\n\nStatistic\nValue\n\n\n\n\nn\n469,758.00\n\n\nnum_na\n0.00\n\n\nmean_temp\n71.86\n\n\nmedian_temp\n71.55\n\n\nsd_temp\n7.64\n\n\nvariance_temp\n58.36\n\n\nmean_dev\n6.26\n\n\ncv_temp\n0.11\n\n\nmin_temp\n29.91\n\n\nmax_temp\n98.04\n\n\nskewness\n−0.09\n\n\nkurtosis\n−0.25\n\n\n\n\n\n\n\nQ6: What does this descriptive statistics table tell us about the data?",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Describing Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "describing_spatial_data.html#visualizing-descriptive-statistics-1",
+    "href": "describing_spatial_data.html#visualizing-descriptive-statistics-1",
+    "title": "6  Describing Spatial Data",
+    "section": "8.2 Visualizing Descriptive Statistics",
+    "text": "8.2 Visualizing Descriptive Statistics\n\n8.2.1 Histogram\nA histogram is a graph that displays the frequency of observations within user-set “bins”. This can give us an understanding of the distribution of our data\n\n## create a histogram of summer temperatures\n\nggplot(climate_normals, aes(x = summer_temp)) +\n  geom_histogram(binwidth = 1, fill = \"lightgrey\", color = \"black\", alpha = 0.7) +\n  labs(\n    title = \"Histogram of Summer Temperatures (1991-2020)\",\n    x = \"Summer Temperature (°F)\",\n    y = \"Frequency\"\n  ) \n\n\n\n\n\n\n\n\n\n\n8.2.2 Cumulative Frequency Plot\n\nggplot(climate_normals, aes(x = summer_temp)) + stat_ecdf() +\n  labs(\n    title = \"Cumulative Frequency Plot of Summer Temperatures (1991-2020)\",\n    x = \"Summer Temperature (°F)\",\n    y = \"Cumulative Frequency\"\n  )\n\n\n\n\n\n\n\n\n\n\n8.2.3 Boxplot\nA boxplot is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. It can also highlight outliers in the data.\n\nggplot(climate_normals, aes(y = summer_temp)) +\n  geom_boxplot(fill = \"lightgrey\") +\n  labs(\n    title = \"Boxplot of Summer Temperatures (1991-2020)\",\n    y = \"Summer Temperature (°F)\"\n  )\n\n\n\n\n\n\n\n\n\n\n8.2.4 Violin Plot\nA violin plot is a method of plotting numeric data and can be understood as a combination of a boxplot and a kernel density plot. It shows the distribution of the data across different values.\n\nggplot(climate_normals, aes(x = 1, y = summer_temp)) +\n  geom_violin(fill = \"lightgrey\", bw = 1.2)  + geom_boxplot(width=0.1) +\n  labs(\n    title = \"Violin Plot of Summer Temperatures (1991-2020)\",\n    y = \"Summer Temperature (°F)\"\n  ) + theme(axis.title.x=element_blank(),\n        axis.text.x=element_blank(),\n        axis.ticks.x=element_blank())\n\n\n\n\n\n\n\n\nQ7: How do visualizations help us learn more about a dataset compared to a descriptive statistics table\nQ8: How does each type of visualization give us additional information?\n\n\n8.2.5 Map\n\ntm_shape(climate_normals) + tm_dots(\"summer_temp\")\n\n\n\n\n\n\n\n\nQ9: What does this map show us that we don’t learn from the descriptive statistics table or the other visualizations?",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Describing Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "lab_1.html",
+    "href": "lab_1.html",
+    "title": "7  Lab 3",
+    "section": "",
+    "text": "7.1 Overview\nIn this two-part lab, you will practice what you have learned in the Describing Data and Describing Spatial Data tutorials to continue to explore data on rurality, climate, and demographic data.\nThis lab is designed to assess the Concept 3 Competencies",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Lab 3</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "8  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]
