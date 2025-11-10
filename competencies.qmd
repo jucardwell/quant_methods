@@ -1,6 +1,6 @@
 # Course Competencies
 
-### **Concept 1: The Quantitative Revolution**
+### Concept 1: The Quantitative Revolution
 
 **Guiding Question**: Why did geography become a quantitative discipline, and how did it change how we study space?
 
@@ -9,15 +9,15 @@
 -   Reflect on critiques and limits of the revolution from human and critical geographers
 -   Interpret early spatial models (e.g., gravity model, rank-size rule)
 
-### **Concept 2: The Problem of Spatial Data**
+### Concept 2: The Problem of Spatial Data
 
 **Guiding Question**: Why is spatial data different, and how does it challenge traditional statistics?
 
 -   Explain how spatial dependence, spatial heterogeneity, and distance decay influence the structure and interpretation of spatial data
--   Evaluate issues of scale, zoning, and aggregation (MAUP) 
+-   Evaluate issues of scale, zoning, and aggregation (MAUP)
 -   Connect the “spatial problem” to violations of independence in classical inference
 
-### **Concept 3: Descriptive Statistics and Spatial Description**
+### Concept 3: Descriptive Statistics and Spatial Description
 
 **Guiding Question:** How do we summarize and describe variation in geographic data?
 

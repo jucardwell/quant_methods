@@ -28,7 +28,7 @@ covid <- st_read("https://drive.google.com/uc?export=download&id=1DdmGU5BMkVdE31
 Open the tornado object by double-clicking it in the environment. Important variables in the dataset are:
 
 | Field Name | Description |
-|------------------------------------|------------------------------------|
+|----|----|
 | yr | Year of occurrence |
 | st | State |
 | mag | Rating on [Enhanced Fujita Scale](https://www.weather.gov/oun/efscale) |
