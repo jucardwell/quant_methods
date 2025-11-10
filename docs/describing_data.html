@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Describing Data – quant_methods</title>
+<title>6&nbsp; Describing Data – quant_methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./describing_spatial_data.html" rel="next">
-<link href="./basic_R.html" rel="prev">
+<link href="./command.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./describing_data.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./describing_data.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Describing Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,8 +148,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Syllabus</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./competencies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Tier 1- Foundations</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Course Competencies</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -172,32 +172,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./command.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Command Compendium</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./describing_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describing_spatial_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 3</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./labs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Labs</span></span></a>
   </div>
 </li>
     </ul>
@@ -210,30 +204,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#orienting-ourselves-to-the-datasets" id="toc-orienting-ourselves-to-the-datasets" class="nav-link active" data-scroll-target="#orienting-ourselves-to-the-datasets"><span class="header-section-number">5.1</span> Orienting Ourselves to the Datasets</a></li>
-  <li><a href="#describing-rurality" id="toc-describing-rurality" class="nav-link" data-scroll-target="#describing-rurality"><span class="header-section-number">6</span> Describing Rurality</a>
+  <li><a href="#orienting-ourselves-to-the-datasets" id="toc-orienting-ourselves-to-the-datasets" class="nav-link active" data-scroll-target="#orienting-ourselves-to-the-datasets"><span class="header-section-number">6.1</span> Orienting Ourselves to the Datasets</a></li>
+  <li><a href="#describing-rurality" id="toc-describing-rurality" class="nav-link" data-scroll-target="#describing-rurality"><span class="header-section-number">7</span> Describing Rurality</a>
   <ul class="collapse">
-  <li><a href="#creating-a-basic-table-for-descriptive-statistics" id="toc-creating-a-basic-table-for-descriptive-statistics" class="nav-link" data-scroll-target="#creating-a-basic-table-for-descriptive-statistics"><span class="header-section-number">6.1</span> Creating a Basic Table for Descriptive Statistics</a></li>
-  <li><a href="#visualizing-descriptive-statistics" id="toc-visualizing-descriptive-statistics" class="nav-link" data-scroll-target="#visualizing-descriptive-statistics"><span class="header-section-number">6.2</span> Visualizing Descriptive Statistics</a>
+  <li><a href="#creating-a-basic-table-for-descriptive-statistics" id="toc-creating-a-basic-table-for-descriptive-statistics" class="nav-link" data-scroll-target="#creating-a-basic-table-for-descriptive-statistics"><span class="header-section-number">7.1</span> Creating a Basic Table for Descriptive Statistics</a></li>
+  <li><a href="#visualizing-descriptive-statistics" id="toc-visualizing-descriptive-statistics" class="nav-link" data-scroll-target="#visualizing-descriptive-statistics"><span class="header-section-number">7.2</span> Visualizing Descriptive Statistics</a>
   <ul class="collapse">
-  <li><a href="#bar-chart" id="toc-bar-chart" class="nav-link" data-scroll-target="#bar-chart"><span class="header-section-number">6.2.1</span> Bar Chart</a></li>
-  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map"><span class="header-section-number">6.2.2</span> Map</a></li>
+  <li><a href="#bar-chart" id="toc-bar-chart" class="nav-link" data-scroll-target="#bar-chart"><span class="header-section-number">7.2.1</span> Bar Chart</a></li>
+  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map"><span class="header-section-number">7.2.2</span> Map</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#describing-climate-normals" id="toc-describing-climate-normals" class="nav-link" data-scroll-target="#describing-climate-normals"><span class="header-section-number">7</span> Describing Climate Normals</a>
+  <li><a href="#describing-climate-normals" id="toc-describing-climate-normals" class="nav-link" data-scroll-target="#describing-climate-normals"><span class="header-section-number">8</span> Describing Climate Normals</a>
   <ul class="collapse">
-  <li><a href="#creating-a-basic-table-for-descriptive-statistics-1" id="toc-creating-a-basic-table-for-descriptive-statistics-1" class="nav-link" data-scroll-target="#creating-a-basic-table-for-descriptive-statistics-1"><span class="header-section-number">7.1</span> Creating a Basic Table for Descriptive Statistics</a></li>
-  <li><a href="#visualizing-descriptive-statistics-1" id="toc-visualizing-descriptive-statistics-1" class="nav-link" data-scroll-target="#visualizing-descriptive-statistics-1"><span class="header-section-number">7.2</span> Visualizing Descriptive Statistics</a>
+  <li><a href="#creating-a-basic-table-for-descriptive-statistics-1" id="toc-creating-a-basic-table-for-descriptive-statistics-1" class="nav-link" data-scroll-target="#creating-a-basic-table-for-descriptive-statistics-1"><span class="header-section-number">8.1</span> Creating a Basic Table for Descriptive Statistics</a></li>
+  <li><a href="#visualizing-descriptive-statistics-1" id="toc-visualizing-descriptive-statistics-1" class="nav-link" data-scroll-target="#visualizing-descriptive-statistics-1"><span class="header-section-number">8.2</span> Visualizing Descriptive Statistics</a>
   <ul class="collapse">
-  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">7.2.1</span> Histogram</a></li>
-  <li><a href="#cumulative-frequency-plot" id="toc-cumulative-frequency-plot" class="nav-link" data-scroll-target="#cumulative-frequency-plot"><span class="header-section-number">7.2.2</span> Cumulative Frequency Plot</a></li>
-  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot"><span class="header-section-number">7.2.3</span> Boxplot</a></li>
-  <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link" data-scroll-target="#violin-plot"><span class="header-section-number">7.2.4</span> Violin Plot</a></li>
-  <li><a href="#map-1" id="toc-map-1" class="nav-link" data-scroll-target="#map-1"><span class="header-section-number">7.2.5</span> Map</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">8.2.1</span> Histogram</a></li>
+  <li><a href="#cumulative-frequency-plot" id="toc-cumulative-frequency-plot" class="nav-link" data-scroll-target="#cumulative-frequency-plot"><span class="header-section-number">8.2.2</span> Cumulative Frequency Plot</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot"><span class="header-section-number">8.2.3</span> Boxplot</a></li>
+  <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link" data-scroll-target="#violin-plot"><span class="header-section-number">8.2.4</span> Violin Plot</a></li>
+  <li><a href="#map-1" id="toc-map-1" class="nav-link" data-scroll-target="#map-1"><span class="header-section-number">8.2.5</span> Map</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#mini-challenge" id="toc-mini-challenge" class="nav-link" data-scroll-target="#mini-challenge"><span class="header-section-number">8</span> Mini Challenge</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">9</span> </a></li>
+  <li><a href="#mini-challenge" id="toc-mini-challenge" class="nav-link" data-scroll-target="#mini-challenge"><span class="header-section-number">9</span> Mini Challenge</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">10</span> </a></li>
   </ul>
 </nav>
     </div>
@@ -242,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing Data</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Describing Data</span></h1>
 </div>
 
 
@@ -268,9 +262,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>The last two datasets are <strong>aggregated summaries</strong> rather than raw measurements. The Climate Normals are <strong>temporal averages</strong>,meaning that the data represent the average conditions over a 30-year period. The ACS data are <strong>spatial averages</strong>, which summarize individual responses within defined geographic areas. This is a requirement for many spatial datasets, even when individual-level data is available, to maintain anonymity.</p>
 <p>As a result, when we analyze these datasets, we are working with information that has already been statistically summarized over time and space, and our own statistical descriptions will be <strong>second-order summaries</strong> that describe patterns in data that have already been aggregated.</p>
-<p><strong>To follow along with this tutorial, download the .Rmd template here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.</strong></p>
-<section id="orienting-ourselves-to-the-datasets" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="orienting-ourselves-to-the-datasets"><span class="header-section-number">5.1</span> Orienting Ourselves to the Datasets</h2>
+<p><strong>To follow along with this tutorial, <a href="https://drive.google.com/uc?export=download&amp;id=1gC4S6CapCp76kmrpY0lwsT0hUfSSUG-X">download the .Rmd template here.</a> The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.</strong></p>
+<section id="orienting-ourselves-to-the-datasets" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="orienting-ourselves-to-the-datasets"><span class="header-section-number">6.1</span> Orienting Ourselves to the Datasets</h2>
 <p>The ‘glimpse()’ function provides a quick overview of the structure and contents of a dataset. It displays the data types of each column and a preview of the data, making it easier to understand the dataset at a glance.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## glimpse at the rurality data</span></span>
@@ -353,13 +347,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 </div>
 </section>
-<section id="describing-rurality" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Describing Rurality</h1>
+<section id="describing-rurality" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Describing Rurality</h1>
 <p>Open the rurality table by double clicking in the environment.</p>
 <p><strong>Q1. What does each observation (each row) represent? How do you know?</strong></p>
 <p><strong>Q2. Look at the ruca_code variable. What level of measurement is this variable? How does that restrict what descriptive statistics we can calculate about the data?</strong></p>
-<section id="creating-a-basic-table-for-descriptive-statistics" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="creating-a-basic-table-for-descriptive-statistics"><span class="header-section-number">6.1</span> Creating a Basic Table for Descriptive Statistics</h2>
+<section id="creating-a-basic-table-for-descriptive-statistics" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="creating-a-basic-table-for-descriptive-statistics"><span class="header-section-number">7.1</span> Creating a Basic Table for Descriptive Statistics</h2>
 <p>The ‘gt’ package in R is a tool to create “presentation-ready” tables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create a basic table of descriptive statistics for RUCA codes</span></span>
@@ -367,23 +361,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ruca_code) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())  <span class="sc">|&gt;</span>  <span class="fu">gt</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fpzztrzsce" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fpzztrzsce table {
+<div id="ofixefslyg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ofixefslyg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fpzztrzsce thead, #fpzztrzsce tbody, #fpzztrzsce tfoot, #fpzztrzsce tr, #fpzztrzsce td, #fpzztrzsce th {
+#ofixefslyg thead, #ofixefslyg tbody, #ofixefslyg tfoot, #ofixefslyg tr, #ofixefslyg td, #ofixefslyg th {
   border-style: none;
 }
 
-#fpzztrzsce p {
+#ofixefslyg p {
   margin: 0;
   padding: 0;
 }
 
-#fpzztrzsce .gt_table {
+#ofixefslyg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -409,12 +403,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_caption {
+#ofixefslyg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fpzztrzsce .gt_title {
+#ofixefslyg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -426,7 +420,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#fpzztrzsce .gt_subtitle {
+#ofixefslyg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -438,7 +432,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#fpzztrzsce .gt_heading {
+#ofixefslyg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -450,13 +444,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_bottom_border {
+#ofixefslyg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_col_headings {
+#ofixefslyg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -471,7 +465,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_col_heading {
+#ofixefslyg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -491,7 +485,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#fpzztrzsce .gt_column_spanner_outer {
+#ofixefslyg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -503,15 +497,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#fpzztrzsce .gt_column_spanner_outer:first-child {
+#ofixefslyg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fpzztrzsce .gt_column_spanner_outer:last-child {
+#ofixefslyg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fpzztrzsce .gt_column_spanner {
+#ofixefslyg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -523,11 +517,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#fpzztrzsce .gt_spanner_row {
+#ofixefslyg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fpzztrzsce .gt_group_heading {
+#ofixefslyg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +547,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#fpzztrzsce .gt_empty_group_heading {
+#ofixefslyg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -568,15 +562,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#fpzztrzsce .gt_from_md > :first-child {
+#ofixefslyg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fpzztrzsce .gt_from_md > :last-child {
+#ofixefslyg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fpzztrzsce .gt_row {
+#ofixefslyg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -595,7 +589,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#fpzztrzsce .gt_stub {
+#ofixefslyg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -608,7 +602,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#fpzztrzsce .gt_stub_row_group {
+#ofixefslyg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -622,15 +616,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#fpzztrzsce .gt_row_group_first td {
+#ofixefslyg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fpzztrzsce .gt_row_group_first th {
+#ofixefslyg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fpzztrzsce .gt_summary_row {
+#ofixefslyg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -640,16 +634,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#fpzztrzsce .gt_first_summary_row {
+#ofixefslyg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_first_summary_row.thick {
+#ofixefslyg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fpzztrzsce .gt_last_summary_row {
+#ofixefslyg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +653,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_grand_summary_row {
+#ofixefslyg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -669,7 +663,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#fpzztrzsce .gt_first_grand_summary_row {
+#ofixefslyg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -679,7 +673,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_last_grand_summary_row_top {
+#ofixefslyg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -689,11 +683,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_striped {
+#ofixefslyg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fpzztrzsce .gt_table_body {
+#ofixefslyg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -702,7 +696,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_footnotes {
+#ofixefslyg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -716,7 +710,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_footnote {
+#ofixefslyg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -725,7 +719,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#fpzztrzsce .gt_sourcenotes {
+#ofixefslyg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -739,7 +733,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#fpzztrzsce .gt_sourcenote {
+#ofixefslyg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -747,72 +741,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#fpzztrzsce .gt_left {
+#ofixefslyg .gt_left {
   text-align: left;
 }
 
-#fpzztrzsce .gt_center {
+#ofixefslyg .gt_center {
   text-align: center;
 }
 
-#fpzztrzsce .gt_right {
+#ofixefslyg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fpzztrzsce .gt_font_normal {
+#ofixefslyg .gt_font_normal {
   font-weight: normal;
 }
 
-#fpzztrzsce .gt_font_bold {
+#ofixefslyg .gt_font_bold {
   font-weight: bold;
 }
 
-#fpzztrzsce .gt_font_italic {
+#ofixefslyg .gt_font_italic {
   font-style: italic;
 }
 
-#fpzztrzsce .gt_super {
+#ofixefslyg .gt_super {
   font-size: 65%;
 }
 
-#fpzztrzsce .gt_footnote_marks {
+#ofixefslyg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fpzztrzsce .gt_asterisk {
+#ofixefslyg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fpzztrzsce .gt_indent_1 {
+#ofixefslyg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fpzztrzsce .gt_indent_2 {
+#ofixefslyg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fpzztrzsce .gt_indent_3 {
+#ofixefslyg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fpzztrzsce .gt_indent_4 {
+#ofixefslyg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fpzztrzsce .gt_indent_5 {
+#ofixefslyg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fpzztrzsce .katex-display {
+#ofixefslyg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fpzztrzsce div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ofixefslyg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -877,11 +871,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 <p><strong>Q3. What is the mode of the ruca_code?</strong></p>
 </section>
-<section id="visualizing-descriptive-statistics" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="visualizing-descriptive-statistics"><span class="header-section-number">6.2</span> Visualizing Descriptive Statistics</h2>
+<section id="visualizing-descriptive-statistics" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="visualizing-descriptive-statistics"><span class="header-section-number">7.2</span> Visualizing Descriptive Statistics</h2>
 <p>Our descriptive statistics table has given us some useful information about our dataset. Visualizing our data can help us understand our descriptive statistics better.</p>
-<section id="bar-chart" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="bar-chart"><span class="header-section-number">6.2.1</span> Bar Chart</h3>
+<section id="bar-chart" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="bar-chart"><span class="header-section-number">7.2.1</span> Bar Chart</h3>
 <p>A bar chart displays the count of each observations in a group. It is a useful visualization for nominal/categorical data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#this creates the grouped dataset</span></span>
@@ -904,8 +898,8 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 </div>
 </section>
-<section id="map" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="map"><span class="header-section-number">6.2.2</span> Map</h3>
+<section id="map" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="map"><span class="header-section-number">7.2.2</span> Map</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#here's our first map. Note that I'm using the raw data, not the grouped data.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(rurality) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">"ruca_code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -921,11 +915,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </section>
 </section>
 </section>
-<section id="describing-climate-normals" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Describing Climate Normals</h1>
+<section id="describing-climate-normals" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Describing Climate Normals</h1>
 <p><strong>Q5. What does each row in this dataset represent? How do you know?</strong></p>
-<section id="creating-a-basic-table-for-descriptive-statistics-1" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="creating-a-basic-table-for-descriptive-statistics-1"><span class="header-section-number">7.1</span> Creating a Basic Table for Descriptive Statistics</h2>
+<section id="creating-a-basic-table-for-descriptive-statistics-1" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="creating-a-basic-table-for-descriptive-statistics-1"><span class="header-section-number">8.1</span> Creating a Basic Table for Descriptive Statistics</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create a basic table of descriptive statistics for climate normals</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>climate_normals <span class="sc">|&gt;</span> <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
@@ -954,23 +948,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span></span>
 <span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="spwddjaqgw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#spwddjaqgw table {
+<div id="zzfgifagme" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zzfgifagme table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#spwddjaqgw thead, #spwddjaqgw tbody, #spwddjaqgw tfoot, #spwddjaqgw tr, #spwddjaqgw td, #spwddjaqgw th {
+#zzfgifagme thead, #zzfgifagme tbody, #zzfgifagme tfoot, #zzfgifagme tr, #zzfgifagme td, #zzfgifagme th {
   border-style: none;
 }
 
-#spwddjaqgw p {
+#zzfgifagme p {
   margin: 0;
   padding: 0;
 }
 
-#spwddjaqgw .gt_table {
+#zzfgifagme .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -996,12 +990,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_caption {
+#zzfgifagme .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#spwddjaqgw .gt_title {
+#zzfgifagme .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1013,7 +1007,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#spwddjaqgw .gt_subtitle {
+#zzfgifagme .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1025,7 +1019,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#spwddjaqgw .gt_heading {
+#zzfgifagme .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1037,13 +1031,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_bottom_border {
+#zzfgifagme .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_col_headings {
+#zzfgifagme .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1058,7 +1052,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_col_heading {
+#zzfgifagme .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1078,7 +1072,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#spwddjaqgw .gt_column_spanner_outer {
+#zzfgifagme .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1090,15 +1084,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#spwddjaqgw .gt_column_spanner_outer:first-child {
+#zzfgifagme .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#spwddjaqgw .gt_column_spanner_outer:last-child {
+#zzfgifagme .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#spwddjaqgw .gt_column_spanner {
+#zzfgifagme .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1110,11 +1104,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#spwddjaqgw .gt_spanner_row {
+#zzfgifagme .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#spwddjaqgw .gt_group_heading {
+#zzfgifagme .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1140,7 +1134,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#spwddjaqgw .gt_empty_group_heading {
+#zzfgifagme .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1155,15 +1149,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#spwddjaqgw .gt_from_md > :first-child {
+#zzfgifagme .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#spwddjaqgw .gt_from_md > :last-child {
+#zzfgifagme .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#spwddjaqgw .gt_row {
+#zzfgifagme .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1182,7 +1176,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#spwddjaqgw .gt_stub {
+#zzfgifagme .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1195,7 +1189,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#spwddjaqgw .gt_stub_row_group {
+#zzfgifagme .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1209,15 +1203,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#spwddjaqgw .gt_row_group_first td {
+#zzfgifagme .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#spwddjaqgw .gt_row_group_first th {
+#zzfgifagme .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#spwddjaqgw .gt_summary_row {
+#zzfgifagme .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1227,16 +1221,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#spwddjaqgw .gt_first_summary_row {
+#zzfgifagme .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_first_summary_row.thick {
+#zzfgifagme .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#spwddjaqgw .gt_last_summary_row {
+#zzfgifagme .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1246,7 +1240,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_grand_summary_row {
+#zzfgifagme .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1256,7 +1250,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#spwddjaqgw .gt_first_grand_summary_row {
+#zzfgifagme .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1266,7 +1260,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_last_grand_summary_row_top {
+#zzfgifagme .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1276,11 +1270,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_striped {
+#zzfgifagme .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#spwddjaqgw .gt_table_body {
+#zzfgifagme .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1289,7 +1283,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_footnotes {
+#zzfgifagme .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1303,7 +1297,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_footnote {
+#zzfgifagme .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1312,7 +1306,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#spwddjaqgw .gt_sourcenotes {
+#zzfgifagme .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1326,7 +1320,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#spwddjaqgw .gt_sourcenote {
+#zzfgifagme .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1334,72 +1328,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#spwddjaqgw .gt_left {
+#zzfgifagme .gt_left {
   text-align: left;
 }
 
-#spwddjaqgw .gt_center {
+#zzfgifagme .gt_center {
   text-align: center;
 }
 
-#spwddjaqgw .gt_right {
+#zzfgifagme .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#spwddjaqgw .gt_font_normal {
+#zzfgifagme .gt_font_normal {
   font-weight: normal;
 }
 
-#spwddjaqgw .gt_font_bold {
+#zzfgifagme .gt_font_bold {
   font-weight: bold;
 }
 
-#spwddjaqgw .gt_font_italic {
+#zzfgifagme .gt_font_italic {
   font-style: italic;
 }
 
-#spwddjaqgw .gt_super {
+#zzfgifagme .gt_super {
   font-size: 65%;
 }
 
-#spwddjaqgw .gt_footnote_marks {
+#zzfgifagme .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#spwddjaqgw .gt_asterisk {
+#zzfgifagme .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#spwddjaqgw .gt_indent_1 {
+#zzfgifagme .gt_indent_1 {
   text-indent: 5px;
 }
 
-#spwddjaqgw .gt_indent_2 {
+#zzfgifagme .gt_indent_2 {
   text-indent: 10px;
 }
 
-#spwddjaqgw .gt_indent_3 {
+#zzfgifagme .gt_indent_3 {
   text-indent: 15px;
 }
 
-#spwddjaqgw .gt_indent_4 {
+#zzfgifagme .gt_indent_4 {
   text-indent: 20px;
 }
 
-#spwddjaqgw .gt_indent_5 {
+#zzfgifagme .gt_indent_5 {
   text-indent: 25px;
 }
 
-#spwddjaqgw .katex-display {
+#zzfgifagme .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#spwddjaqgw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zzfgifagme div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1471,10 +1465,10 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 <p><strong>Q6: Based on the descriptive statistics in the table, describe the overall distribution of summer temperatures across the U.S., including central tendency, variability, and evidence of skewness or outliers.</strong></p>
 </section>
-<section id="visualizing-descriptive-statistics-1" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="visualizing-descriptive-statistics-1"><span class="header-section-number">7.2</span> Visualizing Descriptive Statistics</h2>
-<section id="histogram" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="histogram"><span class="header-section-number">7.2.1</span> Histogram</h3>
+<section id="visualizing-descriptive-statistics-1" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="visualizing-descriptive-statistics-1"><span class="header-section-number">8.2</span> Visualizing Descriptive Statistics</h2>
+<section id="histogram" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="histogram"><span class="header-section-number">8.2.1</span> Histogram</h3>
 <p>A histogram is a graph that displays the frequency of observations within user-set “bins”. This can give us an understanding of the distribution of our data</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create a histogram of summer temperatures</span></span>
@@ -1495,8 +1489,8 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 </div>
 </section>
-<section id="cumulative-frequency-plot" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="cumulative-frequency-plot"><span class="header-section-number">7.2.2</span> Cumulative Frequency Plot</h3>
+<section id="cumulative-frequency-plot" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="cumulative-frequency-plot"><span class="header-section-number">8.2.2</span> Cumulative Frequency Plot</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(climate_normals, <span class="fu">aes</span>(<span class="at">x =</span> summer_temp)) <span class="sc">+</span> <span class="fu">stat_ecdf</span>() <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
@@ -1513,8 +1507,8 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 </div>
 </section>
-<section id="boxplot" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="boxplot"><span class="header-section-number">7.2.3</span> Boxplot</h3>
+<section id="boxplot" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="boxplot"><span class="header-section-number">8.2.3</span> Boxplot</h3>
 <p>A boxplot is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. It can also highlight outliers in the data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(climate_normals, <span class="fu">aes</span>(<span class="at">y =</span> summer_temp)) <span class="sc">+</span></span>
@@ -1532,8 +1526,8 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 </div>
 </section>
-<section id="violin-plot" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="violin-plot"><span class="header-section-number">7.2.4</span> Violin Plot</h3>
+<section id="violin-plot" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="violin-plot"><span class="header-section-number">8.2.4</span> Violin Plot</h3>
 <p>A violin plot is a method of plotting numeric data and can be understood as a combination of a boxplot and a kernel density plot. It shows the distribution of the data across different values.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(climate_normals, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> summer_temp)) <span class="sc">+</span></span>
@@ -1554,8 +1548,8 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </div>
 <p><strong>Q7: What unique information does each of the four visualizations (histogram, cumulative frequency plot, boxplot, and violin plot) reveal about the distribution of summer temperatures?</strong></p>
 </section>
-<section id="map-1" class="level3" data-number="7.2.5">
-<h3 data-number="7.2.5" class="anchored" data-anchor-id="map-1"><span class="header-section-number">7.2.5</span> Map</h3>
+<section id="map-1" class="level3" data-number="8.2.5">
+<h3 data-number="8.2.5" class="anchored" data-anchor-id="map-1"><span class="header-section-number">8.2.5</span> Map</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(climate_normals) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="st">"summer_temp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1570,8 +1564,8 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </section>
 </section>
 </section>
-<section id="mini-challenge" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Mini Challenge</h1>
+<section id="mini-challenge" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Mini Challenge</h1>
 <p>This challenge will ask you to create some basic descriptive statistics for <strong>a single variable</strong> in the ACS census tract data.</p>
 <ol type="1">
 <li>Open the acs_tract_nc object. You can scroll over to see all the available variables. <a href="https://docs.google.com/spreadsheets/d/1aI2YqE_Tc69ekA48e5jmbyVMXv5uszl-/edit?usp=sharing&amp;ouid=101338019870957132383&amp;rtpof=true&amp;sd=true">This file</a> will tell you what each variable name means.</li>
@@ -1586,8 +1580,8 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 </ul></li>
 </ol>
 </section>
-<section id="section" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> </h1>
+<section id="section" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> </h1>
 
 
 </section>
@@ -2012,13 +2006,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./basic_R.html" class="pagination-link" aria-label="Working in R and R Studio">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Working in R and R Studio</span></span>
+      <a href="./command.html" class="pagination-link" aria-label="Command Compendium">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Command Compendium</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./describing_spatial_data.html" class="pagination-link" aria-label="Describing Spatial Data">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

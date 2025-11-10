@@ -1,6 +1,8 @@
-# Lab 3
+# Labs
 
-## Overview
+## Lab 3
+
+### Overview
 
 In the [**Describing Data**](https://jucardwell.github.io/quant_methods/describing_data.html) tutorial we worked with spatial datasets describing the rurality of North Carolina census tracts, summer temperatures across the United States, and a demographic variable measured at the census tract level in North Carolina. Spatial data is often aggregated to specific geographic units (for instance, to protect individual privacy or simplify a complex dataset). This aggregation influences the descriptive statistics we calculate.
 
@@ -8,19 +10,19 @@ In this lab, you will examine demographic and climate data at a different level 
 
 *Remember that you can use the **Command Compendium** to help you modify R commands*
 
-## Specifications
+### Specifications
 
 This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
 
 | Specification |
-|-------------------------------------------------------------|
+|----|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | Describing Rurality: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
 | Describing Climate: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
 | Describing Demographics: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
 
-## Lab Instructions
+### Lab Instructions
 
 1.  Create a new .Rmd named "LASTNAME_lab3.Rmd". Save it into your GEOG391 folder.
 

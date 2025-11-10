@@ -1,0 +1,248 @@
+# Command Compendium
+
+This chapter is designed to help you easily craft commands.
+
+[ggplot color options](colors%20are%20here:%20https://sape.inf.usi.ch/quick-reference/ggplot2/colour)
+
+## Basic Data Manipulation
+
+### Creating Objects
+
+Creating an object allows you to store the output of a command in the environment. This means you can reuse the result later by referencing the object name, instead of rerunning the command every time.
+
+```{r, eval=F}
+
+## When this command runs, it will show up in the environment
+chart <- ggplot(DATASET_OBJECT, aes(y = VARIABLE OF INTEREST)) +
+  geom_boxplot(fill = "lightgrey")
+
+##now I can "call" the object
+chart
+
+```
+
+### Filtering Data
+
+To create our analytical dataset we often need to subset a larger dataset. Filtering allows us to simplify. We always want to save filtered data as objects so that we can reference them in other commands.
+
+```{r, eval=F}
+#to select certain columns
+columns <- DATASET |> select(COLUMN1, COLUMN2, COLUMN3)
+
+### IF VALUES ARE STRING (NON-NUMERIC) THEY MUST BE IN "" 
+
+#to filter by values in a certain column
+values <- DATASET |> filter(COLUMN == VALUE)
+
+# to filter by multiple conditions. 
+#and
+values <- DATASET |> filter(COLUMN == VALUE & COLUMN2 == VALUE2)
+
+#or 
+values <- DATASET |> filter(COLUMN == VALUE | COLUMN2 == VALUE2)
+
+#in 
+values <- DATASET |> filter(COLUMN %in% c(VALUE1, VALUE2, VALUE3))
+
+#numeric operator
+values <- DATASET |> filter(COLUMN < 2000)
+
+```
+
+### Making New Columns
+
+```{r, eval=F}
+#creating new columns
+dataset <- DATASET |> mutate(NEWCOLUMN = COMMAND, NEWCOLUMN2 = COMMAND)
+
+```
+
+### Renaming Columns
+
+```{r, eval=F}
+#renaming columns
+clean_data <- DATASET |> rename(
+  new_name1 = old_name1,
+  new_name2 = old_name2
+)
+
+```
+
+### Grouping and Summarizing Data
+
+```{r, eval=F}
+
+summary_data <- DATASET |> 
+  group_by(CATEGORY_COLUMN) |> 
+  summarize(
+    mean_value = mean(NUMERIC_COLUMN, na.rm = TRUE),
+    count = n()
+  )
+```
+
+## Descriptive Statistics
+
+### Descriptive Statistics Tables
+
+```{r, eval=F}
+#requires e1071 package
+#requires gt package
+## descriptive statistics for quantitative data
+  DATASET_OBJECT |> #whatever the object is named
+  st_drop_geometry() |> #gets rid of geometry column
+  select(VARIABLE_OF_INTEREST) |> #field name of variable of interest
+  summarise(                  #summarizes variable of interest. You can add/remove
+    n = n(),
+    num_na = sum(is.na(VARIABLE_OF_INTEREST)), 
+    mean = mean(VARIABLE_OF_INTEREST, na.rm = TRUE),
+    median = median(VARIABLE_OF_INTEREST, na.rm = TRUE),
+    sd = sd(VARIABLE_OF_INTEREST, na.rm = TRUE),
+    variance = var(VARIABLE_OF_INTEREST, na.rm = TRUE),
+    mean_dev = mean(abs(VARIABLE_OF_INTEREST - mean(VARIABLE_OF_INTEREST, na.rm = TRUE)), na.rm = TRUE),
+    cv = sd / mean,
+    min = min(VARIABLE_OF_INTEREST, na.rm = TRUE),
+    max = max(VARIABLE_OF_INTEREST, na.rm = TRUE),
+    skewness = skewness(VARIABLE_OF_INTEREST, na.rm = TRUE), 
+    kurtosis = kurtosis(VARIABLE_OF_INTEREST, na.rm = TRUE)
+                               
+  ) |> 
+    #this starts the table formatting.
+  pivot_longer(everything(), names_to = "Statistic", values_to = "Value") |>
+  gt() |>
+  tab_header(
+    title = "TITLE", ##Add your title here
+  ) %>%
+  fmt_number(
+    columns = everything(),
+    decimals = 2 ##You can change number of decimals
+  )
+
+## Descriptive statistics table for categorical data
+DATASET_OBJECT |> #whatever the object is named
+  st_drop_geometry() |> #gets rid of geometry column
+  group_by(ruca_code) |> #variable that you want to summarize
+  summarise(n = n())  |> #calculates the count
+  gt() #formats into a table
+
+```
+
+### Histogram
+
+```{r, eval=F}
+#requires ggplot2 package
+## Create a basic histogram. 
+## You will likely need to modify the binwidth command
+ggplot(DATASET_OBJECT, aes(x = VARIABLE OF INTEREST)) +
+  geom_histogram(binwidth = 1, fill = "lightgrey", color = "black", alpha = 0.7) +
+  labs(
+    title = "TITLE",
+    x = "X-AXIS LABEL",
+    y = "Y-AXIS LABEL"
+  ) 
+
+```
+
+### Boxplot
+
+```{r, eval = F}
+#requires ggplot2 package
+# create basic boxplot
+ggplot(DATASET_OBJECT, aes(y = VARIABLE OF INTEREST)) +
+  geom_boxplot(fill = "lightgrey") +
+  labs(
+    title = "TITLE",
+    y = "Y-AXIS LABEL"
+  )
+
+```
+
+### Violin Plot
+
+```{r,  eval = F}
+#requires ggplot2 package
+##you will likely need to modify the bw
+ggplot(DATASET_OBJECT, aes(x = 1, y = VARIABLE_OF_INTEREST)) +
+  geom_violin(fill = "lightgrey", bw = 1.2)  + geom_boxplot(width=0.1) +
+  labs(
+    title = "TITLE",
+    y = "Y AXIS LABEL"
+  ) + theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+```
+
+### Bar Chart
+
+```{r, eval = F}
+#requires ggplot2 package
+##YOU NEED TO FIRST GROUP THE DATA
+grouped_data <- DATASET_OBJECT |> st_drop_geometry() |> 
+  group_by(VARIABLE_OF_INTEREST) |>
+  summarise(Count = n()) 
+
+#this plots the bar plot (note that the coord_flip swtiches the axis which is optional
+ggplot(grouped_data, aes(x=VARIABLE_OF_INTEREST, y=Count)) + 
+  geom_bar(stat = "identity") + coord_flip()  + labs(
+    x = "X_AXIS_LABEL",
+    y = "Y_AXIS_LABEL",
+  )
+
+```
+
+## Maps
+
+```{r, eval = F}
+#required tmap package
+## classification styles
+## "equal"
+## "fisher"
+## "pretty"
+## "quantile"
+
+##make a basic point map
+tm_shape(DATABASE_OBJECT) + tm_dots(fill = "VARIABLE_OF_INTEREST",
+                fill.scale = tm_scale_intervals(values = "brewer.COLORPALETTE", style = "CLASSIFICATION", n= NUMBEROFCLASSES)) 
+
+##make a basic polygon map
+tm_shape(DATABASE_OBJECT) + tm_dots(fill = "VARIABLE_OF_INTEREST",
+                fill.scale = tm_scale_intervals(values = "brewer.COLOR_PALETTE", style = "CLASSIFICATION", n= NUMBEROFCLASSES)) 
+
+
+```
+
+#### [Additional tmap help](https://r-tmap.github.io/tmap/index.html)
+
+#### Color Palettes
+
+![](images/color_palettes.png)
+
+## Descriptive Spatial Statistics
+
+### Mean Center and Weighted Mean Center
+
+```{r, eval = F}
+#requires sfdep package
+
+#calculate mean center
+DATASET_mean_center <- center_mean(DATASET)
+
+#calculate weighted mean center
+DATASET_mean_center <- center_mean(DATASET, weight = DATASET$VARIABLE)
+
+
+```
+
+### Standard Deviational Ellipse
+
+```{r, eval = F}
+#requires sfdep package
+#calculate standard ellipse values
+std_ellip_DATASET <- std_dev_ellipse(DATASET)
+
+#create an ellipse of those values
+std_ellip_DATASET <- sfdep::st_ellipse(geometry =std_ellip_DATASET,
+                                   sx = std_ellip_DATASET$sx,
+                                   sy = std_ellip_DATASET$sy,
+                                   rotation = -std_ellip_DATASET$theta)
+```

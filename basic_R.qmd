@@ -29,7 +29,9 @@ The RStudio environment consists of four panels.
 
 In this class, we will primarily be working with .Rmd files. An R Markdown or .Rmd is a document format that is designed to easily integrate text and code. This means that you can easily type answers to questions, descriptions of code outputs, and other assignment tasks within the same document as your code.
 
-**I will provide you a .Rmd template to use for each in-class exercise and lab. You should save these files into a GEOG391 folder on your computer (not in the downloads folder please!)**
+To make a new .Rmd file, navigate to File \> New Script \> R Markdown
+
+**I will sometimes provide you a .Rmd template for in-class exercises. You should save these files into a GEOG391 folder on your computer (not in the downloads folder please!)**
 
 ## Downloading Packages
 
@@ -55,7 +57,7 @@ Once you have downloaded the packages, you will need to load them every time you
 
 # Mini Challenge
 
-Download your first .Rmd template for this class **(very exciting)! Save this file into your GEOG391 folder.**
+[Download your first .Rmd template](https://drive.google.com/uc?export=download&id=1q74iodpFfEes_37tJbsPQ6VljiksPVcQ) for this class **(very exciting)! Save this file into your GEOG391 folder.**
 
 ## Basic .Rmd Functionality
 

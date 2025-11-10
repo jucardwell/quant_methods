@@ -1,232 +1,121 @@
 # Describing Spatial Data
 
-In this chapter, we will build on the descriptive tools we learned in the Describing Data chapter. Spatial descriptive statistics summarize spatial patterns, not just patterns in value.
+In this chapter, we will build on the descriptive tools we learned in the Describing Data chapter. Spatial descriptive statistics summarize datasets by their spatial characteristics, not their attribute values. Combining traditional descriptive statistics with spatial descriptive statistics can expand our understanding of the dataset.
 
-We will use the following spatial data:
+We will use the following spatial datasets:
 
--   Grocery stores in Wake County
+-   US tornado touchdown points from 1954-2022 from [NOAA's Storm Prediction Center](https://www.spc.noaa.gov/gis/svrgis/)
+-   Covid deaths by county from [NYTimes](https://github.com/nytimes/covid-19-data/tree/master)
 
--   
+**To follow along with this tutorial, [download the .Rmd template](https://drive.google.com/uc?export=download&id=19d-PK7bxEJ7J6WKV6sp6-uchU6pWmc4r) here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.**
 
-**To follow along with this tutorial, save this data into your "data" subfolder in your "describing data" folder. Create and dave a new .Rmd called "describing_spatial_data.Rmd" in your "desciribing data folder". Whenever you see lines of code, copy them into your own .Rmd.**
-
-**North Carolina census tract rurality definitions (RUCA codes) from the USDA Economic Research Service and North Carolina Rural Center.** These two sources offer differing definitions of rurality. RUCA codes establish urban cores and the census tracts that are the most economically integrated with those cores through commuting. The North Carolina Rural Center defines rurality by a population density threshold (rural \< 250 people per square mile).
-
--   **Climate Normals (1991-2020) from the National Climatic Data Center (NCDC)**. These Climate Normals represent 30-year averages of various climate variables, updated every decade.
-
--   **American Community Survey (ACS) 5-Year Estimates (2019-2023) from the U.S. Census Bureau.** The ACS provides detailed demographic, social, and economic information collected annually and averaged over a five-year period.
-
-The last two datasets are **aggregated summaries** rather than raw measurements. The Climate Normals are **temporal averages**,meaning that the data represent the average conditions over a 30-year period. The ACS data are **spatial averages**, which summarize individual responses within defined geographic areas. This is a requirement for many spatial datasets, even when individual-level data is available, to maintain anonymity.
-
-As a result, when we analyze these datasets, we are working with information that has already been statistically summarized over time and space, and our own statistical descriptions will be **second-order summaries** that describe patterns in data that have already been aggregated.
-
-**To follow along with this tutorial, create a folder called "describing_data" and a subfolder called "data". Save the data into the "data" subfolder, and create and save a .Rmd called "describing_data.Rmd" in the "describing_data" folder. Whenever you see lines of code, copy these into your own document.**
-
-![](images/describing_data.png)
-
-## Loading Libraries and Reading in Data
-
-```{r, warning=FALSE, message = FALSE}
-## load necessary libraries
-library(tidyverse)
-library(gt)
+```{r, include = F}
 library(sf)
-library(e1071)
 library(tmap)
+library(sfdep)
+library(tidyverse)
 
-## read in the data
-rurality <- st_read("data/nc_tracts_rurality.geojson")
-climate_normals <- st_read("data/climate_normals.geojson")
-acs_tract_nc <- st_read("data/nc_tract_acs_2023.geojson")
+torn <- st_read("https://drive.google.com/uc?export=download&id=1K5yFnDthJGKnWPragZPmQyCDpf8seSEI")
+covid <- st_read("https://drive.google.com/uc?export=download&id=1DdmGU5BMkVdE31h8fTQ6hOMbVU1Rw4Qq"
+)
 
 ```
 
-## Orienting Ourselves to the Datasets
+## Describing Tornadoes
 
-The 'glimpse()' function provides a quick overview of the structure and contents of a dataset. It displays the data types of each column and a preview of the data, making it easier to understand the dataset at a glance.
+### Traditional Descriptive Statistics
 
-```{r}
-## glimpse at the rurality data
-glimpse(rurality)
+Open the tornado object by double-clicking it in the environment. Important variables in the dataset are:
 
-## glimpse at the climate normals data
-glimpse(climate_normals)
-
-#glimpse at acs data
-glimpse(acs_tract_nc)
-```
-
-# Describing Rurality
-
-Open the rurality table by double clicking in the environment.
+| Field Name | Description |
+|------------------------------------|------------------------------------|
+| yr | Year of occurrence |
+| st | State |
+| mag | Rating on [Enhanced Fujita Scale](https://www.weather.gov/oun/efscale) |
+| inj | Number of injuries |
+| fat | Number of fatalities |
+| len | Length in miles |
+| wid | Width in yards |
 
 **Q1. What does each observation (each row) represent? How do you know?**
 
-**Q2. Look at the ruca_code variable. What level of measurement is this variable? How does that restrict what descriptive statistics we can calculate about the data?**
+**Q2. Create a descriptive statistics table for a categorical variable in the dataset. Create one data visualization to compliment the statistics table.**
 
-## Creating a Basic Table for Descriptive Statistics
+**Q3. Create a descriptive statistics table for a quantitative variable in the dataset. Create one data visualization to compliment the statistics table.**
 
-The 'gt' package in R is a tool to create "presentation-ready" tables.
+### Spatial Descriptive Statistics
 
-```{r}
-## create a basic table of descriptive statistics for RUCA codes
-rurality |> st_drop_geometry() |> 
-  group_by(ruca_code) |>
-  summarise(n = n())  |>  gt() 
+#### Mean Center
 
-```
-
-**Q3. What is the mode of the ruca_code?**
-
-## Visualizing Descriptive Statistics
-
-Our descriptive statistics table has given us some useful information about our dataset. Visualizing our data can help us understand our descriptive statistics better.
-
-### Bar Chart
-
-A bar chart displays the count of each observations in a group. It is a useful visualization for nominal/categorical data.
+The mean center of a spatial dataset represents the average location of a set of points and is calculated by taking the average of all the x-coordinates and all the y-coordinates in the dataset.
 
 ```{r}
-#this creates the grouped dataset
-grouped_rural <- rurality |> st_drop_geometry() |> 
-  group_by(ruca_code) |>
-  summarise(Count = n()) 
+#calculate mean center of all tornados in dataset
+torn_mean_center <- center_mean(torn)
 
-#this plots the bar plot (note that the coord_flip swtiches the axis which is better for labeling in this case)
-ggplot(grouped_rural, aes(x=ruca_code, y=Count)) + 
-  geom_bar(stat = "identity") + coord_flip() + labs(
-    x = "RUCA Code Category",
-    y = "Number of Census Tracts",
-  )
+#map tornadoes and mean center
+tm_shape(torn) + tm_dots() + tm_shape(torn_mean_center) + tm_dots(fill = "blue")
+
 ```
 
-### Map
+**Q4. What does the location of our mean center tell us about the spatial distribution of tornadoes in the United States?**
 
-```{r, warning=F, message=F}
-#here's our first map. Note that I'm using the raw data, not the grouped data.
-tm_shape(rurality) + tm_polygons("ruca_code")
-```
+#### Weighted Mean Center
 
-**Q4: What does the map show us that we can't see from the descriptive statistics table or the bar chart?**
-
-# Describing Climate Normals
-
-**Q5. What does each row in this dataset represent? How do you know?**
-
-## Creating a Basic Table for Descriptive Statistics
+The weighted mean center calculates the average location, but allows you to select a variable to weight by. The calculation then gives more influence to features with larger values of that variable. For instance, we could give higher weight to fatal tornadoes
 
 ```{r}
-## create a basic table of descriptive statistics for climate normals
-climate_normals |> st_drop_geometry() |>
-  select(summer_temp) |>
-  summarise(
-    n = n(),
-    num_na = sum(is.na(summer_temp)), 
-    mean_temp = mean(summer_temp, na.rm = TRUE),
-    median_temp = median(summer_temp, na.rm = TRUE),
-    sd_temp = sd(summer_temp, na.rm = TRUE),
-    variance_temp = var(summer_temp, na.rm = TRUE),
-    mean_dev = mean(abs(summer_temp - mean(summer_temp, na.rm = TRUE)), na.rm = TRUE),
-    cv_temp = sd_temp / mean_temp,
-    min_temp = min(summer_temp, na.rm = TRUE),
-    max_temp = max(summer_temp, na.rm = TRUE),
-    skewness = skewness(summer_temp, na.rm = TRUE), 
-    kurtosis = kurtosis(summer_temp, na.rm = TRUE)
-                               
-  ) |> pivot_longer(everything(), names_to = "Statistic", values_to = "Value") |>
-  gt() |>
-  tab_header(
-    title = "US Summer Temperatures (1991-2020)",
-  ) %>%
-  fmt_number(
-    columns = everything(),
-    decimals = 2
-  )
+## calculate weighted mean center using "fat" variable
+torn_w_mean_center <- center_mean(torn, weight = torn$fat)
+
+
+##map mean center and weighted mean center
+tm_shape(torn) + tm_dots() + tm_shape(torn_mean_center) + tm_dots(fill = "blue") + tm_shape(torn_w_mean_center) + tm_dots(fill = "red")
+
+
 ```
 
-**Q6: What does this descriptive statistics table tell us about the data?**
+**Q5. What does the difference between the mean center and the weighted mean center (weighted by fatalities) tell us about the spatial distribution of fatal tornadoes?**
 
-## Visualizing Descriptive Statistics
+**Q6. Using the code below, calculate and map the difference in the weighted mean center for tornadoes before 2000 and after 2000. What does this tell us about how the spatial pattern of tornadoes has changed over time?**
 
-### Histogram
+```{r, eval = FALSE}
+#tornadoes before 2000
+torn_b_2000 <- torn |> filter(yr < 2000)
 
-A histogram is a graph that displays the frequency of observations within user-set "bins". This can give us an understanding of the distribution of our data
+#tornados after 2000
+torn_a_2000 <- torn |> filter(yr >= 2000)
+
+```
+
+#### Standard Deviational Ellipse
+
+The standard deviational ellipse is a method for summarizing the spatial central tendency, dispersion, and directional trends. The ellipse visually represents the spread of the data and the direction of the spread. It is centered on the mean center and its axes represent the standard deviation of the x and y coordinates.
 
 ```{r}
-## create a histogram of summer temperatures
+#calculate standard ellipse values
+std_ellip_torn <- std_dev_ellipse(torn)
 
-ggplot(climate_normals, aes(x = summer_temp)) +
-  geom_histogram(binwidth = 1, fill = "lightgrey", color = "black", alpha = 0.7) +
-  labs(
-    title = "Histogram of Summer Temperatures (1991-2020)",
-    x = "Summer Temperature (°F)",
-    y = "Frequency"
-  ) 
-
+#create an ellipse of those values
+std_ellip_torn <- sfdep::st_ellipse(geometry =std_ellip_torn,
+                                   sx = std_ellip_torn$sx,
+                                   sy = std_ellip_torn$sy,
+                                   rotation = -std_ellip_torn$theta)
+#map the ellipse with transparency
+tm_shape(torn) + tm_dots() + tm_shape(std_ellip_torn) + tm_polygons(fill_alpha = .5)
 ```
 
-### Cumulative Frequency Plot
+**Q6. What does the standard deviational ellipse tell us about the direction and spread of the tornado dataset?**
 
-```{r}
-ggplot(climate_normals, aes(x = summer_temp)) + stat_ecdf() +
-  labs(
-    title = "Cumulative Frequency Plot of Summer Temperatures (1991-2020)",
-    x = "Summer Temperature (°F)",
-    y = "Cumulative Frequency"
-  )
-```
+## Mini-Challenge
 
-### Boxplot
+This challenge will ask you to calculate traditional and spatial descriptive statistics for Covid cases or deaths by US county (contiguous US only).
 
-A boxplot is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. It can also highlight outliers in the data.
-
-```{r}
-ggplot(climate_normals, aes(y = summer_temp)) +
-  geom_boxplot(fill = "lightgrey") +
-  labs(
-    title = "Boxplot of Summer Temperatures (1991-2020)",
-    y = "Summer Temperature (°F)"
-  )
-```
-
-### Violin Plot
-
-A violin plot is a method of plotting numeric data and can be understood as a combination of a boxplot and a kernel density plot. It shows the distribution of the data across different values.
-
-```{r}
-ggplot(climate_normals, aes(x = 1, y = summer_temp)) +
-  geom_violin(fill = "lightgrey", bw = 1.2)  + geom_boxplot(width=0.1) +
-  labs(
-    title = "Violin Plot of Summer Temperatures (1991-2020)",
-    y = "Summer Temperature (°F)"
-  ) + theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
-```
-
-**Q7: How do visualizations help us learn more about a dataset compared to a descriptive statistics table**
-
-**Q8: How does each type of visualization give us additional information?**
-
-### Map
-
-```{r}
-tm_shape(climate_normals) + tm_dots("summer_temp")
-```
-
-**Q9: What does this map show us that we don't learn from the descriptive statistics table or the other visualizations?**
-
-# Mini Challenge 1
-
-This challenge will ask you to create some basic descriptive statistics for **a single variable** in the ACS census tract data.
-
-1.  Open the acs_tract_nc object. You can scroll over to see all the available variables. The "data_dict_acs.xlsx" file (which should be saved in your data folder) will tell you what each variable name means.
-2.  Select a variable that is interesting to you
-3.  Using the code above, as well as the R Basics chapter, create a descriptive statistics table in a new code chunk
-4.  Using the code above, as well as the R Basics chapter, create at least one non-map data visualization
-5.  Using the code above, as well as the R Basics chapter, create a map of your variable
-6.  Answer the following questions:
-    -   What did you learn about your variable?
-    -   What did you learn about the spatial pattern of your variable?
-
-# 
+1.  Open the acs_tract_nc object and explore the variables. What does each row represent?
+2.  Create a descriptive statistics table and a single visualization for either cases or deaths
+3.  Calculate the weighted mean center of the dataset using your variable of interest
+4.  Create a map that displays your variable of interest by county (note that the counties are represented by a single point centroid, so you should use the tm_dots() command when making your map) and your weighted mean center
+5.  Answer the following questions:
+    -   Q7. What did you learn about your variable through traditional descriptive statistics
+    -   Q8. What did you learn about the spatial pattern of your variable through spatial descriptive statistics and the choropleth map
+    -   Q9. Why would it not make sense to represent the mean center (not the weighted mean) given that the level of observation is the county centroid?

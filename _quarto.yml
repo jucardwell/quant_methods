@@ -8,17 +8,14 @@ book:
   date: "10/22/2025"
   chapters:
     - index.qmd
-    - intro.qmd
+    - syllabus.qmd
     - schedule.qmd
     - competencies.qmd
     - basic_R.qmd
+    - command.qmd
     - describing_data.qmd
     - describing_spatial_data.qmd
-    - lab_1.qmd
-    - summary.qmd
-    - references.qmd
-
-bibliography: references.bib
+    - labs.qmd
 
 format:
   html:
