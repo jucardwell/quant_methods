@@ -14,6 +14,7 @@ book:
     - basic_R.qmd
     - command.qmd
     - describing_data.qmd
+    - tmap.qmd
     - describing_spatial_data.qmd
     - labs.qmd
 

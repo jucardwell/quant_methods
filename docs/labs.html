@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./competencies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Course Competencies</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Course Competencies</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#specifications" id="toc-specifications" class="nav-link" data-scroll-target="#specifications"><span class="header-section-number">8.1.2</span> Specifications</a></li>
   <li><a href="#lab-instructions" id="toc-lab-instructions" class="nav-link" data-scroll-target="#lab-instructions"><span class="header-section-number">8.1.3</span> Lab Instructions</a></li>
   </ul></li>
+  <li><a href="#lab-4" id="toc-lab-4" class="nav-link" data-scroll-target="#lab-4"><span class="header-section-number">8.2</span> Lab 4</a>
+  <ul class="collapse">
+  <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1"><span class="header-section-number">8.2.1</span> Overview</a></li>
+  <li><a href="#specifications-1" id="toc-specifications-1" class="nav-link" data-scroll-target="#specifications-1"><span class="header-section-number">8.2.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions-1" id="toc-lab-instructions-1" class="nav-link" data-scroll-target="#lab-instructions-1"><span class="header-section-number">8.2.3</span> Lab Instructions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -240,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="8.1.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">8.1.1</span> Overview</h3>
 <p>In the <a href="https://jucardwell.github.io/quant_methods/describing_data.html"><strong>Describing Data</strong></a> tutorial we worked with spatial datasets describing the rurality of North Carolina census tracts, summer temperatures across the United States, and a demographic variable measured at the census tract level in North Carolina. Spatial data is often aggregated to specific geographic units (for instance, to protect individual privacy or simplify a complex dataset). This aggregation influences the descriptive statistics we calculate.</p>
 <p>In this lab, you will examine demographic and climate data at a different level of spatial aggregation and observe how the descriptive statistics change as a result (<strong>remember the underlying data values are not changing, only the geographic units used to summarize them</strong>). You will also explore an alternative way of defining “rural” and compare how this definition shapes your interpretation of the data.</p>
-<p><em>Remember that you can use the <strong>Command Compendium</strong> to help you modify R commands</em></p>
+<p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands</em></p>
 </section>
 <section id="specifications" class="level3" data-number="8.1.2">
 <h3 data-number="8.1.2" class="anchored" data-anchor-id="specifications"><span class="header-section-number">8.1.2</span> Specifications</h3>
@@ -336,6 +342,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>How these differences may relate to the scale or aggregation of the data</li>
 </ul></li>
 </ul></li>
+<li><p>Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document</p></li>
+</ol>
+</section>
+</section>
+<section id="lab-4" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="lab-4"><span class="header-section-number">8.2</span> Lab 4</h2>
+<section id="overview-1" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="overview-1"><span class="header-section-number">8.2.1</span> Overview</h3>
+<p>In the <a href="https://jucardwell.github.io/quant_methods/describing_spatial_data.html"><strong>Describing Spatial Data</strong></a> tutorial we learned how to expand our descriptive statistics toolkit to include spatial descriptive statistics.</p>
+<p>In this lab, you will practice calculating spatial descriptive statistics a dataset representing the location of wind turbines in the continental US (<a href="https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx">variable names are here</a>) and covid cases and deaths by US county centroid on April 1, 2020 and July 1, 2020.</p>
+<p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands</em></p>
+</section>
+<section id="specifications-1" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="specifications-1"><span class="header-section-number">8.2.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description">Concept 3 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTML and RMD versions the R Markdown file have been submitted.</td>
+</tr>
+<tr class="even">
+<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
+</tr>
+<tr class="odd">
+<td>Describing Covid: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation</td>
+</tr>
+<tr class="even">
+<td>Describing Wind Turbines: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lab-instructions-1" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="lab-instructions-1"><span class="header-section-number">8.2.3</span> Lab Instructions</h3>
+<ol type="1">
+<li><p>Create a new .Rmd named “LASTNAME_lab4.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load necessary libraries</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#read in data</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">##cumulative covid cases and deaths on April 1, 2020</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>covid_deaths_04012020 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1spBLqVxa25a7FDo7U7aNDJF2t2N0-uXv"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">##cumulative covid cases and deaths on July 1, 2020</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>covid_deaths_07012020 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1ZNka0ffMXSVAqVDCj1R-oYh37BH9ziAZ"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">##wind turbines across the continental US</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>us_wind_turbine_locs <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Cd9Nl1cNkGD_F9L68EqefKtFx7X7-IpE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Add “Describing Covid” as a third-level header. In each of the covid datasets, there is a variable named <code>cases</code> which represents the cumulative cases in each county on the given date and a variable named <code>deaths</code> which represents the cumulative deaths in each county on the given date. <strong>Note that the dataset only includes counties that had at least one case or death</strong>. In this section you will compute descriptive statistics for cases and deaths on each date, compute spatial descriptive statistics, and create a well designed map. Your code chunk should:</p>
+<ul>
+<li>Create a descriptive statistics table of cases and deaths for each dataset</li>
+<li>Compute a weighted mean for cases and deaths on each date</li>
+<li>Create an map for the April 2020 data that symbolizes <code>cases</code> by county, as well as the mean center for <code>cases</code> AND <code>deaths</code>. Make sure that you add manual legend entries for the mean center of cases and deaths.</li>
+<li>Create an map for the July 2020 data that symbolizes <code>cases</code> by county, as well as the mean center for <code>cases</code> AND <code>deaths</code>. Make sure that you add manual legend entries for the mean center of cases and deaths.</li>
+</ul></li>
+<li><p>Below your chunk, you should write 1-2 paragraphs that do the following:</p>
+<ul>
+<li>Summarize what the descriptive statistics reveal about the distribution of Covid cases and deaths</li>
+<li>Explain why creating a meaningful histogram or boxplot for this data would be challenging</li>
+<li>Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of Covid cases and deaths.</li>
+<li>Explain why an unweighted mean center isn’t meaningful in this context (consider the unit of observation)</li>
+</ul></li>
+<li><p>Add a “Describing Wind Turbines” header. In this section, you will compute descriptive and spatial descriptive statistics for the location and characteristics of wind turbines across the continental US. Your code chunk should:</p>
+<ul>
+<li>Create a descriptive statistics table for one quantitative variable in the <a href="https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx">turbine dataset</a>.</li>
+<li>Create one non-map data visualization for your variable of interest</li>
+<li>Calculate mean center of wind turbines, standard deviational ellipse of wind turbines, and weighted mean center based on your variable of interest.</li>
+<li>Create a map that symbolizes your variable of interest, the mean center of wind turbines, the standard deviational ellipse of wind turbines, and the weighted mean center. Make sure that you add manual legend entries for the mean center and weighted mean center (you do not need to add a legend entry for the standard deviational ellipse).</li>
+</ul></li>
+<li><p>Below your chunk, you should write 1-2 paragraphs that do the following:</p>
+<ul>
+<li>Summarize what the descriptive statistics and non-map visualization reveal about the distribution of your variable</li>
+<li>Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of wind turbines and your variable of intereat</li>
+</ul></li>
+<li><p>Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document</p></li>
 </ol>
 
 

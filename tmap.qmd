@@ -1,0 +1,125 @@
+# Tmap Interlude
+
+Mapping is an extremely important tool for describing and visualizing spatial data. Maps are particularly useful because they are able to summarize variation in both values and location (space). You (as a newly deputized cartographer) have a lot of control over how a map functions by making decisions on things like classification schemes, colors, layout, and design.
+
+This tutorial is designed to introduce you the main functionalities of the tmap package. We will use census block group data to Orange, Durham, and Wake counties. [This file](https://docs.google.com/spreadsheets/d/1aI2YqE_Tc69ekA48e5jmbyVMXv5uszl-/edit?usp=sharing&ouid=101338019870957132383&rtpof=true&sd=true) will tell you what each variable name means.
+
+**To follow along with this tutorial, [download the .Rmd template](https://drive.google.com/uc?export=download&id=1ruOWYlf8zGJ5-KHprfpEO2G-IcJ808qV) here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.**
+
+```{r, include=F}
+library(tmap)
+library(tidyverse)
+library(sf)
+library(maptiles)
+
+acs_tract_nc <- st_read("data/nc_tract_acs_2023.geojson") |> filter(COUNTYFP %in% c("135", "183", "063"))
+
+```
+
+## Visual Variables
+
+### Color
+
+We are already familiar with making a basic tmap using color to visualize patterns:
+
+```{r}
+tm_shape(acs_tract_nc) + tm_polygons(fill = "median_age")
+
+```
+
+### Size
+
+We can also represent variables by size
+
+```{r}
+tm_shape(acs_tract_nc) + tm_symbols(size = "total_pop")
+
+```
+
+### Size and Color
+
+Or both!
+
+```{r}
+tm_shape(acs_tract_nc) + tm_symbols(size = "total_pop", fill = "total_pop")
+
+```
+
+## Color Palettes
+
+We can also modify the color palette. To see all the available color palettes, you should run the command below
+
+```{r, eval=FALSE}
+cols4all::c4a_gui()
+
+```
+
+```{r, message=F, warning=F}
+tm_shape(acs_tract_nc) + tm_polygons(fill = "median_age", fill.scale = tm_scale_intervals(values = "bu_pu"))
+
+
+```
+
+## Classification Schemes
+
+One of the biggest decisions we can make is how to classify our data. You can see in the maps above that tmap defaults to an equal interval color scheme. However, this is often not the best way to classify the data. Your decision about classification should be made based on the distribution of the data. Let's look at the distribution of the median age variable
+
+```{r, message = F, warning =F}
+ggplot(acs_tract_nc, aes(x = median_age)) + geom_histogram()
+```
+
+Because so much of our variation is between 30-45, using an equal interval color palette makes it difficult to visualize the majority of the variation. See how different the map looks when we use a quantile classification scheme?
+
+```{r, message=F, warning=F}
+tm_shape(acs_tract_nc) + tm_polygons(fill = "median_age", fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile"))
+```
+
+The following classification schemes will cover most of your uses:
+
+-   equal
+-   pretty
+-   quantile
+-   fisher (natural breaks)
+
+## Interactive Mapping
+
+So far, we have only made static maps. However, tmap has the availability to make interactive maps as well.
+
+```{r, message=F, warning=F}
+## make an interactive map
+tmap_mode(mode = "view")
+
+tm_shape(acs_tract_nc) + tm_polygons(fill = "median_age", fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile"))
+```
+
+## Formatting
+
+### Map 1: Adding Transparency and additional classes
+
+```{r, message=F, warning=F}
+tm_shape(acs_tract_nc) + tm_polygons(fill = "median_age", fill_alpha = .3, fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile", n = 7))
+```
+
+### Map 2: Adding a Basemap and a Title
+
+```{r, message=F, warning=F}
+#change back to static plot
+tmap_mode(mode = "plot")
+
+tm_shape(acs_tract_nc) + tm_polygons(fill = "median_age",fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile", n = 5), fill_alpha = .3) +
+tm_title("Median Age by Census Block Group") + tm_basemap("OpenStreetMap")
+
+```
+
+The following basemaps will cover most of your uses:
+
+-   "CartoDB.VoyagerOnlyLabels" - Labels Only
+-   "CartoDB.PositronNoLabels"- No Labels
+-   "OpenStreetMap" - Labeled Basemap
+-   "Esri.WorldImagery" - Satellite
+
+## Mini Challenge
+
+Using a different variable in the ACS data, create a well-designed map where you select a classification scheme, and add transparency, a title, and a basemap.
+
+Create an interactive and static version of the map.

@@ -8,14 +8,14 @@ In the [**Describing Data**](https://jucardwell.github.io/quant_methods/describi
 
 In this lab, you will examine demographic and climate data at a different level of spatial aggregation and observe how the descriptive statistics change as a result (**remember the underlying data values are not changing, only the geographic units used to summarize them**). You will also explore an alternative way of defining “rural” and compare how this definition shapes your interpretation of the data.
 
-*Remember that you can use the **Command Compendium** to help you modify R commands*
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands*
 
 ### Specifications
 
 This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
 
 | Specification |
-|----|
+|------------------------------------------------------------------------|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | Describing Rurality: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
@@ -84,3 +84,84 @@ This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.g
     -   Compare the county-level data results to the census tract data, noting
         -   Differences in descriptive statistics, visualizations, and spatial patterns
         -   How these differences may relate to the scale or aggregation of the data
+
+9.  Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document
+
+## Lab 4
+
+### Overview
+
+In the [**Describing Spatial Data**](https://jucardwell.github.io/quant_methods/describing_spatial_data.html) tutorial we learned how to expand our descriptive statistics toolkit to include spatial descriptive statistics.
+
+In this lab, you will practice calculating spatial descriptive statistics a dataset representing the location of wind turbines in the continental US ([variable names are here](https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx)) and covid cases and deaths by US county centroid on April 1, 2020 and July 1, 2020.
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands*
+
+### Specifications
+
+This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+
+| Specification |
+|------------------------------------------------------------------------|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
+| Describing Covid: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation |
+| Describing Wind Turbines: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation |
+
+### Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab4.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    ## load necessary libraries
+    library(tidyverse)
+    library(gt)
+    library(sf)
+    library(e1071)
+    library(tmap)
+    library(maptiles)
+    library(spdep)
+
+
+    #read in data
+
+    ##cumulative covid cases and deaths on April 1, 2020
+    covid_deaths_04012020 <- st_read("https://drive.google.com/uc?export=download&id=1spBLqVxa25a7FDo7U7aNDJF2t2N0-uXv")
+
+    ##cumulative covid cases and deaths on July 1, 2020
+    covid_deaths_07012020 <- st_read("https://drive.google.com/uc?export=download&id=1ZNka0ffMXSVAqVDCj1R-oYh37BH9ziAZ")
+
+    ##wind turbines across the continental US
+    us_wind_turbine_locs <- st_read("https://drive.google.com/uc?export=download&id=1Cd9Nl1cNkGD_F9L68EqefKtFx7X7-IpE")
+
+    ```
+
+3.  Add "Describing Covid" as a third-level header. In each of the covid datasets, there is a variable named `cases` which represents the cumulative cases in each county on the given date and a variable named `deaths` which represents the cumulative deaths in each county on the given date. **Note that the dataset only includes counties that had at least one case or death**. In this section you will compute descriptive statistics for cases and deaths on each date, compute spatial descriptive statistics, and create a well designed map. Your code chunk should:
+
+    -   Create a descriptive statistics table of cases and deaths for each dataset
+    -   Compute a weighted mean for cases and deaths on each date
+    -   Create an map for the April 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
+    -   Create an map for the July 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
+
+4.  Below your chunk, you should write 1-2 paragraphs that do the following:
+
+    -   Summarize what the descriptive statistics reveal about the distribution of Covid cases and deaths
+    -   Explain why creating a meaningful histogram or boxplot for this data would be challenging
+    -   Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of Covid cases and deaths.
+    -   Explain why an unweighted mean center isn’t meaningful in this context (consider the unit of observation)
+
+5.  Add a "Describing Wind Turbines" header. In this section, you will compute descriptive and spatial descriptive statistics for the location and characteristics of wind turbines across the continental US. Your code chunk should:
+
+    -   Create a descriptive statistics table for one quantitative variable in the [turbine dataset](https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx).
+    -   Create one non-map data visualization for your variable of interest
+    -   Calculate mean center of wind turbines, standard deviational ellipse of wind turbines, and weighted mean center based on your variable of interest.
+    -   Create a map that symbolizes your variable of interest, the mean center of wind turbines, the standard deviational ellipse of wind turbines, and the weighted mean center. Make sure that you add manual legend entries for the mean center and weighted mean center (you do not need to add a legend entry for the standard deviational ellipse).
+
+6.  Below your chunk, you should write 1-2 paragraphs that do the following:
+
+    -   Summarize what the descriptive statistics and non-map visualization reveal about the distribution of your variable
+    -   Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of wind turbines and your variable of intereat
+
+7.  Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document

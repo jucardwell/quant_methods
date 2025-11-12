@@ -5,7 +5,7 @@ In this chapter, we will build on the descriptive tools we learned in the Descri
 We will use the following spatial datasets:
 
 -   US tornado touchdown points from 1954-2022 from [NOAA's Storm Prediction Center](https://www.spc.noaa.gov/gis/svrgis/)
--   Covid deaths by county from [NYTimes](https://github.com/nytimes/covid-19-data/tree/master)
+-   North Carolina hospitals from [NCOneMap](https://github.com/nytimes/covid-19-data/tree/master)
 
 **To follow along with this tutorial, [download the .Rmd template](https://drive.google.com/uc?export=download&id=19d-PK7bxEJ7J6WKV6sp6-uchU6pWmc4r) here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.**
 
@@ -16,8 +16,8 @@ library(sfdep)
 library(tidyverse)
 
 torn <- st_read("https://drive.google.com/uc?export=download&id=1K5yFnDthJGKnWPragZPmQyCDpf8seSEI")
-covid <- st_read("https://drive.google.com/uc?export=download&id=1DdmGU5BMkVdE31h8fTQ6hOMbVU1Rw4Qq"
-)
+nc_hosp <- st_read("https://drive.google.com/uc?export=download&id=1K7lH1U6oQQ6sWXIqxOeFUYbWjdnxqx5a"
+) |> st_transform(2264)
 
 ```
 
@@ -54,7 +54,11 @@ The mean center of a spatial dataset represents the average location of a set of
 torn_mean_center <- center_mean(torn)
 
 #map tornadoes and mean center
-tm_shape(torn) + tm_dots() + tm_shape(torn_mean_center) + tm_dots(fill = "blue")
+tm_shape(torn) + tm_dots() + tm_shape(torn_mean_center) + tm_dots(fill = "blue") + tm_add_legend(
+    type = "symbols",
+    labels = "Mean Center",
+    fill = "blue"
+  )
 
 ```
 
@@ -70,7 +74,11 @@ torn_w_mean_center <- center_mean(torn, weight = torn$fat)
 
 
 ##map mean center and weighted mean center
-tm_shape(torn) + tm_dots() + tm_shape(torn_mean_center) + tm_dots(fill = "blue") + tm_shape(torn_w_mean_center) + tm_dots(fill = "red")
+tm_shape(torn) + tm_dots() + tm_shape(torn_mean_center) + tm_dots(fill = "blue", ) + tm_shape(torn_w_mean_center) + tm_dots(fill = "red") + tm_add_legend(
+    type = "symbols",
+    labels = c("Mean Center", "Weighted Mean Center"),
+    fill = c("blue", "red")
+  )
 
 
 ```
@@ -109,13 +117,15 @@ tm_shape(torn) + tm_dots() + tm_shape(std_ellip_torn) + tm_polygons(fill_alpha =
 
 ## Mini-Challenge
 
-This challenge will ask you to calculate traditional and spatial descriptive statistics for Covid cases or deaths by US county (contiguous US only).
+This challenge will ask you to calculate a weighted mean center for different for a dataset on North Carolina hospitals. We will focus on a few variables:
 
-1.  Open the acs_tract_nc object and explore the variables. What does each row represent?
-2.  Create a descriptive statistics table and a single visualization for either cases or deaths
-3.  Calculate the weighted mean center of the dataset using your variable of interest
-4.  Create a map that displays your variable of interest by county (note that the counties are represented by a single point centroid, so you should use the tm_dots() command when making your map) and your weighted mean center
-5.  Answer the following questions:
-    -   Q7. What did you learn about your variable through traditional descriptive statistics
-    -   Q8. What did you learn about the spatial pattern of your variable through spatial descriptive statistics and the choropleth map
-    -   Q9. Why would it not make sense to represent the mean center (not the weighted mean) given that the level of observation is the county centroid?
+| Field Name | Description                         |
+|------------|-------------------------------------|
+| hgenlic    | Total hospital general beds         |
+| rehabhlic  | Total hospital rehab beds           |
+| psylic     | Total hospital psych beds           |
+| nfgenlic   | Total nursing facility general beds |
+
+1.  Open the nc_hosp dataset. What does each row represent?
+2.  Calculate the mean center of all hospitals and the weighted mean center based on the four variables of interest
+3.  Create a map that displays the variability in the mean centers. Make sure to include a legend

@@ -200,22 +200,33 @@ ggplot(grouped_data, aes(x=VARIABLE_OF_INTEREST, y=Count)) +
 ## "pretty"
 ## "quantile"
 
+#command to see color palettes
+cols4all::c4a_gui()
+
 ##make a basic point map
 tm_shape(DATABASE_OBJECT) + tm_dots(fill = "VARIABLE_OF_INTEREST",
                 fill.scale = tm_scale_intervals(values = "brewer.COLORPALETTE", style = "CLASSIFICATION", n= NUMBEROFCLASSES)) 
 
 ##make a basic polygon map
-tm_shape(DATABASE_OBJECT) + tm_dots(fill = "VARIABLE_OF_INTEREST",
+tm_shape(DATABASE_OBJECT) + tm_polygon(fill = "VARIABLE_OF_INTEREST",
                 fill.scale = tm_scale_intervals(values = "brewer.COLOR_PALETTE", style = "CLASSIFICATION", n= NUMBEROFCLASSES)) 
 
 
+## make an interactive map
+tmap_mode(mode = "view")
+
+##go back to static map 
+tmap_mode(mode = "plot")
+
+
+## add title 
+MAPCOMMANDS + tm_title("TITLE")
+
+
+## Add transparency
+tm_shape(DATABASE_OBJECT) + tm_polygon(fill = "VARIABLE_OF_INTEREST",fill_alpha = VALUE) 
+
 ```
-
-#### [Additional tmap help](https://r-tmap.github.io/tmap/index.html)
-
-#### Color Palettes
-
-![](images/color_palettes.png)
 
 ## Descriptive Spatial Statistics
 
