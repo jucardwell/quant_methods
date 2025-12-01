@@ -1,0 +1,33 @@
+Probability Mapping
+
+For spatial data, we can often calculate how probabilities of an event differ across space. For instance, our empirical probability of a moderate or worse air quality day at locations across North Carolina. We can map these probabilities:
+
+{r} pm_probs \<- grouped_pm \|\> mutate(p = tot_flag / tot_ob) grouped_pm_sf \<- pm_probs \|\> st_as_sf(coords= c("lat", "lon"), crs = 4326)
+
+tm_shape(grouped_pm_sf) + tm_dots(fill = "p")
+
+Already, from this map, we can start to interpret spatial patterns in the probability of having moderate or worse air quality day.
+
+Q8. What patterns do you see?
+
+These probabilities are currently shown only at discrete locations (points). However, in many cases, it’s useful to create a continuous probability surface to better visualize spatial trends and to estimate values at unsampled locations. One common method to do this is Inverse Distance Weighting (IDW). IDW assumes that points closer together are more similar than points farther apart, so it interpolates values between your measured points based on distance. Essentially, each unsampled location is assigned a weighted average of nearby points, with closer points contributing more to the estimate. Using IDW, you can generate a smooth surface showing the probability of moderate or worse air quality across the entire region, rather than just at individual points. This makes it easier to identify hotspots and spatial gradients.
+
+{r, message = F, warning=F} #reproject pm data reprojected_data \<- grouped_pm_sf \|\> st_transform(crs = 2264)
+
+#turn pm data into sp pm_sp \<- as(reprojected_data, 'Spatial')
+
+#get north carolina boundary to create grid nc_boundary \<- states(cb = T, progress_bar = FALSE) \|\> filter(NAME == "North Carolina") %\>% st_transform(2264)
+
+#turn into an sp object nc_sp \<- as(nc_boundary, 'Spatial')
+
+#create grid for the raster grd \<- as.data.frame(spsample(nc_sp, "regular", n=50000))
+
+#sets parameters for the grid names(grd) \<- c("X", "Y") coordinates(grd) \<- c("X", "Y") gridded(grd) \<- TRUE \# Create SpatialPixel object fullgrid(grd) \<- TRUE \# Create SpatialGrid object
+
+#sets crs crs(grd) \<- crs(pm_sp)
+
+#does the interpolation. idp sets sets the influence of points based on distance: higher values = stronger influence of nearby points, weaker influence of distant points. p.idw \<- idw(p \~ 1, pm_sp, newdata=grd, idp = 4)
+
+#rasterize the grid r \<- rast(p.idw) r.m \<- mask(r, nc_boundary)
+
+#create map tm_shape(r.m\["var1.pred"\]) + tm_raster(col.scale = tm_scale_intervals(values = "BuRd", n = 8), col.legend = tm_legend(position = tm_pos_out(), title = "Daily Probability" ))

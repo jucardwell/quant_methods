@@ -80,6 +80,13 @@ summary_data <- DATASET |>
   )
 ```
 
+### Creating a Spatial Object
+
+```{r, eval = F}
+#assumes a nonspatial object with a longitude and latitude field
+grouped_pm_sf <- YOUR_NEWOBJECT |> st_as_sf(coords= c("lat", "lon"), crs = 4326)
+```
+
 ## Descriptive Statistics
 
 ### Descriptive Statistics Tables
@@ -256,4 +263,83 @@ std_ellip_DATASET <- sfdep::st_ellipse(geometry =std_ellip_DATASET,
                                    sx = std_ellip_DATASET$sx,
                                    sy = std_ellip_DATASET$sy,
                                    rotation = -std_ellip_DATASET$theta)
+```
+
+## Probability
+
+### Binomial Distribution
+
+```{r, eval = F}
+#per trial probability, x = number of trials, p = probability per trial
+probability_per_trial <- tibble(
+  num_trials = 0:X,
+  #here is the main probability function
+  probability = dbinom(x = 0:X, size = X, prob = p)
+)
+
+#cumulative probability
+cum_prob <- pbinom(VALUELESSTHAN, TOTALTRIALS, p = p)
+
+```
+
+### Normal Distribution
+
+```{r, eval = F}
+#pnorm calculates the CDF up to the value. Do 1-pnorm to get the probability above that value
+prob <- pnorm(VALUEOFINTEREST, mean =  mean(DATASET$VARIABLE), sd = sd(DATASET$VARIABLE))
+```
+
+### Probability Map
+
+```{r, eval = F}
+#reproject data 
+reprojected_data <- DATASET |> st_transform(crs = 2264)
+
+#turn pm data into sp
+pm_sp <- as(reprojected_data, 'Spatial')
+
+#get north carolina boundary to create grid
+nc_boundary <- states(cb = T, progress_bar = FALSE) |> filter(NAME == "North Carolina") %>% st_transform(2264)
+
+#turn into an sp object
+nc_sp <-  as(nc_boundary, 'Spatial')
+
+#create grid for the raster
+grd <- as.data.frame(spsample(nc_sp, "regular", n=50000))
+
+#sets parameters for the grid
+names(grd)       <- c("X", "Y")
+coordinates(grd) <- c("X", "Y")
+gridded(grd)     <- TRUE  # Create SpatialPixel object
+fullgrid(grd)    <- TRUE  # Create SpatialGrid object
+
+#sets crs
+crs(grd) <- crs(pm_sp)
+
+#does the interpolation. idp sets sets the influence of points based on distance: higher values = stronger influence of nearby points, weaker influence of distant points.
+p.idw <- idw(p ~ 1, pm_sp, newdata=grd, idp = 4)
+
+#rasterize the grid
+r       <- rast(p.idw)
+r.m     <- mask(r, nc_boundary)
+
+#create map
+tm_shape(r.m["var1.pred"]) + 
+  tm_raster(col.scale = tm_scale_intervals(values = "BuRd", n = 8),
+            col.legend = tm_legend(position = tm_pos_out(), 
+                                   title = "TITLE" ))
+```
+
+### Point Estimate and CI for Mean
+
+```{r, eval = F}
+#t test command (assumes two-tail)
+t.test(DATASET$VARIABLE, conf.level = 0.95)
+```
+
+### Point Estimate and CI for Proportion
+
+```{r, eval = F}
+prop.test(TOTALSUCCESSES, n, conf.level = 0.95)
+
 ```

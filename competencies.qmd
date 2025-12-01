@@ -1,29 +1,103 @@
 # Course Competencies
 
+## Tier 1: Foundations of Quantitative Methods
+
+### Assessment Structure:
+
+-   **Competency:** Completes Lab 1-3 with Meets Expectations
+-   **Mastery:** Completes Case Study #1 with Meets Expectations or a 15 minute oral exam (in office hours)
+
 ### Concept 1: The Quantitative Revolution
 
 **Guiding Question**: Why did geography become a quantitative discipline, and how did it change how we study space?
 
 -   Describe the origins of the Quantitative Revolution in geography and how political and academic pressures pushed geography towards a “spatial science” 
 -   Identify assumptions built into quantitative reasoning (measurability, objectivity, universality)
--   Reflect on critiques and limits of the revolution from human and critical geographers
--   Interpret early spatial models (e.g., gravity model, rank-size rule)
-
-### Concept 2: The Problem of Spatial Data
-
-**Guiding Question**: Why is spatial data different, and how does it challenge traditional statistics?
-
--   Explain how spatial dependence, spatial heterogeneity, and distance decay influence the structure and interpretation of spatial data
--   Evaluate issues of scale, zoning, and aggregation (MAUP)
+-   Reflect on critiques and limits of the Quantitative Revolution from human and critical geographers
+-   Interpret early spatial models
+-   Explain how MAUP, spatial dependence, spatial heterogeneity, and distance decay influence the structure and interpretation of spatial data
 -   Connect the “spatial problem” to violations of independence in classical inference
 
-### Concept 3: Descriptive Statistics and Spatial Description
+### Concept 2: Data and Descriptive Statistics
 
-**Guiding Question:** How do we summarize and describe variation in geographic data?
+**Guiding Question:** How do we summarize and describe variation in data?
 
 -   Classify different types of geographic data and variables (e.g., primary vs. secondary, individual vs. aggregated, qualitative vs. quantitative, level of measurement), and explain how these distinctions influence analysis
 -   Explain and evaluate measurement quality in geographic data, including precision, accuracy, validity, and reliability.
 -   Summarize and interpret attribute data using descriptive statistics (central tendency, dispersion, shape) and data visualizations
--   Use maps to visually analyze spatial patterns
--   Compute and interpret spatial descriptive statistics (mean center, standard distance, standard deviational ellipse) and explain how they extend non-spatial descriptive measures.
--   Identify unusual values, skewed distributions, and outliers in attributes and geographic space, and explain their analytical implications.
+
+### Concept 3: Spatial Description
+
+**Guiding Question:** How do we summarize and describe variation in geographic data?
+
+-   Use maps to visually analyze spatial patterns and understand the role of classification schemes for grouping spatial data values
+
+-   Compute and interpret spatial descriptive statistics (mean center, standard distance, standard deviational ellipse) and explain how they extend non-spatial descriptive measures
+
+## Tier 2: Inferential Statistics
+
+### Assessment Structure:
+
+-   **Competency:** Completes Lab 4-6 with Meets Expectations
+-   **Mastery:** Completes Case Study #2 with Meets Expectations or a 15 minute oral exam (in office hours)
+
+### **Concept 4: Probability**
+
+**Guiding Question**: How can we use probability to quantify uncertainty and understand patterns in events?
+
+-   Compute and interpret simple event (empirical) probabilities
+-   Compute and interpret probabilities for discrete and continuous data using theoretical probability distributions
+-   Visualize probability across space
+
+### **Concept 5: Inferential Statistics**
+
+**Guiding Question**: How can we use sample data to understand and estimate characteristics of a population?
+
+-   Explain the Central Limit Theorem and why it allows us to generalize from samples to populations.
+-   Identify how sampling design affects representativeness and uncertainty (simple, systematic, stratified, cluster, spatial hybrid).
+-   Estimate and interpret population parameters (means and proportions) from samples (calculate point estimates and confidence intervals)
+
+### **Concept 6: Hypothesis Testing**
+
+**Guiding Question:** How can we generate and test hypotheses about a population using sample data?
+
+-   Distinguish between the null (H₀) and alternative (H₁) hypotheses
+-   Identify the two types of error in hypothesis testing (Type I and Type II)
+-   Formulate testable hypotheses and identify an appropriate statistical test based on the characteristics of the data 
+-   Run and interpret one sample and two sample t-tests to compare means between one or two groups
+-   Run and interpret Chi-Square tests to assess relationships between categorical variables
+-   Differentiate statistical significance from substantive importance
+
+## Tier 3: Spatial Patterns and Surfaces
+
+### Assessment Structure:
+
+-   **Competency:** Completes Lab 7-9 with Meets Expectations
+-   **Mastery:** Completes Case Study #3 with Meets Expectations or a 15 minute oral exam (in office hours)
+
+### **Concept 7: Patterns in Events**
+
+**Guiding Question:** How can we assess the distribution/pattern of individual events in space?
+
+-   Distinguish random, clustered, and regular event patterns
+-   Compute and interpret quadrat tests to assess spatial randomness (CSR) and determine statistical significance
+-   Compute and interpret nearest neighbor statistics to assess spatial randomness and determine statistical significance
+-   Visualize event patterns using point maps and density surfaces (kernel density estimation)
+-   Evaluate the effects of scale and edge boundaries on event pattern analysis
+
+### **Concept 8: Patterns in Values**
+
+**Guiding Question:** How can we detect patterns in attribute values across points or areas?
+
+-   Define spatial influence (neighborhoods) for point and aerial data using KNN, Queens Case, and distance-based measures
+-   Compute and interpret measures of global autocorrelation (Moran’s I)
+-   Compute and interpret measures of local autocorrelation (LISA) and use mapping to identify and analyze spatial patterns (hot-spots, cold-spots)
+-   Discuss how scale, zoning, and MAUP influence patterns
+
+### **Concept 9: Spatially Continuous Surfaces**
+
+**Guiding Question:** How can we estimate values at unsampled locations and understand spatial clustering and uncertainty across continuous surfaces?
+
+-   Compute point estimates at unsampled locations using Thiessen polygons, IDW, and k-point means.
+-   Define and interpret the semivariogram to understand spatial clustering, correlation, and range of influence.
+-   Approximate uncertainty for predictions using sample variance or semivariogram-based approaches and interpret the implications.

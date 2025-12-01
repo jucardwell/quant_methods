@@ -1,6 +1,6 @@
 # Labs
 
-## Lab 3
+## Lab 2
 
 ### Overview
 
@@ -12,19 +12,19 @@ In this lab, you will examine demographic and climate data at a different level 
 
 ### Specifications
 
-This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+This lab is designed to assess the [Concept 2 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
-| HTML and RMD versions the R Markdown file have been submitted. |
-| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
-| Describing Rurality: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
-| Describing Climate: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
-| Describing Demographics: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation |
+|----|
+| Student submits HTML and RMD versions the R Markdown file. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
+| **Describing Rurality:** Student produces a descriptive statistics table, a bar chart, and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions |
+| **Describing Climate:** Student produces descriptive statistics, two visualizations, and a map. Written interpretations demonstrate understanding of central tendency, dispersion, spatial patterns, and aggregation effects |
+| **Describing Demographics:** Student produces descriptive statistics, two visualizations, and a map. Written interpretation demonstrates understanding of central tendency, dispersion, spatial patterns, and differences across aggregation levels. |
 
 ### Lab Instructions
 
-1.  Create a new .Rmd named "LASTNAME_lab3.Rmd". Save it into your GEOG391 folder.
+1.  Create a new .Rmd named "LASTNAME_lab2.Rmd". Save it into your GEOG391 folder.
 
 2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
 
@@ -85,15 +85,15 @@ This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.g
         -   Differences in descriptive statistics, visualizations, and spatial patterns
         -   How these differences may relate to the scale or aggregation of the data
 
-9.  Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document
+9.  Knit your .Rmd and make sure the formatting and organization are clear in the knitted .html document
 
-## Lab 4
+## Lab 3
 
 ### Overview
 
 In the [**Describing Spatial Data**](https://jucardwell.github.io/quant_methods/describing_spatial_data.html) tutorial we learned how to expand our descriptive statistics toolkit to include spatial descriptive statistics.
 
-In this lab, you will practice calculating spatial descriptive statistics a dataset representing the location of wind turbines in the continental US ([variable names are here](https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx)) and covid cases and deaths by US county centroid on April 1, 2020 and July 1, 2020.
+In this lab, you will practice calculating spatial descriptive statistics on a dataset representing the location of wind turbines in the continental US ([variable names are here](https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx)) and Covid-19 cases and deaths by US county centroid on April 1, 2020 and July 1, 2020.
 
 *Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands*
 
@@ -102,15 +102,15 @@ In this lab, you will practice calculating spatial descriptive statistics a data
 This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
-| HTML and RMD versions the R Markdown file have been submitted. |
-| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
-| Describing Covid: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation |
-| Describing Wind Turbines: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation |
+|----|
+| Student submits HTML and RMD versions the R Markdown file. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
+| **Describing Covid:** Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful. |
+| **Describing Wind Turbines:** Student produces a descriptive statistics table and one non-map visualization, calculates spatial descriptive statistics (mean center, standard deviational ellipse, weighted mean center), and creates a map with manual legend entries. Written interpretation demonstrates understanding of the variable’s distribution and spatial patterns. |
 
 ### Lab Instructions
 
-1.  Create a new .Rmd named "LASTNAME_lab4.Rmd". Save it into your GEOG391 folder.
+1.  Create a new .Rmd named "LASTNAME_lab3.Rmd". Save it into your GEOG391 folder.
 
 2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
 
@@ -142,8 +142,8 @@ This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.g
 
     -   Create a descriptive statistics table of cases and deaths for each dataset
     -   Compute a weighted mean for cases and deaths on each date
-    -   Create an map for the April 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
-    -   Create an map for the July 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
+    -   Create a map for the April 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
+    -   Create a map for the July 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
 
 4.  Below your chunk, you should write 1-2 paragraphs that do the following:
 
@@ -162,6 +162,154 @@ This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.g
 6.  Below your chunk, you should write 1-2 paragraphs that do the following:
 
     -   Summarize what the descriptive statistics and non-map visualization reveal about the distribution of your variable
-    -   Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of wind turbines and your variable of intereat
+    -   Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of wind turbines and your variable of interest
 
-7.  Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document
+7.  Knit your .Rmd and make sure the formatting and organization are clear in the knitted .html document
+
+## Lab 4
+
+### Overview
+
+In the [**Probability**](https://jucardwell.github.io/quant_methods/probability.html) tutorial we learned about calculating empirical probability using historical data and applying the binomial and normal probability distributions.
+
+In this lab, you will practice applying the binomial probability distribution using daily water height data from the [USGS water gauge in Bolin Creek from 2015-2025](https://waterdata.usgs.gov/nwis/rt). You will also make a probability map of the probability of low January temperatures across North Carolina by applying the normal distribution.
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
+
+### Specifications
+
+This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+
+| Specification |
+|----|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
+| **Flood Risk at Bolin Creek**: Student creates a descriptive statistics table for daily water height, calculates empirical probability of a flood risk day, estimates the most likely number of flood risk days over 25 days, and computes cumulative probability of more than 3 flood risk days. Written interpretation demonstrates understanding of the results. |
+| **Low Temperature Probabilities Across NC**: Student calculates the probability of January days with maximum temperature below 30°F at each ASOS station and produces a probability map for the state. Written interpretation demonstrates understanding of the probabilities and spatial patterns. |
+
+1.  Create a new .Rmd named "LASTNAME_lab4.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+
+    #load libraries
+    library(tidyverse)
+    library(tmap)
+    library(sf)
+    library(tigris)
+
+    #bolin creek daily data from 2015-2025
+    bolin_creek_data <- read_csv("https://drive.google.com/uc?export=download&id=1eEzriJ5XzR-aS74nJmyiQFVrmV4T3cel")
+
+    #NC asos station data from 2000-2020
+    asos_jan_data <- read_csv("https://drive.google.com/uc?export=download&id=1_zE1kcC7YY083R6rv20sqeN1l2dCdmhi")
+
+    ```
+
+### Lab Instructions
+
+1.  Add a third-level header called "Flood Risk at Bolin Creek" and a new code chunk below the header. In this code chunk you should:
+
+    -   Create a descriptive statistics table for daily water height at the Bolin Creek USGS station
+    -   Calculate the empirical probability of a "flood risk day" at Bolin Creek. A flood risk day is defined as a day where the water height is more than 1ft higher than the median of daily height for the period of records (2015-2025).
+    -   Use this empirical probability to determine the most likely number of days of flood risk over a 25 day period.
+    -   Calculate the cumulative probability of having more than 3 flood risk days over a period of 25 days.
+
+2.  Below this code chunk, write 1-2 paragraphs that address the following
+
+    -   Explain in plain language what the empirical probability of a flood risk day represents
+        -   What does this probability tell you about how often flood risk occurs at Bolin Creek?
+    -   Describe the output of the binomial calculation and explains which number of flood risk days is most likely in a 25-day period and why this makes sense given the empirical probability
+    -   Interpret the cumulative probability of having more than 3 flood risk days in 25 days and explain what this means in terms of real-world flood risk.
+
+3.  Add a third-level header called "Low Temperature Probabilities in NC" and add a new code chunk below the header. In this code chunk you should:
+
+    -   Use the normal distribution to calculate the probability (for each ASOS station) of having a January day with a maximum temperature below 40 degrees F.
+    -   Create a probability map for the full state
+
+4.  Below this code chunk, write 1-2 paragraphs that address the following:
+
+    -   Are there areas of the state with particularly high or low probabilities? What might explain these differences?
+
+    -   How could these patterns inform planning or preparedness for cold weather events?
+
+## Lab 5
+
+### Overview
+
+In the [**Estimation with Sampling**](https://jucardwell.github.io/quant_methods/estimation_sampling.html) tutorial we learned about how to make point and interval estimations of means and proportions from samples of a population.
+
+In this lab, you will practice calculating point and interval estimations from a simulated simple random sample generated from the [Behavioral Risk Factor Surveillance System 2023](https://www.cdc.gov/brfss/index.html) data. This sample represents the population of the United States and explores various health-related behaviors and outcomes. Each row represents an individual's responses to the survey.
+
+The variables in the dataset are:
+
+| Variable | Description                                                |
+|----------|------------------------------------------------------------|
+| physhlth | Number of days of poor physical health in the last 30 days |
+| menthlth | Number of days of poor mental health in the last 30 days   |
+| x.state  | state FIPS code                                            |
+| exerany2 | Any exercise in the last 30 days (1= yes, 0= no)           |
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
+
+### Specifications
+
+This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+
+| Specification |
+|----|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
+| **Descriptive Statistics**: Student creates a descriptive statistics table and non-map graphic for the three variables. Written interpretation describes distribution and demonstrates understanding of the results. |
+| **Countrywide Estimates**: Student calculates a point estimate and confidence interval for the three variables of interest for the entire country. Written interpretation describes the estimates and relates the estimates to conclusions about the full population. |
+| **Statewide Estimates:** Student calculates a point estimate and confidence interval for the three variables of interest for each state and maps the results. Written interpretation describes variability between states in terms of estimates and confidence interval sizes, as well as spatial patterns. |
+
+### Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab5.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    #load libraries
+    library(tidyverse)
+    library(tmap)
+    library(sf)
+    library(tigris)
+
+    #BRFSS sample from 2023
+    brfss_sample <- read_csv("https://drive.google.com/uc?export=download&id=11rKXmplEk0dcvi7lzEQ0OUrXDrnvK4MR") |> mutate(x.state = str_pad(as.character(x.state), width = 2, side = "left", pad = "0"))
+
+    ```
+
+3.  Add a third-level header called "Descriptive Statistics" and a new code chunk below the header. In this code chunk you should:
+
+    -   Create a descriptive statistics table each of the three variables (not including state) in the dataset.
+    -   Create one non-map graphic for each of the three variables.
+
+4.  Below this code chunk, write a few sentences the characteristics of the sample distribution for each of the variables.
+
+5.  Add a third-level header called "Countrywide Estimates" and add a new code chunk below the header. In this code chunk you should:
+
+    -   Calculate (at a 95% confidence level) the point estimation and confidence interval for each of the three variables.
+
+6.  Below this code chunk, write a few sentences that describe the values and what this tells us about the values of the population.
+
+7.  Add a third-level header called "Statewide Estimates and Mapping" and add a new code chunk below the header. In this code chunk you should:
+
+    -   Calculate (at a 95% confidence level) the point estimation and confidence interval for each of the three variables for **each state (there will be two missing states)**. Also calculate the size of the confidence interval for each state
+
+    -   Add the following code to join your dataset to a spatial boundary file
+
+        ```{r, eval = F}
+        #get just continental US for mapping purposes
+        state_boundaries <- states() |> filter(!(GEOID %in% c("15", "02","60", "66", "69", "72", "78")))
+
+        #add state data to state boundaries
+        spatial_data <- state_boundaries |> left_join(YOUR_AGGREGATED_STATE_DATASET, join_by("GEOID" == "x.state"))
+        ```
+
+    -   Create a map of one of the variables. Also create a map of the size of the confidence interval per state
+
+8.  Below this code chunk, write a few sentence that compare the state estimates and the size of their confidence intervals. Explain why some states might have smaller or larger intervals. Also describe any spatial patterns that you see in the means or the size of the confidence intervals.

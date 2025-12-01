@@ -196,8 +196,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability and Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./clt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estimation_sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimation in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesis_testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./autocorrelation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./labs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Labs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Labs</span></span></a>
   </div>
 </li>
     </ul>
@@ -356,23 +386,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ruca_code) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())  <span class="sc">|&gt;</span>  <span class="fu">gt</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="mduxfnkfit" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mduxfnkfit table {
+<div id="tgwtantqcm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tgwtantqcm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mduxfnkfit thead, #mduxfnkfit tbody, #mduxfnkfit tfoot, #mduxfnkfit tr, #mduxfnkfit td, #mduxfnkfit th {
+#tgwtantqcm thead, #tgwtantqcm tbody, #tgwtantqcm tfoot, #tgwtantqcm tr, #tgwtantqcm td, #tgwtantqcm th {
   border-style: none;
 }
 
-#mduxfnkfit p {
+#tgwtantqcm p {
   margin: 0;
   padding: 0;
 }
 
-#mduxfnkfit .gt_table {
+#tgwtantqcm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -398,12 +428,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_caption {
+#tgwtantqcm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mduxfnkfit .gt_title {
+#tgwtantqcm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -415,7 +445,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#mduxfnkfit .gt_subtitle {
+#tgwtantqcm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -427,7 +457,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#mduxfnkfit .gt_heading {
+#tgwtantqcm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -439,13 +469,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_bottom_border {
+#tgwtantqcm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_col_headings {
+#tgwtantqcm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -460,7 +490,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_col_heading {
+#tgwtantqcm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -480,7 +510,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#mduxfnkfit .gt_column_spanner_outer {
+#tgwtantqcm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -492,15 +522,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#mduxfnkfit .gt_column_spanner_outer:first-child {
+#tgwtantqcm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mduxfnkfit .gt_column_spanner_outer:last-child {
+#tgwtantqcm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mduxfnkfit .gt_column_spanner {
+#tgwtantqcm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -512,11 +542,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#mduxfnkfit .gt_spanner_row {
+#tgwtantqcm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mduxfnkfit .gt_group_heading {
+#tgwtantqcm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -542,7 +572,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#mduxfnkfit .gt_empty_group_heading {
+#tgwtantqcm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -557,15 +587,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#mduxfnkfit .gt_from_md > :first-child {
+#tgwtantqcm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mduxfnkfit .gt_from_md > :last-child {
+#tgwtantqcm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mduxfnkfit .gt_row {
+#tgwtantqcm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -584,7 +614,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#mduxfnkfit .gt_stub {
+#tgwtantqcm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -597,7 +627,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#mduxfnkfit .gt_stub_row_group {
+#tgwtantqcm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -611,15 +641,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#mduxfnkfit .gt_row_group_first td {
+#tgwtantqcm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mduxfnkfit .gt_row_group_first th {
+#tgwtantqcm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mduxfnkfit .gt_summary_row {
+#tgwtantqcm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -629,16 +659,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#mduxfnkfit .gt_first_summary_row {
+#tgwtantqcm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_first_summary_row.thick {
+#tgwtantqcm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mduxfnkfit .gt_last_summary_row {
+#tgwtantqcm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -648,7 +678,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_grand_summary_row {
+#tgwtantqcm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -658,7 +688,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#mduxfnkfit .gt_first_grand_summary_row {
+#tgwtantqcm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -668,7 +698,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_last_grand_summary_row_top {
+#tgwtantqcm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -678,11 +708,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_striped {
+#tgwtantqcm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mduxfnkfit .gt_table_body {
+#tgwtantqcm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -691,7 +721,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_footnotes {
+#tgwtantqcm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -705,7 +735,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_footnote {
+#tgwtantqcm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -714,7 +744,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#mduxfnkfit .gt_sourcenotes {
+#tgwtantqcm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -728,7 +758,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#mduxfnkfit .gt_sourcenote {
+#tgwtantqcm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -736,72 +766,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#mduxfnkfit .gt_left {
+#tgwtantqcm .gt_left {
   text-align: left;
 }
 
-#mduxfnkfit .gt_center {
+#tgwtantqcm .gt_center {
   text-align: center;
 }
 
-#mduxfnkfit .gt_right {
+#tgwtantqcm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mduxfnkfit .gt_font_normal {
+#tgwtantqcm .gt_font_normal {
   font-weight: normal;
 }
 
-#mduxfnkfit .gt_font_bold {
+#tgwtantqcm .gt_font_bold {
   font-weight: bold;
 }
 
-#mduxfnkfit .gt_font_italic {
+#tgwtantqcm .gt_font_italic {
   font-style: italic;
 }
 
-#mduxfnkfit .gt_super {
+#tgwtantqcm .gt_super {
   font-size: 65%;
 }
 
-#mduxfnkfit .gt_footnote_marks {
+#tgwtantqcm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mduxfnkfit .gt_asterisk {
+#tgwtantqcm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mduxfnkfit .gt_indent_1 {
+#tgwtantqcm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mduxfnkfit .gt_indent_2 {
+#tgwtantqcm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mduxfnkfit .gt_indent_3 {
+#tgwtantqcm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mduxfnkfit .gt_indent_4 {
+#tgwtantqcm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mduxfnkfit .gt_indent_5 {
+#tgwtantqcm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mduxfnkfit .katex-display {
+#tgwtantqcm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mduxfnkfit div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tgwtantqcm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -943,23 +973,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span></span>
 <span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="yfxxswfozx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yfxxswfozx table {
+<div id="iwooazfhqe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iwooazfhqe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yfxxswfozx thead, #yfxxswfozx tbody, #yfxxswfozx tfoot, #yfxxswfozx tr, #yfxxswfozx td, #yfxxswfozx th {
+#iwooazfhqe thead, #iwooazfhqe tbody, #iwooazfhqe tfoot, #iwooazfhqe tr, #iwooazfhqe td, #iwooazfhqe th {
   border-style: none;
 }
 
-#yfxxswfozx p {
+#iwooazfhqe p {
   margin: 0;
   padding: 0;
 }
 
-#yfxxswfozx .gt_table {
+#iwooazfhqe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -985,12 +1015,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_caption {
+#iwooazfhqe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yfxxswfozx .gt_title {
+#iwooazfhqe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1002,7 +1032,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#yfxxswfozx .gt_subtitle {
+#iwooazfhqe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1014,7 +1044,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#yfxxswfozx .gt_heading {
+#iwooazfhqe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1026,13 +1056,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_bottom_border {
+#iwooazfhqe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_col_headings {
+#iwooazfhqe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1047,7 +1077,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_col_heading {
+#iwooazfhqe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1067,7 +1097,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#yfxxswfozx .gt_column_spanner_outer {
+#iwooazfhqe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1079,15 +1109,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#yfxxswfozx .gt_column_spanner_outer:first-child {
+#iwooazfhqe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yfxxswfozx .gt_column_spanner_outer:last-child {
+#iwooazfhqe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yfxxswfozx .gt_column_spanner {
+#iwooazfhqe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1099,11 +1129,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#yfxxswfozx .gt_spanner_row {
+#iwooazfhqe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yfxxswfozx .gt_group_heading {
+#iwooazfhqe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1129,7 +1159,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#yfxxswfozx .gt_empty_group_heading {
+#iwooazfhqe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1144,15 +1174,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#yfxxswfozx .gt_from_md > :first-child {
+#iwooazfhqe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yfxxswfozx .gt_from_md > :last-child {
+#iwooazfhqe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yfxxswfozx .gt_row {
+#iwooazfhqe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1171,7 +1201,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#yfxxswfozx .gt_stub {
+#iwooazfhqe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1184,7 +1214,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#yfxxswfozx .gt_stub_row_group {
+#iwooazfhqe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1198,15 +1228,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#yfxxswfozx .gt_row_group_first td {
+#iwooazfhqe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yfxxswfozx .gt_row_group_first th {
+#iwooazfhqe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yfxxswfozx .gt_summary_row {
+#iwooazfhqe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1216,16 +1246,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#yfxxswfozx .gt_first_summary_row {
+#iwooazfhqe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_first_summary_row.thick {
+#iwooazfhqe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yfxxswfozx .gt_last_summary_row {
+#iwooazfhqe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1235,7 +1265,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_grand_summary_row {
+#iwooazfhqe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1245,7 +1275,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#yfxxswfozx .gt_first_grand_summary_row {
+#iwooazfhqe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1255,7 +1285,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_last_grand_summary_row_top {
+#iwooazfhqe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1265,11 +1295,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_striped {
+#iwooazfhqe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yfxxswfozx .gt_table_body {
+#iwooazfhqe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1278,7 +1308,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_footnotes {
+#iwooazfhqe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1292,7 +1322,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_footnote {
+#iwooazfhqe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1301,7 +1331,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#yfxxswfozx .gt_sourcenotes {
+#iwooazfhqe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1315,7 +1345,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#yfxxswfozx .gt_sourcenote {
+#iwooazfhqe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1323,72 +1353,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#yfxxswfozx .gt_left {
+#iwooazfhqe .gt_left {
   text-align: left;
 }
 
-#yfxxswfozx .gt_center {
+#iwooazfhqe .gt_center {
   text-align: center;
 }
 
-#yfxxswfozx .gt_right {
+#iwooazfhqe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yfxxswfozx .gt_font_normal {
+#iwooazfhqe .gt_font_normal {
   font-weight: normal;
 }
 
-#yfxxswfozx .gt_font_bold {
+#iwooazfhqe .gt_font_bold {
   font-weight: bold;
 }
 
-#yfxxswfozx .gt_font_italic {
+#iwooazfhqe .gt_font_italic {
   font-style: italic;
 }
 
-#yfxxswfozx .gt_super {
+#iwooazfhqe .gt_super {
   font-size: 65%;
 }
 
-#yfxxswfozx .gt_footnote_marks {
+#iwooazfhqe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yfxxswfozx .gt_asterisk {
+#iwooazfhqe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yfxxswfozx .gt_indent_1 {
+#iwooazfhqe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yfxxswfozx .gt_indent_2 {
+#iwooazfhqe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yfxxswfozx .gt_indent_3 {
+#iwooazfhqe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yfxxswfozx .gt_indent_4 {
+#iwooazfhqe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yfxxswfozx .gt_indent_5 {
+#iwooazfhqe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yfxxswfozx .katex-display {
+#iwooazfhqe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yfxxswfozx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iwooazfhqe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

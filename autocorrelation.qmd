@@ -1,0 +1,133 @@
+# Spatial Autocorrelation
+
+Tobler's First Law of Geography reminds us that everything is related to everything else, but near things are more related than distant things. Spatial autocorrelation describes how a variable is correlated with itself across geographic space. In other words, spatial autocorrelation can tell us *how* related near things are to each other in our dataset.
+
+Quantifying autocorrelation is useful because it helps us understand the spatial pattern/structure of our data, which helps us in generating hypotheses about the processes that generate the pattern. In addition, spatial autocorrelation allows us to understand how spatially dependent our variable is. Spatial dependence can be a serious problem for applying traditional statistical methods because these methods generally have an assumption of independence. Measuring the strength of spatial dependence helps us evaluate how serious this issue is and decide whether we need to adjust our approach- for example, by modifying our sampling design, using methods that account for spatial structure, or interpreting results with greater caution.
+
+In this chapter, we will explore autocorrelation in the Median Household Income variable from the 2023 American Community Survey for North Carolina census tracts
+
+**To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.**
+
+## Reading in Data
+
+For this tutorial, you will need to [**manually download the data**](https://drive.google.com/file/d/19awOAZ0s5ywBETUC-YznPP5N5oN15YME/view?usp=sharing) and put it in the same folder that your file is saved in. The `rgeoda` package won't work with streamed data.
+
+```{r, include = F}
+library(rgeoda)
+library(tmap)
+library(tidyverse)
+library(spdep)
+library(sf)
+
+tracts <- geoda_open("clust_acs.shp")
+tracts_sf <- st_read("clust_acs.shp") 
+
+```
+
+```{r, eval=F}
+
+library(rgeoda)
+library(tmap)
+library(tidyverse)
+library(spdep)
+library(sf)
+
+#read in the census tracts dataset using geoda and sf.
+#the sf object is necessary for mapping. Note that the crs 
+#of the dataset is NAD83/ North Carolina, meaning that the units are feet
+tracts <- geoda_open("clust_acs.shp")
+tracts_sf <- st_read("clust_acs.shp") 
+
+```
+
+## Defining Neighbors
+
+In order to quantify spatial autocorrelation, we need to define each observation's "spatial neighborhood" so that we can see how related an observation is to the observations near it. There are many ways to define neighbors, and the decision about what definition to use should reflect the processes you hypothesize might be shaping the spatial pattern. For example, if you are studying the spread of a disease, it may be appropriate to define neighbors based on travel networks or adjacency of regions. If you are examining soil properties, a distance-based neighborhood might better reflect how conditions diffuse across space.
+
+We can explore two different neighborhood definitions using our ACS dataset:
+
+### Distance Threshold
+
+One way to determine neighbors is to set a distance threshold. Any observations within a set distance would be considered a neighbor. For our census tracts, we could set a distance of 3 miles. The code below demonstrates the neighborhood for the census tract that campus is in.
+
+```{r}
+#isolate ch tract
+ch_tract <- tracts_sf |> filter(GEOID == 37135011400)
+
+#get 10 mile radius
+neighborhood_rad <- ch_tract |> st_buffer(15840)
+
+#get neighbors
+neighbors <- st_filter(tracts_sf, neighborhood_rad)
+tm_shape(neighbors) + tm_polygons() + tm_shape(ch_tract) + tm_polygons(fill = "blue")
+```
+
+### Queens Case
+
+The Queens Case neighborhood definition is extremely common in spatial statistics that consider contiguous aerial units (like census tracts). The Queens neighborhood selects neighbors based on any contact (including corners) with the feature of interest. The Queens neighborhood for Chapel Hill would look this this:
+
+```{r}
+queen_neighbors <- tracts_sf |> st_filter(ch_tract, .predicates = st_intersects) 
+
+tm_shape(queen_neighbors) + tm_polygons() + tm_shape(ch_tract) + tm_polygons(fill = "blue")
+```
+
+## Calculating Global Autocorrelation
+
+Moran's I gives an indication of how clustered, random, or dispersed a dataset value is across space. It goes from -1 (perfect dispersion) to 1 (perfect clustering). Let's start by making a basic map of our variable of interest
+
+```{r}
+tm_shape(tracts_sf) + tm_polygons(fill = "med_hh_inc", fill.scale = tm_scale_intervals(style = "fisher"), col_alpha = 0)
+```
+
+**Q1: Just by looking at the values on the map, do you see evidence of a spatial pattern?**
+
+We can formalize this by calculating Moran's I using Queens Case neighbors
+
+```{r}
+nb <- poly2nb(tracts_sf, queen = TRUE) # queen shares point or border
+nbw <- nb2listw(nb, style = "W")
+
+gmoran <- moran.test(tracts_sf$med_hh_inc, nbw)
+gmoran
+
+
+```
+
+Our Moran's I indicates strong clustering (.59) at a highly statistically significant level (very small p-value). Therefore, we now know that, at the global scale, this dataset is clustered.
+
+## Local Indicators of Spatial Autocorrelation (LISA)
+
+While we know that the data is clustered because of our Moran's I value, we don't know where, specifically, these clusters of high and low income are. Local Indicators of Spatial Autocorrelation quantify where statistically significant clusters exist in a dataset
+
+```{r}
+locali<-localmoran_perm(tracts_sf$med_hh_inc, nbw) %>%
+  as_tibble() %>%
+  set_names(c("local_i", "exp_i", "var_i", "z_i", "p_i",
+              "p_i_sim", "pi_sim_folded", "skewness", "kurtosis"))
+
+#bind LISA results
+tracts_sf <- tracts_sf %>%
+  bind_cols(locali)
+
+#Divide into quadrants
+tracts_sf <- tracts_sf %>%
+  mutate(incz =  as.numeric(scale(med_hh_inc)),
+         evratezlag = lag.listw(nbw, incz),
+         lisa_cluster = case_when(
+           p_i >= 0.05 ~ "Not significant",
+           incz > 0 & local_i > 0 ~ "High-high",
+           incz > 0 & local_i < 0 ~ "High-low",
+           incz < 0 & local_i > 0 ~ "Low-low",
+           incz < 0 & local_i < 0 ~ "Low-high"
+         ))
+
+#Map
+tm_shape(tracts_sf) + tm_polygons("lisa_cluster", col_alpha = 0)
+```
+
+**Q2: What is the spatial pattern of clustering in the median household income variable?**
+
+## Mini Challenge
+
+Using the code above as a guide, calculate global and local indicators of spatial autocorrelation for the average commuting time variable and interpret the results.

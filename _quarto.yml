@@ -16,6 +16,11 @@ book:
     - describing_data.qmd
     - tmap.qmd
     - describing_spatial_data.qmd
+    - probability.qmd
+    - clt.qmd
+    - estimation_sampling.qmd
+    - hypothesis_testing.qmd
+    - autocorrelation.qmd
     - labs.qmd
 
 format:

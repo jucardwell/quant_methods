@@ -1,0 +1,140 @@
+# Estimation in Sampling
+
+Because we know from the CLT that repeated sampling of a population will result in a normal distribution of means, we can use the properties of the normal distribution to estimate population parameters from a sample.
+
+There are two types of sample estimations:
+
+1.  **Point Estimation:** With probability sampling, the "best" point estimate for the population mean is the sample mean.
+2.  **Interval Estimation:** Because probability sampling involves some uncertainty, it is unlikely that a point estimation will exactly equal the true population parameter. However, because of the characteristics of the normal distribution, we can calculate the likelihood that a sample statistic is within a certain interval of the population parameter. A confidence interval represents the level of precision associated with the population estimate.
+
+We will use the following dataset:
+
+-   PUMS data for the Chapel Hill Data from the [US Census Bureau](https://www.census.gov/programs-surveys/acs/microdata/access.html)
+
+PUMS data are individual-level, anonymized records from the American Community Survey. They represent a sample of the population and serve as the raw data used to produce ACS summary statistics at aggregated geographic levels, such as block groups and tracts.
+
+For the purposes of calculating confidence intervals, we will treat the PUMS sample as if it were a simple random sample. In reality, PUMS is a complex survey sample with weights and clustering, so the independence assumption of the CLT is not strictly met.
+
+The variables in this dataset are:
+
+-   SERIALNO- unique identifier for each individual
+-   hrs_wrked_per_week- average number of hours worked per week (over the last 12 weeks)
+-   travel_time_to_work- average time commuting to work (one-way)
+-   income- yearly income
+-   public_health_ins- binary indicator for public health insurance (1= public health insurance, 0= no public health insurance)
+
+**To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.**
+
+## Reading in Data
+
+```{r, include=F}
+library(tidyverse)
+library(tmap)
+
+#read in pums data
+ch_pums <- read_csv("https://drive.google.com/uc?export=download&id=1ifsUSH8veyhn8x8gUMo0MGu4VxYWpI9p")
+```
+
+```{r, eval = F}
+library(tidyverse)
+library(tmap)
+
+#read in pums data
+ch_pums <- read_csv("https://drive.google.com/uc?export=download&id=1ifsUSH8veyhn8x8gUMo0MGu4VxYWpI9p")
+
+```
+
+## Calculating Point Estimate and Confidence Interval for Means
+
+To calculate a confidence interval for a mean, we use this formula
+
+$$
+\bar{x} \pm t^* \frac{s}{\sqrt{n}}
+$$
+
+Where $\bar{x}$ is equal to the sample mean (or the point estimate), $t^*$ is the critical t-value, ${s}$ is equal to the sample standard deviation, and ${n}$ is the sample size. We use t distribution for means because we must estimate the population standard deviation and that extra uncertainty makes the sampling distribution wider than the normal curve.
+
+We can "manually" calculate the confidence interval in R.
+
+The script below shows the calculation of the 95% confidence interval (because we're running a two-tail interval, the critical value is .975 for each side) for the average commute to work for the Chapel Hill population.
+
+```{r}
+#calculate mean
+sample_mean <- mean(ch_pums$travel_time_work)
+
+#calculate sample variance
+sample_variance <- sd(ch_pums$travel_time_work)**2
+
+#sample size
+sample_size <- nrow(ch_pums)
+
+#command to get critical value
+t_val <- qt(0.975, df = sample_size - 1)
+
+#calculate lower bound
+confidence_l <- sample_mean - t_val * (sqrt(sample_variance/sample_size))
+#calculate higher bound
+confidence_h <- sample_mean + t_val * (sqrt(sample_variance/sample_size))
+```
+
+From running this script, we learn that the point estimate of the population mean (which is equal to the sample mean) is 11.845. Applying the confidence interval calculation, we know that there is a 95% chance that the true population mean is between 11.42 and 12.27 (or 11.845 +/- .425).
+
+There is also an easy command to calculate point estimates and confidence intervals for means
+
+```{r}
+#t test command (assumes two-tail)
+t.test(ch_pums$travel_time_work, conf.level = 0.95)
+
+```
+
+**Q1. We have a large sample size (6502). What would happen to the confidence interval if we had a smaller sample? You can try it out by artificially changing the sample size in the code above**
+
+**Q2. Rerun the script above using a difference confidence level? How do the results change?**
+
+## Calculating Point Estimate and Confidence Interval for Proportions
+
+We use the following formula to calculate a confidence interval for a proportion.
+
+$$
+\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} 
+$$
+
+Where $\hat{p}$ is the sample proportion (point estimate), $z^*$ is the critical z-value, and $n$ is the sample size. For proportions, the variability is already built into the binomial model, so we do not need to estimate the standard deviation, which is why we can use the z distribution
+
+We can "manually" calculate the confidence interval in R.
+
+The script below shows the calculation of the 95% confidence interval (because we're running a two-tail interval, the critical value is .975 for each side) for the proportion of people who have public health insurance
+
+```{r}
+#people with public health insurance (we can take the sum since it is represented as 1/0 binary)
+total_pop_pub_health <- sum(ch_pums$public_health_ins)
+total_sample_pop <- nrow(ch_pums)
+
+prop_pub_health <- total_pop_pub_health/ total_sample_pop
+
+#get z critical value for two tail confidence 95%
+z_val <- qnorm(0.975)
+
+#lower bound of confidence interval
+confidence_lower <- prop_pub_health - z_val * (sqrt(prop_pub_health * (1 -prop_pub_health)/ total_sample_pop))
+
+#higher bound of confidence interval
+confidence_higher <- prop_pub_health + z_val * (sqrt(prop_pub_health * (1 -prop_pub_health)/ total_sample_pop))
+```
+
+From the code above, we can say that the best point estimate for the proportion of people with public health insurance in Chapel Hill is .172 and that we are 95% confident that the true proportion falls between .163 and .182.
+
+There is also an easy command to calculate point estimates and confidence intervals for proportions
+
+```{r}
+# calculate CI using Wilson method
+prop.test(total_pop_pub_health, total_sample_pop, conf.level = 0.95)
+
+
+```
+
+You should notice a small difference between the CI that we manually calculated and the CI that was automatically calculated. The built-in `prop.test` command in R uses a slightly different calculation, called the **Wilson interval**, which adjusts both the center and the width of the interval to account for the fact that proportions are bounded between 0 and 1, making it more accurate than the Wald method for many sample sizes. Our manual calculation uses the **Wald (textbook) method**, which is simpler but can underestimate or overestimate the true confidence interval in some cases.
+
+## Mini Challenge
+
+Using the code above, calculate the point estimate and the 90% and 95% confidence interval for the two other variables in the pums dataset (hrs_wrked_per_weeek and income)

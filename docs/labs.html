@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Labs – quant_methods</title>
+<title>14&nbsp; Labs – quant_methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./describing_spatial_data.html" rel="prev">
+<link href="./autocorrelation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./labs.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Labs</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./labs.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Labs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,14 +183,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./tmap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tmap Interlude</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./describing_spatial_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability and Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./clt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estimation_sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimation in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesis_testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./autocorrelation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./labs.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Labs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Labs</span></span></a>
   </div>
 </li>
     </ul>
@@ -203,17 +239,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#lab-3" id="toc-lab-3" class="nav-link active" data-scroll-target="#lab-3"><span class="header-section-number">8.1</span> Lab 3</a>
+  <li><a href="#lab-2" id="toc-lab-2" class="nav-link active" data-scroll-target="#lab-2"><span class="header-section-number">14.1</span> Lab 2</a>
   <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">8.1.1</span> Overview</a></li>
-  <li><a href="#specifications" id="toc-specifications" class="nav-link" data-scroll-target="#specifications"><span class="header-section-number">8.1.2</span> Specifications</a></li>
-  <li><a href="#lab-instructions" id="toc-lab-instructions" class="nav-link" data-scroll-target="#lab-instructions"><span class="header-section-number">8.1.3</span> Lab Instructions</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">14.1.1</span> Overview</a></li>
+  <li><a href="#specifications" id="toc-specifications" class="nav-link" data-scroll-target="#specifications"><span class="header-section-number">14.1.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions" id="toc-lab-instructions" class="nav-link" data-scroll-target="#lab-instructions"><span class="header-section-number">14.1.3</span> Lab Instructions</a></li>
   </ul></li>
-  <li><a href="#lab-4" id="toc-lab-4" class="nav-link" data-scroll-target="#lab-4"><span class="header-section-number">8.2</span> Lab 4</a>
+  <li><a href="#lab-3" id="toc-lab-3" class="nav-link" data-scroll-target="#lab-3"><span class="header-section-number">14.2</span> Lab 3</a>
   <ul class="collapse">
-  <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1"><span class="header-section-number">8.2.1</span> Overview</a></li>
-  <li><a href="#specifications-1" id="toc-specifications-1" class="nav-link" data-scroll-target="#specifications-1"><span class="header-section-number">8.2.2</span> Specifications</a></li>
-  <li><a href="#lab-instructions-1" id="toc-lab-instructions-1" class="nav-link" data-scroll-target="#lab-instructions-1"><span class="header-section-number">8.2.3</span> Lab Instructions</a></li>
+  <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1"><span class="header-section-number">14.2.1</span> Overview</a></li>
+  <li><a href="#specifications-1" id="toc-specifications-1" class="nav-link" data-scroll-target="#specifications-1"><span class="header-section-number">14.2.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions-1" id="toc-lab-instructions-1" class="nav-link" data-scroll-target="#lab-instructions-1"><span class="header-section-number">14.2.3</span> Lab Instructions</a></li>
+  </ul></li>
+  <li><a href="#lab-4" id="toc-lab-4" class="nav-link" data-scroll-target="#lab-4"><span class="header-section-number">14.3</span> Lab 4</a>
+  <ul class="collapse">
+  <li><a href="#overview-2" id="toc-overview-2" class="nav-link" data-scroll-target="#overview-2"><span class="header-section-number">14.3.1</span> Overview</a></li>
+  <li><a href="#specifications-2" id="toc-specifications-2" class="nav-link" data-scroll-target="#specifications-2"><span class="header-section-number">14.3.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions-2" id="toc-lab-instructions-2" class="nav-link" data-scroll-target="#lab-instructions-2"><span class="header-section-number">14.3.3</span> Lab Instructions</a></li>
+  </ul></li>
+  <li><a href="#lab-5" id="toc-lab-5" class="nav-link" data-scroll-target="#lab-5"><span class="header-section-number">14.4</span> Lab 5</a>
+  <ul class="collapse">
+  <li><a href="#overview-3" id="toc-overview-3" class="nav-link" data-scroll-target="#overview-3"><span class="header-section-number">14.4.1</span> Overview</a></li>
+  <li><a href="#specifications-3" id="toc-specifications-3" class="nav-link" data-scroll-target="#specifications-3"><span class="header-section-number">14.4.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions-3" id="toc-lab-instructions-3" class="nav-link" data-scroll-target="#lab-instructions-3"><span class="header-section-number">14.4.3</span> Lab Instructions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -223,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Labs</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Labs</span></h1>
 </div>
 
 
@@ -240,17 +288,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="lab-3" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="lab-3"><span class="header-section-number">8.1</span> Lab 3</h2>
-<section id="overview" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">8.1.1</span> Overview</h3>
+<section id="lab-2" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="lab-2"><span class="header-section-number">14.1</span> Lab 2</h2>
+<section id="overview" class="level3" data-number="14.1.1">
+<h3 data-number="14.1.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">14.1.1</span> Overview</h3>
 <p>In the <a href="https://jucardwell.github.io/quant_methods/describing_data.html"><strong>Describing Data</strong></a> tutorial we worked with spatial datasets describing the rurality of North Carolina census tracts, summer temperatures across the United States, and a demographic variable measured at the census tract level in North Carolina. Spatial data is often aggregated to specific geographic units (for instance, to protect individual privacy or simplify a complex dataset). This aggregation influences the descriptive statistics we calculate.</p>
 <p>In this lab, you will examine demographic and climate data at a different level of spatial aggregation and observe how the descriptive statistics change as a result (<strong>remember the underlying data values are not changing, only the geographic units used to summarize them</strong>). You will also explore an alternative way of defining “rural” and compare how this definition shapes your interpretation of the data.</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands</em></p>
 </section>
-<section id="specifications" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="specifications"><span class="header-section-number">8.1.2</span> Specifications</h3>
-<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description">Concept 3 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<section id="specifications" class="level3" data-number="14.1.2">
+<h3 data-number="14.1.2" class="anchored" data-anchor-id="specifications"><span class="header-section-number">14.1.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description">Concept 2 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 100%">
@@ -262,27 +310,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>HTML and RMD versions the R Markdown file have been submitted.</td>
+<td>Student submits HTML and RMD versions the R Markdown file.</td>
 </tr>
 <tr class="even">
-<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
+<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood.</td>
 </tr>
 <tr class="odd">
-<td>Describing Rurality: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation</td>
+<td><strong>Describing Rurality:</strong> Student produces a descriptive statistics table, a bar chart, and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions</td>
 </tr>
 <tr class="even">
-<td>Describing Climate: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation</td>
+<td><strong>Describing Climate:</strong> Student produces descriptive statistics, two visualizations, and a map. Written interpretations demonstrate understanding of central tendency, dispersion, spatial patterns, and aggregation effects</td>
 </tr>
 <tr class="odd">
-<td>Describing Demographics: Analysis demonstrates competency through correct descriptive statistics, appropriate visualizations, a map, and an accurate written interpretation</td>
+<td><strong>Describing Demographics:</strong> Student produces descriptive statistics, two visualizations, and a map. Written interpretation demonstrates understanding of central tendency, dispersion, spatial patterns, and differences across aggregation levels.</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="lab-instructions" class="level3" data-number="8.1.3">
-<h3 data-number="8.1.3" class="anchored" data-anchor-id="lab-instructions"><span class="header-section-number">8.1.3</span> Lab Instructions</h3>
+<section id="lab-instructions" class="level3" data-number="14.1.3">
+<h3 data-number="14.1.3" class="anchored" data-anchor-id="lab-instructions"><span class="header-section-number">14.1.3</span> Lab Instructions</h3>
 <ol type="1">
-<li><p>Create a new .Rmd named “LASTNAME_lab3.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Create a new .Rmd named “LASTNAME_lab2.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load necessary libraries</span></span>
@@ -342,20 +390,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>How these differences may relate to the scale or aggregation of the data</li>
 </ul></li>
 </ul></li>
-<li><p>Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document</p></li>
+<li><p>Knit your .Rmd and make sure the formatting and organization are clear in the knitted .html document</p></li>
 </ol>
 </section>
 </section>
-<section id="lab-4" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="lab-4"><span class="header-section-number">8.2</span> Lab 4</h2>
-<section id="overview-1" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="overview-1"><span class="header-section-number">8.2.1</span> Overview</h3>
+<section id="lab-3" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="lab-3"><span class="header-section-number">14.2</span> Lab 3</h2>
+<section id="overview-1" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="overview-1"><span class="header-section-number">14.2.1</span> Overview</h3>
 <p>In the <a href="https://jucardwell.github.io/quant_methods/describing_spatial_data.html"><strong>Describing Spatial Data</strong></a> tutorial we learned how to expand our descriptive statistics toolkit to include spatial descriptive statistics.</p>
-<p>In this lab, you will practice calculating spatial descriptive statistics a dataset representing the location of wind turbines in the continental US (<a href="https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx">variable names are here</a>) and covid cases and deaths by US county centroid on April 1, 2020 and July 1, 2020.</p>
+<p>In this lab, you will practice calculating spatial descriptive statistics on a dataset representing the location of wind turbines in the continental US (<a href="https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx">variable names are here</a>) and Covid-19 cases and deaths by US county centroid on April 1, 2020 and July 1, 2020.</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands</em></p>
 </section>
-<section id="specifications-1" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="specifications-1"><span class="header-section-number">8.2.2</span> Specifications</h3>
+<section id="specifications-1" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="specifications-1"><span class="header-section-number">14.2.2</span> Specifications</h3>
 <p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description">Concept 3 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
@@ -368,24 +416,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>HTML and RMD versions the R Markdown file have been submitted.</td>
+<td>Student submits HTML and RMD versions the R Markdown file.</td>
 </tr>
 <tr class="even">
-<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
+<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood.</td>
 </tr>
 <tr class="odd">
-<td>Describing Covid: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation</td>
+<td><strong>Describing Covid:</strong> Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful.</td>
 </tr>
 <tr class="even">
-<td>Describing Wind Turbines: Analysis demonstrates competency through correct descriptive statistics, appropriate mapping and accurate written interpretation</td>
+<td><strong>Describing Wind Turbines:</strong> Student produces a descriptive statistics table and one non-map visualization, calculates spatial descriptive statistics (mean center, standard deviational ellipse, weighted mean center), and creates a map with manual legend entries. Written interpretation demonstrates understanding of the variable’s distribution and spatial patterns.</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="lab-instructions-1" class="level3" data-number="8.2.3">
-<h3 data-number="8.2.3" class="anchored" data-anchor-id="lab-instructions-1"><span class="header-section-number">8.2.3</span> Lab Instructions</h3>
+<section id="lab-instructions-1" class="level3" data-number="14.2.3">
+<h3 data-number="14.2.3" class="anchored" data-anchor-id="lab-instructions-1"><span class="header-section-number">14.2.3</span> Lab Instructions</h3>
 <ol type="1">
-<li><p>Create a new .Rmd named “LASTNAME_lab4.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Create a new .Rmd named “LASTNAME_lab3.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load necessary libraries</span></span>
@@ -413,8 +461,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Create a descriptive statistics table of cases and deaths for each dataset</li>
 <li>Compute a weighted mean for cases and deaths on each date</li>
-<li>Create an map for the April 2020 data that symbolizes <code>cases</code> by county, as well as the mean center for <code>cases</code> AND <code>deaths</code>. Make sure that you add manual legend entries for the mean center of cases and deaths.</li>
-<li>Create an map for the July 2020 data that symbolizes <code>cases</code> by county, as well as the mean center for <code>cases</code> AND <code>deaths</code>. Make sure that you add manual legend entries for the mean center of cases and deaths.</li>
+<li>Create a map for the April 2020 data that symbolizes <code>cases</code> by county, as well as the mean center for <code>cases</code> AND <code>deaths</code>. Make sure that you add manual legend entries for the mean center of cases and deaths.</li>
+<li>Create a map for the July 2020 data that symbolizes <code>cases</code> by county, as well as the mean center for <code>cases</code> AND <code>deaths</code>. Make sure that you add manual legend entries for the mean center of cases and deaths.</li>
 </ul></li>
 <li><p>Below your chunk, you should write 1-2 paragraphs that do the following:</p>
 <ul>
@@ -433,9 +481,207 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Below your chunk, you should write 1-2 paragraphs that do the following:</p>
 <ul>
 <li>Summarize what the descriptive statistics and non-map visualization reveal about the distribution of your variable</li>
-<li>Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of wind turbines and your variable of intereat</li>
+<li>Describe what the maps (including the spatial descriptive statistics) reveal about the spatial distribution of wind turbines and your variable of interest</li>
 </ul></li>
-<li><p>Knit your .Rmd and make sure the formatting is and organization is clear in the knitted .html document</p></li>
+<li><p>Knit your .Rmd and make sure the formatting and organization are clear in the knitted .html document</p></li>
+</ol>
+</section>
+</section>
+<section id="lab-4" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="lab-4"><span class="header-section-number">14.3</span> Lab 4</h2>
+<section id="overview-2" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="overview-2"><span class="header-section-number">14.3.1</span> Overview</h3>
+<p>In the <a href="https://jucardwell.github.io/quant_methods/probability.html"><strong>Probability</strong></a> tutorial we learned about calculating empirical probability using historical data and applying the binomial and normal probability distributions.</p>
+<p>In this lab, you will practice applying the binomial probability distribution using daily water height data from the <a href="https://waterdata.usgs.gov/nwis/rt">USGS water gauge in Bolin Creek from 2015-2025</a>. You will also make a probability map of the probability of low January temperatures across North Carolina by applying the normal distribution.</p>
+<p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
+</section>
+<section id="specifications-2" class="level3" data-number="14.3.2">
+<h3 data-number="14.3.2" class="anchored" data-anchor-id="specifications-2"><span class="header-section-number">14.3.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description">Concept 4 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTML and RMD versions the R Markdown file have been submitted.</td>
+</tr>
+<tr class="even">
+<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
+</tr>
+<tr class="odd">
+<td><strong>Flood Risk at Bolin Creek</strong>: Student creates a descriptive statistics table for daily water height, calculates empirical probability of a flood risk day, estimates the most likely number of flood risk days over 25 days, and computes cumulative probability of more than 3 flood risk days. Written interpretation demonstrates understanding of the results.</td>
+</tr>
+<tr class="even">
+<td><strong>Low Temperature Probabilities Across NC</strong>: Student calculates the probability of January days with maximum temperature below 30°F at each ASOS station and produces a probability map for the state. Written interpretation demonstrates understanding of the probabilities and spatial patterns.</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li><p>Create a new .Rmd named “LASTNAME_lab4.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#bolin creek daily data from 2015-2025</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>bolin_creek_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1eEzriJ5XzR-aS74nJmyiQFVrmV4T3cel"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#NC asos station data from 2000-2020</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>asos_jan_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1_zE1kcC7YY083R6rv20sqeN1l2dCdmhi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ol>
+</section>
+<section id="lab-instructions-2" class="level3" data-number="14.3.3">
+<h3 data-number="14.3.3" class="anchored" data-anchor-id="lab-instructions-2"><span class="header-section-number">14.3.3</span> Lab Instructions</h3>
+<ol type="1">
+<li><p>Add a third-level header called “Flood Risk at Bolin Creek” and a new code chunk below the header. In this code chunk you should:</p>
+<ul>
+<li>Create a descriptive statistics table for daily water height at the Bolin Creek USGS station</li>
+<li>Calculate the empirical probability of a “flood risk day” at Bolin Creek. A flood risk day is defined as a day where the water height is more than 1ft higher than the median of daily height for the period of records (2015-2025).</li>
+<li>Use this empirical probability to determine the most likely number of days of flood risk over a 25 day period.</li>
+<li>Calculate the cumulative probability of having more than 3 flood risk days over a period of 25 days.</li>
+</ul></li>
+<li><p>Below this code chunk, write 1-2 paragraphs that address the following</p>
+<ul>
+<li>Explain in plain language what the empirical probability of a flood risk day represents
+<ul>
+<li>What does this probability tell you about how often flood risk occurs at Bolin Creek?</li>
+</ul></li>
+<li>Describe the output of the binomial calculation and explains which number of flood risk days is most likely in a 25-day period and why this makes sense given the empirical probability</li>
+<li>Interpret the cumulative probability of having more than 3 flood risk days in 25 days and explain what this means in terms of real-world flood risk.</li>
+</ul></li>
+<li><p>Add a third-level header called “Low Temperature Probabilities in NC” and add a new code chunk below the header. In this code chunk you should:</p>
+<ul>
+<li>Use the normal distribution to calculate the probability (for each ASOS station) of having a January day with a maximum temperature below 40 degrees F.</li>
+<li>Create a probability map for the full state</li>
+</ul></li>
+<li><p>Below this code chunk, write 1-2 paragraphs that address the following:</p>
+<ul>
+<li><p>Are there areas of the state with particularly high or low probabilities? What might explain these differences?</p></li>
+<li><p>How could these patterns inform planning or preparedness for cold weather events?</p></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="lab-5" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="lab-5"><span class="header-section-number">14.4</span> Lab 5</h2>
+<section id="overview-3" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="overview-3"><span class="header-section-number">14.4.1</span> Overview</h3>
+<p>In the <a href="https://jucardwell.github.io/quant_methods/estimation_sampling.html"><strong>Estimation with Sampling</strong></a> tutorial we learned about how to make point and interval estimations of means and proportions from samples of a population.</p>
+<p>In this lab, you will practice calculating point and interval estimations from a simulated simple random sample generated from the <a href="https://www.cdc.gov/brfss/index.html">Behavioral Risk Factor Surveillance System 2023</a> data. This sample represents the population of the United States and explores various health-related behaviors and outcomes. Each row represents an individual’s responses to the survey.</p>
+<p>The variables in the dataset are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>physhlth</td>
+<td>Number of days of poor physical health in the last 30 days</td>
+</tr>
+<tr class="even">
+<td>menthlth</td>
+<td>Number of days of poor mental health in the last 30 days</td>
+</tr>
+<tr class="odd">
+<td>x.state</td>
+<td>state FIPS code</td>
+</tr>
+<tr class="even">
+<td>exerany2</td>
+<td>Any exercise in the last 30 days (1= yes, 0= no)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
+</section>
+<section id="specifications-3" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="specifications-3"><span class="header-section-number">14.4.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description">Concept 5 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTML and RMD versions the R Markdown file have been submitted.</td>
+</tr>
+<tr class="even">
+<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
+</tr>
+<tr class="odd">
+<td><strong>Descriptive Statistics</strong>: Student creates a descriptive statistics table and non-map graphic for the three variables. Written interpretation describes distribution and demonstrates understanding of the results.</td>
+</tr>
+<tr class="even">
+<td><strong>Countrywide Estimates</strong>: Student calculates a point estimate and confidence interval for the three variables of interest for the entire country. Written interpretation describes the estimates and relates the estimates to conclusions about the full population.</td>
+</tr>
+<tr class="odd">
+<td><strong>Statewide Estimates:</strong> Student calculates a point estimate and confidence interval for the three variables of interest for each state and maps the results. Written interpretation describes variability between states in terms of estimates and confidence interval sizes, as well as spatial patterns.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lab-instructions-3" class="level3" data-number="14.4.3">
+<h3 data-number="14.4.3" class="anchored" data-anchor-id="lab-instructions-3"><span class="header-section-number">14.4.3</span> Lab Instructions</h3>
+<ol type="1">
+<li><p>Create a new .Rmd named “LASTNAME_lab5.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#BRFSS sample from 2023</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>brfss_sample <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=11rKXmplEk0dcvi7lzEQ0OUrXDrnvK4MR"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">x.state =</span> <span class="fu">str_pad</span>(<span class="fu">as.character</span>(x.state), <span class="at">width =</span> <span class="dv">2</span>, <span class="at">side =</span> <span class="st">"left"</span>, <span class="at">pad =</span> <span class="st">"0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Add a third-level header called “Descriptive Statistics” and a new code chunk below the header. In this code chunk you should:</p>
+<ul>
+<li>Create a descriptive statistics table each of the three variables (not including state) in the dataset.</li>
+<li>Create one non-map graphic for each of the three variables.</li>
+</ul></li>
+<li><p>Below this code chunk, write a few sentences the characteristics of the sample distribution for each of the variables.</p></li>
+<li><p>Add a third-level header called “Countrywide Estimates” and add a new code chunk below the header. In this code chunk you should:</p>
+<ul>
+<li>Calculate (at a 95% confidence level) the point estimation and confidence interval for each of the three variables.</li>
+</ul></li>
+<li><p>Below this code chunk, write a few sentences that describe the values and what this tells us about the values of the population.</p></li>
+<li><p>Add a third-level header called “Statewide Estimates and Mapping” and add a new code chunk below the header. In this code chunk you should:</p>
+<ul>
+<li><p>Calculate (at a 95% confidence level) the point estimation and confidence interval for each of the three variables for <strong>each state (there will be two missing states)</strong>. Also calculate the size of the confidence interval for each state</p></li>
+<li><p>Add the following code to join your dataset to a spatial boundary file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get just continental US for mapping purposes</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>state_boundaries <span class="ot">&lt;-</span> <span class="fu">states</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(GEOID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"15"</span>, <span class="st">"02"</span>,<span class="st">"60"</span>, <span class="st">"66"</span>, <span class="st">"69"</span>, <span class="st">"72"</span>, <span class="st">"78"</span>)))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#add state data to state boundaries</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>spatial_data <span class="ot">&lt;-</span> state_boundaries <span class="sc">|&gt;</span> <span class="fu">left_join</span>(YOUR_AGGREGATED_STATE_DATASET, <span class="fu">join_by</span>(<span class="st">"GEOID"</span> <span class="sc">==</span> <span class="st">"x.state"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Create a map of one of the variables. Also create a map of the size of the confidence interval per state</p></li>
+</ul></li>
+<li><p>Below this code chunk, write a few sentence that compare the state estimates and the size of their confidence intervals. Explain why some states might have smaller or larger intervals. Also describe any spatial patterns that you see in the means or the size of the confidence intervals.</p></li>
 </ol>
 
 
@@ -862,8 +1108,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./describing_spatial_data.html" class="pagination-link" aria-label="Describing Spatial Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span>
+      <a href="./autocorrelation.html" class="pagination-link" aria-label="Spatial Autocorrelation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
