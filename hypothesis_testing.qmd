@@ -1,5 +1,11 @@
 # Hypothesis Testing
 
+In this chapter, we will practice common hypothesis testing methods. Hypothesis testing is a statistical approach used to evaluate a claim about a population based on sample data, often comparing differences between groups. This process helps us determine whether observed results are likely due to random chance or reflect a real effect. The p-value of a hypothesis test represents the probability of observing the data (or something more extreme) if the null hypothesis is true. A small p-value suggests that the observed result is unlikely under the null hypothesis.
+
+Most hypothesis tests assume that the sample data is independent, meaning that observations do not have any impact on other observations. Because of the nature of spatial data, we know that this is not true. Because spatial autocorrelation violates the independence assumption of standard hypothesis tests, using these tests can lead to biased test results, underestimated variability, or inflated Type I error rates.
+
+In this chapter, we will practice regular statistical tests, keeping in mind that these tests may not fully account for spatial dependence.
+
 We will use the following spatial datasets:
 
 -   A sample of mean summer temperature values across North Carolina from 2000-2010 and 2010-2020 [TerraClimate](https://www.nature.com/articles/sdata2017191).
@@ -13,14 +19,15 @@ We will use the following spatial datasets:
 library(tidyverse)
 library(tmap)
 library(sf)
+library(car) 
 
 summer_temp <- st_read("https://drive.google.com/uc?export=download&id=1byhsYTBnqegfPGsZWtAHH4pZgGbSTr_s")
 
 acs <- st_read("https://drive.google.com/uc?export=download&id=1ffMbuX4ZQ8vuZK9uwFOBe61bEbKfKg1j") |> mutate(rural = ifelse(rural == 1, "rural", "non-rural"), low_inc = ifelse(low_inc == 1, "low-income", "high-income"), high_commute = ifelse(high_commute == 1, "high commute", "low commute"))
 
-pm <- st_read("https://drive.google.com/uc?export=download&id=1zf1xk-7pOoSnEwGvGsNVa6XejFoPFzdJ")
+pm <- st_read("https://drive.google.com/uc?export=download&id=1zf1xk-7pOoSnEwGvGsNVa6XejFoPFzdJ") |> mutate(rural = ifelse(rural == 1, "rural", "non-rural"))
 
-mobility <- st_read("https://drive.google.com/uc?export=download&id=1fQL3OKLY6ur3cspm0ECjfVaNTOTl3Ghm") |> mutate(rural = ifelse(rural == 1, "rural", "non-rural"))
+mobility <- st_read("https://drive.google.com/uc?export=download&id=1YbCNVR5K8jDF5HOKHcoJ25gz7VkRvDHa") |> mutate(rural = ifelse(rural == 1, "rural", "non-rural"))
 
 ```
 
@@ -28,12 +35,15 @@ mobility <- st_read("https://drive.google.com/uc?export=download&id=1fQL3OKLY6ur
 library(tidyverse)
 library(tmap)
 library(sf)
+library(car)
 
 summer_temp <- st_read("https://drive.google.com/uc?export=download&id=1byhsYTBnqegfPGsZWtAHH4pZgGbSTr_s")
 
 acs <- st_read("https://drive.google.com/uc?export=download&id=1ffMbuX4ZQ8vuZK9uwFOBe61bEbKfKg1j") |> mutate(rural = ifelse(rural == 1, "rural", "non-rural"), low_inc = ifelse(low_inc == 1, "low-income", "high-income"), high_commute = ifelse(high_commute == 1, "high commute", "low commute"))
 
-pm <- st_read("https://drive.google.com/uc?export=download&id=1zf1xk-7pOoSnEwGvGsNVa6XejFoPFzdJ")
+pm <- st_read("https://drive.google.com/uc?export=download&id=1zf1xk-7pOoSnEwGvGsNVa6XejFoPFzdJ") |> mutate(rural = ifelse(rural == 1, "rural", "non-rural"))
+
+mobility <- st_read("https://drive.google.com/uc?export=download&id=1YbCNVR5K8jDF5HOKHcoJ25gz7VkRvDHa") |> mutate(rural = ifelse(rural == 1, "rural", "non-rural"))
 ```
 
 ## One Sample T-Test
@@ -46,14 +56,15 @@ In geography, inferential statistics are sometimes applied even when datasets in
 
 **The annual average PM2.5 value for the eastern United States is 7.8µg/m^3^** . Therefore, we could use a one-sample t-test to see if the North Carolina average differs from the United States average.
 
-Before we run a statistical test, the first thing we have to do is check our assumptions. We know that PM2.5 is a continuous variable. Because this data is spatial, it likely violates the assumption of independence (*but we will put a pin in that for now and assume independence*) We can estimate the distribution of the population by using the distribution of the sample. A QQ-Plot indicates that the data distribution is non-normal.
+Before we run a statistical test, the first thing we have to do is check our assumptions. We know that PM2.5 is a continuous variable. Because this data is spatial, it likely violates the assumption of independence (*but we will put a pin in that for now and assume independence*) We can estimate the distribution of the population by using the distribution of the sample. A histogram and QQ-Plot indicates that the data distribution is somewhat non-normal.
 
 ```{r}
+ggplot(pm, aes(x = meanpm_2016_2020)) + geom_histogram(binwidth = .5)
 qqnorm(pm$meanpm_2016_2020)
 qqline(pm$meanpm_2016_2020, col = "steelblue", lwd = 2)
 ```
 
-At this point, we have two options for testing whether our sample mean differs from a hypothesized value. The first option is to use a **non-parametric** test, which does not assume any particular distribution for the population. A non-parametric alternative for a one-sample t-test is the Wilcoxon Signed-Rank Test. The second option is to still use the one-sample t-test. While this test assumes that the population is normally distributed, the Central Limit Theorem tells us that, for large sample sizes, the sampling distribution of the mean is approximately normal regardless of the population distribution. Since our sample is large (n = 2672), the t-test is valid in this case, even if the data are not normal.
+At this point, we have two options for testing whether our sample mean differs from a hypothesized value. The first option is to use a **non-parametric** test, which does not assume any particular distribution for the population. A non-parametric alternative for a one-sample t-test is the Wilcoxon Signed-Rank Test. The second option is to still use the one-sample t-test. While this test assumes that the population is normally distributed, the Central Limit Theorem tells us that, for large sample sizes (generally greater than 30, but higher for highly non-normal data), the sampling distribution of the mean is approximately normal regardless of the population distribution. Since our sample is large (n = 2672), the t-test is valid in this case, even if the data are not normal.
 
 Since this class focuses on parametric tests, we will continue on with our t-test. The mean of our dataset is
 
@@ -79,15 +90,20 @@ In this case, the low p-value of our t.test allows us to reject the null hypothe
 
 A two-sample t-test compares the means of two different samples. For instance, we could compare the mean PM2.5 in urban vs. rural census tracts.
 
-The assumptions for the two sample t-test are the same as the one-sample t-test with one addition: equal variance (also called homoscedasticity). This means that the two groups being compared should have similar variability in their values. If the variances are very different, the standard two-sample t-test may not be appropriate. For the purposes of this analysis, we will assume that the variances of PM2.5 values in urban and rural census tracts are equal. This assumption allows us to use the standard two-sample t-test. However, if the variances were substantially different, we would need to use a version of the test that does not assume equal variance (Welch’s t-test).
+The assumptions for the two sample t-test are the same as the one-sample t-test with one addition: equal variance (also called homoscedasticity). This means that the two groups being compared should have similar variability in their values. If the variances are very different, the standard two-sample t-test may not be appropriate. We can compare the variances a Levene's test (which is robust to non-normal data)
+
+```{r}
+
+leveneTest(meanpm_2016_2020 ~ rural, data = pm)
+```
+
+In this case, the test indicates no statistical significance, meaning the null hypothesis (no difference in variance) cannot be rejected. If the variances were substantially different, we would need to use a version of the test that does not assume equal variance (Welch’s t-test).
 
 **Q2. Formulate a null hypothesis that would use a two sample two-sided t-test.**
 
 ```{r}
-#convert data to factor
-pm$rural <- factor(pm$rural, levels = c(0, 1), labels = c("urban", "rural"))
-
 # Then run a standard two-sample t-test
+#if variances were not equal, you would set var.equal = FALSE
 t.test(meanpm_2016_2020 ~ rural, data = pm, var.equal = TRUE)
 ```
 
@@ -97,9 +113,21 @@ Based on our t-test results, we can reject the null hypothesis in favor of the a
 
 ## Paired T-Test
 
-A paired t-test evaluates whether the average change between two paired observations is significantly different from zero. It is typically used when the same individuals or locations are measured at two time points or under two conditions. For instance, we could consider our summer temperature values. In this dataset, we have a sample of 480 locations and two different values– mean summer temperature from 2000-2010 and mean summer temperature from 2010-2020.
+A paired t-test evaluates whether the average change between two paired observations is significantly different from zero. A paired t-test assumes that data is continuous, and the differences between the paired observations are approximately normally distributed. It is typically used when the same individuals or locations are measured at two time points or under two conditions. For instance, we could consider our summer temperature values. In this dataset, we have a sample of 480 locations and two different values– mean summer temperature from 2000-2010 and mean summer temperature from 2010-2020.
 
 We can consider this dataset a true simple random sample.
+
+First, to test the assumption of normally distributed differences, we can examine a Q-QPlot of the differences. Because the paired t-test is robust to moderate non-normality when sample sizes are large, it is still appropriate to proceed with the test.
+
+```{r}
+#add a column with difference
+summer_temp <- summer_temp |> mutate(diff = av_summer_2010_2020 - av_summer_2000_2010)
+
+ggplot(summer_temp, aes(x = diff)) + geom_histogram(binwidth = .05)
+
+qqnorm(summer_temp$diff)
+qqline(summer_temp$diff, col = "steelblue", lwd = 2)
+```
 
 **Q3: Formulate a null hypothesis that would use a one-sample paired t-test**
 

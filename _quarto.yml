@@ -10,7 +10,9 @@ book:
     - index.qmd
     - syllabus.qmd
     - schedule.qmd
+    - ppt.qmd
     - competencies.qmd
+    - labs.qmd
     - basic_R.qmd
     - command.qmd
     - describing_data.qmd
@@ -20,8 +22,8 @@ book:
     - clt.qmd
     - estimation_sampling.qmd
     - hypothesis_testing.qmd
+    - ppa.qmd
     - autocorrelation.qmd
-    - labs.qmd
 
 format:
   html:

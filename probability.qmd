@@ -199,9 +199,5 @@ This shows us that there is a 22.4% chance that a day in January at RDU will hav
 Using the code above, calculate the probability that a day has a maximum temperature of 83 degrees or above using the normal distribution. Then calculate the empirical probability using the observed values. Discuss the following questions:
 
 -   How do the theoretical and empirical probabilities differ?
-
 -   Why might this be the case?
-
 -   What are potential problems in applying the normal distribution to estimate rare events in this dataset?
-
-## 

@@ -1,5 +1,11 @@
 # Labs
 
+## Lab 1
+
+### Overview
+
+In this lab,
+
 ## Lab 2
 
 ### Overview
@@ -12,7 +18,7 @@ In this lab, you will examine demographic and climate data at a different level 
 
 ### Specifications
 
-This lab is designed to assess the [Concept 2 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+This lab is designed to assess the [Concept 2 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-2-data-and-descriptive-statistics). You'll be evaluated on the following specifications:
 
 | Specification |
 |----|
@@ -99,7 +105,7 @@ In this lab, you will practice calculating spatial descriptive statistics on a d
 
 ### Specifications
 
-This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-spatial-description). You'll be evaluated on the following specifications:
 
 | Specification |
 |----|
@@ -178,7 +184,7 @@ In this lab, you will practice applying the binomial probability distribution us
 
 ### Specifications
 
-This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-4-probability). You'll be evaluated on the following specifications:
 
 | Specification |
 |----|
@@ -255,7 +261,7 @@ The variables in the dataset are:
 
 ### Specifications
 
-This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-descriptive-statistics-and-spatial-description). You'll be evaluated on the following specifications:
+This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-5-inferential-statistics). You'll be evaluated on the following specifications:
 
 | Specification |
 |----|
@@ -313,3 +319,75 @@ This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.g
     -   Create a map of one of the variables. Also create a map of the size of the confidence interval per state
 
 8.  Below this code chunk, write a few sentence that compare the state estimates and the size of their confidence intervals. Explain why some states might have smaller or larger intervals. Also describe any spatial patterns that you see in the means or the size of the confidence intervals.
+
+## Lab 6
+
+### Overview
+
+In the [Hypothesis Testing](https://jucardwell.github.io/quant_methods/hypothesis_testing.html) tutorial we learned about applying statistical tests to evaluate whether there is enough evidence to determine if an estimate (calculated from a sample) is statistically different than another estimate, within a certain level of confidence.
+
+In this lab, you will practice applying statistical tests to a sample of North Carolina public school data on chronic absences. Each school in the sample contains a schoolwide mean for absenteeism before Covid (2018-2019) and after Covid (2021-2024), as well as a rural/non-rural designation depending on the county the school is located in.
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
+
+### Specifications
+
+This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-6-hypothesis-testing). You'll be evaluated on the following specifications:
+
+| Specification |
+|----|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
+| **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
+| **Scenario 1**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
+| **Scenario 2:** Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
+| **Scenario 3**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
+
+### Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab6.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    #load libraries
+    library(tidyverse)
+    library(tmap)
+    library(sf)
+
+    school_sample <- st_read("https://drive.google.com/uc?export=download&id=1Yys2-G69_tc9YC-7jlRgsfXn0faLZhUV") 
+
+    ```
+
+3.  Under a header called "Describing School Absences" make a map, a descriptive statistics table, and one non-map graphic for both variables (pre_covid_pct, after_covid_pct). Describe spatial patterns and the characteristics of the datasets.
+
+4.  Under a header called "Testing Hypotheses" identify an appropriate statistical test, test assumptions, generate a null and alternative hypothesis, and interpret results for the following scenarios:
+
+    -   The known countrywide mean for school absences is 14.5%. Does the North Carolina mean (drawn from a sample of NC schools) differ significantly from the countrywide mean?
+
+    -   Is the absentee rate significantly higher in the years after Covid-19?
+
+    -   Does the absentee rate differ significantly between urban and rural schools before Covid-19? What about after Covid-19?
+
+## Lab 7
+
+### Overview
+
+In the Point Pattern Analysis tutorial we learned about applying statistical tests to evaluate whether there is enough evidence to determine if an estimate (calculated from a sample) is statistically different than another estimate, within a certain level of confidence.
+
+In this lab, you will practice applying statistical tests to a sample of North Carolina public school data on chronic absences. Each school in the sample contains a schoolwide mean for absenteeism before Covid (2018-2019) and after Covid (2021-2024), as well as a rural/non-rural designation depending on the county the school is located in.
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
+
+### Specifications
+
+This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-6-hypothesis-testing). You'll be evaluated on the following specifications:
+
+| Specification |
+|----|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
+| **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
+| **Scenario 1**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
+| **Scenario 2:** Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
+| **Scenario 3**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |

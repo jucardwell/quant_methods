@@ -289,46 +289,7 @@ cum_prob <- pbinom(VALUELESSTHAN, TOTALTRIALS, p = p)
 prob <- pnorm(VALUEOFINTEREST, mean =  mean(DATASET$VARIABLE), sd = sd(DATASET$VARIABLE))
 ```
 
-### Probability Map
-
-```{r, eval = F}
-#reproject data 
-reprojected_data <- DATASET |> st_transform(crs = 2264)
-
-#turn pm data into sp
-pm_sp <- as(reprojected_data, 'Spatial')
-
-#get north carolina boundary to create grid
-nc_boundary <- states(cb = T, progress_bar = FALSE) |> filter(NAME == "North Carolina") %>% st_transform(2264)
-
-#turn into an sp object
-nc_sp <-  as(nc_boundary, 'Spatial')
-
-#create grid for the raster
-grd <- as.data.frame(spsample(nc_sp, "regular", n=50000))
-
-#sets parameters for the grid
-names(grd)       <- c("X", "Y")
-coordinates(grd) <- c("X", "Y")
-gridded(grd)     <- TRUE  # Create SpatialPixel object
-fullgrid(grd)    <- TRUE  # Create SpatialGrid object
-
-#sets crs
-crs(grd) <- crs(pm_sp)
-
-#does the interpolation. idp sets sets the influence of points based on distance: higher values = stronger influence of nearby points, weaker influence of distant points.
-p.idw <- idw(p ~ 1, pm_sp, newdata=grd, idp = 4)
-
-#rasterize the grid
-r       <- rast(p.idw)
-r.m     <- mask(r, nc_boundary)
-
-#create map
-tm_shape(r.m["var1.pred"]) + 
-  tm_raster(col.scale = tm_scale_intervals(values = "BuRd", n = 8),
-            col.legend = tm_legend(position = tm_pos_out(), 
-                                   title = "TITLE" ))
-```
+## Estimation in Sampling
 
 ### Point Estimate and CI for Mean
 
@@ -342,4 +303,133 @@ t.test(DATASET$VARIABLE, conf.level = 0.95)
 ```{r, eval = F}
 prop.test(TOTALSUCCESSES, n, conf.level = 0.95)
 
+```
+
+## Hypothesis Testing
+
+### One-Sample T-Test
+
+```{r, eval=F}
+#remove alternative to run two-sided T-test
+t.test(DATASET$VARIABLE, mu = TRUEMEAN, alternative = "less", conf.level = 0.95)
+```
+
+### Two-Sample T-Test
+
+```{r, eval=F}
+#test for equality of variance
+leveneTest(VARIABLE ~ CATEGORY, data = DATASET)
+
+#change var.equal if Levene's test indicates unequal variance
+t.test(VARIABLE ~ CATEGORY, data = DATASET, var.equal = TRUE)
+```
+
+### Paired T-Test
+
+```{r, eval=F}
+#remove alternative to run two-sided
+t.test(DATASET$VARIABLE1, DATASET$VARIABLE2, paired = TRUE, alternative = "greater", conf.level = 0.95)
+```
+
+### Chi Square Test of Independence
+
+```{r, eval=F}
+chisq.test(table(DATASET$VARIABLE1, DATASET$VARIABLE2))
+```
+
+## Point Pattern Analysis
+
+### Quadrat Analysis
+
+```{r, eval=F}
+#boundary must be owin object
+boundary_owin <- BOUNDARYOBJECT |> as.owin()
+
+#turn point data into into a ppp
+data.ppp <- as.ppp(st_coordinates(DATA), W = boundary_owin)
+
+#create a quadrat count with 9 quadrats (modify the number of quadrats to fit your case)
+q_count <- quadratcount(data.ppp, nx = 3, ny = 3)
+
+q_test <- quadrat.test(data.ppp, nx = 3, ny = 3)
+```
+
+### Kernel Density
+
+```{r, eval=F}
+#sigma represents the bandwidth of the kernel. It is in the unit of the data crs. 
+kernel_density <- density(data.ppp, 
+                          sigma = BANDWIDTH)
+```
+
+### G-function
+
+```{r, eval=F}
+g_pattern <- Gest(data.ppp, correction = "none")
+```
+
+### F-function
+
+```{r, eval=F}
+f_pattern <- Fest(data.ppp, correction = "none")
+```
+
+## Spatial Autocorrelation
+
+### Calculating Neighbors
+
+```{r, eval=F}
+## QUEENS CASE NEIGHBORS ###
+#calculate neighbors
+nb_queen <- poly2nb(DATASET, queen = TRUE) # queen shares point or border
+#set neighborhood weight matrix
+nbw_queen <- nb2listw(nb_queen, style = "W")
+
+
+## DISTANCE BASED NEIGHBORS ##
+#calculate neighborhoods, threshold is units in CRS
+nb_dist <- dnearneigh(schools_sf, d1 = 0, d2 = THRESHOLD) 
+#set neighborhood weight matrix
+nbw_dist <- nb2listw(nb_dist, style = "W", zero.policy = T)
+
+
+## K NEAREST NEIGHBORS ####
+#calculate nearest neighbors k= number of neighbors
+knn<- knearneigh(DATASET, k = NUMNEIGHBORS)
+#calculate neighborhoods
+nb_knn  <- knn2nb(knn)
+#set neighborhood weight matrix
+nbw_knn <- nb2listw(nb_knn, style = "W")
+
+```
+
+### Global Moran's I
+
+```{r, eval=F}
+gmoran <- moran.test(DATASET$VARIABLE, NBWMATRIX)
+```
+
+### LISA
+
+```{r, eval=F}
+locali<-localmoran_perm(DATASET$VARIABLE, NBWMATRIX) %>%
+  as_tibble() %>%
+  set_names(c("local_i", "exp_i", "var_i", "z_i", "p_i",
+              "p_i_sim", "pi_sim_folded", "skewness", "kurtosis"))
+
+#bind LISA results to dataset
+DATASET <- DATASET %>%
+  bind_cols(locali)
+
+#Divide into quadrants
+DATASET <- DATASET %>%
+  mutate(variablez =  as.numeric(scale(VARIABLE)),
+         evratezlag = lag.listw(NBWMATRIX, variablez),
+         lisa_cluster = case_when(
+           p_i >= 0.05 ~ "Not significant",
+           variablez > 0 & local_i > 0 ~ "High-high",
+           variablez > 0 & local_i < 0 ~ "High-low",
+           variablez < 0 & local_i > 0 ~ "Low-low",
+           variablez < 0 & local_i < 0 ~ "Low-high"
+         ))
 ```
