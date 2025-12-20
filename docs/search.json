@@ -412,71 +412,71 @@
   {
     "objectID": "tmap.html",
     "href": "tmap.html",
-    "title": "7  Tmap Interlude",
+    "title": "9  Tmap Interlude",
     "section": "",
-    "text": "7.1 Visual Variables\nMapping is an extremely important tool for describing and visualizing spatial data. Maps are particularly useful because they are able to summarize variation in both values and location (space). You (as a newly deputized cartographer) have a lot of control over how a map functions by making decisions on things like classification schemes, colors, layout, and design.\nThis tutorial is designed to introduce you the main functionalities of the tmap package. We will use census block group data to Orange, Durham, and Wake counties. This file will tell you what each variable name means.\nTo follow along with this tutorial, download the .Rmd template here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.",
+    "text": "9.1 Visual Variables\nMapping is an extremely important tool for describing and visualizing spatial data. Maps are particularly useful because they are able to summarize variation in both values and location (space). You (as a newly deputized cartographer) have a lot of control over how a map functions by making decisions on things like classification schemes, colors, layout, and design.\nThis tutorial is designed to introduce you the main functionalities of the tmap package. We will use census block group data to Orange, Durham, and Wake counties. This file will tell you what each variable name means.\nTo follow along with this tutorial, download the .Rmd template here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tmap Interlude</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Tmap Interlude</span>"
     ]
   },
   {
     "objectID": "tmap.html#visual-variables",
     "href": "tmap.html#visual-variables",
-    "title": "7  Tmap Interlude",
+    "title": "9  Tmap Interlude",
     "section": "",
-    "text": "7.1.1 Color\nWe are already familiar with making a basic tmap using color to visualize patterns:\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\")\n\n\n\n\n\n\n\n\n\n\n7.1.2 Size\nWe can also represent variables by size\n\ntm_shape(acs_tract_nc) + tm_symbols(size = \"total_pop\")\n\n\n\n\n\n\n\n\n\n\n7.1.3 Size and Color\nOr both!\n\ntm_shape(acs_tract_nc) + tm_symbols(size = \"total_pop\", fill = \"total_pop\")",
+    "text": "9.1.1 Color\nWe are already familiar with making a basic tmap using color to visualize patterns:\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\")\n\n\n\n\n\n\n\n\n\n\n9.1.2 Size\nWe can also represent variables by size\n\ntm_shape(acs_tract_nc) + tm_symbols(size = \"total_pop\")\n\n\n\n\n\n\n\n\n\n\n9.1.3 Size and Color\nOr both!\n\ntm_shape(acs_tract_nc) + tm_symbols(size = \"total_pop\", fill = \"total_pop\")",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tmap Interlude</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Tmap Interlude</span>"
     ]
   },
   {
     "objectID": "tmap.html#color-palettes",
     "href": "tmap.html#color-palettes",
-    "title": "7  Tmap Interlude",
-    "section": "7.2 Color Palettes",
-    "text": "7.2 Color Palettes\nWe can also modify the color palette. To see all the available color palettes, you should run the command below\n\ncols4all::c4a_gui()\n\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill.scale = tm_scale_intervals(values = \"bu_pu\"))",
+    "title": "9  Tmap Interlude",
+    "section": "9.2 Color Palettes",
+    "text": "9.2 Color Palettes\nWe can also modify the color palette. To see all the available color palettes, you should run the command below\n\ncols4all::c4a_gui()\n\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill.scale = tm_scale_intervals(values = \"bu_pu\"))",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tmap Interlude</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Tmap Interlude</span>"
     ]
   },
   {
     "objectID": "tmap.html#classification-schemes",
     "href": "tmap.html#classification-schemes",
-    "title": "7  Tmap Interlude",
-    "section": "7.3 Classification Schemes",
-    "text": "7.3 Classification Schemes\nOne of the biggest decisions we can make is how to classify our data. You can see in the maps above that tmap defaults to an equal interval color scheme. However, this is often not the best way to classify the data. Your decision about classification should be made based on the distribution of the data. Let’s look at the distribution of the median age variable\n\nggplot(acs_tract_nc, aes(x = median_age)) + geom_histogram()\n\n\n\n\n\n\n\n\nBecause so much of our variation is between 30-45, using an equal interval color palette makes it difficult to visualize the majority of the variation. See how different the map looks when we use a quantile classification scheme?\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\"))\n\n\n\n\n\n\n\n\nThe following classification schemes will cover most of your uses:\n\nequal\npretty\nquantile\nfisher (natural breaks)",
+    "title": "9  Tmap Interlude",
+    "section": "9.3 Classification Schemes",
+    "text": "9.3 Classification Schemes\nOne of the biggest decisions we can make is how to classify our data. You can see in the maps above that tmap defaults to an equal interval color scheme. However, this is often not the best way to classify the data. Your decision about classification should be made based on the distribution of the data. Let’s look at the distribution of the median age variable\n\nggplot(acs_tract_nc, aes(x = median_age)) + geom_histogram()\n\n\n\n\n\n\n\n\nBecause so much of our variation is between 30-45, using an equal interval color palette makes it difficult to visualize the majority of the variation. See how different the map looks when we use a quantile classification scheme?\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\"))\n\n\n\n\n\n\n\n\nThe following classification schemes will cover most of your uses:\n\nequal\npretty\nquantile\nfisher (natural breaks)",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tmap Interlude</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Tmap Interlude</span>"
     ]
   },
   {
     "objectID": "tmap.html#interactive-mapping",
     "href": "tmap.html#interactive-mapping",
-    "title": "7  Tmap Interlude",
-    "section": "7.4 Interactive Mapping",
-    "text": "7.4 Interactive Mapping\nSo far, we have only made static maps. However, tmap has the availability to make interactive maps as well.\n\n## make an interactive map\ntmap_mode(mode = \"view\")\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\"))",
+    "title": "9  Tmap Interlude",
+    "section": "9.4 Interactive Mapping",
+    "text": "9.4 Interactive Mapping\nSo far, we have only made static maps. However, tmap has the availability to make interactive maps as well.\n\n## make an interactive map\ntmap_mode(mode = \"view\")\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\"))",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tmap Interlude</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Tmap Interlude</span>"
     ]
   },
   {
     "objectID": "tmap.html#formatting",
     "href": "tmap.html#formatting",
-    "title": "7  Tmap Interlude",
-    "section": "7.5 Formatting",
-    "text": "7.5 Formatting\n\n7.5.1 Map 1: Adding Transparency and additional classes\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill_alpha = .3, fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\", n = 7))\n\n\n\n\n\n\n\n\n7.5.2 Map 2: Adding a Basemap and a Title\n\n#change back to static plot\ntmap_mode(mode = \"plot\")\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\",fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\", n = 5), fill_alpha = .3) +\ntm_title(\"Median Age by Census Block Group\") + tm_basemap(\"OpenStreetMap\")\n\n\n\n\n\n\n\n\nThe following basemaps will cover most of your uses:\n\n“CartoDB.VoyagerOnlyLabels” - Labels Only\n“CartoDB.PositronNoLabels”- No Labels\n“OpenStreetMap” - Labeled Basemap\n“Esri.WorldImagery” - Satellite",
+    "title": "9  Tmap Interlude",
+    "section": "9.5 Formatting",
+    "text": "9.5 Formatting\n\n9.5.1 Map 1: Adding Transparency and additional classes\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\", fill_alpha = .3, fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\", n = 7))\n\n\n\n\n\n\n\n\n9.5.2 Map 2: Adding a Basemap and a Title\n\n#change back to static plot\ntmap_mode(mode = \"plot\")\n\ntm_shape(acs_tract_nc) + tm_polygons(fill = \"median_age\",fill.scale = tm_scale_intervals(values = \"bu_pu\", style = \"quantile\", n = 5), fill_alpha = .3) +\ntm_title(\"Median Age by Census Block Group\") + tm_basemap(\"OpenStreetMap\")\n\n\n\n\n\n\n\n\nThe following basemaps will cover most of your uses:\n\n“CartoDB.VoyagerOnlyLabels” - Labels Only\n“CartoDB.PositronNoLabels”- No Labels\n“OpenStreetMap” - Labeled Basemap\n“Esri.WorldImagery” - Satellite",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tmap Interlude</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Tmap Interlude</span>"
     ]
   },
   {
     "objectID": "tmap.html#mini-challenge",
     "href": "tmap.html#mini-challenge",
-    "title": "7  Tmap Interlude",
-    "section": "7.6 Mini Challenge",
-    "text": "7.6 Mini Challenge\nUsing a different variable in the ACS data, create a well-designed map where you select a classification scheme, and add transparency, a title, and a basemap.\nCreate an interactive and static version of the map.",
+    "title": "9  Tmap Interlude",
+    "section": "9.6 Mini Challenge",
+    "text": "9.6 Mini Challenge\nUsing a different variable in the ACS data, create a well-designed map where you select a classification scheme, and add transparency, a title, and a basemap.\nCreate an interactive and static version of the map.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tmap Interlude</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Tmap Interlude</span>"
     ]
   },
   {
