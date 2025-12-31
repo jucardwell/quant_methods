@@ -216,5 +216,3 @@ This challenge will ask you to create some basic descriptive statistics for **a 
 6.  Answer the following questions:
     -   Q9. What did you learn about your variable?
     -   Q10. What did you learn about the spatial pattern of your variable?
-
-# 

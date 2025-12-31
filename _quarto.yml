@@ -24,6 +24,8 @@ book:
     - hypothesis_testing.qmd
     - ppa.qmd
     - autocorrelation.qmd
+    - regression.qmd
+    - continuous_surfaces.qmd
 
 format:
   html:

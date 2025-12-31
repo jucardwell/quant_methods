@@ -5,7 +5,7 @@
 ### Assessment Structure:
 
 -   **Competency:** Completes Lab 1-3 with Meets Expectations
--   **Mastery:** Completes Case Study #1 with Meets Expectations or a 15 minute oral exam (in office hours)
+-   **Mastery:** Completes Case Study #1 with Meets Expectations
 
 ### Concept 1: The Quantitative Revolution
 
@@ -34,12 +34,12 @@
 
 -   Compute and interpret spatial descriptive statistics (mean center, standard distance, standard deviational ellipse) and explain how they extend non-spatial descriptive measures
 
-## Tier 2: Inferential Statistics
+## Tier 2: Classical Statistical Inference
 
 ### Assessment Structure:
 
 -   **Competency:** Completes Lab 4-6 with Meets Expectations
--   **Mastery:** Completes Case Study #2 with Meets Expectations or a 15 minute oral exam (in office hours)
+-   **Mastery:** Completes Case Study #2 with Meets Expectations
 
 ### **Concept 4: Probability**
 
@@ -68,12 +68,12 @@
 -   Run and interpret Chi-Square tests to assess relationships between categorical variables
 -   Differentiate statistical significance from substantive importance
 
-## Tier 3: Spatial Patterns and Surfaces
+## Tier 3: **Spatial Statistics**
 
 ### Assessment Structure:
 
--   **Competency:** Completes Lab 7-9 with Meets Expectations
--   **Mastery:** Completes Case Study #3 with Meets Expectations or a 15 minute oral exam (in office hours)
+-   **Competency:** Completes Lab 7-10 with Meets Expectations
+-   **Mastery:** Completes Case Study #3 with Meets Expectations
 
 ### **Concept 7: Patterns in Events**
 
@@ -94,7 +94,18 @@
 -   Compute and interpret measures of local autocorrelation (LISA) and use mapping to identify and analyze spatial patterns (hot-spots, cold-spots)
 -   Discuss how scale, zoning, and MAUP influence patterns
 
-### **Concept 9: Spatially Continuous Surfaces**
+### **Concept 9: Bivariate Spatial Relationships**
+
+**Guiding Question:** How can we examine and model relationships between two variables across space?
+
+-   Visualize and interpret bivariate relationships using maps and scatterplots
+-   Explain how linear regression extends hypothesis testing to relationships between two variables
+-   Estimate and interpret simple bivariate regression models in a geographic context
+-   Diagnose spatial dependence in regression residuals using spatial autocorrelation measures
+-   Estimate and interpret spatial regression models 
+-   Compare non-spatial regression results with spatial regression results to pick an appropriate model
+
+### **Concept 10: Spatially Continuous Surfaces**
 
 **Guiding Question:** How can we estimate values at unsampled locations and understand spatial clustering and uncertainty across continuous surfaces?
 

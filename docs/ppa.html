@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Schedule</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -242,6 +242,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -322,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quadrat-analyis" class="level3" data-number="15.2.1">
 <h3 data-number="15.2.1" class="anchored" data-anchor-id="quadrat-analyis"><span class="header-section-number">15.2.1</span> Quadrat Analyis</h3>
 <p>Quadrat analysis is a count-based method used to assess the global structure of a spatial pattern. In this method, the study area is divided into a grid of equally-sized cells (quadrats), and the number of points falling into each cell is counted. The results are then compared to the outcome of a Poisson distribution (which we use to model CSR).</p>
-<p>We can start by creating 12 quadrats and counting the number of lightning strikes in each. The number of quadrats is highly dependent on the size of the study region and the number of events.</p>
+<p>We can start by creating 9 quadrats and counting the number of lightning strikes in each. The number of quadrats is highly dependent on the size of the study region and the number of events.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#turn county boundary into owin object for spatstat</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>oc_owin <span class="ot">&lt;-</span> county_boundary <span class="sc">|&gt;</span> <span class="fu">as.owin</span>()</span>

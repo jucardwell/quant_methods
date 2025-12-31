@@ -51,7 +51,7 @@ county_boundary <- st_read("https://drive.google.com/uc?export=download&id=1KmNz
 
 Quadrat analysis is a count-based method used to assess the global structure of a spatial pattern. In this method, the study area is divided into a grid of equally-sized cells (quadrats), and the number of points falling into each cell is counted. The results are then compared to the outcome of a Poisson distribution (which we use to model CSR).
 
-We can start by creating 12 quadrats and counting the number of lightning strikes in each. The number of quadrats is highly dependent on the size of the study region and the number of events.
+We can start by creating 9 quadrats and counting the number of lightning strikes in each. The number of quadrats is highly dependent on the size of the study region and the number of events.
 
 ```{r}
 #turn county boundary into owin object for spatstat

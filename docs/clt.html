@@ -184,7 +184,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Schedule</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -271,6 +271,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -281,12 +293,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link active" data-scroll-target="#reading-in-data"><span class="header-section-number">12.1</span> Reading in Data</a>
-  <ul class="collapse">
-  <li><a href="#clt-part-1" id="toc-clt-part-1" class="nav-link" data-scroll-target="#clt-part-1"><span class="header-section-number">12.1.1</span> CLT Part 1</a></li>
-  <li><a href="#clt-part-2" id="toc-clt-part-2" class="nav-link" data-scroll-target="#clt-part-2"><span class="header-section-number">12.1.2</span> CLT Part 2</a></li>
-  <li><a href="#clt-part-3" id="toc-clt-part-3" class="nav-link" data-scroll-target="#clt-part-3"><span class="header-section-number">12.1.3</span> <strong>CLT Part 3</strong></a></li>
-  </ul></li>
+  <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link active" data-scroll-target="#reading-in-data"><span class="header-section-number">12.1</span> Reading in Data</a></li>
+  <li><a href="#clt-part-1" id="toc-clt-part-1" class="nav-link" data-scroll-target="#clt-part-1"><span class="header-section-number">12.2</span> CLT Part 1</a></li>
+  <li><a href="#clt-part-2" id="toc-clt-part-2" class="nav-link" data-scroll-target="#clt-part-2"><span class="header-section-number">12.3</span> CLT Part 2</a></li>
+  <li><a href="#clt-part-3" id="toc-clt-part-3" class="nav-link" data-scroll-target="#clt-part-3"><span class="header-section-number">12.4</span> CLT Part 3</a></li>
   </ul>
 </nav>
     </div>
@@ -363,8 +373,9 @@ window.Quarto = {
 </div>
 <p><strong>Q2: How can we interpret that mean value? What does the value represent?</strong></p>
 <p><strong>Q3: What are the characteristics of the distribution of tree canopy cover across Chapel Hill?</strong></p>
-<section id="clt-part-1" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="clt-part-1"><span class="header-section-number">12.1.1</span> CLT Part 1</h3>
+</section>
+<section id="clt-part-1" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="clt-part-1"><span class="header-section-number">12.2</span> CLT Part 1</h2>
 <p>Regardless of the population’s shape, the sampling distribution of the sample mean becomes approximately normal as the sample size increases</p>
 <p>To test the CLT, we can take simple random samples of our raster. Let’s take 300 samples, with n = 75.</p>
 <div class="cell">
@@ -394,13 +405,13 @@ window.Quarto = {
 </div>
 <p><strong>Q4: Run the code above with a smaller sample size (n = 5). Does the distribution of means still follow a normal distribution?</strong></p>
 </section>
-<section id="clt-part-2" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="clt-part-2"><span class="header-section-number">12.1.2</span> CLT Part 2</h3>
+<section id="clt-part-2" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="clt-part-2"><span class="header-section-number">12.3</span> CLT Part 2</h2>
 <p>The mean of the sampling distribution of the sample mean will become the population mean</p>
 <p><strong>Q5: Calculate the mean of our sample means. How does the mean compare to the population mean?</strong></p>
 </section>
-<section id="clt-part-3" class="level3" data-number="12.1.3">
-<h3 data-number="12.1.3" class="anchored" data-anchor-id="clt-part-3"><span class="header-section-number">12.1.3</span> <strong>CLT Part 3</strong></h3>
+<section id="clt-part-3" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="clt-part-3"><span class="header-section-number">12.4</span> CLT Part 3</h2>
 <p>The standard deviation of the sampling distribution is called the standard error, and is related to the population standard deviation by the formula:</p>
 <p><span class="math display">\[
 SE = \frac{s}{\sqrt{n}}
@@ -439,7 +450,6 @@ SE = \frac{s}{\sqrt{n}}
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

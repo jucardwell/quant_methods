@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Estimation in Sampling – quant_methods</title>
+<title>18&nbsp; Continuous Surfaces – quant_methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./hypothesis_testing.html" rel="next">
-<link href="./clt.html" rel="prev">
+<link href="./regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,35 +102,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -144,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./estimation_sampling.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estimation in Sampling</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./continuous_surfaces.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -249,7 +219,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./estimation_sampling.html" class="sidebar-item-text sidebar-link active">
+  <a href="./estimation_sampling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estimation in Sampling</span></span></a>
   </div>
 </li>
@@ -279,7 +249,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link">
+  <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
   </div>
 </li>
@@ -293,10 +263,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link active" data-scroll-target="#reading-in-data"><span class="header-section-number">13.1</span> Reading in Data</a></li>
-  <li><a href="#calculating-point-estimate-and-confidence-interval-for-means" id="toc-calculating-point-estimate-and-confidence-interval-for-means" class="nav-link" data-scroll-target="#calculating-point-estimate-and-confidence-interval-for-means"><span class="header-section-number">13.2</span> Calculating Point Estimate and Confidence Interval for Means</a></li>
-  <li><a href="#calculating-point-estimate-and-confidence-interval-for-proportions" id="toc-calculating-point-estimate-and-confidence-interval-for-proportions" class="nav-link" data-scroll-target="#calculating-point-estimate-and-confidence-interval-for-proportions"><span class="header-section-number">13.3</span> Calculating Point Estimate and Confidence Interval for Proportions</a></li>
-  <li><a href="#mini-challenge" id="toc-mini-challenge" class="nav-link" data-scroll-target="#mini-challenge"><span class="header-section-number">13.4</span> Mini Challenge</a></li>
+  <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link active" data-scroll-target="#reading-in-data"><span class="header-section-number">18.1</span> Reading in Data</a></li>
+  <li><a href="#spatial-structure" id="toc-spatial-structure" class="nav-link" data-scroll-target="#spatial-structure"><span class="header-section-number">18.2</span> Spatial Structure</a></li>
+  <li><a href="#voronoi-polygons" id="toc-voronoi-polygons" class="nav-link" data-scroll-target="#voronoi-polygons"><span class="header-section-number">18.3</span> Voronoi Polygons</a></li>
+  <li><a href="#idw" id="toc-idw" class="nav-link" data-scroll-target="#idw"><span class="header-section-number">18.4</span> IDW</a></li>
   </ul>
 </nav>
     </div>
@@ -305,7 +275,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estimation in Sampling</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></h1>
 </div>
 
 
@@ -322,135 +292,207 @@ window.Quarto = {
 </header>
 
 
-<p>Because we know from the CLT that repeated sampling of a population will result in a normal distribution of means, we can use the properties of the normal distribution to estimate population parameters from a sample.</p>
-<p>There are two types of sample estimations:</p>
-<ol type="1">
-<li><strong>Point Estimation:</strong> With probability sampling, the “best” point estimate for the population mean is the sample mean.</li>
-<li><strong>Interval Estimation:</strong> Because probability sampling involves some uncertainty, it is unlikely that a point estimation will exactly equal the true population parameter. However, because of the characteristics of the normal distribution, we can calculate the likelihood that a sample statistic is within a certain interval of the population parameter. A confidence interval represents the level of precision associated with the population estimate.</li>
-</ol>
-<p>We will use the following dataset:</p>
-<ul>
-<li>PUMS data for the Chapel Hill Data from the <a href="https://www.census.gov/programs-surveys/acs/microdata/access.html">US Census Bureau</a></li>
-</ul>
-<p>PUMS data are individual-level, anonymized records from the American Community Survey. They represent a sample of the population and serve as the raw data used to produce ACS summary statistics at aggregated geographic levels, such as block groups and tracts.</p>
-<p>For the purposes of calculating confidence intervals, we will treat the PUMS sample as if it were a simple random sample. In reality, PUMS is a complex survey sample with weights and clustering, so the independence assumption of the CLT is not strictly met.</p>
-<p>The variables in this dataset are:</p>
-<ul>
-<li>SERIALNO- unique identifier for each individual</li>
-<li>hrs_wrked_per_week- average number of hours worked per week (over the last 12 weeks)</li>
-<li>travel_time_to_work- average time commuting to work (one-way)</li>
-<li>income- yearly income</li>
-<li>public_health_ins- binary indicator for public health insurance (1= public health insurance, 0= no public health insurance)</li>
-</ul>
+<p>Some phenomena are spatially continuous, meaning they are present at every location rather than confined to discrete points. Many environmental variables, such as temperature and elevation, are spatially continuous.</p>
+<p>In many cases, however, data about these continuous variables are only collected at discrete locations (i.e.&nbsp;weather monitoring stations, stream gauges, sample sites). Therefore, an important task is to predict these continuous values at unsampled locations. This is called spatial interpolation. We can also analyze the spatial structure of these continuous variables by examining how values at sampled points vary with distance and location.</p>
+<p>We will use data from weather stations across North Carolina during 2025 heat wave (July 30, 2025) across North Carolina. The data is from the <a href="https://products.climate.ncsu.edu/cardinal/user/">North Carolina State Climate Office</a></p>
 <p><strong>To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.</strong></p>
-<section id="reading-in-data" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="reading-in-data"><span class="header-section-number">13.1</span> Reading in Data</h2>
+<section id="reading-in-data" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="reading-in-data"><span class="header-section-number">18.1</span> Reading in Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#read in pums data</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ch_pums <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1ifsUSH8veyhn8x8gUMo0MGu4VxYWpI9p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gstat)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(deldir)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#lightning</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>heatwave_temp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tZQU5NwZ3Z1lBtFbJTvM7clB1z0sXMI9"</span>) <span class="sc">|&gt;</span> <span class="fu">distinct</span>()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>nc_boundaries <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1SNy838Q7f7rvL6TFLmIZm-sKyRO7Htjw"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>Q1: Make a map and descriptive statistics table for maximum temperature values at North Carolina weather stations during July 30, 2025.</strong></p>
 </section>
-<section id="calculating-point-estimate-and-confidence-interval-for-means" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="calculating-point-estimate-and-confidence-interval-for-means"><span class="header-section-number">13.2</span> Calculating Point Estimate and Confidence Interval for Means</h2>
-<p>To calculate a confidence interval for a mean, we use this formula</p>
-<p><span class="math display">\[
-\bar{x} \pm t^* \frac{s}{\sqrt{n}}
-\]</span></p>
-<p>Where <span class="math inline">\(\bar{x}\)</span> is equal to the sample mean (or the point estimate), <span class="math inline">\(t^*\)</span> is the critical t-value, <span class="math inline">\({s}\)</span> is equal to the sample standard deviation, and <span class="math inline">\({n}\)</span> is the sample size. We use t distribution for means because we must estimate the population standard deviation and that extra uncertainty makes the sampling distribution wider than the normal curve.</p>
-<p>We can “manually” calculate the confidence interval in R.</p>
-<p>The script below shows the calculation of the 95% confidence interval (because we’re running a two-tail interval, the critical value is .975 for each side) for the average commute to work for the Chapel Hill population.</p>
+<section id="spatial-structure" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="spatial-structure"><span class="header-section-number">18.2</span> Spatial Structure</h2>
+<p>To predict continuous surfaces, we must assume that the underlying phenomenon has a predictable spatial structure. Methods for surface prediction rely on spatial autocorrelation. When a variable shows little or no spatial autocorrelation, it is not a good candidate for continuous surface prediction.</p>
+<p>However, the strength of spatial autocorrelation is not constant across space. As we have seen in earlier chapters, some phenomena are strongly autocorrelated only over short distances, while others exhibit spatial dependence across much larger distances. A correlogram allows us to examine how spatial autocorrelation changes as distance increases by calculating Moran’s I across a range of distance-based neighbor definitions. This provides insight into both the strength of spatial autocorrelation and the spatial scale over which it persists.</p>
+<p>The script below calculates a correlogram based on two neighborhood definitions– k-nearest neighbors (5 nearest to 30 nearest) and distance-based (from 30 miles to 100 miles).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate mean</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(ch_pums<span class="sc">$</span>travel_time_work)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract coordinates</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(heatwave_temp)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate sample variance</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sample_variance <span class="ot">&lt;-</span> <span class="fu">sd</span>(ch_pums<span class="sc">$</span>travel_time_work)<span class="sc">**</span><span class="dv">2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#store heatwave values</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> heatwave_temp<span class="sc">$</span>value</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#sample size</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ch_pums)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#command to get critical value</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>t_val <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> sample_size <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate lower bound</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>confidence_l <span class="ot">&lt;-</span> sample_mean <span class="sc">-</span> t_val <span class="sc">*</span> (<span class="fu">sqrt</span>(sample_variance<span class="sc">/</span>sample_size))</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate higher bound</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>confidence_h <span class="ot">&lt;-</span> sample_mean <span class="sc">+</span> t_val <span class="sc">*</span> (<span class="fu">sqrt</span>(sample_variance<span class="sc">/</span>sample_size))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">###NEAREST NEIGHBORS#####</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#define number of neighbors</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>k_vals <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">30</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#store</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>k_moranI <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(k_vals))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>k_correlogram <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">k =</span> k_vals,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">moranI =</span> k_moranI</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(k_vals)) {</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#k-nearest neighbors</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  lw <span class="ot">&lt;-</span> <span class="fu">knearneigh</span>(coords, <span class="at">k =</span> k_vals[i]) <span class="sc">|&gt;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">knn2nb</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nb2listw</span>(<span class="at">style =</span> <span class="st">"W"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Moran's I</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">moran.test</span>(z, lw)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  k_correlogram<span class="sc">$</span>moranI[i] <span class="ot">&lt;-</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.numeric</span>(m<span class="sc">$</span>estimate[<span class="st">"Moran I statistic"</span>])</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(k_correlogram,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> k, <span class="at">y =</span> moranI)) <span class="sc">+</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of Nearest Neighbors (k)"</span>,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Moran's I"</span>,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Spatial Correlogram (k-nearest neighbors)"</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="continuous_surfaces_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>From running this script, we learn that the point estimate of the population mean (which is equal to the sample mean) is 11.845. Applying the confidence interval calculation, we know that there is a 95% chance that the true population mean is between 11.42 and 12.27 (or 11.845 +/- .425).</p>
-<p>There is also an easy command to calculate point estimates and confidence intervals for means</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#t test command (assumes two-tail)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ch_pums<span class="sc">$</span>travel_time_work, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  ch_pums$travel_time_work
-t = 54.606, df = 6501, p-value &lt; 2.2e-16
-alternative hypothesis: true mean is not equal to 0
-95 percent confidence interval:
- 11.42019 12.27068
-sample estimates:
-mean of x 
- 11.84543 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">###DISTANCE BASED####</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define distance bands (feet)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>d_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">158400</span>, <span class="dv">528000</span>, <span class="at">by =</span> <span class="dv">26400</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#store</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>d_moranI <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(d_vals))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>d_correlogram <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">distance =</span> d_vals,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">moranI =</span> d_moranI</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(d_vals)) {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#distance</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  nb <span class="ot">&lt;-</span> <span class="fu">dnearneigh</span>(coords,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                   <span class="at">d1 =</span> <span class="dv">0</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                   <span class="at">d2 =</span> d_vals[i])</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  lw <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(nb, <span class="at">style =</span> <span class="st">"W"</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Moran's I</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">moran.test</span>(z, lw)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  d_correlogram<span class="sc">$</span>moranI[i] <span class="ot">&lt;-</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.numeric</span>(m<span class="sc">$</span>estimate[<span class="st">"Moran I statistic"</span>])</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_correlogram,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> moranI)) <span class="sc">+</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Distance"</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Moran's I"</span>,</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Spatial Correlogram (distance-based)"</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="continuous_surfaces_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p><strong>Q1. We have a large sample size (6502). What would happen to the confidence interval if we had a smaller sample? You can try it out by artificially changing the sample size in the code above</strong></p>
-<p><strong>Q2. Rerun the script above using a difference confidence level? How do the results change?</strong></p>
+</div>
+<p><strong>Q2: What do our plots tell us about the strength of autocorrelation in maximum temperature values and the scale over which it persists?</strong></p>
+<p><strong>Q3: Which neighborhood definition is more justifiable for this dataset?</strong></p>
 </section>
-<section id="calculating-point-estimate-and-confidence-interval-for-proportions" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="calculating-point-estimate-and-confidence-interval-for-proportions"><span class="header-section-number">13.3</span> Calculating Point Estimate and Confidence Interval for Proportions</h2>
-<p>We use the following formula to calculate a confidence interval for a proportion.</p>
-<p><span class="math display">\[
-\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
-\]</span></p>
-<p>Where <span class="math inline">\(\hat{p}\)</span> is the sample proportion (point estimate), <span class="math inline">\(z^*\)</span> is the critical z-value, and <span class="math inline">\(n\)</span> is the sample size. For proportions, the variability is already built into the binomial model, so we do not need to estimate the standard deviation, which is why we can use the z distribution</p>
-<p>We can “manually” calculate the confidence interval in R.</p>
-<p>The script below shows the calculation of the 95% confidence interval (because we’re running a two-tail interval, the critical value is .975 for each side) for the proportion of people who have public health insurance</p>
+<section id="voronoi-polygons" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="voronoi-polygons"><span class="header-section-number">18.3</span> Voronoi Polygons</h2>
+<p>Voronoi polygons divide space into regions based on proximity to point locations, assigning each location to the nearest point. Each polygon contains all locations that are closer to its generating point than to any other point. When used for spatial interpolation, Voronoi polygons create a discrete surface in which values change abruptly at polygon boundaries, reflecting nearest-neighbor influence rather than gradual spatial variation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#people with public health insurance (we can take the sum since it is represented as 1/0 binary)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>total_pop_pub_health <span class="ot">&lt;-</span> <span class="fu">sum</span>(ch_pums<span class="sc">$</span>public_health_ins)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>total_sample_pop <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ch_pums)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>prop_pub_health <span class="ot">&lt;-</span> total_pop_pub_health<span class="sc">/</span> total_sample_pop</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate polygons</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>voronoi_polygons <span class="ot">&lt;-</span> <span class="fu">do.call</span>(c, <span class="fu">st_geometry</span>(heatwave_temp)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_voronoi</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_collection_extract</span>() <span class="sc">|&gt;</span> <span class="fu">st_set_crs</span>(<span class="dv">2264</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#add values</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>heatwave_voronoi <span class="ot">&lt;-</span> heatwave_temp</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>heatwave_voronoi<span class="sc">$</span>geometry <span class="ot">&lt;-</span> voronoi_polygons[<span class="fu">unlist</span>(<span class="fu">st_intersects</span>(heatwave_temp, voronoi_polygons))] </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#clip to nc boundaries</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>clipped_heatmap <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(heatwave_voronoi, nc_boundaries)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(clipped_heatmap) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">fill =</span> <span class="st">"value"</span>, <span class="at">fill.scale =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">values =</span> <span class="st">"-rd_yl_gn"</span>, <span class="at">style =</span> <span class="st">"quantile"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="continuous_surfaces_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Q4: What spatial patterns do you see in the Voronoi diagram?</strong></p>
+</section>
+<section id="idw" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="idw"><span class="header-section-number">18.4</span> IDW</h2>
+<p>Inverse Distance Weighting (IDW) is a deterministic interpolation method that predicts values at unsampled locations as a weighted average of nearby observations, with closer points exerting more influence than distant ones.</p>
+<p>A key parameter in IDW is the inverse distance power (IDP), which controls how rapidly influence declines as distance increases. Lower IDP (closer to 1) values allow more distant observations to contribute to predictions, while higher IDP (greater than 3) values emphasize local variation and weight nearby points more heavily.</p>
+<p>Spatial correlograms provide a useful guide for selecting an appropriate IDP. By showing how spatial autocorrelation changes with distance, correlograms indicate whether similarity decays gradually or rapidly across space. When autocorrelation weakens slowly with distance, a moderate IDP is appropriate; when autocorrelation is confined to short distances, a higher IDP may better reflect the observed spatial structure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#turn pm data into sp </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>heatwave_sp <span class="ot">&lt;-</span> <span class="fu">as</span>(heatwave_temp, <span class="st">'Spatial'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#turn into an sp object </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>nc_sp <span class="ot">&lt;-</span> <span class="fu">as</span>(nc_boundaries, <span class="st">'Spatial'</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#get z critical value for two tail confidence 95%</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>z_val <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#create grid for the raster </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>grd <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">spsample</span>(nc_sp, <span class="st">"regular"</span>, <span class="at">n=</span><span class="dv">2000</span>))</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#lower bound of confidence interval</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>confidence_lower <span class="ot">&lt;-</span> prop_pub_health <span class="sc">-</span> z_val <span class="sc">*</span> (<span class="fu">sqrt</span>(prop_pub_health <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span>prop_pub_health)<span class="sc">/</span> total_sample_pop))</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#higher bound of confidence interval</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>confidence_higher <span class="ot">&lt;-</span> prop_pub_health <span class="sc">+</span> z_val <span class="sc">*</span> (<span class="fu">sqrt</span>(prop_pub_health <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span>prop_pub_health)<span class="sc">/</span> total_sample_pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>From the code above, we can say that the best point estimate for the proportion of people with public health insurance in Chapel Hill is .172 and that we are 95% confident that the true proportion falls between .163 and .182.</p>
-<p>There is also an easy command to calculate point estimates and confidence intervals for proportions</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate CI using Wilson method</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(total_pop_pub_health, total_sample_pop, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#sets parameters for the grid </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(grd) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"Y"</span>) </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(grd) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"Y"</span>) </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">gridded</span>(grd) <span class="ot">&lt;-</span> <span class="cn">TRUE</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">fullgrid</span>(grd) <span class="ot">&lt;-</span> <span class="cn">TRUE</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#sets crs </span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(grd) <span class="ot">&lt;-</span> <span class="fu">crs</span>(heatwave_sp)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#does the interpolation. idp sets sets the influence of points based on distance: higher values = stronger influence of nearby points</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>heatwave.idw <span class="ot">&lt;-</span> <span class="fu">idw</span>(value <span class="sc">~</span> <span class="dv">1</span>, heatwave_sp, <span class="at">newdata=</span>grd, <span class="at">idp =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-    1-sample proportions test with continuity correction
-
-data:  total_pop_pub_health out of total_sample_pop, null probability 0.5
-X-squared = 2789.8, df = 1, p-value &lt; 2.2e-16
-alternative hypothesis: true p is not equal to 0.5
-95 percent confidence interval:
- 0.1633459 0.1818612
-sample estimates:
-        p 
-0.1724085 </code></pre>
+<pre><code>[inverse distance weighted interpolation]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rasterize the grid </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(heatwave.idw) </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>r.m <span class="ot">&lt;-</span> <span class="fu">mask</span>(r, nc_boundaries)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(r.m) <span class="sc">+</span> <span class="fu">tm_raster</span>(<span class="at">col =</span> <span class="st">"var1.pred"</span>, <span class="at">col.scale =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">values =</span> <span class="st">"-rd_yl_gn"</span>, <span class="at">style =</span> <span class="st">"quantile"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="continuous_surfaces_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>You should notice a small difference between the CI that we manually calculated and the CI that was automatically calculated. The built-in <code>prop.test</code> command in R uses a slightly different calculation, called the <strong>Wilson interval</strong>, which adjusts both the center and the width of the interval to account for the fact that proportions are bounded between 0 and 1, making it more accurate than the Wald method for many sample sizes. Our manual calculation uses the <strong>Wald (textbook) method</strong>, which is simpler but can underestimate or overestimate the true confidence interval in some cases.</p>
-</section>
-<section id="mini-challenge" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="mini-challenge"><span class="header-section-number">13.4</span> Mini Challenge</h2>
-<p>Using the code above, calculate the point estimate and the 90% and 95% confidence interval for the two other variables in the pums dataset (hrs_wrked_per_weeek and income)</p>
+</div>
+<p><strong>Q5: Based on our correlogram, pick a more appropriate idp and rerun the code. How does the spatial pattern change?</strong></p>
+<p><strong>Q6: In what cases might the IDW be more useful than the Voronoi diagram?</strong></p>
 
 
 </section>
@@ -875,14 +917,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./clt.html" class="pagination-link" aria-label="Central Limit Theorem">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span>
+      <a href="./regression.html" class="pagination-link" aria-label="Bivariate Relationships and Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./hypothesis_testing.html" class="pagination-link" aria-label="Hypothesis Testing">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

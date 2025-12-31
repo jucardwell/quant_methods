@@ -61,7 +61,7 @@ ggplot(canopy_raster_df, aes(x = NLCD_Percent_Tree_Canopy_Cover)) + geom_histogr
 
 **Q3: What are the characteristics of the distribution of tree canopy cover across Chapel Hill?**
 
-### CLT Part 1
+## CLT Part 1
 
 Regardless of the population’s shape, the sampling distribution of the sample mean becomes approximately normal as the sample size increases
 
@@ -88,13 +88,13 @@ ggplot(sample_means_df, aes(x = sample_means)) + geom_histogram(binwidth = 3)
 
 **Q4: Run the code above with a smaller sample size (n = 5). Does the distribution of means still follow a normal distribution?**
 
-### CLT Part 2
+## CLT Part 2
 
 The mean of the sampling distribution of the sample mean will become the population mean
 
 **Q5: Calculate the mean of our sample means. How does the mean compare to the population mean?**
 
-### **CLT Part 3**
+## CLT Part 3
 
 The standard deviation of the sampling distribution is called the standard error, and is related to the population standard deviation by the formula:
 

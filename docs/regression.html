@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Describing Spatial Data – quant_methods</title>
+<title>17&nbsp; Bivariate Relationships and Regression – quant_methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./probability.html" rel="next">
-<link href="./tmap.html" rel="prev">
+<link href="./continuous_surfaces.html" rel="next">
+<link href="./autocorrelation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./describing_spatial_data.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./describing_spatial_data.html" class="sidebar-item-text sidebar-link active">
+  <a href="./describing_spatial_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></span></a>
   </div>
 </li>
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+  <a href="./regression.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></span></a>
   </div>
 </li>
@@ -264,12 +264,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#describing-tornadoes" id="toc-describing-tornadoes" class="nav-link active" data-scroll-target="#describing-tornadoes"><span class="header-section-number">10.1</span> Describing Tornadoes</a>
-  <ul class="collapse">
-  <li><a href="#traditional-descriptive-statistics" id="toc-traditional-descriptive-statistics" class="nav-link" data-scroll-target="#traditional-descriptive-statistics"><span class="header-section-number">10.1.1</span> Traditional Descriptive Statistics</a></li>
-  <li><a href="#spatial-descriptive-statistics" id="toc-spatial-descriptive-statistics" class="nav-link" data-scroll-target="#spatial-descriptive-statistics"><span class="header-section-number">10.1.2</span> Spatial Descriptive Statistics</a></li>
-  </ul></li>
-  <li><a href="#mini-challenge" id="toc-mini-challenge" class="nav-link" data-scroll-target="#mini-challenge"><span class="header-section-number">10.2</span> Mini-Challenge</a></li>
+  <li><a href="#testing-correlation" id="toc-testing-correlation" class="nav-link active" data-scroll-target="#testing-correlation"><span class="header-section-number">17.1</span> Testing Correlation</a></li>
+  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot"><span class="header-section-number">17.2</span> Scatterplot</a></li>
+  <li><a href="#bivariate-map" id="toc-bivariate-map" class="nav-link" data-scroll-target="#bivariate-map"><span class="header-section-number">17.3</span> Bivariate Map</a></li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression"><span class="header-section-number">17.4</span> Regression</a></li>
+  <li><a href="#spatial-regression" id="toc-spatial-regression" class="nav-link" data-scroll-target="#spatial-regression"><span class="header-section-number">17.5</span> Spatial Regression</a></li>
+  <li><a href="#mini-challenge" id="toc-mini-challenge" class="nav-link" data-scroll-target="#mini-challenge"><span class="header-section-number">17.6</span> Mini-Challenge</a></li>
   </ul>
 </nav>
     </div>
@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Describing Spatial Data</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></h1>
 </div>
 
 
@@ -295,177 +295,112 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this chapter, we will build on the descriptive tools we learned in the Describing Data chapter. Spatial descriptive statistics summarize datasets by their spatial characteristics, not their attribute values. Combining traditional descriptive statistics with spatial descriptive statistics can expand our understanding of the dataset.</p>
+<p>In this chapter, we will explore relationships between two variables. There are multiple ways to explore bivariate relationships, including visual and descriptive approaches such as scatterplots and bivariate maps that allow us to identify patterns without making causal claims. These methods help us understand how two variables co-vary across space.</p>
+<p>Linear regression provides a statistical framework for modeling relationships between two variables and evaluating whether an observed association is unlikely to have occurred by chance. Ordinary least squares (OLS) regression allows us to test hypotheses about the strength and direction of a relationship. However, like hypothesis tests, standard regression models assume that observations are independent. When spatial dependence is present, OLS regression can produce biased estimates. When spatial dependence is present, we can use alternative, spatially-explicit regression approaches.</p>
 <p>We will use the following spatial datasets:</p>
 <ul>
-<li>US tornado touchdown points from 1954-2022 from <a href="https://www.spc.noaa.gov/gis/svrgis/">NOAA’s Storm Prediction Center</a></li>
-<li>North Carolina hospitals from <a href="https://github.com/nytimes/covid-19-data/tree/master">NCOneMap</a></li>
+<li>2023 5-year ACS estimates for the triangle region of North Carolina</li>
 </ul>
-<p><strong>To follow along with this tutorial, <a href="https://drive.google.com/uc?export=download&amp;id=19d-PK7bxEJ7J6WKV6sp6-uchU6pWmc4r">download the .Rmd template</a> here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.</strong></p>
-<section id="describing-tornadoes" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="describing-tornadoes"><span class="header-section-number">10.1</span> Describing Tornadoes</h2>
-<section id="traditional-descriptive-statistics" class="level3" data-number="10.1.1">
-<h3 data-number="10.1.1" class="anchored" data-anchor-id="traditional-descriptive-statistics"><span class="header-section-number">10.1.1</span> Traditional Descriptive Statistics</h3>
-<p>Open the tornado object by double-clicking it in the environment. Important variables in the dataset are:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Field Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>yr</td>
-<td>Year of occurrence</td>
-</tr>
-<tr class="even">
-<td>st</td>
-<td>State</td>
-</tr>
-<tr class="odd">
-<td>mag</td>
-<td>Rating on <a href="https://www.weather.gov/oun/efscale">Enhanced Fujita Scale</a></td>
-</tr>
-<tr class="even">
-<td>inj</td>
-<td>Number of injuries</td>
-</tr>
-<tr class="odd">
-<td>fat</td>
-<td>Number of fatalities</td>
-</tr>
-<tr class="even">
-<td>len</td>
-<td>Length in miles</td>
-</tr>
-<tr class="odd">
-<td>wid</td>
-<td>Width in yards</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Q1. What does each observation (each row) represent? How do you know?</strong></p>
-<p><strong>Q2. Create a descriptive statistics table for a categorical variable in the dataset. Create one data visualization to compliment the statistics table.</strong></p>
-<p><strong>Q3. Create a descriptive statistics table for a quantitative variable in the dataset. Create one data visualization to compliment the statistics table.</strong></p>
-</section>
-<section id="spatial-descriptive-statistics" class="level3" data-number="10.1.2">
-<h3 data-number="10.1.2" class="anchored" data-anchor-id="spatial-descriptive-statistics"><span class="header-section-number">10.1.2</span> Spatial Descriptive Statistics</h3>
-<section id="mean-center" class="level4" data-number="10.1.2.1">
-<h4 data-number="10.1.2.1" class="anchored" data-anchor-id="mean-center"><span class="header-section-number">10.1.2.1</span> Mean Center</h4>
-<p>The mean center of a spatial dataset represents the average location of a set of points and is calculated by taking the average of all the x-coordinates and all the y-coordinates in the dataset.</p>
+<p><strong>To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate mean center of all tornados in dataset</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>torn_mean_center <span class="ot">&lt;-</span> <span class="fu">center_mean</span>(torn)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#map tornadoes and mean center</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(torn) <span class="sc">+</span> <span class="fu">tm_dots</span>() <span class="sc">+</span> <span class="fu">tm_shape</span>(torn_mean_center) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="fu">tm_add_legend</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"symbols"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="st">"Mean Center"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"blue"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="describing_spatial_data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatialreg)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>acs_tract_nc <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1b5zb4nM58mA9okcn-3S-NtWlL_JPhvjn"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(COUNTYFP <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"135"</span>, <span class="st">"183"</span>, <span class="st">"063"</span>)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(no_health_insur), <span class="sc">!</span><span class="fu">is.na</span>(pct_pov))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<p><strong>Q4. What does the location of our mean center tell us about the spatial distribution of tornadoes in the United States?</strong></p>
-</section>
-<section id="weighted-mean-center" class="level4" data-number="10.1.2.2">
-<h4 data-number="10.1.2.2" class="anchored" data-anchor-id="weighted-mean-center"><span class="header-section-number">10.1.2.2</span> Weighted Mean Center</h4>
-<p>The weighted mean center calculates the average location, but allows you to select a variable to weight by. The calculation then gives more influence to features with larger values of that variable. For instance, we could give higher weight to fatal tornadoes</p>
+<section id="testing-correlation" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="testing-correlation"><span class="header-section-number">17.1</span> Testing Correlation</h2>
+<p>Correlation provides a single summary measure of the strength and direction of association between two numeric variables. The Pearson correlation coefficient ranges from −1 to 1, where values closer to −1 or 1 indicate stronger linear relationships, and values near 0 indicate little to no linear association. Correlation is useful as an initial diagnostic</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## calculate weighted mean center using "fat" variable</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>torn_w_mean_center <span class="ot">&lt;-</span> <span class="fu">center_mean</span>(torn, <span class="at">weight =</span> torn<span class="sc">$</span>fat)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">##map mean center and weighted mean center</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(torn) <span class="sc">+</span> <span class="fu">tm_dots</span>() <span class="sc">+</span> <span class="fu">tm_shape</span>(torn_mean_center) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, ) <span class="sc">+</span> <span class="fu">tm_shape</span>(torn_w_mean_center) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">fill =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="fu">tm_add_legend</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"symbols"</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Mean Center"</span>, <span class="st">"Weighted Mean Center"</span>),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="describing_spatial_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test correlation</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(acs_tract_nc<span class="sc">$</span>no_health_insur, acs_tract_nc<span class="sc">$</span>pct_pov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<p><strong>Q5. What does the difference between the mean center and the weighted mean center (weighted by fatalities) tell us about the spatial distribution of fatal tornadoes?</strong></p>
-<p><strong>Q6. Using the code below, calculate and map the difference in the weighted mean center for tornadoes before 2000 and after 2000. What does this tell us about how the spatial pattern of tornadoes has changed over time?</strong></p>
+<p><strong>Q1: What does our correlation value tell us about the strength and direction of the relationship between percent of population without health insurance and percent of population living under the poverty level?</strong></p>
+</section>
+<section id="scatterplot" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="scatterplot"><span class="header-section-number">17.2</span> Scatterplot</h2>
+<p>One of the simplest visualizations we can use to explore bivariate relationships is a scatterplot. For instance, if we want to explore the relationship between our no health insurance variable and our poverty variable, we could do the following</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tornadoes before 2000</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>torn_b_2000 <span class="ot">&lt;-</span> torn <span class="sc">|&gt;</span> <span class="fu">filter</span>(yr <span class="sc">&lt;</span> <span class="dv">2000</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tornados after 2000</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>torn_a_2000 <span class="ot">&lt;-</span> torn <span class="sc">|&gt;</span> <span class="fu">filter</span>(yr <span class="sc">&gt;=</span> <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(acs_tract_nc, <span class="fu">aes</span>(<span class="at">x =</span> no_health_insur, <span class="at">y=</span> pct_pov))  <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="standard-deviational-ellipse" class="level4" data-number="10.1.2.3">
-<h4 data-number="10.1.2.3" class="anchored" data-anchor-id="standard-deviational-ellipse"><span class="header-section-number">10.1.2.3</span> Standard Deviational Ellipse</h4>
-<p>The standard deviational ellipse is a method for summarizing the spatial central tendency, dispersion, and directional trends. The ellipse visually represents the spread of the data and the direction of the spread. It is centered on the mean center and its axes represent the standard deviation of the x and y coordinates.</p>
+<section id="bivariate-map" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="bivariate-map"><span class="header-section-number">17.3</span> Bivariate Map</h2>
+<p>While scatterplots ignore geography, bivariate maps allow us to explore how two variables co-vary across space. A bivariate map classifies each variable into categories (for instance, quantiles) and combines them into a single color scheme, making it possible to identify areas where both variables are simultaneously high or low.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate standard ellipse values</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>std_ellip_torn <span class="ot">&lt;-</span> <span class="fu">std_dev_ellipse</span>(torn)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#create an ellipse of those values</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>std_ellip_torn <span class="ot">&lt;-</span> sfdep<span class="sc">::</span><span class="fu">st_ellipse</span>(<span class="at">geometry =</span>std_ellip_torn,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sx =</span> std_ellip_torn<span class="sc">$</span>sx,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sy =</span> std_ellip_torn<span class="sc">$</span>sy,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">rotation =</span> <span class="sc">-</span>std_ellip_torn<span class="sc">$</span>theta)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#map the ellipse with transparency</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(torn) <span class="sc">+</span> <span class="fu">tm_dots</span>() <span class="sc">+</span> <span class="fu">tm_shape</span>(std_ellip_torn) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">fill_alpha =</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="describing_spatial_data_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bivariate map based on quantiles</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(acs_tract_nc) <span class="sc">+</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">fill =</span> <span class="fu">tm_vars</span>(<span class="fu">c</span>(<span class="st">"no_health_insur"</span>, <span class="st">"pct_pov"</span>), <span class="at">multivariate =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill.scale =</span> <span class="fu">tm_scale_bivariate</span>(<span class="at">values =</span><span class="st">"bivario.folk_warmth"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale1 =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Lo"</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">"Hi"</span>)), </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale2 =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">n=</span><span class="dv">4</span>, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Lo"</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">"Hi"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>Q2: What does our bivariate map tell us about where the relationships between these two variables are the strongest?</strong></p>
+</section>
+<section id="regression" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="regression"><span class="header-section-number">17.4</span> Regression</h2>
+<p>Linear regression provides a formal statistical framework for modeling the relationship between two variables. In an ordinary least squares (OLS) regression, we estimate the expected value of a dependent variable as a linear function of an independent variable. OLS allows us to quantify the strength and direction of the relationship and to assess whether the observed association is unlikely to have occurred by chance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#traditional regression</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ols_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(pct_pov <span class="sc">~</span> no_health_insur, <span class="at">data =</span> acs_tract_nc)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ols_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>However, OLS regression relies on several assumptions, including that observations are independent. One way to evaluate whether spatial dependence is present is to examine the residuals from an OLS regression. If the model has adequately captured the underlying process, residuals should be randomly distributed across space. Spatial clustering in residuals suggests that important spatial structure remains unmodeled. A statistically significant Moran’s I indicates that the independence assumption of OLS has been violated and that a spatial regression approach may be more appropriate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add residuals as a variable</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>acs_tract_nc <span class="ot">&lt;-</span>acs_tract_nc <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">olsresid =</span> <span class="fu">resid</span>(ols_model)) </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#map residuals</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(acs_tract_nc) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">fill =</span> <span class="st">"olsresid"</span>,<span class="at">fill.scale =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">values =</span> <span class="st">"bu_pu"</span>, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">n =</span> <span class="dv">5</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate neighborhoods</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">poly2nb</span>(acs_tract_nc, <span class="at">queen =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#set neighborhood weight matrix</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>nbw <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(nb, <span class="at">style =</span> <span class="st">"W"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate Morans I</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>gmoran <span class="ot">&lt;-</span> <span class="fu">moran.test</span>(acs_tract_nc<span class="sc">$</span>olsresid, nbw)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>gmoran</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Q6. What does the standard deviational ellipse tell us about the direction and spread of the tornado dataset?</strong></p>
+<p><strong>Q3: Do our results indicate that we should use a spatial model?</strong></p>
 </section>
+<section id="spatial-regression" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="spatial-regression"><span class="header-section-number">17.5</span> Spatial Regression</h2>
+<p>When spatial dependence is present, we can use spatial regression models that explicitly incorporate spatial structure. Two common approaches are the spatial lag model and the spatial error model.</p>
+<p>The spatial lag model includes a spatially lagged version of the dependent variable, allowing outcomes in one location to be influenced by outcomes in neighboring locations. This approach is appropriate when the process itself is spatially contagious or when values diffuse across space.</p>
+<p>The spatial error model, in contrast, assumes that spatial dependence operates through the error term rather than through direct interaction between dependent variables. This approach is appropriate when unobserved spatial processes affect the outcome but are not explicitly included in the model.</p>
+<p>To choose an appropriate model, it is important that we don’t just look at model fit, but that we also consider the potential underlying processes. In this case, it is not doesn’t make much logical sense that it would be a diffusive process, so a lag model wouldn’t be appropriate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lag model</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fit.lag<span class="ot">&lt;-</span><span class="fu">lagsarlm</span>(pct_pov <span class="sc">~</span> no_health_insur,  </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> acs_tract_nc, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">listw =</span> nbw) </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.lag)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#error model</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>fit.error<span class="ot">&lt;-</span><span class="fu">errorsarlm</span>(pct_pov <span class="sc">~</span> no_health_insur,  </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> acs_tract_nc, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">listw =</span> nbw)  </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-</section>
-<section id="mini-challenge" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="mini-challenge"><span class="header-section-number">10.2</span> Mini-Challenge</h2>
-<p>This challenge will ask you to calculate a weighted mean center for different for a dataset on North Carolina hospitals. We will focus on a few variables:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Field Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>hgenlic</td>
-<td>Total hospital general beds</td>
-</tr>
-<tr class="even">
-<td>rehabhlic</td>
-<td>Total hospital rehab beds</td>
-</tr>
-<tr class="odd">
-<td>psylic</td>
-<td>Total hospital psych beds</td>
-</tr>
-<tr class="even">
-<td>nfgenlic</td>
-<td>Total nursing facility general beds</td>
-</tr>
-</tbody>
-</table>
-<ol type="1">
-<li>Open the nc_hosp dataset. What does each row represent?</li>
-<li>Calculate the mean center of all hospitals and the weighted mean center based on the four variables of interest</li>
-<li>Create a map that displays the variability in the mean centers. Make sure to include a legend</li>
-</ol>
+<section id="mini-challenge" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="mini-challenge"><span class="header-section-number">17.6</span> Mini-Challenge</h2>
+<p>This challenge will ask you to explore the bivariate relationship between two other variables in the <code>acs_tract_nc</code> object. Add a code chunk that does the following:</p>
+<ul>
+<li>Creates a scatterplot and bivariate map of the two variables</li>
+<li>Run a traditional OLS and interpret the results. Remember this will require choosing a dependent and independent variable. This choice should not be random, it should be based on a hypothesis</li>
+<li>Analyze the residuals for spatial dependence and determine whether a spatial model should be run.</li>
+</ul>
 
 
 </section>
@@ -890,13 +825,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tmap.html" class="pagination-link" aria-label="Tmap Interlude">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Tmap Interlude</span></span>
+      <a href="./autocorrelation.html" class="pagination-link" aria-label="Spatial Autocorrelation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./probability.html" class="pagination-link" aria-label="Probability and Probability Distributions">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability and Probability Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./continuous_surfaces.html" class="pagination-link" aria-label="Continuous Surfaces">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

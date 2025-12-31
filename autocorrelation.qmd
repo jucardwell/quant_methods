@@ -178,8 +178,6 @@ We know that both of our datasets are clustered because of our Moran's I values 
 
 For the median household income:
 
-For the school chronic absences:
-
 ```{r}
 locali<-localmoran_perm(tracts_sf$med_hh_inc, nbw) %>%
   as_tibble() %>%
@@ -207,6 +205,8 @@ tm_shape(tracts_sf) + tm_polygons("lisa_cluster", col_alpha = 0)
 ```
 
 **Q2: What is the spatial pattern of clustering in the median household income variable?**
+
+For the school chronic absences:
 
 ```{r}
 locali_school<-localmoran_perm(schools_sf$pre_covid_pct, nbw_school) %>%

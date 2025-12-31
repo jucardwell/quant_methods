@@ -4,7 +4,29 @@
 
 ### Overview
 
-In this lab,
+In this lab, you will reflect on the quantitative revolution in geography and the major critiques that emerged in response. The goal is to consider how these critiques can inform a thoughtful, reflexive approach to using quantitative methods throughout the course.
+
+### Specifications
+
+This lab is designed to assess the [Concept 1 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-1-the-quantitative-revolution). You'll be evaluated on the following specifications:
+
+| Specifications |
+|------------------------------------------------------------------------|
+| Student response is submitted to Canvas and is approximately 500 words. Minor grammatical/organizational issues don’t prevent the work from being read and understood. |
+| **Content Understanding:** Student demonstrates a competent understanding of the Quantitative Revolution in geography and the major critiques that emerged in response |
+| **Reflection & Application:** Student thoughtfully reflects on how these critiques will inform their approach to quantitative methods for the remainder of the course. |
+
+### Prompt
+
+The quantitative revolution fundamentally reshaped the field of geography by emphasizing formal models, statistical analysis, and claims to objectivity and scientific rigor. In response, humanistic, feminist, Marxist, and critical geographers have raised concerns that quantitative approaches can be reductionist, overly positivist, and falsely neutral, emphasizing abstract space over lived place and obscuring social context, power, and marginalized experiences.
+
+In this response paper, reflect on how these critiques can inform your approach to using quantitative methods as you move forward in a largely quantitative course. Your response should address the following:
+
+-   Briefly explain how the quantitative revolution changed geography, and summarize the core concerns raised by critical approaches we’ve discussed in class
+-   Reflect on how these critiques challenge the idea that quantitative methods are neutral, objective, or sufficient on their own
+-   Discuss how you can continue to consider these critiques for the rest of the course by explaining how they will influence the questions you ask, how you interpret results, and the claims you make about data/analysis.
+
+Your response should be approximately 500 words
 
 ## Lab 2
 
@@ -21,7 +43,7 @@ In this lab, you will examine demographic and climate data at a different level 
 This lab is designed to assess the [Concept 2 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-2-data-and-descriptive-statistics). You'll be evaluated on the following specifications:
 
 | Specification |
-|----|
+|------------------------------------------------------------------------|
 | Student submits HTML and RMD versions the R Markdown file. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
 | **Describing Rurality:** Student produces a descriptive statistics table, a bar chart, and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions |
@@ -108,7 +130,7 @@ In this lab, you will practice calculating spatial descriptive statistics on a d
 This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-spatial-description). You'll be evaluated on the following specifications:
 
 | Specification |
-|----|
+|------------------------------------------------------------------------|
 | Student submits HTML and RMD versions the R Markdown file. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
 | **Describing Covid:** Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful. |
@@ -187,7 +209,7 @@ In this lab, you will practice applying the binomial probability distribution us
 This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-4-probability). You'll be evaluated on the following specifications:
 
 | Specification |
-|----|
+|------------------------------------------------------------------------|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Flood Risk at Bolin Creek**: Student creates a descriptive statistics table for daily water height, calculates empirical probability of a flood risk day, estimates the most likely number of flood risk days over 25 days, and computes cumulative probability of more than 3 flood risk days. Written interpretation demonstrates understanding of the results. |
@@ -264,7 +286,7 @@ The variables in the dataset are:
 This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-5-inferential-statistics). You'll be evaluated on the following specifications:
 
 | Specification |
-|----|
+|------------------------------------------------------------------------|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Descriptive Statistics**: Student creates a descriptive statistics table and non-map graphic for the three variables. Written interpretation describes distribution and demonstrates understanding of the results. |
@@ -335,7 +357,7 @@ In this lab, you will practice applying statistical tests to a sample of North C
 This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-6-hypothesis-testing). You'll be evaluated on the following specifications:
 
 | Specification |
-|----|
+|------------------------------------------------------------------------|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
@@ -356,7 +378,6 @@ This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.g
     library(sf)
 
     school_sample <- st_read("https://drive.google.com/uc?export=download&id=1Yys2-G69_tc9YC-7jlRgsfXn0faLZhUV") 
-
     ```
 
 3.  Under a header called "Describing School Absences" make a map, a descriptive statistics table, and one non-map graphic for both variables (pre_covid_pct, after_covid_pct). Describe spatial patterns and the characteristics of the datasets.
@@ -373,21 +394,109 @@ This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.g
 
 ### Overview
 
-In the Point Pattern Analysis tutorial we learned about applying statistical tests to evaluate whether there is enough evidence to determine if an estimate (calculated from a sample) is statistically different than another estimate, within a certain level of confidence.
+In the Point Pattern Analysis tutorial, we learned how to interpret the spatial distribution of events (represented as points) in a defined study area/region based on comparing a spatial distribution to CSR (complete spatial randomness).
 
-In this lab, you will practice applying statistical tests to a sample of North Carolina public school data on chronic absences. Each school in the sample contains a schoolwide mean for absenteeism before Covid (2018-2019) and after Covid (2021-2024), as well as a rural/non-rural designation depending on the county the school is located in.
+In this lab, you will practice applying these skills to a dataset representing wildfire locations in Croatan National Forest in North Carolina from 1957-2024 (from [US Forest Service](https://data-usfs.hub.arcgis.com/datasets/usfs::national-usfs-fire-occurrence-point-feature-layer/explore?location=64.276190%2C-9.593052%2C5.89)).
 
 *Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
 
 ### Specifications
 
-This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-6-hypothesis-testing). You'll be evaluated on the following specifications:
+This lab is designed to assess the [Concept 7 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-7-patterns-in-events). You'll be evaluated on the following specifications:
 
 | Specification |
-|----|
+|------------------------------------------------------------------------|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
-| **Scenario 1**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
-| **Scenario 2:** Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
-| **Scenario 3**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
+| **Analyzing Global Structure:** Student computes and visualizes a quadrat count and tests it against CSR, and creates a kernel density estimate using an appropriate bandwidth. Written interpretation demonstrates understanding of first-order processes. |
+| **Analyzing Local Structure:** Student computes and visualizes the G-function and F-function. Written interpretation demonstrates understanding of second-order processes. |
+| **Describing Wildfires**: Student integrates global and local results to identify the dominant spatial process (first-order, second-order, or both) and proposes a specific hypothesis informed by background research. |
+
+### Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab7.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    #load libraries
+    library(sf)
+    library(tidyverse)
+    library(spatstat)
+
+    forest_boundary <- st_read("https://drive.google.com/uc?export=download&id=1Ku6Hv_RX4WSABaHh9Pj_x_HEBXOW0HfS") 
+
+    wildfire_points <- st_read("https://drive.google.com/uc?export=download&id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT") 
+
+    ```
+
+3.  Under a header called "Analyzing Global Structure" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Compute a quadrat count using 9 quadrats and display the plot
+    -   Test the quadrat count against CSR using a quadrat test
+    -   Create a KDE for wildfire counts (this will require experimenting with bandwidths)
+    -   Interpret your results. What do they tell you about the global structure of the dataset?
+
+4.  Under a header called "Analyzing Local Structure" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Compute and plot the G-Function
+    -   Compute and plot the F-function
+    -   Interpret your results. What do they tell you about the global structure of the dataset?
+
+5.  Under a header called "Describing Wildfires" consider your full set of results (global and local structure). Identify whether there is evidence for the pattern of wildfires reflecting first-order processes, second-order processes, or a combination of both. Based on brief background research on wildfires and the study area, propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.
+
+## Lab 8
+
+### Overview
+
+In the Autocorrelation tutorial, we learned how to define spatial neighbors and how to use these neighborhoods to assess whether values at locations are related to values at near locations.
+
+In this lab, you will practice applying these skills to a dataset representing average SAT score at North Carolina public high schools and workplace mobility during the first few months of Covid using the Google mobility dataset.
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
+
+### Specifications
+
+This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values). You'll be evaluated on the following specifications:
+
+| Specification |
+|------------------------------------------------------------------------|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
+| **Defining Neighborhoods**: Student defines neighborhoods and creates spatial weight matrices for both NC schools and NC counties. Written justification explains why the chosen neighborhood definition is appropriate for this analysis. |
+| **Analyzing Global Autocorrelation:** Student computes Moran’s I for school SAT scores and county-level Covid-19 workplace mobility. Written interpretation explains what the Moran’s I values indicate about spatial structure and strength of autocorrelation. |
+| **Analyzing Local Autocorrelation:** Student computes and maps local indicators of spatial autocorrelation for both datasets. Written interpretation describes the observed clustering patterns and proposes one reasonable hypothesis for why these patterns exist. |
+
+### Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab8.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    #load libraries
+    library(sf)
+    library(tidyverse)
+    library(spatstat)
+
+    school_sat <- st_read("https://drive.google.com/uc?export=download&id=1i-C2PF3ajbpHTlavh3m1QbWNObpobprZ") 
+
+    covid_mobility <- st_read("https://drive.google.com/uc?export=download&id=1YbCNVR5K8jDF5HOKHcoJ25gz7VkRvDHa") 
+
+    ```
+
+3.  Under a header called "Defining Neighbors" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Defines neighborhoods and creates a neighborhood weight matrix for NC schools and NC counties. You can use any appropriate neighborhood definition
+    -   Justify your neighborhood definition. Why is it useful for this particular analysis?
+
+4.  Under a header called "Analyzing Global Autocorrelation" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Computes Moran's I for school SAT scores and NC county covid mobility scores using your selected neighborhood definition. For the covid mobility dataset, you should use the `workplace_change` variable, which represents the percent change in workplace mobility from March-May 2020.
+    -   Describe your results. What does the Moran's I value tell you about the structure of the data (and the strength of this structure)?
+
+5.  Under a header called "Analyzing Local Autocorrelation" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Calculate and map Local Indicators of Autocorrelation for both datasets
+    -   Describe your results. What is the spatial pattern of clustering? Propose one reasonable hypothesis for why this pattern might exist.

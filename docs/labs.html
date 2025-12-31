@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Schedule</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -242,6 +242,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -255,41 +267,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#lab-1" id="toc-lab-1" class="nav-link active" data-scroll-target="#lab-1"><span class="header-section-number">5.1</span> Lab 1</a>
   <ul class="collapse">
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">5.1.1</span> Overview</a></li>
+  <li><a href="#specifications" id="toc-specifications" class="nav-link" data-scroll-target="#specifications"><span class="header-section-number">5.1.2</span> Specifications</a></li>
+  <li><a href="#prompt" id="toc-prompt" class="nav-link" data-scroll-target="#prompt"><span class="header-section-number">5.1.3</span> Prompt</a></li>
   </ul></li>
   <li><a href="#lab-2" id="toc-lab-2" class="nav-link" data-scroll-target="#lab-2"><span class="header-section-number">5.2</span> Lab 2</a>
   <ul class="collapse">
   <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1"><span class="header-section-number">5.2.1</span> Overview</a></li>
-  <li><a href="#specifications" id="toc-specifications" class="nav-link" data-scroll-target="#specifications"><span class="header-section-number">5.2.2</span> Specifications</a></li>
+  <li><a href="#specifications-1" id="toc-specifications-1" class="nav-link" data-scroll-target="#specifications-1"><span class="header-section-number">5.2.2</span> Specifications</a></li>
   <li><a href="#lab-instructions" id="toc-lab-instructions" class="nav-link" data-scroll-target="#lab-instructions"><span class="header-section-number">5.2.3</span> Lab Instructions</a></li>
   </ul></li>
   <li><a href="#lab-3" id="toc-lab-3" class="nav-link" data-scroll-target="#lab-3"><span class="header-section-number">5.3</span> Lab 3</a>
   <ul class="collapse">
   <li><a href="#overview-2" id="toc-overview-2" class="nav-link" data-scroll-target="#overview-2"><span class="header-section-number">5.3.1</span> Overview</a></li>
-  <li><a href="#specifications-1" id="toc-specifications-1" class="nav-link" data-scroll-target="#specifications-1"><span class="header-section-number">5.3.2</span> Specifications</a></li>
+  <li><a href="#specifications-2" id="toc-specifications-2" class="nav-link" data-scroll-target="#specifications-2"><span class="header-section-number">5.3.2</span> Specifications</a></li>
   <li><a href="#lab-instructions-1" id="toc-lab-instructions-1" class="nav-link" data-scroll-target="#lab-instructions-1"><span class="header-section-number">5.3.3</span> Lab Instructions</a></li>
   </ul></li>
   <li><a href="#lab-4" id="toc-lab-4" class="nav-link" data-scroll-target="#lab-4"><span class="header-section-number">5.4</span> Lab 4</a>
   <ul class="collapse">
   <li><a href="#overview-3" id="toc-overview-3" class="nav-link" data-scroll-target="#overview-3"><span class="header-section-number">5.4.1</span> Overview</a></li>
-  <li><a href="#specifications-2" id="toc-specifications-2" class="nav-link" data-scroll-target="#specifications-2"><span class="header-section-number">5.4.2</span> Specifications</a></li>
+  <li><a href="#specifications-3" id="toc-specifications-3" class="nav-link" data-scroll-target="#specifications-3"><span class="header-section-number">5.4.2</span> Specifications</a></li>
   <li><a href="#lab-instructions-2" id="toc-lab-instructions-2" class="nav-link" data-scroll-target="#lab-instructions-2"><span class="header-section-number">5.4.3</span> Lab Instructions</a></li>
   </ul></li>
   <li><a href="#lab-5" id="toc-lab-5" class="nav-link" data-scroll-target="#lab-5"><span class="header-section-number">5.5</span> Lab 5</a>
   <ul class="collapse">
   <li><a href="#overview-4" id="toc-overview-4" class="nav-link" data-scroll-target="#overview-4"><span class="header-section-number">5.5.1</span> Overview</a></li>
-  <li><a href="#specifications-3" id="toc-specifications-3" class="nav-link" data-scroll-target="#specifications-3"><span class="header-section-number">5.5.2</span> Specifications</a></li>
+  <li><a href="#specifications-4" id="toc-specifications-4" class="nav-link" data-scroll-target="#specifications-4"><span class="header-section-number">5.5.2</span> Specifications</a></li>
   <li><a href="#lab-instructions-3" id="toc-lab-instructions-3" class="nav-link" data-scroll-target="#lab-instructions-3"><span class="header-section-number">5.5.3</span> Lab Instructions</a></li>
   </ul></li>
   <li><a href="#lab-6" id="toc-lab-6" class="nav-link" data-scroll-target="#lab-6"><span class="header-section-number">5.6</span> Lab 6</a>
   <ul class="collapse">
   <li><a href="#overview-5" id="toc-overview-5" class="nav-link" data-scroll-target="#overview-5"><span class="header-section-number">5.6.1</span> Overview</a></li>
-  <li><a href="#specifications-4" id="toc-specifications-4" class="nav-link" data-scroll-target="#specifications-4"><span class="header-section-number">5.6.2</span> Specifications</a></li>
+  <li><a href="#specifications-5" id="toc-specifications-5" class="nav-link" data-scroll-target="#specifications-5"><span class="header-section-number">5.6.2</span> Specifications</a></li>
   <li><a href="#lab-instructions-4" id="toc-lab-instructions-4" class="nav-link" data-scroll-target="#lab-instructions-4"><span class="header-section-number">5.6.3</span> Lab Instructions</a></li>
   </ul></li>
   <li><a href="#lab-7" id="toc-lab-7" class="nav-link" data-scroll-target="#lab-7"><span class="header-section-number">5.7</span> Lab 7</a>
   <ul class="collapse">
   <li><a href="#overview-6" id="toc-overview-6" class="nav-link" data-scroll-target="#overview-6"><span class="header-section-number">5.7.1</span> Overview</a></li>
-  <li><a href="#specifications-5" id="toc-specifications-5" class="nav-link" data-scroll-target="#specifications-5"><span class="header-section-number">5.7.2</span> Specifications</a></li>
+  <li><a href="#specifications-6" id="toc-specifications-6" class="nav-link" data-scroll-target="#specifications-6"><span class="header-section-number">5.7.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions-5" id="toc-lab-instructions-5" class="nav-link" data-scroll-target="#lab-instructions-5"><span class="header-section-number">5.7.3</span> Lab Instructions</a></li>
+  </ul></li>
+  <li><a href="#lab-8" id="toc-lab-8" class="nav-link" data-scroll-target="#lab-8"><span class="header-section-number">5.8</span> Lab 8</a>
+  <ul class="collapse">
+  <li><a href="#overview-7" id="toc-overview-7" class="nav-link" data-scroll-target="#overview-7"><span class="header-section-number">5.8.1</span> Overview</a></li>
+  <li><a href="#specifications-7" id="toc-specifications-7" class="nav-link" data-scroll-target="#specifications-7"><span class="header-section-number">5.8.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions-6" id="toc-lab-instructions-6" class="nav-link" data-scroll-target="#lab-instructions-6"><span class="header-section-number">5.8.3</span> Lab Instructions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -320,7 +341,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.1" class="anchored" data-anchor-id="lab-1"><span class="header-section-number">5.1</span> Lab 1</h2>
 <section id="overview" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">5.1.1</span> Overview</h3>
-<p>In this lab,</p>
+<p>In this lab, you will reflect on the quantitative revolution in geography and the major critiques that emerged in response. The goal is to consider how these critiques can inform a thoughtful, reflexive approach to using quantitative methods throughout the course.</p>
+</section>
+<section id="specifications" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="specifications"><span class="header-section-number">5.1.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-1-the-quantitative-revolution">Concept 1 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Student response is submitted to Canvas and is approximately 500 words. Minor grammatical/organizational issues don’t prevent the work from being read and understood.</td>
+</tr>
+<tr class="even">
+<td><strong>Content Understanding:</strong> Student demonstrates a competent understanding of the Quantitative Revolution in geography and the major critiques that emerged in response</td>
+</tr>
+<tr class="odd">
+<td><strong>Reflection &amp; Application:</strong> Student thoughtfully reflects on how these critiques will inform their approach to quantitative methods for the remainder of the course.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="prompt" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="prompt"><span class="header-section-number">5.1.3</span> Prompt</h3>
+<p>The quantitative revolution fundamentally reshaped the field of geography by emphasizing formal models, statistical analysis, and claims to objectivity and scientific rigor. In response, humanistic, feminist, Marxist, and critical geographers have raised concerns that quantitative approaches can be reductionist, overly positivist, and falsely neutral, emphasizing abstract space over lived place and obscuring social context, power, and marginalized experiences.</p>
+<p>In this response paper, reflect on how these critiques can inform your approach to using quantitative methods as you move forward in a largely quantitative course. Your response should address the following:</p>
+<ul>
+<li>Briefly explain how the quantitative revolution changed geography, and summarize the core concerns raised by critical approaches we’ve discussed in class</li>
+<li>Reflect on how these critiques challenge the idea that quantitative methods are neutral, objective, or sufficient on their own</li>
+<li>Discuss how you can continue to consider these critiques for the rest of the course by explaining how they will influence the questions you ask, how you interpret results, and the claims you make about data/analysis.</li>
+</ul>
+<p>Your response should be approximately 500 words</p>
 </section>
 </section>
 <section id="lab-2" class="level2" data-number="5.2">
@@ -331,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this lab, you will examine demographic and climate data at a different level of spatial aggregation and observe how the descriptive statistics change as a result (<strong>remember the underlying data values are not changing, only the geographic units used to summarize them</strong>). You will also explore an alternative way of defining “rural” and compare how this definition shapes your interpretation of the data.</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands</em></p>
 </section>
-<section id="specifications" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="specifications"><span class="header-section-number">5.2.2</span> Specifications</h3>
+<section id="specifications-1" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="specifications-1"><span class="header-section-number">5.2.2</span> Specifications</h3>
 <p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-2-data-and-descriptive-statistics">Concept 2 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
@@ -437,8 +494,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this lab, you will practice calculating spatial descriptive statistics on a dataset representing the location of wind turbines in the continental US (<a href="https://eta-publications.lbl.gov/sites/default/files/2025-06/uswtdb_v8_1_20250527_codebook.xlsx">variable names are here</a>) and Covid-19 cases and deaths by US county centroid on April 1, 2020 and July 1, 2020.</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands</em></p>
 </section>
-<section id="specifications-1" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="specifications-1"><span class="header-section-number">5.3.2</span> Specifications</h3>
+<section id="specifications-2" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="specifications-2"><span class="header-section-number">5.3.2</span> Specifications</h3>
 <p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-3-spatial-description">Concept 3 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
@@ -530,8 +587,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this lab, you will practice applying the binomial probability distribution using daily water height data from the <a href="https://waterdata.usgs.gov/nwis/rt">USGS water gauge in Bolin Creek from 2015-2025</a>. You will also make a probability map of the probability of low January temperatures across North Carolina by applying the normal distribution.</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
 </section>
-<section id="specifications-2" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="specifications-2"><span class="header-section-number">5.4.2</span> Specifications</h3>
+<section id="specifications-3" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="specifications-3"><span class="header-section-number">5.4.2</span> Specifications</h3>
 <p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-4-probability">Concept 4 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
@@ -646,8 +703,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
 </section>
-<section id="specifications-3" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="specifications-3"><span class="header-section-number">5.5.2</span> Specifications</h3>
+<section id="specifications-4" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="specifications-4"><span class="header-section-number">5.5.2</span> Specifications</h3>
 <p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-5-inferential-statistics">Concept 5 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
@@ -728,8 +785,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this lab, you will practice applying statistical tests to a sample of North Carolina public school data on chronic absences. Each school in the sample contains a schoolwide mean for absenteeism before Covid (2018-2019) and after Covid (2021-2024), as well as a rural/non-rural designation depending on the county the school is located in.</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
 </section>
-<section id="specifications-4" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="specifications-4"><span class="header-section-number">5.6.2</span> Specifications</h3>
+<section id="specifications-5" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="specifications-5"><span class="header-section-number">5.6.2</span> Specifications</h3>
 <p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-6-hypothesis-testing">Concept 6 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
@@ -789,13 +846,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.7" class="anchored" data-anchor-id="lab-7"><span class="header-section-number">5.7</span> Lab 7</h2>
 <section id="overview-6" class="level3" data-number="5.7.1">
 <h3 data-number="5.7.1" class="anchored" data-anchor-id="overview-6"><span class="header-section-number">5.7.1</span> Overview</h3>
-<p>In the Point Pattern Analysis tutorial we learned about applying statistical tests to evaluate whether there is enough evidence to determine if an estimate (calculated from a sample) is statistically different than another estimate, within a certain level of confidence.</p>
-<p>In this lab, you will practice applying statistical tests to a sample of North Carolina public school data on chronic absences. Each school in the sample contains a schoolwide mean for absenteeism before Covid (2018-2019) and after Covid (2021-2024), as well as a rural/non-rural designation depending on the county the school is located in.</p>
+<p>In the Point Pattern Analysis tutorial, we learned how to interpret the spatial distribution of events (represented as points) in a defined study area/region based on comparing a spatial distribution to CSR (complete spatial randomness).</p>
+<p>In this lab, you will practice applying these skills to a dataset representing wildfire locations in Croatan National Forest in North Carolina from 1957-2024 (from <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::national-usfs-fire-occurrence-point-feature-layer/explore?location=64.276190%2C-9.593052%2C5.89">US Forest Service</a>).</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
 </section>
-<section id="specifications-5" class="level3" data-number="5.7.2">
-<h3 data-number="5.7.2" class="anchored" data-anchor-id="specifications-5"><span class="header-section-number">5.7.2</span> Specifications</h3>
-<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-6-hypothesis-testing">Concept 6 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<section id="specifications-6" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="specifications-6"><span class="header-section-number">5.7.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-7-patterns-in-events">Concept 7 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 100%">
@@ -816,16 +873,119 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><strong>Descriptive Statistics</strong>: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results.</td>
 </tr>
 <tr class="even">
-<td><strong>Scenario 1</strong>: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results.</td>
+<td><strong>Analyzing Global Structure:</strong> Student computes and visualizes a quadrat count and tests it against CSR, and creates a kernel density estimate using an appropriate bandwidth. Written interpretation demonstrates understanding of first-order processes.</td>
 </tr>
 <tr class="odd">
-<td><strong>Scenario 2:</strong> Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results.</td>
+<td><strong>Analyzing Local Structure:</strong> Student computes and visualizes the G-function and F-function. Written interpretation demonstrates understanding of second-order processes.</td>
 </tr>
 <tr class="even">
-<td><strong>Scenario 3</strong>: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results.</td>
+<td><strong>Describing Wildfires</strong>: Student integrates global and local results to identify the dominant spatial process (first-order, second-order, or both) and proposes a specific hypothesis informed by background research.</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="lab-instructions-5" class="level3" data-number="5.7.3">
+<h3 data-number="5.7.3" class="anchored" data-anchor-id="lab-instructions-5"><span class="header-section-number">5.7.3</span> Lab Instructions</h3>
+<ol type="1">
+<li><p>Create a new .Rmd named “LASTNAME_lab7.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>forest_boundary <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Ku6Hv_RX4WSABaHh9Pj_x_HEBXOW0HfS"</span>) </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>wildfire_points <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Under a header called “Analyzing Global Structure” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li>Compute a quadrat count using 9 quadrats and display the plot</li>
+<li>Test the quadrat count against CSR using a quadrat test</li>
+<li>Create a KDE for wildfire counts (this will require experimenting with bandwidths)</li>
+<li>Interpret your results. What do they tell you about the global structure of the dataset?</li>
+</ul></li>
+<li><p>Under a header called “Analyzing Local Structure” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li>Compute and plot the G-Function</li>
+<li>Compute and plot the F-function</li>
+<li>Interpret your results. What do they tell you about the global structure of the dataset?</li>
+</ul></li>
+<li><p>Under a header called “Describing Wildfires” consider your full set of results (global and local structure). Identify whether there is evidence for the pattern of wildfires reflecting first-order processes, second-order processes, or a combination of both. Based on brief background research on wildfires and the study area, propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.</p></li>
+</ol>
+</section>
+</section>
+<section id="lab-8" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="lab-8"><span class="header-section-number">5.8</span> Lab 8</h2>
+<section id="overview-7" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="overview-7"><span class="header-section-number">5.8.1</span> Overview</h3>
+<p>In the Autocorrelation tutorial, we learned how to define spatial neighbors and how to use these neighborhoods to assess whether values at locations are related to values at near locations.</p>
+<p>In this lab, you will practice applying these skills to a dataset representing average SAT score at North Carolina public high schools and workplace mobility during the first few months of Covid using the Google mobility dataset.</p>
+<p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
+</section>
+<section id="specifications-7" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="specifications-7"><span class="header-section-number">5.8.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values">Concept 8 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTML and RMD versions the R Markdown file have been submitted.</td>
+</tr>
+<tr class="even">
+<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
+</tr>
+<tr class="odd">
+<td><strong>Defining Neighborhoods</strong>: Student defines neighborhoods and creates spatial weight matrices for both NC schools and NC counties. Written justification explains why the chosen neighborhood definition is appropriate for this analysis.</td>
+</tr>
+<tr class="even">
+<td><strong>Analyzing Global Autocorrelation:</strong> Student computes Moran’s I for school SAT scores and county-level Covid-19 workplace mobility. Written interpretation explains what the Moran’s I values indicate about spatial structure and strength of autocorrelation.</td>
+</tr>
+<tr class="odd">
+<td><strong>Analyzing Local Autocorrelation:</strong> Student computes and maps local indicators of spatial autocorrelation for both datasets. Written interpretation describes the observed clustering patterns and proposes one reasonable hypothesis for why these patterns exist.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lab-instructions-6" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="lab-instructions-6"><span class="header-section-number">5.8.3</span> Lab Instructions</h3>
+<ol type="1">
+<li><p>Create a new .Rmd named “LASTNAME_lab8.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>school_sat <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1i-C2PF3ajbpHTlavh3m1QbWNObpobprZ"</span>) </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>covid_mobility <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1YbCNVR5K8jDF5HOKHcoJ25gz7VkRvDHa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Under a header called “Defining Neighbors” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li>Defines neighborhoods and creates a neighborhood weight matrix for NC schools and NC counties. You can use any appropriate neighborhood definition</li>
+<li>Justify your neighborhood definition. Why is it useful for this particular analysis?</li>
+</ul></li>
+<li><p>Under a header called “Analyzing Global Autocorrelation” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li>Computes Moran’s I for school SAT scores and NC county covid mobility scores using your selected neighborhood definition. For the covid mobility dataset, you should use the <code>workplace_change</code> variable, which represents the percent change in workplace mobility from March-May 2020.</li>
+<li>Describe your results. What does the Moran’s I value tell you about the structure of the data (and the strength of this structure)?</li>
+</ul></li>
+<li><p>Under a header called “Analyzing Local Autocorrelation” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li>Calculate and map Local Indicators of Autocorrelation for both datasets</li>
+<li>Describe your results. What is the spatial pattern of clustering? Propose one reasonable hypothesis for why this pattern might exist.</li>
+</ul></li>
+</ol>
 
 
 </section>
