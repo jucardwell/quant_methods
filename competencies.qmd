@@ -23,6 +23,8 @@
 **Guiding Question:** How do we summarize and describe variation in data?
 
 -   Classify different types of geographic data and variables (e.g., primary vs. secondary, individual vs. aggregated, qualitative vs. quantitative, level of measurement), and explain how these distinctions influence analysis
+-   Explain the major sources and  key dimensions of geographic (coverage, resolution, scale, temporality, completeness, positional accuracy, and bias) and how these dimensions influence analysis.
+-   Describe basic geographic data structures (vector/raster)
 -   Explain and evaluate measurement quality in geographic data, including precision, accuracy, validity, and reliability.
 -   Summarize and interpret attribute data using descriptive statistics (central tendency, dispersion, shape) and data visualizations
 
@@ -31,7 +33,6 @@
 **Guiding Question:** How do we summarize and describe variation in geographic data?
 
 -   Use maps to visually analyze spatial patterns and understand the role of classification schemes for grouping spatial data values
-
 -   Compute and interpret spatial descriptive statistics (mean center, standard distance, standard deviational ellipse) and explain how they extend non-spatial descriptive measures
 
 ## Tier 2: Classical Statistical Inference
@@ -41,7 +42,7 @@
 -   **Competency:** Completes Lab 4-6 with Meets Expectations
 -   **Mastery:** Completes Case Study #2 with Meets Expectations
 
-### **Concept 4: Probability**
+### Concept 4: Probability
 
 **Guiding Question**: How can we use probability to quantify uncertainty and understand patterns in events?
 
@@ -49,7 +50,7 @@
 -   Compute and interpret probabilities for discrete and continuous data using theoretical probability distributions
 -   Visualize probability across space
 
-### **Concept 5: Inferential Statistics**
+### Concept 5: Inferential Statistics
 
 **Guiding Question**: How can we use sample data to understand and estimate characteristics of a population?
 
@@ -57,7 +58,7 @@
 -   Identify how sampling design affects representativeness and uncertainty (simple, systematic, stratified, cluster, spatial hybrid).
 -   Estimate and interpret population parameters (means and proportions) from samples (calculate point estimates and confidence intervals)
 
-### **Concept 6: Hypothesis Testing**
+### Concept 6: Hypothesis Testing
 
 **Guiding Question:** How can we generate and test hypotheses about a population using sample data?
 
@@ -68,14 +69,14 @@
 -   Run and interpret Chi-Square tests to assess relationships between categorical variables
 -   Differentiate statistical significance from substantive importance
 
-## Tier 3: **Spatial Statistics**
+## Tier 3: Spatial Statistics
 
 ### Assessment Structure:
 
 -   **Competency:** Completes Lab 7-10 with Meets Expectations
 -   **Mastery:** Completes Case Study #3 with Meets Expectations
 
-### **Concept 7: Patterns in Events**
+### Concept 7: Patterns in Events
 
 **Guiding Question:** How can we assess the distribution/pattern of individual events in space?
 
@@ -85,7 +86,7 @@
 -   Visualize event patterns using point maps and density surfaces (kernel density estimation)
 -   Evaluate the effects of scale and edge boundaries on event pattern analysis
 
-### **Concept 8: Patterns in Values**
+### Concept 8: Patterns in Values
 
 **Guiding Question:** How can we detect patterns in attribute values across points or areas?
 
@@ -94,7 +95,7 @@
 -   Compute and interpret measures of local autocorrelation (LISA) and use mapping to identify and analyze spatial patterns (hot-spots, cold-spots)
 -   Discuss how scale, zoning, and MAUP influence patterns
 
-### **Concept 9: Bivariate Spatial Relationships**
+### Concept 9: Bivariate Spatial Relationships
 
 **Guiding Question:** How can we examine and model relationships between two variables across space?
 
@@ -105,7 +106,7 @@
 -   Estimate and interpret spatial regression models 
 -   Compare non-spatial regression results with spatial regression results to pick an appropriate model
 
-### **Concept 10: Spatially Continuous Surfaces**
+### Concept 10: Spatially Continuous Surfaces
 
 **Guiding Question:** How can we estimate values at unsampled locations and understand spatial clustering and uncertainty across continuous surfaces?
 
