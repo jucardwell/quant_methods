@@ -120,6 +120,10 @@ The following basemaps will cover most of your uses:
 
 ## Mini Challenge
 
-Using a different variable in the ACS data, create a well-designed map where you select a classification scheme, and add transparency, a title, and a basemap.
+Using two different variable in the ACS data, create two well-designed maps where you select a classification scheme, and add transparency, a title, and a basemap. For one map, use size and color. For the other map, use color.
 
-Create an interactive and static version of the map.
+Create an interactive and static version of each map.
+
+Then, figure out how to display the maps side by side (two-panel).
+
+[Use this documentation to help](https://tmap.geocompx.org/)

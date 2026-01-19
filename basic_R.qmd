@@ -80,13 +80,11 @@ install.packages("deldir")
 
 Once you have downloaded the packages, you will need to load them every time you want to use them. **I will always tell you what packages to load!**
 
-# Mini Challenge
-
-[Download your first .Rmd template](https://drive.google.com/uc?export=download&id=1q74iodpFfEes_37tJbsPQ6VljiksPVcQ) for this class **(very exciting)! Save this file into your GEOG391 folder.**
+[Download your first .Rmd template](https://drive.google.com/uc?export=download&id=1t6PT4vNp1e1e10PDcEfOrQp9c9m8bVIu) for this class **(very exciting)! Save this file into your GEOG391 folder.**
 
 ## Basic .Rmd Functionality
 
-Welcome to your first .Rmd! Each .Rmd starts with a header, where you can change the name and the date.
+Welcome to your first .Rmd! Each .Rmd starts with a header, where you can change the name and the date. **Change the header to your name and the current date**
 
 A .Rmd is made up of two main components: code chunks (this is where you write code) and text (any words that are outside of a code chunk). Any time you are writing code, it needs to be in a code chunk. Chunks can then be **run** to execute the code within the chunk. The idea of *chunking* is to group code that accomplishes a single, related task into one code chunk. When you begin a new step or process in your workflow, you start a new chunk.
 
@@ -102,7 +100,7 @@ We can view objects by double clicking the object in the environment. A data tab
 
 Add a new code chunk and add the code below to create your first map. Every command that you create should have a **comment (#)** above that explains what that command is doing. If you **run** that chunk, a map should appear below.
 
-![](images/clipboard-854771614.png)
+![](images/clipboard-2379786468.png)
 
 ## Knitting a .Rmd
 

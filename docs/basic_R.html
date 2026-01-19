@@ -268,12 +268,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-rstudio-environment" id="toc-the-rstudio-environment" class="nav-link" data-scroll-target="#the-rstudio-environment"><span class="header-section-number">6.2</span> The RStudio Environment</a></li>
   <li><a href="#creating-and-saving-files" id="toc-creating-and-saving-files" class="nav-link" data-scroll-target="#creating-and-saving-files"><span class="header-section-number">6.3</span> Creating and Saving Files</a></li>
   <li><a href="#downloading-packages" id="toc-downloading-packages" class="nav-link" data-scroll-target="#downloading-packages"><span class="header-section-number">6.4</span> Downloading Packages</a></li>
-  <li><a href="#mini-challenge" id="toc-mini-challenge" class="nav-link" data-scroll-target="#mini-challenge"><span class="header-section-number">7</span> Mini Challenge</a>
-  <ul class="collapse">
-  <li><a href="#basic-.rmd-functionality" id="toc-basic-.rmd-functionality" class="nav-link" data-scroll-target="#basic-.rmd-functionality"><span class="header-section-number">7.1</span> Basic .Rmd Functionality</a></li>
-  <li><a href="#knitting-a-.rmd" id="toc-knitting-a-.rmd" class="nav-link" data-scroll-target="#knitting-a-.rmd"><span class="header-section-number">7.2</span> Knitting a .Rmd</a></li>
-  <li><a href="#adding-text-and-formatting-a-.rmd" id="toc-adding-text-and-formatting-a-.rmd" class="nav-link" data-scroll-target="#adding-text-and-formatting-a-.rmd"><span class="header-section-number">7.3</span> Adding Text and Formatting a .Rmd</a></li>
-  </ul></li>
+  <li><a href="#basic-.rmd-functionality" id="toc-basic-.rmd-functionality" class="nav-link" data-scroll-target="#basic-.rmd-functionality"><span class="header-section-number">6.5</span> Basic .Rmd Functionality</a></li>
+  <li><a href="#knitting-a-.rmd" id="toc-knitting-a-.rmd" class="nav-link" data-scroll-target="#knitting-a-.rmd"><span class="header-section-number">6.6</span> Knitting a .Rmd</a></li>
+  <li><a href="#adding-text-and-formatting-a-.rmd" id="toc-adding-text-and-formatting-a-.rmd" class="nav-link" data-scroll-target="#adding-text-and-formatting-a-.rmd"><span class="header-section-number">6.7</span> Adding Text and Formatting a .Rmd</a></li>
   </ul>
 </nav>
     </div>
@@ -375,13 +372,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"deldir"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Once you have downloaded the packages, you will need to load them every time you want to use them. <strong>I will always tell you what packages to load!</strong></p>
+<p><a href="https://drive.google.com/uc?export=download&amp;id=1t6PT4vNp1e1e10PDcEfOrQp9c9m8bVIu">Download your first .Rmd template</a> for this class <strong>(very exciting)! Save this file into your GEOG391 folder.</strong></p>
 </section>
-<section id="mini-challenge" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Mini Challenge</h1>
-<p><a href="https://drive.google.com/uc?export=download&amp;id=1q74iodpFfEes_37tJbsPQ6VljiksPVcQ">Download your first .Rmd template</a> for this class <strong>(very exciting)! Save this file into your GEOG391 folder.</strong></p>
-<section id="basic-.rmd-functionality" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="basic-.rmd-functionality"><span class="header-section-number">7.1</span> Basic .Rmd Functionality</h2>
-<p>Welcome to your first .Rmd! Each .Rmd starts with a header, where you can change the name and the date.</p>
+<section id="basic-.rmd-functionality" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="basic-.rmd-functionality"><span class="header-section-number">6.5</span> Basic .Rmd Functionality</h2>
+<p>Welcome to your first .Rmd! Each .Rmd starts with a header, where you can change the name and the date. <strong>Change the header to your name and the current date</strong></p>
 <p>A .Rmd is made up of two main components: code chunks (this is where you write code) and text (any words that are outside of a code chunk). Any time you are writing code, it needs to be in a code chunk. Chunks can then be <strong>run</strong> to execute the code within the chunk. The idea of <em>chunking</em> is to group code that accomplishes a single, related task into one code chunk. When you begin a new step or process in your workflow, you start a new chunk.</p>
 <p>Your .Rmd template already has a header (where you can change the name and date) and two code chunks. The first code chunk is the <strong>SET UP CHUNK.</strong> The second code chunk is the <strong>LIBRARY AND DATA CHUNK.</strong> To load the libraries and data, you should <strong>RUN CODE CHUNK</strong>.</p>
 <p><img src="images/run_codechunk.png" class="img-fluid"></p>
@@ -389,23 +384,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We can view objects by double clicking the object in the environment. A data table should appear with all the information about the parks.</p>
 <p><img src="images/view_object.png" class="img-fluid"></p>
 <p>Add a new code chunk and add the code below to create your first map. Every command that you create should have a <strong>comment (#)</strong> above that explains what that command is doing. If you <strong>run</strong> that chunk, a map should appear below.</p>
-<p><img src="images/clipboard-854771614.png" class="img-fluid"></p>
+<p><img src="images/clipboard-2379786468.png" class="img-fluid"></p>
 </section>
-<section id="knitting-a-.rmd" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="knitting-a-.rmd"><span class="header-section-number">7.2</span> Knitting a .Rmd</h2>
+<section id="knitting-a-.rmd" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="knitting-a-.rmd"><span class="header-section-number">6.6</span> Knitting a .Rmd</h2>
 <p>Knitting a .Rmd means that you create a rendered .html including your code, output, and text. To knit your document, click the knit button. It will create a .html in whatever folder you have the .Rmd saved in (hopefully your GEOG391 folder!)</p>
 <p><img src="images/knit.png" class="img-fluid"></p>
 <p>When your knitted document opens, it should look something like this</p>
 <p><img src="images/knitted_final.png" class="img-fluid"></p>
 </section>
-<section id="adding-text-and-formatting-a-.rmd" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="adding-text-and-formatting-a-.rmd"><span class="header-section-number">7.3</span> Adding Text and Formatting a .Rmd</h2>
+<section id="adding-text-and-formatting-a-.rmd" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="adding-text-and-formatting-a-.rmd"><span class="header-section-number">6.7</span> Adding Text and Formatting a .Rmd</h2>
 <p>The great thing about working in .Rmds is that you can create nicely formatted documents that merge code and text. At the bottom of the .Rmd is some tips for formatting nice-looking documents. Play around with adding some heading and text to your document.</p>
 <p>Sometimes we want to modify what code and output actually appears in our knitted document. The commands at the bottom of the document explain which chunk modifiers to. <strong>See if you can figure out how to change the map chunk to not include the code in the knitted document.</strong></p>
 <p>After you are done working in your .Rmd, make sure to save it!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
