@@ -71,9 +71,9 @@ This lab is designed to assess the [Concept 2 Competencies](https://jucardwell.g
 |------------------------------------------------------------------------|
 | Student submits HTML and RMD versions the R Markdown file. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
-| **Describing Rurality:** Student produces a descriptive statistics table, a bar chart, and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions |
-| **Describing Climate:** Student produces descriptive statistics, two visualizations, and a map. Written interpretations demonstrate understanding of central tendency, dispersion, spatial patterns, and aggregation effects |
-| **Describing Demographics:** Student produces descriptive statistics, two visualizations, and a map. Written interpretation demonstrates understanding of central tendency, dispersion, spatial patterns, and differences across aggregation levels. |
+| **Describing Rurality:** Student produces a descriptive statistics table and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions |
+| **Describing Climate:** Student produces descriptive statistics, two visualizations, and a map. Written interpretations demonstrate understanding of central tendency, dispersion, spatial patterns, and aggregation effects. Response is focused on extracting meaning, not simply summarizing descriptive statistics results. |
+| **Describing Demographics:** Student produces descriptive statistics, two visualizations, and a map. Written interpretation demonstrates understanding of central tendency, dispersion, spatial patterns, and differences across aggregation levels. Response is focused on extracting meaning, not simply summarizing descriptive statistics results. |
 
 ### Lab Instructions
 
@@ -92,21 +92,18 @@ This lab is designed to assess the [Concept 2 Competencies](https://jucardwell.g
 
     #read in data
     rurality <- st_read("https://drive.google.com/uc?export=download&id=1aVDPgiZLUnKGb5k2SQo7ScDO2WNvX3Nd")
-    county_climate_normals <- st_read("https://drive.google.com/uc?export=download&id=1sf0cmMaeHGra7AQheYAjTiC3wGCzB4FG")
-    acs_county_nc <- st_read("https://drive.google.com/uc?export=download&id=1Cv9iUFFi2RPvDBiuYGolY7dDuUR7_raN")
-
-
+    county_climate_normals <- st_read("https://drive.google.com/uc?export=download&id=1sf0cmMaeHGra7AQheYAjTiC3wGCzB4FG") |> filter(!is.na(average_summer_temp))
+    acs_county_nc <- st_read("https://drive.google.com/uc?export=download&id=1hXVtKL_33c4QRw6_Z9LlYqjgisdYCRqX")
     ```
 
 3.  Add "Describing Rurality" as a third-level header. In this section you will compute descriptive statistics and visualizations for North Carolina census tracts using the North Carolina Rural Center's definition of rurality (rural = fewer than 250 people per square mile). The NC Rural Center variable is named nc_rural_center in the dataset. Add a code chunk below your header. Your code chunk should:
 
     -   Create a descriptive statistics table of rurality by census tract
-    -   Create a bar chart of rurality by census tract
     -   Create a map of rurality by census tract
 
 4.  Below your chunk, you should write 1-2 paragraphs that do the following:
 
-    -   Describe what the bar chart and descriptive statistics tell us about the data
+    -   Describe what the descriptive statistics tell us about the data
     -   Describe what the map tells us about the spatial pattern of the data
     -   Compare the NC Rural Center definition of rural with the USDA RUCA codes, describing how the descriptive statistics differ and how the spatial patterns differ across the state
 
@@ -158,8 +155,8 @@ This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.g
 |------------------------------------------------------------------------|
 | Student submits HTML and RMD versions the R Markdown file. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
-| **Describing Covid:** Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful. |
-| **Describing Wind Turbines:** Student produces a descriptive statistics table and one non-map visualization, calculates spatial descriptive statistics (mean center, standard deviational ellipse, weighted mean center), and creates a map with manual legend entries. Written interpretation demonstrates understanding of the variable’s distribution and spatial patterns. |
+| **Describing Covid:** Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful. Response is focused on extracting meaning, not simply summarizing descriptive statistics results. |
+| **Describing Wind Turbines:** Student produces a descriptive statistics table and one non-map visualization, calculates spatial descriptive statistics (mean center, standard deviational ellipse, weighted mean center), and creates a map with manual legend entries. Written interpretation demonstrates understanding of the variable’s distribution and spatial patterns. Response is focused on extracting meaning, not simply summarizing descriptive statistics results. |
 
 ### Lab Instructions
 

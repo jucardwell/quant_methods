@@ -445,13 +445,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood.</td>
 </tr>
 <tr class="odd">
-<td><strong>Describing Rurality:</strong> Student produces a descriptive statistics table, a bar chart, and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions</td>
+<td><strong>Describing Rurality:</strong> Student produces a descriptive statistics table and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions</td>
 </tr>
 <tr class="even">
-<td><strong>Describing Climate:</strong> Student produces descriptive statistics, two visualizations, and a map. Written interpretations demonstrate understanding of central tendency, dispersion, spatial patterns, and aggregation effects</td>
+<td><strong>Describing Climate:</strong> Student produces descriptive statistics, two visualizations, and a map. Written interpretations demonstrate understanding of central tendency, dispersion, spatial patterns, and aggregation effects. Response is focused on extracting meaning, not simply summarizing descriptive statistics results.</td>
 </tr>
 <tr class="odd">
-<td><strong>Describing Demographics:</strong> Student produces descriptive statistics, two visualizations, and a map. Written interpretation demonstrates understanding of central tendency, dispersion, spatial patterns, and differences across aggregation levels.</td>
+<td><strong>Describing Demographics:</strong> Student produces descriptive statistics, two visualizations, and a map. Written interpretation demonstrates understanding of central tendency, dispersion, spatial patterns, and differences across aggregation levels. Response is focused on extracting meaning, not simply summarizing descriptive statistics results.</td>
 </tr>
 </tbody>
 </table>
@@ -472,18 +472,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#read in data</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>rurality <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1aVDPgiZLUnKGb5k2SQo7ScDO2WNvX3Nd"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>county_climate_normals <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1sf0cmMaeHGra7AQheYAjTiC3wGCzB4FG"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>acs_county_nc <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Cv9iUFFi2RPvDBiuYGolY7dDuUR7_raN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>county_climate_normals <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1sf0cmMaeHGra7AQheYAjTiC3wGCzB4FG"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(average_summer_temp))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>acs_county_nc <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1hXVtKL_33c4QRw6_Z9LlYqjgisdYCRqX"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Add “Describing Rurality” as a third-level header. In this section you will compute descriptive statistics and visualizations for North Carolina census tracts using the North Carolina Rural Center’s definition of rurality (rural = fewer than 250 people per square mile). The NC Rural Center variable is named nc_rural_center in the dataset. Add a code chunk below your header. Your code chunk should:</p>
 <ul>
 <li>Create a descriptive statistics table of rurality by census tract</li>
-<li>Create a bar chart of rurality by census tract</li>
 <li>Create a map of rurality by census tract</li>
 </ul></li>
 <li><p>Below your chunk, you should write 1-2 paragraphs that do the following:</p>
 <ul>
-<li>Describe what the bar chart and descriptive statistics tell us about the data</li>
+<li>Describe what the descriptive statistics tell us about the data</li>
 <li>Describe what the map tells us about the spatial pattern of the data</li>
 <li>Compare the NC Rural Center definition of rural with the USDA RUCA codes, describing how the descriptive statistics differ and how the spatial patterns differ across the state</li>
 </ul></li>
@@ -551,10 +550,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood.</td>
 </tr>
 <tr class="odd">
-<td><strong>Describing Covid:</strong> Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful.</td>
+<td><strong>Describing Covid:</strong> Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful. Response is focused on extracting meaning, not simply summarizing descriptive statistics results.</td>
 </tr>
 <tr class="even">
-<td><strong>Describing Wind Turbines:</strong> Student produces a descriptive statistics table and one non-map visualization, calculates spatial descriptive statistics (mean center, standard deviational ellipse, weighted mean center), and creates a map with manual legend entries. Written interpretation demonstrates understanding of the variable’s distribution and spatial patterns.</td>
+<td><strong>Describing Wind Turbines:</strong> Student produces a descriptive statistics table and one non-map visualization, calculates spatial descriptive statistics (mean center, standard deviational ellipse, weighted mean center), and creates a map with manual legend entries. Written interpretation demonstrates understanding of the variable’s distribution and spatial patterns. Response is focused on extracting meaning, not simply summarizing descriptive statistics results.</td>
 </tr>
 </tbody>
 </table>

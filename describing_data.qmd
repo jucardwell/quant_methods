@@ -132,7 +132,7 @@ climate_normals |> st_drop_geometry() |>
   )
 ```
 
-**Q6: Based on the descriptive statistics in the table, describe the overall distribution of summer temperatures across the U.S., including central tendency, variability, and evidence of skewness or outliers.**
+**Q6: Based on the descriptive statistics in the table, describe the overall distribution of summer temperatures across the U.S., including central tendency, variability, and evidence of skewness or outliers. Remember to focus on extracting meaning from the descriptive statistics (not just summarizing results)**
 
 ### Visualizing Descriptive Statistics
 
