@@ -94,7 +94,8 @@ ggplot(grouped_rural, aes(x=ruca_code, y=Count)) +
 
 ```{r, warning=F, message=F}
 #here's our first map. Note that I'm using the raw data, not the grouped data.
-tm_shape(rurality) + tm_polygons("ruca_code")
+tm_shape(rurality) +
+  tm_polygons(fill = "ruca_code", fill.scale = tm_scale_categorical(values = "paired"))
 ```
 
 **Q4: What spatial patterns can you see in RUCA codes across NC? What does this map tell us that we can't learn from the descriptive statistics table and non-spatial visualizations?**

@@ -36,7 +36,7 @@ In this lab, you will reflect on the quantitative revolution in geography and th
 This lab is designed to assess the [Concept 1 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-1-the-quantitative-revolution). You'll be evaluated on the following specifications:
 
 | Specifications |
-|------------------------------------------------------------------------|
+|----|
 | Student response is submitted to Canvas and is approximately 500 words. Minor grammatical/organizational issues don’t prevent the work from being read and understood. |
 | **Content Understanding:** Student demonstrates a competent understanding of the Quantitative Revolution in geography and the major critiques that emerged in response |
 | **Reflection & Application:** Student thoughtfully reflects on how these critiques will inform their approach to quantitative methods for the remainder of the course. |
@@ -70,7 +70,7 @@ In this lab, you will examine demographic and climate data at a different level 
 This lab is designed to assess the [Concept 2 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-2-data-and-descriptive-statistics). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
+|----|
 | Student submits HTML and RMD versions the R Markdown file. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
 | **Describing Rurality:** Student produces a descriptive statistics table and a map. Written interpretation demonstrates understanding of the patterns and differences between NC Rural Center and USDA RUCA definitions |
@@ -154,7 +154,7 @@ In this lab, you will practice calculating spatial descriptive statistics on a d
 This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-3-spatial-description). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
+|----|
 | Student submits HTML and RMD versions the R Markdown file. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output). Minor formatting issues don’t prevent the work from being read and understood. |
 | **Describing Covid:** Student produces descriptive statistics tables, calculates weighted means, and creates maps with mean centers for cases and deaths, including manual legend entries. Written interpretation demonstrates understanding of the distribution, spatial patterns, and why an unweighted mean center isn’t meaningful. Response is focused on extracting meaning, not simply summarizing descriptive statistics results. |
@@ -233,7 +233,7 @@ In this lab, you will practice applying the binomial probability distribution us
 This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-4-probability). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
+|----|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Flood Risk at Bolin Creek**: Student creates a descriptive statistics table for daily water height, calculates empirical probability of a flood risk day, estimates the most likely number of flood risk days over 25 days, and computes cumulative probability of more than 3 flood risk days. Written interpretation demonstrates understanding of the results. |
@@ -310,7 +310,7 @@ The variables in the dataset are:
 This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-5-inferential-statistics). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
+|----|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Descriptive Statistics**: Student creates a descriptive statistics table and non-map graphic for the three variables. Written interpretation describes distribution and demonstrates understanding of the results. |
@@ -381,7 +381,7 @@ In this lab, you will practice applying statistical tests to a sample of North C
 This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-6-hypothesis-testing). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
+|----|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
@@ -429,7 +429,7 @@ In this lab, you will practice applying these skills to a dataset representing w
 This lab is designed to assess the [Concept 7 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-7-patterns-in-events). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
+|----|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
@@ -485,7 +485,7 @@ In this lab, you will practice applying these skills to a dataset representing a
 This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values). You'll be evaluated on the following specifications:
 
 | Specification |
-|------------------------------------------------------------------------|
+|----|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Defining Neighborhoods**: Student defines neighborhoods and creates spatial weight matrices for both NC schools and NC counties. Written justification explains why the chosen neighborhood definition is appropriate for this analysis. |
