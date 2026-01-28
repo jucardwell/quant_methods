@@ -61,6 +61,8 @@ In the [**Describing Data**](https://jucardwell.github.io/quant_methods/describi
 
 In this lab, you will examine demographic and climate data at a different level of spatial aggregation and observe how the descriptive statistics change as a result (**remember the underlying data values are not changing, only the geographic units used to summarize them**). You will also explore an alternative way of defining “rural” and compare how this definition shapes your interpretation of the data.
 
+***You will need to complete the [Describing Data](https://jucardwell.github.io/quant_methods/describing_data.html) tutorial to complete this lab!***
+
 *Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands*
 
 ### Specifications
