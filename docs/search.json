@@ -504,7 +504,7 @@
     "href": "describing_data.html#mini-challenge",
     "title": "8  Describing Data",
     "section": "8.4 Mini Challenge",
-    "text": "8.4 Mini Challenge\nThis challenge will ask you to create some basic descriptive statistics for a single variable in the ACS census tract data.\n\nOpen the acs_tract_nc object. You can scroll over to see all the available variables. This file will tell you what each variable name means.\nSelect a variable that is interesting to you\nUsing the code above, as well as the Command Compendium, create a descriptive statistics table in a new code chunk\nUsing the code above, as well as the R Basics chapter, create at least one non-map data visualization\nUsing the code above, as well as the R Basics chapter, create a map of your variable\nAnswer the following questions:\n\nQ9. What did you learn about your variable?\nQ10. What did you learn about the spatial pattern of your variable?",
+    "text": "8.4 Mini Challenge\nThis challenge will ask you to create some basic descriptive statistics for a single variable in the ACS census tract data.\n\nOpen the acs_tract_nc object. You can scroll over to see all the available variables. This file will tell you what each variable name means.\nSelect a variable that is interesting to you\nUsing the code above create a descriptive statistics table in a new code chunk\nUsing the code above create at least one non-map data visualization\nUsing the code above create a map of your variable\nAnswer the following questions:\n\nQ9. What did you learn about your variable?\nQ10. What did you learn about the spatial pattern of your variable?",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Describing Data</span>"
     ]
