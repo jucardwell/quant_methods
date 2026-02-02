@@ -299,9 +299,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will use the following spatial datasets:</p>
 <ul>
 <li>US tornado touchdown points from 1954-2022 from <a href="https://www.spc.noaa.gov/gis/svrgis/">NOAA’s Storm Prediction Center</a></li>
-<li>North Carolina hospitals from <a href="https://github.com/nytimes/covid-19-data/tree/master">NCOneMap</a></li>
+<li>North Carolina hospitals from <a href="nconemap.gov/datasets/hospitals/data">NCOneMap</a></li>
 </ul>
-<p><strong>To follow along with this tutorial, <a href="https://drive.google.com/uc?export=download&amp;id=19d-PK7bxEJ7J6WKV6sp6-uchU6pWmc4r">download the .Rmd template</a> here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.</strong></p>
+<p><strong>To follow along with this tutorial, <a href="https://drive.google.com/uc?export=download&amp;id=1LazbxI3dn9MCMdhWvqbYPz6b3Iv8KIj2">download the .Rmd template</a> here. The template already includes a code chunk for loading libraries and reading in the data, along with labeled empty chunks for each section of the tutorial. As you work through the code examples below, add each set of commands to the chunk with the matching section heading in your template.</strong></p>
 <section id="describing-tornadoes" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="describing-tornadoes"><span class="header-section-number">10.1</span> Describing Tornadoes</h2>
 <section id="traditional-descriptive-statistics" class="level3" data-number="10.1.1">
@@ -414,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>std_ellip_torn <span class="ot">&lt;-</span> <span class="fu">std_dev_ellipse</span>(torn)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#create an ellipse of those values</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>std_ellip_torn <span class="ot">&lt;-</span> sfdep<span class="sc">::</span><span class="fu">st_ellipse</span>(<span class="at">geometry =</span>std_ellip_torn,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>std_ellip_torn <span class="ot">&lt;-</span> <span class="fu">st_ellipse</span>(<span class="at">geometry =</span>std_ellip_torn,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sx =</span> std_ellip_torn<span class="sc">$</span>sx,</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sy =</span> std_ellip_torn<span class="sc">$</span>sy,</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">rotation =</span> <span class="sc">-</span>std_ellip_torn<span class="sc">$</span>theta)</span>
