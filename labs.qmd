@@ -199,7 +199,7 @@ This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.g
 3.  Add "Describing Covid" as a third-level header. In each of the covid datasets, there is a variable named `cases` which represents the cumulative cases in each county on the given date and a variable named `deaths` which represents the cumulative deaths in each county on the given date. **Note that the dataset only includes counties that had at least one case or death**. In this section you will compute descriptive statistics for cases and deaths on each date, compute spatial descriptive statistics, and create a well designed map. Your code chunk should:
 
     -   Create a descriptive statistics table of cases and deaths for each dataset
-    -   Compute a weighted mean for cases and deaths on each date
+    -   Compute a weighted mean center for cases and deaths on each date
     -   Create a map for the April 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
     -   Create a map for the July 2020 data that symbolizes `cases` by county, as well as the mean center for `cases` AND `deaths`. Make sure that you add manual legend entries for the mean center of cases and deaths.
 
@@ -289,7 +289,6 @@ This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.g
 4.  Below this code chunk, write 1-2 paragraphs that address the following:
 
     -   Are there areas of the state with particularly high or low probabilities? What might explain these differences?
-
     -   How could these patterns inform planning or preparedness for cold weather events?
 
 ## Lab 5
