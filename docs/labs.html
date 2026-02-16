@@ -616,7 +616,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Create one non-map data visualization for your variable of interest</li>
 <li>Calculate mean center of wind turbines, standard deviational ellipse of wind turbines, and weighted mean center based on your variable of interest.
 <ul>
-<li>To calculate the weighted mean center, you may need to drop NA values from your variable of interest. To do this, create a new object <code>turbine_dropped &lt;- turbines |&gt; drop_na(VARIABLEOFINTEREST)</code> and use that object to calculate the weighted mean center.</li>
+<li>To calculate the weighted mean center, you may need to drop NA values from your variable of interest. To do this, create a new object <code>turbine_dropped &lt;- us_wind_turbine_locs |&gt; drop_na(VARIABLEOFINTEREST)</code> and use that object to calculate the weighted mean center.</li>
 </ul></li>
 <li>Create a map that symbolizes your variable of interest, the mean center of wind turbines, the standard deviational ellipse of wind turbines, and the weighted mean center. Make sure that you add manual legend entries for the mean center and weighted mean center (you do not need to add a legend entry for the standard deviational ellipse).</li>
 </ul></li>
