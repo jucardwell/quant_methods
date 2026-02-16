@@ -180,7 +180,7 @@ This lab is designed to assess the [Concept 3 Competencies](https://jucardwell.g
     library(e1071)
     library(tmap)
     library(maptiles)
-    library(spdep)
+    library(sfdep)
 
 
     #read in data
