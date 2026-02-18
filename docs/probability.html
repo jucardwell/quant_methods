@@ -298,9 +298,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this chapter we will calculate empirical probability and apply discrete and continuous theoretical probability distributions to estimate probability (based on empirical estimates). We will also practice writing basic R commands for data manipulation. We will use two different probability distributions:</p>
 <ul>
 <li><strong>Binomial Distribution:</strong> The Binomial Distribution is a discrete probability distribution (i.e.&nbsp;each trial has only two possible outcomes). It models the number of “successes” in a fixed number of independent trials.</li>
-<li><strong>Normal Distribution:</strong> The Normal Distribution is a continuous probability distribution that describes how likely different values of a random variable are.</li>
+<li><strong>Normal Distribution:</strong> The Normal Distribution is a continuous probability distribution that describes a variable that arises from the sum of many small, approximately independent effects, each with some random variation.</li>
 </ul>
-<p>Both of these probability distributions are theoretical. A theoretical distribution is a mathematically defined model that describes how outcomes of a random process are expected to behave. We use them with empirical data because they let us approximate the underlying pattern, calculate probabilities for events we haven’t observed, and make predictions or inferences about the entire population, even from a limited sample.</p>
+<p>Both of these probability distributions are theoretical. A theoretical distribution is a mathematically defined model that describes how outcomes of a probabilistic process are expected to behave. We can use them with empirical data because they let us approximate the underlying pattern, calculate probabilities for events we haven’t observed, and make predictions or inferences about the entire population, even from a limited sample.</p>
 <p>We will use the following spatial datasets:</p>
 <ul>
 <li>Daily rainfall in Chapel Hill from 1891-2025 from <a href="https://products.climate.ncsu.edu/data/?_gl=1*1rch6v1*_ga*MzM4Mjc0NzM3LjE3NTc5NDI0MjA.*_ga_QY6TV8YFE4*czE3NjMxMzY3NjAkbzEkZzAkdDE3NjMxMzY3NjAkajYwJGwwJGgw">North Carolina State Climate Office</a></li>
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="applying-the-binomial-distribution-to-chapel-hill-precipitation-data" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="applying-the-binomial-distribution-to-chapel-hill-precipitation-data"><span class="header-section-number">11.3</span> Applying the Binomial Distribution to Chapel Hill Precipitation Data</h2>
 <p>The binomial distribution is a <strong>theoretical probability model</strong> that helps us predict how many times an event (a “success”) will happen in a fixed number of trials. The model assumes each trial is independent and the probability of success is the same each time. In reality, we often don’t know the true probability of an event. But we can get a good estimate of that probability using empirical data.</p>
-<p>In this part of the tutorial, we will calculate the empirical probability of rainfall on a given day in Chapel Hill using daily data from 1891-2025 (<em>note that this is a very simplified probability, given that trends differ by year and seasons</em>) to answer questions like:</p>
+<p>In this part of the tutorial, we will calculate the empirical probability of rainfall on a given day in Chapel Hill using daily data from 1891-2025 (<em>note that this is a major simplifying assumption; in reality rainfall probability varies by season and weather patterns, so the independence and constant-probability assumptions aren’t met)</em> to answer questions like:</p>
 <p><strong>Over 10 days in Chapel Hill, what’s the most likely number of rainy days?</strong></p>
 <p><strong>Over 10 days in Chapel Hill, what’s the probability that we have 0 rainy days?</strong></p>
 <p>We start by creating a new variable with a binary outcome (rain = 1, no rain = 0) and using basic R commands to calculate the empirical probability</p>
@@ -407,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-normal-distribution" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="the-normal-distribution"><span class="header-section-number">11.5</span> The Normal Distribution</h2>
-<p>The normal distribution is a theoretical model that describes how continuous data tend to cluster around an average, forming a smooth, symmetric, bell-shaped curve. Although no real dataset is perfectly normal, many natural variables behave approximately this way because they are influenced by many small, independent factors. January temperatures at a specific location (in our case, RDU airport) are a good example: most days fall near the typical mid-winter temperature, with fewer extremely warm or cold days. By estimating the mean and standard deviation from actual January data, we can use the normal distribution to model and predict temperature patterns.</p>
+<p>The normal distribution is a theoretical model that describes how continuous data tend to cluster around an average, forming a smooth, symmetric, bell-shaped curve. Although no real dataset is perfectly normal, many natural variables behave approximately this way because they are influenced by many small, additive, approximately independent factors. January temperatures at a specific location (in our case, RDU airport) are a good example: most days fall near the typical mid-winter temperature, with fewer extremely warm or cold days. By estimating the mean and standard deviation from actual January data, we can use the normal distribution to model and predict temperature patterns.</p>
 <p>When we plot January daily maximum temperatures, we can see that the output is <strong><em>approximately</em></strong> normal (in a vague sense).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#density plot of max_temp variable</span></span>
@@ -456,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pnorm calculates the CDF up to the value. So we need to do 1-pnorm to get the probability above that value</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span>  <span class="fu">mean</span>(rdu_jan<span class="sc">$</span>max_temp), <span class="at">sd =</span> <span class="fu">sd</span>(rdu_jan<span class="sc">$</span>max_temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This shows us that there is a 22.4% chance that a day in January at RDU will have a maximum be above 60 degrees.</p>
+<p>This model estimates a 22.4% probability that a January day at RDU exceeds 60 degrees.</p>
 </section>
 <section id="mini-challenge-1" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="mini-challenge-1"><span class="header-section-number">11.6</span> Mini Challenge</h2>

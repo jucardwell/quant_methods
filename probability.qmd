@@ -3,9 +3,9 @@
 In this chapter we will calculate empirical probability and apply discrete and continuous theoretical probability distributions to estimate probability (based on empirical estimates). We will also practice writing basic R commands for data manipulation. We will use two different probability distributions:
 
 -   **Binomial Distribution:** The Binomial Distribution is a discrete probability distribution (i.e. each trial has only two possible outcomes). It models the number of "successes" in a fixed number of independent trials.
--   **Normal Distribution:** The Normal Distribution is a continuous probability distribution that describes how likely different values of a random variable are.
+-   **Normal Distribution:** The Normal Distribution is a continuous probability distribution that describes a variable that arises from the sum of many small, approximately independent effects, each with some random variation.
 
-Both of these probability distributions are theoretical. A theoretical distribution is a mathematically defined model that describes how outcomes of a random process are expected to behave. We use them with empirical data because they let us approximate the underlying pattern, calculate probabilities for events we haven’t observed, and make predictions or inferences about the entire population, even from a limited sample.
+Both of these probability distributions are theoretical. A theoretical distribution is a mathematically defined model that describes how outcomes of a probabilistic process are expected to behave. We can use them with empirical data because they let us approximate the underlying pattern, calculate probabilities for events we haven’t observed, and make predictions or inferences about the entire population, even from a limited sample.
 
 We will use the following spatial datasets:
 
@@ -96,7 +96,7 @@ grouped_pm <- flagged_pm |> group_by(lat, lon) |> summarise(tot_flag = sum(aq_fl
 
 The binomial distribution is a **theoretical probability model** that helps us predict how many times an event (a “success”) will happen in a fixed number of trials. The model assumes each trial is independent and the probability of success is the same each time. In reality, we often don’t know the true probability of an event. But we can get a good estimate of that probability using empirical data.
 
-In this part of the tutorial, we will calculate the empirical probability of rainfall on a given day in Chapel Hill using daily data from 1891-2025 (*note that this is a very simplified probability, given that trends differ by year and seasons*) to answer questions like:
+In this part of the tutorial, we will calculate the empirical probability of rainfall on a given day in Chapel Hill using daily data from 1891-2025 (*note that this is a major simplifying assumption; in reality rainfall probability varies by season and weather patterns, so the independence and constant-probability assumptions aren't met)* to answer questions like:
 
 **Over 10 days in Chapel Hill, what’s the most likely number of rainy days?**
 
@@ -152,7 +152,7 @@ Using the script above, use the binomial distribution and geometric distribution
 
 ## The Normal Distribution
 
-The normal distribution is a theoretical model that describes how continuous data tend to cluster around an average, forming a smooth, symmetric, bell-shaped curve. Although no real dataset is perfectly normal, many natural variables behave approximately this way because they are influenced by many small, independent factors. January temperatures at a specific location (in our case, RDU airport) are a good example: most days fall near the typical mid-winter temperature, with fewer extremely warm or cold days. By estimating the mean and standard deviation from actual January data, we can use the normal distribution to model and predict temperature patterns.
+The normal distribution is a theoretical model that describes how continuous data tend to cluster around an average, forming a smooth, symmetric, bell-shaped curve. Although no real dataset is perfectly normal, many natural variables behave approximately this way because they are influenced by many small, additive, approximately independent factors. January temperatures at a specific location (in our case, RDU airport) are a good example: most days fall near the typical mid-winter temperature, with fewer extremely warm or cold days. By estimating the mean and standard deviation from actual January data, we can use the normal distribution to model and predict temperature patterns.
 
 When we plot January daily maximum temperatures, we can see that the output is ***approximately*** normal (in a vague sense).
 
@@ -192,7 +192,7 @@ prob <- 1 - pnorm(60, mean =  mean(rdu_jan$max_temp), sd = sd(rdu_jan$max_temp))
 
 ```
 
-This shows us that there is a 22.4% chance that a day in January at RDU will have a maximum be above 60 degrees.
+This model estimates a 22.4% probability that a January day at RDU exceeds 60 degrees.
 
 ## Mini Challenge
 
