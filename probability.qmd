@@ -88,7 +88,7 @@ grouped_pm <- flagged_pm |> group_by(lat, lon) |> summarise(tot_flag = sum(aq_fl
 
 **Q3. Create a new object called `pm_prob` and calculate a new field that calculates the empirical probability of a moderate or worse air quality day at each lat/lon location. You will use the `mutate`** **command.**
 
-**Q4. Use this command `grouped_pm_sf <- YOUR_NEWOBJECT |> st_as_sf(coords= c("lon", "lat"), crs = 4326)` to turn the data into a spatial object.**
+**Q4. Use this command `grouped_pm_sf <- YOUR_NEWOBJECT |> st_as_sf(coords= c("lat", "lon"), crs = 4326)` to turn the data into a spatial object.**
 
 **Q5.** **Create a histogram of probability values. Then make a map of probability across the state.**
 
