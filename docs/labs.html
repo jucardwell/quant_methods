@@ -687,6 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>Add a third-level header called “Flood Risk at Bolin Creek” and a new code chunk below the header. In this code chunk you should:</p>
 <ul>
+<li>Create a new object that represents the daily maximum water height by using the command <code>daily_max_bolin &lt;- bolin_creek_data |&gt; group_by(time) |&gt; summarise(max_water = max(value))</code></li>
 <li>Create a descriptive statistics table for daily water height at the Bolin Creek USGS station</li>
 <li>Calculate the empirical probability of a “flood risk day” at Bolin Creek. A flood risk day is defined as a day where the water height is more than 1ft higher than the median of daily height for the period of records (2015-2025).</li>
 <li>Use this empirical probability to determine the most likely number of days of flood risk over a 25 day period.</li>
