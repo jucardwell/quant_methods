@@ -56,7 +56,7 @@ Where $\bar{x}$ is equal to the sample mean (or the point estimate), $t^*$ is th
 
 We can "manually" calculate the confidence interval in R.
 
-The script below shows the calculation of the 95% confidence interval (because we're running a two-tail interval, the critical value is .975 for each side) for the average commute to work for the Chapel Hill population.
+The script below shows the calculation of the 95% confidence interval (because we're running a two-tail interval which means we want the low end and the high end, the critical value is .975 for each side) for the average commute to work for the Chapel Hill population.
 
 ```{r}
 #calculate mean
@@ -87,9 +87,9 @@ t.test(ch_pums$travel_time_work, conf.level = 0.95)
 
 ```
 
-**Q1. We have a large sample size (6502). What would happen to the confidence interval if we had a smaller sample? You can try it out by artificially changing the sample size in the code above**
+**Q1. We have a large sample size (6502). What would happen to the confidence interval if we had a smaller sample? You can try it out by artificially changing the sample size in the manual code above (not the t.test command)**
 
-**Q2. Rerun the script above using a difference confidence level? How do the results change?**
+**Q2. Rerun the script above using a difference confidence level. How do the results change?**
 
 ## Calculating Point Estimate and Confidence Interval for Proportions
 
@@ -129,7 +129,6 @@ There is also an easy command to calculate point estimates and confidence interv
 ```{r}
 # calculate CI using Wilson method
 prop.test(total_pop_pub_health, total_sample_pop, conf.level = 0.95)
-
 
 ```
 

@@ -361,7 +361,7 @@ window.Quarto = {
 \]</span></p>
 <p>Where <span class="math inline">\(\bar{x}\)</span> is equal to the sample mean (or the point estimate), <span class="math inline">\(t^*\)</span> is the critical t-value, <span class="math inline">\({s}\)</span> is equal to the sample standard deviation, and <span class="math inline">\({n}\)</span> is the sample size. We use t distribution for means because we must estimate the population standard deviation and that extra uncertainty makes the sampling distribution wider than the normal curve.</p>
 <p>We can “manually” calculate the confidence interval in R.</p>
-<p>The script below shows the calculation of the 95% confidence interval (because we’re running a two-tail interval, the critical value is .975 for each side) for the average commute to work for the Chapel Hill population.</p>
+<p>The script below shows the calculation of the 95% confidence interval (because we’re running a two-tail interval which means we want the low end and the high end, the critical value is .975 for each side) for the average commute to work for the Chapel Hill population.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate mean</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(ch_pums<span class="sc">$</span>travel_time_work)</span>
@@ -399,8 +399,8 @@ mean of x
  11.84543 </code></pre>
 </div>
 </div>
-<p><strong>Q1. We have a large sample size (6502). What would happen to the confidence interval if we had a smaller sample? You can try it out by artificially changing the sample size in the code above</strong></p>
-<p><strong>Q2. Rerun the script above using a difference confidence level? How do the results change?</strong></p>
+<p><strong>Q1. We have a large sample size (6502). What would happen to the confidence interval if we had a smaller sample? You can try it out by artificially changing the sample size in the manual code above (not the t.test command)</strong></p>
+<p><strong>Q2. Rerun the script above using a difference confidence level. How do the results change?</strong></p>
 </section>
 <section id="calculating-point-estimate-and-confidence-interval-for-proportions" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="calculating-point-estimate-and-confidence-interval-for-proportions"><span class="header-section-number">13.3</span> Calculating Point Estimate and Confidence Interval for Proportions</h2>
