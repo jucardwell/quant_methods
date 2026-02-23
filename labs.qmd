@@ -280,7 +280,7 @@ This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.g
 
     -   Explain in plain language what the empirical probability of a flood risk day represents
         -   What does this probability tell you about how often flood risk occurs at Bolin Creek?
-    -   Describe the output of the binomial calculation and explains which number of flood risk days is most likely in a 25-day period and why this makes sense given the empirical probability
+    -   Describe the output of the binomial distribution and explain which number of flood risk days is most likely in a 25-day period and why this makes sense given the empirical probability
     -   Interpret the cumulative probability of having more than 3 flood risk days in 25 days and explain what this means in terms of real-world flood risk.
 
 3.  Add a third-level header called "Low Temperature Probabilities in NC" and add a new code chunk below the header. In this code chunk you should:
