@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="one-sample-t-test" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="one-sample-t-test"><span class="header-section-number">14.1</span> One Sample T-Test</h2>
-<p>A one-sample t-test is a statistical test used to determine whether the mean of a single sample is significantly different from a known or hypothesized value. It assumes that the data is <strong>continuous</strong>, that the observations are <strong>independent</strong>, and that the values are <strong>normally distributed</strong> in the population.</p>
+<p>A one-sample t-test is a statistical test used to determine whether the mean of a single sample is significantly different from a known or hypothesized value. It assumes that the data is <strong>continuous</strong>, that the observations are <strong>independent</strong>, and the <strong>sampling distribution of the mean</strong> is normal. While this is guaranteed if the underlying population is normal, the Central Limit Theorem ensures this assumption is met for large samples regardless of the population’s distribution.</p>
 <p>To demonstrate a one sample t-test, we can compare the mean daily PM2.5 value for census tracts across North Carolina to a known value. Although each tract in North Carolina has a mean value (i.e.&nbsp;the census tracts are not sampled), we can consider this a “natural sample”.</p>
 <p>In geography, inferential statistics are sometimes applied even when datasets include all observed units, because many spatial phenomena contain both systematic and random components. These datasets can be treated as <strong>“natural samples”</strong>, where the observed variation reflects real-world randomness. For example, mean daily PM2.5 values across all census tracts in a state are influenced by systematic factors like industrial activity and traffic patterns, but also by unpredictable environmental processes such as local weather conditions. This natural variability allows the observed values to be treated as a sample from the broader population of possible PM2.5 conditions, making inferential tests like the one-sample t-test appropriate.</p>
 <p><strong>The annual average PM2.5 value for the eastern United States is 7.8µg/m<sup>3</sup></strong> . Therefore, we could use a one-sample t-test to see if the North Carolina average differs from the United States average.</p>
@@ -505,9 +505,9 @@ X-squared = 0.20909, df = 1, p-value = 0.6475</code></pre>
 </ul>
 <ol type="1">
 <li>Create two maps– one for each mobility variable. Do you notice any spatial patterns?</li>
-<li>Calculate the mean workplace mobility for the state of NC during the two time periods. Develop a null hypothesis and run a paired t-test between the two time periods</li>
-<li>Calculate the mean workplace mobility for rural counties and urban counties. Develop a null hypothesis and run an independent samples t-test between the two geographical regions.</li>
-<li>Consider that the known average mobility during the March-May period across the US was -32. Develop a null hypothesis and run a one sample t-test between the known value and the sample value.</li>
+<li>Develop a null hypothesis regarding the relationship between change in workplace mobility between the two time periods. Run a paired t-test between the two time periods to test your hypothesis.</li>
+<li>Develop a null hypothesis regarding the relationship between change in workplace mobility between urban and rural areas (you can pick which workplace change variable to use) . Run an independent samples t-test between the two geographical regions.</li>
+<li>Consider that the known average mobility during the March-May period across the US was -32. Calculate the mean for North Carolina and develop a null hypothesis about the relationship between North Carolina mobility and average US mobility. Run a one sample t-test between the known value and the sample value.</li>
 </ol>
 
 
