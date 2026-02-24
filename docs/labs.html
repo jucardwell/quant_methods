@@ -660,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><strong>Flood Risk at Bolin Creek</strong>: Student creates a descriptive statistics table for daily water height, calculates empirical probability of a flood risk day, estimates the most likely number of flood risk days over 25 days, and computes cumulative probability of more than 3 flood risk days. Written interpretation demonstrates understanding of the results.</td>
 </tr>
 <tr class="even">
-<td><strong>Low Temperature Probabilities Across NC</strong>: Student calculates the probability of January days with maximum temperature below 30°F at each ASOS station and produces a probability map for the state. Written interpretation demonstrates understanding of the probabilities and spatial patterns.</td>
+<td><strong>Low Temperature Probabilities Across NC</strong>: Student calculates the probability of January days with maximum temperature below 40°F at each ASOS station and produces a probability map for the state. Written interpretation demonstrates understanding of the probabilities and spatial patterns.</td>
 </tr>
 </tbody>
 </table>
@@ -813,18 +813,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Below this code chunk, write a few sentences that describe the values and what this tells us about the values of the population.</p></li>
 <li><p>Add a third-level header called “Statewide Estimates and Mapping” and add a new code chunk below the header. In this code chunk you should:</p>
 <ul>
-<li><p>Calculate (at a 95% confidence level) the point estimation and confidence interval for each of the three variables for <strong>each state (there will be two missing states)</strong>. Also calculate the size of the confidence interval for each state</p></li>
-<li><p>Add the following code to join your dataset to a spatial boundary file</p>
+<li><p>Add the following code which calculates (at a 95% confidence level), the point estimation and confidence interval, as well as the size of the confidence interval, for each of the three variables for each state <strong>(there will be two missing states)</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get just continental US for mapping purposes</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>state_boundaries <span class="ot">&lt;-</span> <span class="fu">states</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(GEOID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"15"</span>, <span class="st">"02"</span>,<span class="st">"60"</span>, <span class="st">"66"</span>, <span class="st">"69"</span>, <span class="st">"72"</span>, <span class="st">"78"</span>)))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#add state data to state boundaries</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>spatial_data <span class="ot">&lt;-</span> state_boundaries <span class="sc">|&gt;</span> <span class="fu">left_join</span>(YOUR_AGGREGATED_STATE_DATASET, <span class="fu">join_by</span>(<span class="st">"GEOID"</span> <span class="sc">==</span> <span class="st">"x.state"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>aggregated_data <span class="ot">&lt;-</span> brfss_sample <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(x.state) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#sample size</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#mental health (mean + CI)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ment_mean  =</span> <span class="fu">t.test</span>(menthlth)<span class="sc">$</span>estimate,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ment_lower =</span> <span class="fu">t.test</span>(menthlth)<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ment_upper =</span> <span class="fu">t.test</span>(menthlth)<span class="sc">$</span>conf.int[<span class="dv">2</span>],</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ment_ci_size =</span> ment_upper <span class="sc">-</span> ment_lower,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#physical health (mean + CI)</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">phys_mean  =</span> <span class="fu">t.test</span>(physhlth)<span class="sc">$</span>estimate,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">phys_lower =</span> <span class="fu">t.test</span>(physhlth)<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">phys_upper =</span> <span class="fu">t.test</span>(physhlth)<span class="sc">$</span>conf.int[<span class="dv">2</span>],</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">phys_ci_size =</span> phys_upper <span class="sc">-</span> phys_lower,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">#exercise (proportion + CI)</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">exer_total =</span> <span class="fu">sum</span>(exerany2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">exer_prop  =</span> exer_total <span class="sc">/</span> n,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">exer_lower =</span> <span class="fu">prop.test</span>(exer_total, n)<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">exer_upper =</span> <span class="fu">prop.test</span>(exer_total, n)<span class="sc">$</span>conf.int[<span class="dv">2</span>],</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">exer_ci_size =</span> exer_upper <span class="sc">-</span> exer_lower</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p>Create a map of one of the variables. Also create a map of the size of the confidence interval per state</p></li>
+<li><p>Then add the following code to join your dataset to a spatial boundary file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get just continental US for mapping purposes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>state_boundaries <span class="ot">&lt;-</span> <span class="fu">states</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(GEOID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"15"</span>, <span class="st">"02"</span>,<span class="st">"60"</span>, <span class="st">"66"</span>, <span class="st">"69"</span>, <span class="st">"72"</span>, <span class="st">"78"</span>)))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#add state data to state boundaries</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>spatial_data <span class="ot">&lt;-</span> state_boundaries <span class="sc">|&gt;</span> <span class="fu">left_join</span>(YOUR_AGGREGATED_STATE_DATASET, <span class="fu">join_by</span>(<span class="st">"GEOID"</span> <span class="sc">==</span> <span class="st">"x.state"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Create a <a href="https://tmap.geocompx.org/arrangements">dual-paneled</a> map that displays the point estimate per state for one of the three variables and the size of the confidence interval (<code>VARIABLEOFINTEREST_ci_size)</code></p></li>
 </ul></li>
-<li><p>Below this code chunk, write a few sentence that compare the state estimates and the size of their confidence intervals. Explain why some states might have smaller or larger intervals. Also describe any spatial patterns that you see in the means or the size of the confidence intervals.</p></li>
+<li><p>Below this code chunk, write a few sentences describing the spatial pattern that you see in the point estimates and the size of the confidence intervals. Explain why some states might have smaller or larger intervals.</p></li>
 </ol>
 </section>
 </section>
@@ -876,12 +904,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create a new .Rmd named “LASTNAME_lab6.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>school_sample <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Yys2-G69_tc9YC-7jlRgsfXn0faLZhUV"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>school_sample <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Yys2-G69_tc9YC-7jlRgsfXn0faLZhUV"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Under a header called “Describing School Absences” make a map, a descriptive statistics table, and one non-map graphic for both variables (pre_covid_pct, after_covid_pct). Describe spatial patterns and the characteristics of the datasets.</p></li>
 <li><p>Under a header called “Testing Hypotheses” identify an appropriate statistical test, test assumptions, generate a null and alternative hypothesis, and interpret results for the following scenarios:</p>
@@ -941,14 +969,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create a new .Rmd named “LASTNAME_lab7.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>forest_boundary <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Ku6Hv_RX4WSABaHh9Pj_x_HEBXOW0HfS"</span>) </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>wildfire_points <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>forest_boundary <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Ku6Hv_RX4WSABaHh9Pj_x_HEBXOW0HfS"</span>) </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>wildfire_points <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Under a header called “Analyzing Global Structure” add a code chunk, and a written analysis below the code chunk that does the following:</p>
 <ul>
@@ -1012,14 +1040,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create a new .Rmd named “LASTNAME_lab8.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>school_sat <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1i-C2PF3ajbpHTlavh3m1QbWNObpobprZ"</span>) </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>covid_mobility <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1YbCNVR5K8jDF5HOKHcoJ25gz7VkRvDHa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load libraries</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>school_sat <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1i-C2PF3ajbpHTlavh3m1QbWNObpobprZ"</span>) </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>covid_mobility <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1YbCNVR5K8jDF5HOKHcoJ25gz7VkRvDHa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Under a header called “Defining Neighbors” add a code chunk, and a written analysis below the code chunk that does the following:</p>
 <ul>

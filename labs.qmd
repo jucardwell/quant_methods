@@ -244,7 +244,7 @@ This lab is designed to assess the [Concept 4 Competencies](https://jucardwell.g
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
 | **Flood Risk at Bolin Creek**: Student creates a descriptive statistics table for daily water height, calculates empirical probability of a flood risk day, estimates the most likely number of flood risk days over 25 days, and computes cumulative probability of more than 3 flood risk days. Written interpretation demonstrates understanding of the results. |
-| **Low Temperature Probabilities Across NC**: Student calculates the probability of January days with maximum temperature below 30°F at each ASOS station and produces a probability map for the state. Written interpretation demonstrates understanding of the probabilities and spatial patterns. |
+| **Low Temperature Probabilities Across NC**: Student calculates the probability of January days with maximum temperature below 40°F at each ASOS station and produces a probability map for the state. Written interpretation demonstrates understanding of the probabilities and spatial patterns. |
 
 1.  Create a new .Rmd named "LASTNAME_lab4.Rmd". Save it into your GEOG391 folder.
 
@@ -357,9 +357,39 @@ This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.g
 
 7.  Add a third-level header called "Statewide Estimates and Mapping" and add a new code chunk below the header. In this code chunk you should:
 
-    -   Calculate (at a 95% confidence level) the point estimation and confidence interval for each of the three variables for **each state (there will be two missing states)**. Also calculate the size of the confidence interval for each state
+    -   Add the following code which calculates (at a 95% confidence level), the point estimation and confidence interval, as well as the size of the confidence interval, for each of the three variables for each state **(there will be two missing states)**.
 
-    -   Add the following code to join your dataset to a spatial boundary file
+        ```{r, eval = F}
+        aggregated_data <- brfss_sample |>
+          group_by(x.state) |>
+          summarise(
+            
+            #sample size
+            n = n(),
+            
+            #mental health (mean + CI)
+            ment_mean  = t.test(menthlth)$estimate,
+            ment_lower = t.test(menthlth)$conf.int[1],
+            ment_upper = t.test(menthlth)$conf.int[2],
+            ment_ci_size = ment_upper - ment_lower,
+            
+            #physical health (mean + CI)
+            phys_mean  = t.test(physhlth)$estimate,
+            phys_lower = t.test(physhlth)$conf.int[1],
+            phys_upper = t.test(physhlth)$conf.int[2],
+            phys_ci_size = phys_upper - phys_lower,
+            
+            #exercise (proportion + CI)
+            exer_total = sum(exerany2, na.rm = TRUE),
+            exer_prop  = exer_total / n,
+            exer_lower = prop.test(exer_total, n)$conf.int[1],
+            exer_upper = prop.test(exer_total, n)$conf.int[2],
+            exer_ci_size = exer_upper - exer_lower
+          )
+
+        ```
+
+    -   Then add the following code to join your dataset to a spatial boundary file
 
         ```{r, eval = F}
         #get just continental US for mapping purposes
@@ -369,9 +399,9 @@ This lab is designed to assess the [Concept 5 Competencies](https://jucardwell.g
         spatial_data <- state_boundaries |> left_join(YOUR_AGGREGATED_STATE_DATASET, join_by("GEOID" == "x.state"))
         ```
 
-    -   Create a map of one of the variables. Also create a map of the size of the confidence interval per state
+    -   Create a [dual-paneled](https://tmap.geocompx.org/arrangements) map that displays the point estimate per state for one of the three variables and the size of the confidence interval (`VARIABLEOFINTEREST_ci_size)`
 
-8.  Below this code chunk, write a few sentence that compare the state estimates and the size of their confidence intervals. Explain why some states might have smaller or larger intervals. Also describe any spatial patterns that you see in the means or the size of the confidence intervals.
+8.  Below this code chunk, write a few sentences describing the spatial pattern that you see in the point estimates and the size of the confidence intervals. Explain why some states might have smaller or larger intervals.
 
 ## Lab 6
 
