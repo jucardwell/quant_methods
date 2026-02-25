@@ -62,10 +62,11 @@
 **Guiding Question:** How can we generate and test hypotheses about a population using sample data?
 
 -   Describe the issues with using classical hypothesis testing for spatial data
+-   Describe the idea of "natural samples" in geography
 -   Distinguish between the null (H₀) and alternative (H₁) hypotheses
 -   Identify the two types of error in hypothesis testing (Type I and Type II)
 -   Formulate testable hypotheses and identify an appropriate statistical test based on the characteristics of the data 
--   Run and interpret one sample and two sample t-tests to compare means between one or two groups
+-   Run and interpret one sample, two sample, and paired t-tests to compare means between one or two groups
 -   Run and interpret Chi-Square tests to assess relationships between categorical variables
 -   Differentiate statistical significance from substantive importance
 
