@@ -455,9 +455,9 @@ This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.g
 
 ### Overview
 
-In the Point Pattern Analysis tutorial, we learned how to interpret the spatial distribution of events (represented as points) in a defined study area/region based on comparing a spatial distribution to CSR (complete spatial randomness).
+In the Point Pattern Analysis tutorial, we learned how to interpret the spatial structure of unmarked point data.
 
-In this lab, you will practice applying these skills to a dataset representing wildfire locations in Croatan National Forest in North Carolina from 1957-2024 (from [US Forest Service](https://data-usfs.hub.arcgis.com/datasets/usfs::national-usfs-fire-occurrence-point-feature-layer/explore?location=64.276190%2C-9.593052%2C5.89)).
+In this lab, you will practice applying these skills to a dataset representing wildfire locations in Croatan National Forest in North Carolina from 1957-2024 (from [US Forest Service](https://data-usfs.hub.arcgis.com/datasets/usfs::national-usfs-fire-occurrence-point-feature-layer/explore?location=64.276190%2C-9.593052%2C5.89)) and a dataset representing locations of fire stations along the I-40 corridor in North Carolina.
 
 *Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
 
@@ -469,16 +469,15 @@ This lab is designed to assess the [Concept 7 Competencies](https://jucardwell.g
 |------------------------------------------------------------------------|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
-| **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
-| **Analyzing Global Structure:** Student computes and visualizes a quadrat count and tests it against CSR, and creates a kernel density estimate using an appropriate bandwidth. Written interpretation demonstrates understanding of first-order processes. |
-| **Analyzing Local Structure:** Student computes and visualizes the G-function and F-function. Written interpretation demonstrates understanding of second-order processes. |
-| **Describing Wildfires**: Student integrates global and local results to identify the dominant spatial process (first-order, second-order, or both) and proposes a specific hypothesis informed by background research. |
+| **Analyzing Global Structure:** Student maps the point pattern, computes and visualizes a quadrat count (with Monte Carlo simulations) and tests it against CSR, and creates a kernel density estimate for both datasets. |
+| **Analyzing Local Structure:** Student computes and visualizes ANN and L-function (both with Monte Carlo simulations). Student appropriately determines whether to test against CSR or an Inhomogeneous Poisson Pattern. |
+| **Describing Results**: Student integrates global and local results to identify the dominant spatial process (first-order, second-order, or both) and proposes a specific hypothesis informed by background research. |
 
 ### Lab Instructions
 
-1.  Create a new .Rmd named "LASTNAME_lab7.Rmd". Save it into your GEOG391 folder.
+-   Create a new .Rmd named "LASTNAME_lab7.Rmd". Save it into your GEOG391 folder.
 
-2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+-   Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
 
     ```{r, eval=F}
     #load libraries
@@ -486,26 +485,41 @@ This lab is designed to assess the [Concept 7 Competencies](https://jucardwell.g
     library(tidyverse)
     library(spatstat)
 
-    forest_boundary <- st_read("https://drive.google.com/uc?export=download&id=1Ku6Hv_RX4WSABaHh9Pj_x_HEBXOW0HfS") 
+    wildfire_points <- st_read("https://drive.google.com/uc?export=download&id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT") |> st_transform(crs =2264)
 
-    wildfire_points <- st_read("https://drive.google.com/uc?export=download&id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT") 
+    ###THIS TURNS THE DATA INTO A POINT PATTERN OBJECT WITH A DEFINED BOUNDARY###
+    ### USE THIS FOR PPA####
+    combined_wildfire <- st_union(wildfire_points)
+    bb_wildfire <- st_convex_hull(combined_wildfire) |> as.owin()
+    wildfire.ppp <- as.ppp(st_coordinates(wildfire_points), W = bb_wildfire)
+
+    fire_stations <- st_read("https://drive.google.com/uc?export=download&id=1bjAeEaoVZUjf9VLJTKl_anABwznioAoa")  |> st_transform(crs =2264)
+
+    ###THIS TURNS THE DATA INTO A POINT PATTERN OBJECT WITH A DEFINED BOUNDARY###
+    ### USE THIS FOR PPA#####
+    combined_firestation <- st_union(fire_stations)
+    bb_firestation <- st_convex_hull(combined_firestation) |> as.owin()
+    firestation.ppp <- as.ppp(st_coordinates(fire_stations), W = bb_firestation)
 
     ```
 
-3.  Under a header called "Analyzing Global Structure" add a code chunk, and a written analysis below the code chunk that does the following:
+-   Under a header called "Analyzing Wildfire Points" add a code chunk, and a written analysis below the code chunk that does the following:
 
-    -   Compute a quadrat count using 9 quadrats and display the plot
-    -   Test the quadrat count against CSR using a quadrat test
-    -   Create a KDE for wildfire counts (this will require experimenting with bandwidths)
-    -   Interpret your results. What do they tell you about the global structure of the dataset?
+    -   Make a map (with basemap) of the `wildfire_points` object
+    -   Test the quadrat count against CSR using a quadrat density test (use nx = 8, ny = 8). Add Monte Carlo simulations (n = 99) to the statistical testing
+    -   Create a KDE for wildfire counts
+    -   Run an ANN analysis that uses Monte Carlo simulations (n = 99) to create an empirical probability. You will need to determine if your simulations should homogeneous or inhomogeneous based on your global analysis.
+    -   Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis.
+    -   In text below the chunk, identify whether there is evidence for the pattern of wildfires reflecting first-order processes, second-order processes, or a combination of both by clearly interpreting your analytical results. Based on brief background research on wildfires and the study area, propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.
 
-4.  Under a header called "Analyzing Local Structure" add a code chunk, and a written analysis below the code chunk that does the following:
+-   Under a header called "Analyzing Fire Stations" add a code chunk, and a written analysis below the code chunk that does the following:
 
-    -   Compute and plot the G-Function
-    -   Compute and plot the F-function
-    -   Interpret your results. What do they tell you about the global structure of the dataset?
-
-5.  Under a header called "Describing Wildfires" consider your full set of results (global and local structure). Identify whether there is evidence for the pattern of wildfires reflecting first-order processes, second-order processes, or a combination of both. Based on brief background research on wildfires and the study area, propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.
+    -   Make a map (with basemap) of the `fire_stations` object
+    -   Test the quadrat count against CSR using a quadrat density test (use nx = 4, ny = 3). Add Monte Carlo simulations (n = 99) to the statistical testing
+    -   Create a KDE for fire stations
+    -   Run an ANN analysis that uses Monte Carlo simulations (n = 99) to create an empirical probability. You will need to determine if your simulations should homogeneous or inhomogeneous based on your global analysis.
+    -   Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis.
+    -   In text below the chunk, identify whether there is evidence for the pattern of fire stations reflecting first-order processes, second-order processes, or a combination of both by clearly interpreting your analytical results. Propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.
 
 ## Lab 8
 

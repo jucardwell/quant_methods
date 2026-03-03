@@ -119,6 +119,64 @@ plot(kernel_density2)
 
 ## Analyzing Local Structure
 
+### Average Nearest Neighbor (ANN)
+The ANN statistic is a distance-based method for summarizing local spatial structure in a point pattern. ANN is focused specifically on the distance of each point to its nearest neighbor. Therefore, ANN is useful for identifying very local clustering. 
+
+```{r}
+#compute observed ANN
+ANN_obs1 <- mean(nndist(sample_pattern_1))
+
+nsim <- 999
+ANN_sim1 <- numeric(nsim)
+
+#MC simulations
+for(i in 1:nsim){
+  sim <- rpoispp(kernel_density1) #simulate inhomogeneous Poisson using our KDE
+  ANN_sim1[i] <- mean(nndist(sim))
+}
+
+#monte Carlo p-value (two-sided)
+N_greater1 <- sum(ANN_sim1 >= ANN_obs1)
+p_value1 <- 2 * min((N_greater1 + 1)/(nsim + 1), (nsim - N_greater1 + 1)/(nsim + 1))
+
+p_value1
+
+# 1f. Plot ANN null distribution
+hist(ANN_sim1,
+     main = "Monte Carlo Distribution of ANN (sample_pattern_1)",
+     xlab = "Average Nearest Neighbor Distance")
+abline(v = ANN_obs1, col="red", lwd=2)
+
+ANN_sim2 <- numeric(nsim)
+
+#observed ANN
+ANN_obs2 <- mean(nndist(sample_pattern_2))
+
+#compute average intensity (lambda) for homogeneous Poisson
+lambda2 <- sample_pattern_2$n / area.owin(sample_pattern_2$window)
+
+for(i in 1:nsim){
+  sim <- rpoispp(lambda2, win = sample_pattern_2$window)  # simulate CSR
+  ANN_sim2[i] <- mean(nndist(sim))
+}
+
+#monte Carlo p-value (two-sided)
+N_greater2 <- sum(ANN_sim2 >= ANN_obs2)
+p_value2 <- 2 * min((N_greater2 + 1)/(nsim + 1), (nsim - N_greater2 + 1)/(nsim + 1))
+
+p_value2
+
+
+#plot ANN null distribution
+hist(ANN_sim2,
+     main = "Monte Carlo Distribution of ANN (sample_pattern_2)",
+     xlab = "Average Nearest Neighbor Distance")
+abline(v = ANN_obs2, col="red", lwd=2)
+
+```
+
+Both of our point patterns do not indicate deviation from the null process, meaning there is no evidence of significant local clustering or dispersion; consequently, the observed spatial arrangements are statistically indistinguishable from their respective Poisson processes.
+
 ### L- Function
 The L-Function is a transformation of Ripley’s K-Function used to diagnose local spatial structure by analyzing how a spatial point pattern deviates from randomness across different distance scales. It evaluates whether points tend to occur closer together or farther apart than would be expected if they were randomly distributed.
 
@@ -129,7 +187,7 @@ If observed values are greater than the expected values, the pattern indicates c
 
 ```{r, message=F, warning=F}
 
-#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. We wil not use simulations
+#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. 
 l_funct_pattern1 <- envelope(
   sample_pattern_1,
   fun = Linhom, #inhomogenous
@@ -137,11 +195,25 @@ l_funct_pattern1 <- envelope(
   funargs = list(correction = "iso"),
   transform = expression(. - r)   # subtract r from obs and simulated
 )
+#for inhomogenous pp with MC, we need to set an intensity, which is estimated by our KDE. This allows us to account for first-order pattern in our simulation envelope
+lambda1 <- density(sample_pattern_1)
 
-plot(l_funct_pattern1, legend = F)
+#run inhomogenous pp l function with simulations
+l_funct_pattern1 <- envelope(
+  sample_pattern_1,
+  fun = Linhom,
+  nsim = 99,
+  simulate = expression(rpoispp(lambda1)),
+  lambda = lambda1,
+  funargs = list(correction = "iso"),
+  transform = expression(. - r)
+)
+
+#plot
+plot(l_funct_pattern1, legend = FALSE)
+
 
 #use homogenous for pattern 2 since it demonstrated no global structure
-# we can use Monte Carlo simulations to create an envelope for pattern 2
 l_funct_pattern2 <- envelope(
   sample_pattern_2,
   fun = Lest,#homogenous

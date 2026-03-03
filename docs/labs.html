@@ -925,8 +925,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.8" class="anchored" data-anchor-id="lab-7"><span class="header-section-number">5.8</span> Lab 7</h2>
 <section id="overview-6" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="overview-6"><span class="header-section-number">5.8.1</span> Overview</h3>
-<p>In the Point Pattern Analysis tutorial, we learned how to interpret the spatial distribution of events (represented as points) in a defined study area/region based on comparing a spatial distribution to CSR (complete spatial randomness).</p>
-<p>In this lab, you will practice applying these skills to a dataset representing wildfire locations in Croatan National Forest in North Carolina from 1957-2024 (from <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::national-usfs-fire-occurrence-point-feature-layer/explore?location=64.276190%2C-9.593052%2C5.89">US Forest Service</a>).</p>
+<p>In the Point Pattern Analysis tutorial, we learned how to interpret the spatial structure of unmarked point data.</p>
+<p>In this lab, you will practice applying these skills to a dataset representing wildfire locations in Croatan National Forest in North Carolina from 1957-2024 (from <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::national-usfs-fire-occurrence-point-feature-layer/explore?location=64.276190%2C-9.593052%2C5.89">US Forest Service</a>) and a dataset representing locations of fire stations along the I-40 corridor in North Carolina.</p>
 <p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
 </section>
 <section id="specifications-6" class="level3" data-number="5.8.2">
@@ -949,23 +949,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
 </tr>
 <tr class="odd">
-<td><strong>Descriptive Statistics</strong>: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results.</td>
+<td><strong>Analyzing Global Structure:</strong> Student maps the point pattern, computes and visualizes a quadrat count (with Monte Carlo simulations) and tests it against CSR, and creates a kernel density estimate for both datasets.</td>
 </tr>
 <tr class="even">
-<td><strong>Analyzing Global Structure:</strong> Student computes and visualizes a quadrat count and tests it against CSR, and creates a kernel density estimate using an appropriate bandwidth. Written interpretation demonstrates understanding of first-order processes.</td>
+<td><strong>Analyzing Local Structure:</strong> Student computes and visualizes ANN and L-function (both with Monte Carlo simulations). Student appropriately determines whether to test against CSR or an Inhomogeneous Poisson Pattern.</td>
 </tr>
 <tr class="odd">
-<td><strong>Analyzing Local Structure:</strong> Student computes and visualizes the G-function and F-function. Written interpretation demonstrates understanding of second-order processes.</td>
-</tr>
-<tr class="even">
-<td><strong>Describing Wildfires</strong>: Student integrates global and local results to identify the dominant spatial process (first-order, second-order, or both) and proposes a specific hypothesis informed by background research.</td>
+<td><strong>Describing Results</strong>: Student integrates global and local results to identify the dominant spatial process (first-order, second-order, or both) and proposes a specific hypothesis informed by background research.</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="lab-instructions-5" class="level3" data-number="5.8.3">
 <h3 data-number="5.8.3" class="anchored" data-anchor-id="lab-instructions-5"><span class="header-section-number">5.8.3</span> Lab Instructions</h3>
-<ol type="1">
+<ul>
 <li><p>Create a new .Rmd named “LASTNAME_lab7.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
@@ -974,25 +971,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>forest_boundary <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Ku6Hv_RX4WSABaHh9Pj_x_HEBXOW0HfS"</span>) </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>wildfire_points <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT"</span>) <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="at">crs =</span><span class="dv">2264</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>wildfire_points <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=16m9HJAn5uzSyiUdhdhoboPRRi9dDDQaT"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">###THIS TURNS THE DATA INTO A POINT PATTERN OBJECT WITH A DEFINED BOUNDARY###</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">### USE THIS FOR PPA####</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>combined_wildfire <span class="ot">&lt;-</span> <span class="fu">st_union</span>(wildfire_points)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>bb_wildfire <span class="ot">&lt;-</span> <span class="fu">st_convex_hull</span>(combined_wildfire) <span class="sc">|&gt;</span> <span class="fu">as.owin</span>()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>wildfire.ppp <span class="ot">&lt;-</span> <span class="fu">as.ppp</span>(<span class="fu">st_coordinates</span>(wildfire_points), <span class="at">W =</span> bb_wildfire)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>fire_stations <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1bjAeEaoVZUjf9VLJTKl_anABwznioAoa"</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="do">###THIS TURNS THE DATA INTO A POINT PATTERN OBJECT WITH A DEFINED BOUNDARY###</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="do">### USE THIS FOR PPA#####</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>combined_firestation <span class="ot">&lt;-</span> <span class="fu">st_union</span>(fire_stations)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>bb_firestation <span class="ot">&lt;-</span> <span class="fu">st_convex_hull</span>(combined_firestation) <span class="sc">|&gt;</span> <span class="fu">as.owin</span>()</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>firestation.ppp <span class="ot">&lt;-</span> <span class="fu">as.ppp</span>(<span class="fu">st_coordinates</span>(fire_stations), <span class="at">W =</span> bb_firestation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p>Under a header called “Analyzing Global Structure” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<li><p>Under a header called “Analyzing Wildfire Points” add a code chunk, and a written analysis below the code chunk that does the following:</p>
 <ul>
-<li>Compute a quadrat count using 9 quadrats and display the plot</li>
-<li>Test the quadrat count against CSR using a quadrat test</li>
-<li>Create a KDE for wildfire counts (this will require experimenting with bandwidths)</li>
-<li>Interpret your results. What do they tell you about the global structure of the dataset?</li>
+<li>Make a map (with basemap) of the <code>wildfire_points</code> object</li>
+<li>Test the quadrat count against CSR using a quadrat density test (use nx = 8, ny = 8). Add Monte Carlo simulations (n = 99) to the statistical testing</li>
+<li>Create a KDE for wildfire counts</li>
+<li>Run an ANN analysis that uses Monte Carlo simulations (n = 99) to create an empirical probability. You will need to determine if your simulations should homogeneous or inhomogeneous based on your global analysis.</li>
+<li>Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis.</li>
+<li>In text below the chunk, identify whether there is evidence for the pattern of wildfires reflecting first-order processes, second-order processes, or a combination of both by clearly interpreting your analytical results. Based on brief background research on wildfires and the study area, propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.</li>
 </ul></li>
-<li><p>Under a header called “Analyzing Local Structure” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<li><p>Under a header called “Analyzing Fire Stations” add a code chunk, and a written analysis below the code chunk that does the following:</p>
 <ul>
-<li>Compute and plot the G-Function</li>
-<li>Compute and plot the F-function</li>
-<li>Interpret your results. What do they tell you about the global structure of the dataset?</li>
+<li>Make a map (with basemap) of the <code>fire_stations</code> object</li>
+<li>Test the quadrat count against CSR using a quadrat density test (use nx = 4, ny = 3). Add Monte Carlo simulations (n = 99) to the statistical testing</li>
+<li>Create a KDE for fire stations</li>
+<li>Run an ANN analysis that uses Monte Carlo simulations (n = 99) to create an empirical probability. You will need to determine if your simulations should homogeneous or inhomogeneous based on your global analysis.</li>
+<li>Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis.</li>
+<li>In text below the chunk, identify whether there is evidence for the pattern of fire stations reflecting first-order processes, second-order processes, or a combination of both by clearly interpreting your analytical results. Propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.</li>
 </ul></li>
-<li><p>Under a header called “Describing Wildfires” consider your full set of results (global and local structure). Identify whether there is evidence for the pattern of wildfires reflecting first-order processes, second-order processes, or a combination of both. Based on brief background research on wildfires and the study area, propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.</p></li>
-</ol>
+</ul>
 </section>
 </section>
 <section id="lab-8" class="level2" data-number="5.9">
