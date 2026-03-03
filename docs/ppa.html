@@ -273,7 +273,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#analyzing-local-structure" id="toc-analyzing-local-structure" class="nav-link" data-scroll-target="#analyzing-local-structure"><span class="header-section-number">15.3</span> Analyzing Local Structure</a>
   <ul class="collapse">
   <li><a href="#l--function" id="toc-l--function" class="nav-link" data-scroll-target="#l--function"><span class="header-section-number">15.3.1</span> L- Function</a></li>
-  <li><a href="#g--function" id="toc-g--function" class="nav-link" data-scroll-target="#g--function"><span class="header-section-number">15.3.2</span> G- Function</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -381,7 +380,7 @@ Quadrats: 3 by 3 grid of tiles</code></pre>
 </div>
 <p>If you explore the plot of the quadrat test, the first number (top-left) is the number of events in the quadrat. The second number (top-right) is the expected number of events under CSR. The third number (bottom) is the residual, which is based on how different the top two values are. A larger residual indicates a larger difference.</p>
 <p><strong>Q2: Based on the residuals, which quadrats differ the most from expected values. What does this tell us about the spatial pattern?</strong></p>
-<p>For <code>sample_pattern_1</code> our variance-to-mean ratio is 3.5, which indicates clustering in the dataset because values greater than 1 suggest individuals are aggregated in space. A Poisson (random) distribution has a variance-to-mean ratio of 1, meaning the variance equals the mean. Values greater than 1 indicate clustering, while values less than 1 indicate dispersion. The small p-value of the X2 quadrat test allows us to reject the null hypothesis of spatial randomness in favor of the alternative that the observed pattern is non-random and clustered.</p>
+<p>For <code>sample_pattern_1</code> our variance-to-mean ratio is 3.5, which indicates clustering. A Poisson (random) distribution has a variance-to-mean ratio of 1, meaning the variance equals the mean. Values greater than 1 indicate clustering, while values less than 1 indicate dispersion. The small p-value of the X2 quadrat test allows us to reject the null hypothesis of spatial randomness in favor of the alternative that the observed pattern is non-random and clustered.</p>
 <div class="cell" data-messsage="false">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sample_pattern_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -474,9 +473,8 @@ Quadrats: 3 by 3 grid of tiles</code></pre>
 <p>The L-Function is a transformation of Ripley’s K-Function used to diagnose local spatial structure by analyzing how a spatial point pattern deviates from randomness across different distance scales. It evaluates whether points tend to occur closer together or farther apart than would be expected if they were randomly distributed.</p>
 <p>The L-function measures the number of neighboring points within increasing distances of each point and applies a transformation that makes deviations from randomness easier to interpret. To understand the results, the observed L-function is compared to the expected values from a reference model, typically a homogeneous Poisson process (Complete Spatial Randomness, CSR). If the data show large-scale variation in intensity, an inhomogeneous Poisson process is used instead so that underlying global structure is accounted for and the results can focus on local structure.</p>
 <p>If observed values are greater than the expected values, the pattern indicates clustering at that distance; if they are smaller, the pattern suggests regular spacing or inhibition; and if they are similar, the pattern is consistent with randomness. Examining the L-function across distances allows researchers to identify the spatial scales at which clustering or dispersion occurs.</p>
-<p>Simila</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. The transform allows to compare across a horizontal baseline</span></span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. We wil not use simulations</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>l_funct_pattern1 <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  sample_pattern_1,</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> Linhom, <span class="co">#inhomogenous</span></span>
@@ -504,13 +502,14 @@ Done.</code></pre>
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use homogenous for pattern 2 since it demonstrated no global structure</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>l_funct_pattern2 <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  sample_pattern_2,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> Lest,<span class="co">#homogenous</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nsim =</span> <span class="dv">99</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">funargs =</span> <span class="fu">list</span>(<span class="at">correction =</span> <span class="st">"iso"</span>),</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">transform =</span> <span class="fu">expression</span>(. <span class="sc">-</span> r)   <span class="co"># subtract r from obs and simulated</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use Monte Carlo simulations to create an envelope for pattern 2</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>l_funct_pattern2 <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  sample_pattern_2,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> Lest,<span class="co">#homogenous</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nsim =</span> <span class="dv">99</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">funargs =</span> <span class="fu">list</span>(<span class="at">correction =</span> <span class="st">"iso"</span>),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">transform =</span> <span class="fu">expression</span>(. <span class="sc">-</span> r)   <span class="co"># subtract r from obs and simulated</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Generating 99 simulations of CSR  ...
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -531,68 +530,9 @@ Done.</code></pre>
 </div>
 </div>
 </div>
+<p>In these plots, the grey indicates the simulation envelope, the red line is CSR (or inhomogenous point pattern estimated from KDE) and the black line is the dataset value.</p>
 <p>For the first pattern, the inhomogeneous L-function shows values close to zero across all distances, indicating that once the global variation in intensity is accounted for, the points are distributed roughly as expected under an inhomogeneous Poisson process. This suggests there is no significant local clustering or regularity beyond what is explained by the overall trend, so the observed spatial structure is largely due to the global inhomogeneity rather than local interactions between points.</p>
 <p>For the second pattern, the centered L-function rises above zero for intermediate distances, approximately from 0.07 to 0.25 of the unit window. This positive deviation indicates that points are closer together than expected under a homogeneous Poisson process, revealing local clustering at that scale.</p>
-</section>
-<section id="g--function" class="level3" data-number="15.3.2">
-<h3 data-number="15.3.2" class="anchored" data-anchor-id="g--function"><span class="header-section-number">15.3.2</span> G- Function</h3>
-<p>The G-function (nearest-neighbor distribution function) is a summary statistic used to analyze the local structure of spatial point patterns. Unlike the L-function, which considers all pairs of points within a given distance, the G-function focuses specifically on the distance from each point to its nearest neighbor. This makes it particularly useful for detecting small-scale clustering or inhibition, as it highlights whether points tend to be unusually close together or unusually far apart at the very local level. The G-function can be compared to the theoretical expectation under complete spatial randomness (CSR) or an inhomogeneous Poisson process to determine whether observed patterns deviate from randomness at short distances.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pattern 1: inhomogeneous pattern</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>g_funct_pattern1 <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  sample_pattern_1,</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> Ginhom,</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nsim =</span> <span class="dv">99</span>,</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">funargs =</span> <span class="fu">list</span>(<span class="at">correction =</span> <span class="st">"rs"</span>) </span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Generating 99 simulations of CSR  ...
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
-81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 
-99.
-
-Done.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g_funct_pattern1, <span class="at">legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ppa_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pattern 2: homogeneous pattern</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>g_funct_pattern2 <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  sample_pattern_2,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> Gest,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nsim =</span> <span class="dv">99</span>,</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">funargs =</span> <span class="fu">list</span>(<span class="at">correction =</span> <span class="st">"rs"</span>)     </span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Generating 99 simulations of CSR  ...
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
-81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 
-99.
-
-Done.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g_funct_pattern2, <span class="at">legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ppa_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>For pattern 1 the <code>Ginhom()</code> function lies below the simulation envelope at short distances, indicating that nearest-neighbor distances are larger than expected even after accounting for the intensity variation. This suggests a degree of local regularity or inhibition at very small scales.</p>
-<p>For pattern 2The Gest() function closely follows the expected baseline, indicating that nearest-neighbor distances are consistent with complete spatial randomness.This means that there is no strong local interaction at the smallest scales</p>
 
 
 </section>

@@ -68,7 +68,7 @@ If you explore the plot of the quadrat test, the first number (top-left) is the 
 
 **Q2: Based on the residuals, which quadrats differ the most from expected values. What does this tell us about the spatial pattern?**
 
-For `sample_pattern_1` our variance-to-mean ratio is 3.5, which indicates clustering in the dataset because values greater than 1 suggest individuals are aggregated in space. A Poisson (random) distribution has a variance-to-mean ratio of 1, meaning the variance equals the mean. Values greater than 1 indicate clustering, while values less than 1 indicate dispersion. The small p-value of the X2 quadrat test allows us to reject the null hypothesis of spatial randomness in favor of the alternative that the observed pattern is non-random and clustered.
+For `sample_pattern_1` our variance-to-mean ratio is 3.5, which indicates clustering. A Poisson (random) distribution has a variance-to-mean ratio of 1, meaning the variance equals the mean. Values greater than 1 indicate clustering, while values less than 1 indicate dispersion. The small p-value of the X2 quadrat test allows us to reject the null hypothesis of spatial randomness in favor of the alternative that the observed pattern is non-random and clustered.
 
  
 ```{r, messsage = F, warning = F}
@@ -126,11 +126,10 @@ The L-function measures the number of neighboring points within increasing dista
 
 If observed values are greater than the expected values, the pattern indicates clustering at that distance; if they are smaller, the pattern suggests regular spacing or inhibition; and if they are similar, the pattern is consistent with randomness. Examining the L-function across distances allows researchers to identify the spatial scales at which clustering or dispersion occurs.
 
-Simila
 
 ```{r, message=F, warning=F}
 
-#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. The transform allows to compare across a horizontal baseline
+#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. We wil not use simulations
 l_funct_pattern1 <- envelope(
   sample_pattern_1,
   fun = Linhom, #inhomogenous
@@ -142,6 +141,7 @@ l_funct_pattern1 <- envelope(
 plot(l_funct_pattern1, legend = F)
 
 #use homogenous for pattern 2 since it demonstrated no global structure
+# we can use Monte Carlo simulations to create an envelope for pattern 2
 l_funct_pattern2 <- envelope(
   sample_pattern_2,
   fun = Lest,#homogenous
@@ -155,34 +155,9 @@ plot(l_funct_pattern2, legend = F)
 
 
 ```
+In these plots, the grey indicates the simulation envelope, the red line is CSR (or inhomogenous point pattern estimated from KDE) and the black line is the dataset value. 
+
 For the first pattern, the inhomogeneous L-function shows values close to zero across all distances, indicating that once the global variation in intensity is accounted for, the points are distributed roughly as expected under an inhomogeneous Poisson process. This suggests there is no significant local clustering or regularity beyond what is explained by the overall trend, so the observed spatial structure is largely due to the global inhomogeneity rather than local interactions between points.
 
 For the second pattern, the centered L-function rises above zero for intermediate distances, approximately from 0.07 to 0.25 of the unit window. This positive deviation indicates that points are closer together than expected under a homogeneous Poisson process, revealing local clustering at that scale.
 
-### G- Function
-The G-function (nearest-neighbor distribution function) is a summary statistic used to analyze the local structure of spatial point patterns. Unlike the L-function, which considers all pairs of points within a given distance, the G-function focuses specifically on the distance from each point to its nearest neighbor. This makes it particularly useful for detecting small-scale clustering or inhibition, as it highlights whether points tend to be unusually close together or unusually far apart at the very local level. The G-function can be compared to the theoretical expectation under complete spatial randomness (CSR) or an inhomogeneous Poisson process to determine whether observed patterns deviate from randomness at short distances.
-
-```{r}
-#pattern 1: inhomogeneous pattern
-g_funct_pattern1 <- envelope(
-  sample_pattern_1,
-  fun = Ginhom,
-  nsim = 99,
-  funargs = list(correction = "rs") 
-)
-
-plot(g_funct_pattern1, legend = FALSE)
-
-#pattern 2: homogeneous pattern
-g_funct_pattern2 <- envelope(
-  sample_pattern_2,
-  fun = Gest,
-  nsim = 99,
-  funargs = list(correction = "rs")     
-)
-
-plot(g_funct_pattern2, legend = FALSE)
-```
-For pattern 1 the `Ginhom()` function lies below the simulation envelope at short distances, indicating that nearest-neighbor distances are larger than expected even after accounting for the intensity variation. This suggests a degree of local regularity or inhibition at very small scales.
-
-For pattern 2The Gest() function closely follows the expected baseline, indicating that nearest-neighbor distances are consistent with complete spatial randomness.This means that there is no strong local interaction at the smallest scales
