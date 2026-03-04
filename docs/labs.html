@@ -884,7 +884,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand.</td>
 </tr>
 <tr class="odd">
-<td><strong>Descriptive Statistics</strong>: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results.</td>
+<td><strong>Descriptive Statistics</strong>: Student creates a map of each variable and discusses the spatial pattern</td>
 </tr>
 <tr class="even">
 <td><strong>Scenario 1</strong>: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results.</td>
@@ -900,7 +900,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="lab-instructions-4" class="level3" data-number="5.7.3">
 <h3 data-number="5.7.3" class="anchored" data-anchor-id="lab-instructions-4"><span class="header-section-number">5.7.3</span> Lab Instructions</h3>
-<ol type="1">
+<ul>
 <li><p>Create a new .Rmd named “LASTNAME_lab6.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
@@ -911,14 +911,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>school_sample <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1Yys2-G69_tc9YC-7jlRgsfXn0faLZhUV"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p>Under a header called “Describing School Absences” make a map, a descriptive statistics table, and one non-map graphic for both variables (pre_covid_pct, after_covid_pct). Describe spatial patterns and the characteristics of the datasets.</p></li>
-<li><p>Under a header called “Testing Hypotheses” identify an appropriate statistical test, test assumptions, generate a null and alternative hypothesis, and interpret results for the following scenarios:</p>
+<li><p>Under a header called “Describing School Absences” make a map for both variables (pre_covid_pct, afer_covid_pct). Make each map use the same legend by using this code as your tm_dots command: <code>tm_dots("REPLACE_WITH_VARIABLE", fill.scale = tm_scale(breaks = c(0,.1,.15,.2,.3, .4,.8)).</code>Then describe spatial patterns and the characteristics of the datasets.</p></li>
+<li><p>Under a header called “Testing Hypotheses” identify an appropriate statistical test, test assumptions, generate a null and alternative hypothesis (including whether it is one-sided or two-sided), and interpret results for the following scenarios:</p>
 <ul>
-<li><p>The known countrywide mean for school absences is 14.5%. Does the North Carolina mean (drawn from a sample of NC schools) differ significantly from the countrywide mean?</p></li>
-<li><p>Is the absentee rate significantly higher in the years after Covid-19?</p></li>
-<li><p>Does the absentee rate differ significantly between urban and rural schools before Covid-19? What about after Covid-19?</p></li>
+<li>The known countrywide mean for school absences before Covid is 14.5% (.145). Does the North Carolina mean (drawn from a sample of NC schools) differ significantly from the countrywide mean?</li>
+<li>Is the absentee rate by school significantly higher in the years after Covid-19?</li>
+<li>Does the absentee rate differ significantly between urban and rural schools before Covid-19? What about after Covid-19?</li>
 </ul></li>
-</ol>
+</ul>
 </section>
 </section>
 <section id="lab-7" class="level2" data-number="5.8">
@@ -979,7 +979,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>bb_wildfire <span class="ot">&lt;-</span> <span class="fu">st_convex_hull</span>(combined_wildfire) <span class="sc">|&gt;</span> <span class="fu">as.owin</span>()</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>wildfire.ppp <span class="ot">&lt;-</span> <span class="fu">as.ppp</span>(<span class="fu">st_coordinates</span>(wildfire_points), <span class="at">W =</span> bb_wildfire)</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>fire_stations <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1bjAeEaoVZUjf9VLJTKl_anABwznioAoa"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>fire_stations <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1bjAeEaoVZUjf9VLJTKl_anABwznioAoa"</span>)  <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="at">crs =</span><span class="dv">2264</span>)</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="do">###THIS TURNS THE DATA INTO A POINT PATTERN OBJECT WITH A DEFINED BOUNDARY###</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="do">### USE THIS FOR PPA#####</span></span>

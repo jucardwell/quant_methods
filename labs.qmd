@@ -421,16 +421,16 @@ This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.g
 |------------------------------------------------------------------------|
 | HTML and RMD versions the R Markdown file have been submitted. |
 | The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand. |
-| **Descriptive Statistics**: Student creates a descriptive statistics table, map, and non-map graphic for the two Covid-19 variables. Written interpretation describes distribution and demonstrates understanding of the results. |
+| **Descriptive Statistics**: Student creates a map of each variable and discusses the spatial pattern |
 | **Scenario 1**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
 | **Scenario 2:** Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
 | **Scenario 3**: Student determines the appropriate test, discusses assumptions, and interpretation demonstrates understanding of the results. |
 
 ### Lab Instructions
 
-1.  Create a new .Rmd named "LASTNAME_lab6.Rmd". Save it into your GEOG391 folder.
+-   Create a new .Rmd named "LASTNAME_lab6.Rmd". Save it into your GEOG391 folder.
 
-2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+-   Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
 
     ```{r, eval=F}
     #load libraries
@@ -441,14 +441,12 @@ This lab is designed to assess the [Concept 6 Competencies](https://jucardwell.g
     school_sample <- st_read("https://drive.google.com/uc?export=download&id=1Yys2-G69_tc9YC-7jlRgsfXn0faLZhUV") 
     ```
 
-3.  Under a header called "Describing School Absences" make a map, a descriptive statistics table, and one non-map graphic for both variables (pre_covid_pct, after_covid_pct). Describe spatial patterns and the characteristics of the datasets.
+-   Under a header called "Describing School Absences" make a map for both variables (pre_covid_pct, afer_covid_pct). Make each map use the same legend by using this code as your tm_dots command: `tm_dots("REPLACE_WITH_VARIABLE", fill.scale = tm_scale(breaks = c(0,.1,.15,.2,.3, .4,.8)).`Then describe spatial patterns and the characteristics of the datasets.
 
-4.  Under a header called "Testing Hypotheses" identify an appropriate statistical test, test assumptions, generate a null and alternative hypothesis, and interpret results for the following scenarios:
+-   Under a header called "Testing Hypotheses" identify an appropriate statistical test, test assumptions, generate a null and alternative hypothesis (including whether it is one-sided or two-sided), and interpret results for the following scenarios:
 
-    -   The known countrywide mean for school absences is 14.5%. Does the North Carolina mean (drawn from a sample of NC schools) differ significantly from the countrywide mean?
-
-    -   Is the absentee rate significantly higher in the years after Covid-19?
-
+    -   The known countrywide mean for school absences before Covid is 14.5% (.145). Does the North Carolina mean (drawn from a sample of NC schools) differ significantly from the countrywide mean?
+    -   Is the absentee rate by school significantly higher in the years after Covid-19?
     -   Does the absentee rate differ significantly between urban and rural schools before Covid-19? What about after Covid-19?
 
 ## Lab 7
