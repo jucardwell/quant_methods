@@ -25,6 +25,7 @@ book:
     - ppa.qmd
     - autocorrelation.qmd
     - regression.qmd
+    - baysian_model.qmd
     - continuous_surfaces.qmd
 
 format:

@@ -1,0 +1,12 @@
+# Bayesian Modeling
+
+In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.
+
+In Bayesian spatial models, spatial dependence can be treated as a latent (unobserved) process, often using priors such as conditional autoregressive (CAR) structures. The unexplained variation is decomposed into:
+
+-   Spatially structured variation ($u_i$) captures dependence across neighboring units, reflecting local spatial correlation rather than a single global parameter.
+-   Unstructured variation ($v_i$) captures independent, random noise not explained by spatial structure
+
+Because these components are estimated at the level of each spatial unit, the Bayesian framework allows for local heterogeneity rather than assuming a uniform effect across the entire study area. The spatial effect is not constrained to be global; it can vary in magnitude across locations, depending on the latent process and neighborhood structure.
+
+Frequentist models provide standard errors for coefficients that are adjusted for the global spatial parameter. These standard errors do not capture variation in the spatial effect across locations. Bayesian models produce posterior distributions for both the regression coefficients and the latent spatial effects.

@@ -4,9 +4,9 @@ In this chapter, we will explore relationships between two variables. There are 
 
 Linear regression provides a statistical framework for modeling relationships between two variables and evaluating whether an observed association is unlikely to have occurred by chance. Ordinary least squares (OLS) regression allows us to test hypotheses about the strength and direction of a relationship. However, like hypothesis tests, standard regression models assume that observations are independent. When spatial dependence is present, OLS regression can produce biased estimates. When spatial dependence is present, we can use alternative, spatially-explicit regression approaches.
 
-We will use the following spatial datasets:
+The models in this chapter (OLS, SLM, SEM) are based on frequentist inference. This means we treat our parameters (like the effect of a Bachelor's degree) as fixed, unknown constants. We use Maximum Likelihood Estimation (MLE) to find the single most likely value for these parameters based on our data.
 
--   2023 5-year ACS estimates for the triangle region of North Carolina
+We will use a spatial dataset representing decrease in workplace mobility in the first months of the COVID-19 pandemic across North Carolina counties, as well as 2019 ACS estimates for Bachelor's degree attainment.
 
 **To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.**
 
@@ -17,7 +17,8 @@ library(sf)
 library(spatialreg)
 library(spdep)
 
-acs_tract_nc <- st_read("https://drive.google.com/uc?export=download&id=1b5zb4nM58mA9okcn-3S-NtWlL_JPhvjn") |> filter(COUNTYFP %in% c("135", "183", "063"))
+#turn negative into positive, higher values mean MORE workplace change (i.e. less travel to workplaces)
+county_covid <- st_read("https://drive.google.com/uc?export=download&id=15njmLhQMvg4KNpFthR0XyS1LD3reotus") |> mutate(workplace_change = workplace_change * -1)
 ```
 
 ```{r, eval = F}
@@ -27,7 +28,8 @@ library(sf)
 library(spatialreg)
 library(spdep)
 
-acs_tract_nc <- st_read("https://drive.google.com/uc?export=download&id=1b5zb4nM58mA9okcn-3S-NtWlL_JPhvjn") |> filter(COUNTYFP %in% c("135", "183", "063")) |> filter(!is.na(no_health_insur), !is.na(pct_pov))
+#turn negative into positive, higher values mean MORE workplace change (i.e. less travel to workplaces)
+county_covid <- st_read("https://drive.google.com/uc?export=download&id=15njmLhQMvg4KNpFthR0XyS1LD3reotus") |> mutate(workplace_change = workplace_change * -1)
 
 ```
 
@@ -37,11 +39,11 @@ Correlation provides a single summary measure of the strength and direction of a
 
 ```{r, eval = F}
 #test correlation
-cor(acs_tract_nc$no_health_insur, acs_tract_nc$pct_pov)
+cor(county_covid$pct_bachelors, county_covid$workplace_change)
 
 ```
 
-**Q1: What does our correlation value tell us about the strength and direction of the relationship between percent of population without health insurance and percent of population living under the poverty level?**
+**Q1: What does our correlation value tell us about the strength and direction of the relationship between changes in workplace mobility during covid and the percent of people with a Bachelor's degree in each county?**
 
 ## Scatterplot
 
@@ -49,7 +51,7 @@ One of the simplest visualizations we can use to explore bivariate relationships
 
 ```{r, eval = F}
 
-ggplot(acs_tract_nc, aes(x = no_health_insur, y= pct_pov))  + geom_point()
+ggplot(county_covid, aes(x = pct_bachelors, y= workplace_change))  + geom_point()
 
 ```
 
@@ -59,8 +61,8 @@ While scatterplots ignore geography, bivariate maps allow us to explore how two 
 
 ```{r, eval=F}
 #bivariate map based on quantiles
-tm_shape(acs_tract_nc) + 
-  tm_polygons(fill = tm_vars(c("no_health_insur", "pct_pov"), multivariate = TRUE),
+tm_shape(county_covid) + 
+  tm_polygons(fill = tm_vars(c("pct_bachelors", "workplace_change"), multivariate = TRUE),
               fill.scale = tm_scale_bivariate(values ="bivario.folk_warmth", 
                 scale1 = tm_scale_intervals(n = 4, style = "quantile", labels = c("Lo", "", "", "Hi")), 
                 scale2 = tm_scale_intervals(n=4, style = "quantile", labels = c("Lo", "", "", "Hi"))))
@@ -73,9 +75,11 @@ tm_shape(acs_tract_nc) +
 
 Linear regression provides a formal statistical framework for modeling the relationship between two variables. In an ordinary least squares (OLS) regression, we estimate the expected value of a dependent variable as a linear function of an independent variable. OLS allows us to quantify the strength and direction of the relationship and to assess whether the observed association is unlikely to have occurred by chance.
 
+For the following model, assume that the assumptions (besides independence) have been met to use an OLS. To interpret the strength, direction, and significance of the model below, we will examine the coefficients, adjusted R-squared, and the p-values of the coefficient and the model overall. For example, this model tells us that the baseline percent change (with 0% bachelor degree) is 17%, that every .5% increase in Bachelor's degree percentage is associated with a 1% increase in workplace change (decreased mobility). This coefficient is statistically significant. Our Adjusted R-squared value tells us that our model explains 63% of the variation in workplace change and our model p-value tells us that the model itself is statistically significant.
+
 ```{r, eval = F}
 #traditional regression
-ols_model <- lm(pct_pov ~ no_health_insur, data = acs_tract_nc)
+ols_model <- lm(workplace_change ~ pct_bachelors, data = county_covid)
 
 #see results
 summary(ols_model)
@@ -85,20 +89,20 @@ However, OLS regression relies on several assumptions, including that observatio
 
 ```{r, eval = F}
 #add residuals as a variable
-acs_tract_nc <-acs_tract_nc |> mutate(olsresid = resid(ols_model)) 
+county_covid <-county_covid |> mutate(olsresid = resid(ols_model)) 
 
 #map residuals
-tm_shape(acs_tract_nc) + tm_polygons(fill = "olsresid",fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile", n = 5))
+tm_shape(county_covid) + tm_polygons(fill = "olsresid",fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile", n = 5))
 
 
 #calculate neighborhoods
-nb <- poly2nb(acs_tract_nc, queen = TRUE)
+nb <- poly2nb(county_covid, queen = TRUE)
 
 #set neighborhood weight matrix
 nbw <- nb2listw(nb, style = "W")
 
 #calculate Morans I
-gmoran <- moran.test(acs_tract_nc$olsresid, nbw)
+gmoran <- moran.test(county_covid$olsresid, nbw)
 gmoran
 
 ```
@@ -107,34 +111,32 @@ gmoran
 
 ## Spatial Regression
 
-When spatial dependence is present, we can use spatial regression models that explicitly incorporate spatial structure. Two common approaches are the spatial lag model and the spatial error model.
+When spatial dependence is present, we can use spatial regression models that explicitly incorporate spatial structure. Two common approaches are the spatial lag model and the spatial error model. Traditional spatial regressions considers spatial autocorrelation as a property that should be accounted for or removed to obtain unbiased estimates. While frequentist models like SEM treat spatial autocorrelation as 'noise to be removed,' we can also think of it as a latent (hidden) process. In the next unit, we will see how Bayesian models treat this spatial structure as a 'random effect' that we can map and analyze in its own right.
+
+There are two main models that can account for spatial dependence.
 
 The spatial lag model includes a spatially lagged version of the dependent variable, allowing outcomes in one location to be influenced by outcomes in neighboring locations. This approach is appropriate when the process itself is spatially contagious or when values diffuse across space.
 
 The spatial error model, in contrast, assumes that spatial dependence operates through the error term rather than through direct interaction between dependent variables. This approach is appropriate when unobserved spatial processes affect the outcome but are not explicitly included in the model.
 
-To choose an appropriate model, it is important that we don't just look at model fit, but that we also consider the potential underlying processes. In this case, it is not doesn't make much logical sense that it would be a diffusive process, so a lag model wouldn't be appropriate.
-
 ```{r, eval = F}
 #lag model
-fit.lag<-lagsarlm(pct_pov ~ no_health_insur,  
-                  data = acs_tract_nc, 
+fit.lag<-lagsarlm(workplace_change ~ pct_bachelors,  
+                  data = county_covid, 
                   listw = nbw) 
 #see results
 summary(fit.lag)
 
 #error model
-fit.error<-errorsarlm(pct_pov ~ no_health_insur,  
-                  data = acs_tract_nc, 
+fit.error<-errorsarlm(workplace_change ~ pct_bachelors,  
+                  data = county_covid, 
                   listw = nbw)  
 #see results
 summary(fit.error)
 ```
 
-## Mini-Challenge
+The spatial lag model examines how workplace change in one county is influenced not only by the percent of the population with a bachelor’s degree in that county, but also by workplace change in neighboring counties. The model indicates that for every 1 percentage point increase in the population with a bachelor’s degree, workplace change increases by approximately 0.47 units. The spatial parameter (Rho = 0.44) is positive and significant, meaning counties tend to resemble their neighbors in terms of workplace change. Model fit is improved compared to standard OLS, as shown by a lower AIC (544.08 vs. 565.86). Residuals show no significant spatial autocorrelation after accounting for the lag, suggesting the model adequately captures the spatial dependence.
 
-This challenge will ask you to explore the bivariate relationship between two other variables in the `acs_tract_nc` object. Add a code chunk that does the following:
+The spatial error model accounts for unobserved spatial autocorrelation in the error term rather than in the dependent variable. In this model, every 1 percentage point increase in the population with a bachelor’s degree is associated with an increase of roughly 0.50 units in workplace change. The spatial error parameter (Lambda = 0.59) is positive and significant, indicating that unexplained variation in workplace change is spatially structured. Like the lag model, the AIC is lower than OLS (545.09), showing an improvement in model fit. This model assumes that spatial dependence exists in unobserved factors rather than directly through neighboring counties’ values.
 
--   Creates a scatterplot and bivariate map of the two variables
--   Run a traditional OLS and interpret the results. Remember this will require choosing a dependent and independent variable. This choice should not be random, it should be based on a hypothesis
--   Analyze the residuals for spatial dependence and determine whether a spatial model should be run.
+Both models show that higher educational attainment is strongly associated with greater workplace change. The choice between the models depends on the assumed mechanism of spatial dependence. The lag model suggests that counties are directly influenced by the workplace change of neighboring counties, while the error model implies that spatial correlation exists only in unmeasured factors. Based on the context of workplace mobility—where nearby counties are likely to respond to similar conditions, policies, or commuting patterns—the spatial error model is likely the more realistic representation of the process.

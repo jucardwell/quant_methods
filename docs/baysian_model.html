@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>17&nbsp; Bivariate Relationships and Regression – quant_methods</title>
+<title>18&nbsp; Bayesian Modeling – quant_methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./baysian_model.html" rel="next">
-<link href="./autocorrelation.html" rel="prev">
+<link href="./continuous_surfaces.html" rel="next">
+<link href="./regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,6 +69,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -115,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./baysian_model.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bayesian Modeling</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -244,14 +239,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression.html" class="sidebar-item-text sidebar-link active">
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./baysian_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Baysian Modeling</span></span></a>
+  <a href="./baysian_model.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bayesian Modeling</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -265,25 +260,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#testing-correlation" id="toc-testing-correlation" class="nav-link active" data-scroll-target="#testing-correlation"><span class="header-section-number">17.1</span> Testing Correlation</a></li>
-  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot"><span class="header-section-number">17.2</span> Scatterplot</a></li>
-  <li><a href="#bivariate-map" id="toc-bivariate-map" class="nav-link" data-scroll-target="#bivariate-map"><span class="header-section-number">17.3</span> Bivariate Map</a></li>
-  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression"><span class="header-section-number">17.4</span> Regression</a></li>
-  <li><a href="#spatial-regression" id="toc-spatial-regression" class="nav-link" data-scroll-target="#spatial-regression"><span class="header-section-number">17.5</span> Spatial Regression</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bayesian Modeling</span></h1>
 </div>
 
 
@@ -300,109 +285,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this chapter, we will explore relationships between two variables. There are multiple ways to explore bivariate relationships, including visual and descriptive approaches such as scatterplots and bivariate maps that allow us to identify patterns without making causal claims. These methods help us understand how two variables co-vary across space.</p>
-<p>Linear regression provides a statistical framework for modeling relationships between two variables and evaluating whether an observed association is unlikely to have occurred by chance. Ordinary least squares (OLS) regression allows us to test hypotheses about the strength and direction of a relationship. However, like hypothesis tests, standard regression models assume that observations are independent. When spatial dependence is present, OLS regression can produce biased estimates. When spatial dependence is present, we can use alternative, spatially-explicit regression approaches.</p>
-<p>The models in this chapter (OLS, SLM, SEM) are based on frequentist inference. This means we treat our parameters (like the effect of a Bachelor’s degree) as fixed, unknown constants. We use Maximum Likelihood Estimation (MLE) to find the single most likely value for these parameters based on our data.</p>
-<p>We will use a spatial dataset representing decrease in workplace mobility in the first months of the COVID-19 pandemic across North Carolina counties, as well as 2019 ACS estimates for Bachelor’s degree attainment.</p>
-<p><strong>To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatialreg)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#turn negative into positive, higher values mean MORE workplace change (i.e. less travel to workplaces)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>county_covid <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=15njmLhQMvg4KNpFthR0XyS1LD3reotus"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">workplace_change =</span> workplace_change <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="testing-correlation" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="testing-correlation"><span class="header-section-number">17.1</span> Testing Correlation</h2>
-<p>Correlation provides a single summary measure of the strength and direction of association between two numeric variables. The Pearson correlation coefficient ranges from −1 to 1, where values closer to −1 or 1 indicate stronger linear relationships, and values near 0 indicate little to no linear association. Correlation is useful as an initial diagnostic</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test correlation</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(county_covid<span class="sc">$</span>pct_bachelors, county_covid<span class="sc">$</span>workplace_change)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Q1: What does our correlation value tell us about the strength and direction of the relationship between changes in workplace mobility during covid and the percent of people with a Bachelor’s degree in each county?</strong></p>
-</section>
-<section id="scatterplot" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="scatterplot"><span class="header-section-number">17.2</span> Scatterplot</h2>
-<p>One of the simplest visualizations we can use to explore bivariate relationships is a scatterplot. For instance, if we want to explore the relationship between our no health insurance variable and our poverty variable, we could do the following</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(county_covid, <span class="fu">aes</span>(<span class="at">x =</span> pct_bachelors, <span class="at">y=</span> workplace_change))  <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="bivariate-map" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="bivariate-map"><span class="header-section-number">17.3</span> Bivariate Map</h2>
-<p>While scatterplots ignore geography, bivariate maps allow us to explore how two variables co-vary across space. A bivariate map classifies each variable into categories (for instance, quantiles) and combines them into a single color scheme, making it possible to identify areas where both variables are simultaneously high or low.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bivariate map based on quantiles</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(county_covid) <span class="sc">+</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">fill =</span> <span class="fu">tm_vars</span>(<span class="fu">c</span>(<span class="st">"pct_bachelors"</span>, <span class="st">"workplace_change"</span>), <span class="at">multivariate =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill.scale =</span> <span class="fu">tm_scale_bivariate</span>(<span class="at">values =</span><span class="st">"bivario.folk_warmth"</span>, </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale1 =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Lo"</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">"Hi"</span>)), </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale2 =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">n=</span><span class="dv">4</span>, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Lo"</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">"Hi"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Q2: What does our bivariate map tell us about where the relationships between these two variables are the strongest?</strong></p>
-</section>
-<section id="regression" class="level2" data-number="17.4">
-<h2 data-number="17.4" class="anchored" data-anchor-id="regression"><span class="header-section-number">17.4</span> Regression</h2>
-<p>Linear regression provides a formal statistical framework for modeling the relationship between two variables. In an ordinary least squares (OLS) regression, we estimate the expected value of a dependent variable as a linear function of an independent variable. OLS allows us to quantify the strength and direction of the relationship and to assess whether the observed association is unlikely to have occurred by chance.</p>
-<p>For the following model, assume that the assumptions (besides independence) have been met to use an OLS. To interpret the strength, direction, and significance of the model below, we will examine the coefficients, adjusted R-squared, and the p-values of the coefficient and the model overall. For example, this model tells us that the baseline percent change (with 0% bachelor degree) is 17%, that every .5% increase in Bachelor’s degree percentage is associated with a 1% increase in workplace change (decreased mobility). This coefficient is statistically significant. Our Adjusted R-squared value tells us that our model explains 63% of the variation in workplace change and our model p-value tells us that the model itself is statistically significant.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#traditional regression</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ols_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(workplace_change <span class="sc">~</span> pct_bachelors, <span class="at">data =</span> county_covid)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ols_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>However, OLS regression relies on several assumptions, including that observations are independent. One way to evaluate whether spatial dependence is present is to examine the residuals from an OLS regression. If the model has adequately captured the underlying process, residuals should be randomly distributed across space. Spatial clustering in residuals suggests that important spatial structure remains unmodeled. A statistically significant Moran’s I indicates that the independence assumption of OLS has been violated and that a spatial regression approach may be more appropriate.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add residuals as a variable</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>county_covid <span class="ot">&lt;-</span>county_covid <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">olsresid =</span> <span class="fu">resid</span>(ols_model)) </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#map residuals</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(county_covid) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">fill =</span> <span class="st">"olsresid"</span>,<span class="at">fill.scale =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">values =</span> <span class="st">"bu_pu"</span>, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">n =</span> <span class="dv">5</span>))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate neighborhoods</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">poly2nb</span>(county_covid, <span class="at">queen =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#set neighborhood weight matrix</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>nbw <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(nb, <span class="at">style =</span> <span class="st">"W"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate Morans I</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>gmoran <span class="ot">&lt;-</span> <span class="fu">moran.test</span>(county_covid<span class="sc">$</span>olsresid, nbw)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>gmoran</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Q3: Do our results indicate that we should use a spatial model?</strong></p>
-</section>
-<section id="spatial-regression" class="level2" data-number="17.5">
-<h2 data-number="17.5" class="anchored" data-anchor-id="spatial-regression"><span class="header-section-number">17.5</span> Spatial Regression</h2>
-<p>When spatial dependence is present, we can use spatial regression models that explicitly incorporate spatial structure. Two common approaches are the spatial lag model and the spatial error model. Traditional spatial regressions considers spatial autocorrelation as a property that should be accounted for or removed to obtain unbiased estimates. While frequentist models like SEM treat spatial autocorrelation as ‘noise to be removed,’ we can also think of it as a latent (hidden) process. In the next unit, we will see how Bayesian models treat this spatial structure as a ‘random effect’ that we can map and analyze in its own right.</p>
-<p>There are two main models that can account for spatial dependence.</p>
-<p>The spatial lag model includes a spatially lagged version of the dependent variable, allowing outcomes in one location to be influenced by outcomes in neighboring locations. This approach is appropriate when the process itself is spatially contagious or when values diffuse across space.</p>
-<p>The spatial error model, in contrast, assumes that spatial dependence operates through the error term rather than through direct interaction between dependent variables. This approach is appropriate when unobserved spatial processes affect the outcome but are not explicitly included in the model.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lag model</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fit.lag<span class="ot">&lt;-</span><span class="fu">lagsarlm</span>(workplace_change <span class="sc">~</span> pct_bachelors,  </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> county_covid, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">listw =</span> nbw) </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.lag)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#error model</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>fit.error<span class="ot">&lt;-</span><span class="fu">errorsarlm</span>(workplace_change <span class="sc">~</span> pct_bachelors,  </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> county_covid, </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">listw =</span> nbw)  </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The spatial lag model examines how workplace change in one county is influenced not only by the percent of the population with a bachelor’s degree in that county, but also by workplace change in neighboring counties. The model indicates that for every 1 percentage point increase in the population with a bachelor’s degree, workplace change increases by approximately 0.47 units. The spatial parameter (Rho = 0.44) is positive and significant, meaning counties tend to resemble their neighbors in terms of workplace change. Model fit is improved compared to standard OLS, as shown by a lower AIC (544.08 vs.&nbsp;565.86). Residuals show no significant spatial autocorrelation after accounting for the lag, suggesting the model adequately captures the spatial dependence.</p>
-<p>The spatial error model accounts for unobserved spatial autocorrelation in the error term rather than in the dependent variable. In this model, every 1 percentage point increase in the population with a bachelor’s degree is associated with an increase of roughly 0.50 units in workplace change. The spatial error parameter (Lambda = 0.59) is positive and significant, indicating that unexplained variation in workplace change is spatially structured. Like the lag model, the AIC is lower than OLS (545.09), showing an improvement in model fit. This model assumes that spatial dependence exists in unobserved factors rather than directly through neighboring counties’ values.</p>
-<p>Both models show that higher educational attainment is strongly associated with greater workplace change. The choice between the models depends on the assumed mechanism of spatial dependence. The lag model suggests that counties are directly influenced by the workplace change of neighboring counties, while the error model implies that spatial correlation exists only in unmeasured factors. Based on the context of workplace mobility—where nearby counties are likely to respond to similar conditions, policies, or commuting patterns—the spatial error model is likely the more realistic representation of the process.</p>
+<p>In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.</p>
+<p>In <strong>Bayesian spatial models</strong>, spatial dependence can be treated as a <strong>latent (unobserved) process</strong>, often using priors such as conditional autoregressive (CAR) structures. The unexplained variation is decomposed into:</p>
+<ul>
+<li><p>Spatially structured variation (<span class="math inline">\(u_i\)</span>) captures dependence across neighboring units, reflecting local spatial correlation rather than a single global parameter.</p></li>
+<li><p>Unstructured variation (<span class="math inline">\(v_i\)</span>) captures independent, random noise not explained by spatial structure</p></li>
+</ul>
+<p>Unlike frequentist approaches, these components are not global.</p>
+<p>(i.e.&nbsp;a single penalty or lag value essentially a single “penalty” or “lag” value applied across the study region to ensure our coefficients aren’t biased.</p>
+<p>In contrast, a Bayesian approach treats spatial dependence as a latent process—a hidden layer of information that we estimate alongside our covariates. While frequentist models like SEM or SLM use a single global coefficient (<span class="math inline">\(\rho\)</span> or <span class="math inline">\(\lambda\)</span>) to “fix” the map-wide spatial bias, a Bayesian BYM model decomposes the unexplained variation into two distinct parts for every single location:Spatially Structured Variation (<span class="math inline">\(u_i\)</span>): This represents the “neighborhood effect.” It assumes that each area is naturally influenced by its neighbors, allowing the model to “borrow strength” from nearby data points.Unstructured Variation (<span class="math inline">\(v_i\)</span>): This represents “unique noise.” it captures the random fluctuations specific to an area that have nothing to do with geography.Mathematically, this means we aren’t just adjusting for a global “spatial error”; we are creating a localized, flexible surface that accounts for regional clusters. This provides more robust estimates, especially in areas with limited data, by gently “shrinking” extreme outliers toward the local average.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -824,13 +717,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./autocorrelation.html" class="pagination-link" aria-label="Spatial Autocorrelation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Spatial Autocorrelation</span></span>
+      <a href="./regression.html" class="pagination-link" aria-label="Bivariate Relationships and Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bivariate Relationships and Regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./baysian_model.html" class="pagination-link" aria-label="Baysian Modeling">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Baysian Modeling</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./continuous_surfaces.html" class="pagination-link" aria-label="Continuous Surfaces">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

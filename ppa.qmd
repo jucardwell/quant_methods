@@ -204,7 +204,6 @@ l_funct_pattern1 <- envelope(
   fun = Linhom,
   nsim = 99,
   simulate = expression(rpoispp(lambda1)),
-  lambda = lambda1,
   funargs = list(correction = "iso"),
   transform = expression(. - r)
 )
