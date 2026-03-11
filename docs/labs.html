@@ -250,8 +250,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./baysian_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bayesian Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
   </div>
 </li>
     </ul>
@@ -993,7 +999,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Test the quadrat count against CSR using a quadrat density test (use nx = 8, ny = 8). Add Monte Carlo simulations (n = 99) to the statistical testing</li>
 <li>Create a KDE for wildfire counts</li>
 <li>Run an ANN analysis that uses Monte Carlo simulations (n = 99) to create an empirical probability. You will need to determine if your simulations should homogeneous or inhomogeneous based on your global analysis.</li>
-<li>Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis.</li>
+<li>Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis. Because our border is not a rectangle, we can’t use the “iso” correction, so use the “border” correction instead.</li>
 <li>In text below the chunk, identify whether there is evidence for the pattern of wildfires reflecting first-order processes, second-order processes, or a combination of both by clearly interpreting your analytical results. Based on brief background research on wildfires and the study area, propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.</li>
 </ul></li>
 <li><p>Under a header called “Analyzing Fire Stations” add a code chunk, and a written analysis below the code chunk that does the following:</p>
