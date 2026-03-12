@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -260,8 +294,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#traditional-spatial-modeling" id="toc-traditional-spatial-modeling" class="nav-link active" data-scroll-target="#traditional-spatial-modeling"><span class="header-section-number">18.1</span> Traditional Spatial Modeling</a></li>
+  <li><a href="#bym-model" id="toc-bym-model" class="nav-link" data-scroll-target="#bym-model"><span class="header-section-number">18.2</span> BYM Model</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -285,17 +326,320 @@ window.Quarto = {
 </header>
 
 
-<p>In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.</p>
-<p>In <strong>Bayesian spatial models</strong>, spatial dependence can be treated as a <strong>latent (unobserved) process</strong>, often using priors such as conditional autoregressive (CAR) structures. The unexplained variation is decomposed into:</p>
+<p>In this chapter, we will explore Bayesian modeling as an alternative to traditional spatial models. In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.</p>
+<p>In Bayesian spatial models, spatial dependence can be treated as a latent (unobserved) process that is estimated at the level of each spatial unit, which allows for local heterogeneity rather than assuming a uniform effect across the entire study area. Bayesian models produce posterior distributions for both the regression coefficients and the latent spatial effects.</p>
+<p>We will use data from the 5-year estimates from the American Community Survey for North Carolina Census tracts.</p>
+<p><strong>To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatialreg)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(INLA)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#install INLA using this command:  install.packages("INLA",repos = "https://inla.r-inla-download.org/R/stable", dep = TRUE)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#acs data for north carolina census tractws</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>acs_tract_nc <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1cnz4xgdDRZvlXzN3IyvCxOETRWfrpw-0"</span>) <span class="sc">|&gt;</span>  <span class="fu">mutate</span>(<span class="at">log_home_val =</span> <span class="fu">log</span>(med_home_value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="traditional-spatial-modeling" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="traditional-spatial-modeling"><span class="header-section-number">18.1</span> Traditional Spatial Modeling</h2>
+<p>Suppose we are interested in modeling median home value (log normalized) as a response to several covariates:</p>
 <ul>
-<li><p>Spatially structured variation (<span class="math inline">\(u_i\)</span>) captures dependence across neighboring units, reflecting local spatial correlation rather than a single global parameter.</p></li>
-<li><p>Unstructured variation (<span class="math inline">\(v_i\)</span>) captures independent, random noise not explained by spatial structure</p></li>
+<li>Accessibility (percent of people who walk to work)</li>
+<li>Median household income</li>
+<li>Median rent (for renter occupied units)</li>
+<li>Median year built of homes</li>
 </ul>
-<p>Unlike frequentist approaches, these components are not global.</p>
-<p>(i.e.&nbsp;a single penalty or lag value essentially a single “penalty” or “lag” value applied across the study region to ensure our coefficients aren’t biased.</p>
-<p>In contrast, a Bayesian approach treats spatial dependence as a latent process—a hidden layer of information that we estimate alongside our covariates. While frequentist models like SEM or SLM use a single global coefficient (<span class="math inline">\(\rho\)</span> or <span class="math inline">\(\lambda\)</span>) to “fix” the map-wide spatial bias, a Bayesian BYM model decomposes the unexplained variation into two distinct parts for every single location:Spatially Structured Variation (<span class="math inline">\(u_i\)</span>): This represents the “neighborhood effect.” It assumes that each area is naturally influenced by its neighbors, allowing the model to “borrow strength” from nearby data points.Unstructured Variation (<span class="math inline">\(v_i\)</span>): This represents “unique noise.” it captures the random fluctuations specific to an area that have nothing to do with geography.Mathematically, this means we aren’t just adjusting for a global “spatial error”; we are creating a localized, flexible surface that accounts for regional clusters. This provides more robust estimates, especially in areas with limited data, by gently “shrinking” extreme outliers toward the local average.</p>
+<p>We can start with running an OLS (assume all assumptions are met except for independence).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ols</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>home_value_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_home_val <span class="sc">~</span> pct_walk_to_work <span class="sc">+</span> median_hh_inc <span class="sc">+</span> med_rent <span class="sc">+</span> med_year_structure_built, <span class="at">data =</span> acs_tract_nc)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(home_value_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = log_home_val ~ pct_walk_to_work + median_hh_inc + 
+    med_rent + med_year_structure_built, data = acs_tract_nc)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.42892 -0.19976 -0.00305  0.20347  1.83045 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)              7.251e+00  1.095e+00   6.625 4.25e-11 ***
+pct_walk_to_work         1.111e-03  1.227e-04   9.056  &lt; 2e-16 ***
+median_hh_inc            9.308e-06  2.827e-07  32.921  &lt; 2e-16 ***
+med_rent                 2.802e-04  2.086e-05  13.429  &lt; 2e-16 ***
+med_year_structure_built 2.086e-03  5.556e-04   3.754 0.000178 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.3391 on 2493 degrees of freedom
+Multiple R-squared:  0.6048,    Adjusted R-squared:  0.6042 
+F-statistic: 953.8 on 4 and 2493 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>We could then check our residual Moran’s I</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add residuals as a variable</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>acs_tract_nc <span class="ot">&lt;-</span>acs_tract_nc <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">olsresid =</span> <span class="fu">resid</span>(home_value_model)) </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#map residuals</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(acs_tract_nc) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">fill =</span> <span class="st">"olsresid"</span>,<span class="at">fill.scale =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">values =</span> <span class="st">"bu_pu"</span>, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">n =</span> <span class="dv">5</span>), <span class="at">col_alpha =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="baysian_model_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate neighborhoods</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">poly2nb</span>(acs_tract_nc, <span class="at">queen =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#set neighborhood weight matrix</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#zero policy allows 0 neighbors (subgraph)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>nbw <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(nb, <span class="at">style =</span> <span class="st">"W"</span>, , <span class="at">zero.policy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate Morans I</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>gmoran <span class="ot">&lt;-</span> <span class="fu">moran.test</span>(acs_tract_nc<span class="sc">$</span>olsresid, nbw)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>gmoran</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Moran I test under randomisation
+
+data:  acs_tract_nc$olsresid  
+weights: nbw  
+n reduced by no-neighbour observations  
+
+Moran I statistic standard deviate = 36.169, p-value &lt; 2.2e-16
+alternative hypothesis: greater
+sample estimates:
+Moran I statistic       Expectation          Variance 
+     0.4394378449     -0.0004011231      0.0001478792 </code></pre>
+</div>
+</div>
+<p>Because home value is a classic lag effect, we might choose to just run a lag model</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lag model</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fit.lag<span class="ot">&lt;-</span><span class="fu">lagsarlm</span>(log_home_val <span class="sc">~</span> pct_walk_to_work <span class="sc">+</span> median_hh_inc <span class="sc">+</span> med_rent <span class="sc">+</span> med_year_structure_built, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> acs_tract_nc,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">listw =</span> nbw,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">zero.policy =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.lag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:lagsarlm(formula = log_home_val ~ pct_walk_to_work + median_hh_inc + 
+    med_rent + med_year_structure_built, data = acs_tract_nc, 
+    listw = nbw, zero.policy = TRUE)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-1.287564 -0.181041 -0.005093  0.173196  2.814662 
+
+Type: lag 
+Regions with no neighbours included:
+ 1321 1814 1986 2315 
+Coefficients: (asymptotic standard errors) 
+                           Estimate Std. Error z value  Pr(&gt;|z|)
+(Intercept)              5.7312e+00 1.0234e+00  5.5999 2.144e-08
+pct_walk_to_work         1.0116e-03 1.1459e-04  8.8278 &lt; 2.2e-16
+median_hh_inc            8.1798e-06 2.7014e-07 30.2795 &lt; 2.2e-16
+med_rent                 2.0435e-04 1.9733e-05 10.3559 &lt; 2.2e-16
+med_year_structure_built 1.7200e-03 5.2061e-04  3.3038 0.0009538
+
+Rho: 0.19497, LR test value: 318.55, p-value: &lt; 2.22e-16
+Asymptotic standard error: 0.011145
+    z-value: 17.494, p-value: &lt; 2.22e-16
+Wald statistic: 306.05, p-value: &lt; 2.22e-16
+
+Log likelihood: -681.1066 for lag model
+ML residual variance (sigma squared): 0.1003, (sigma: 0.31671)
+Number of observations: 2498 
+Number of parameters estimated: 7 
+AIC: 1376.2, (AIC for lm: 1692.8)
+LM test for residual autocorrelation
+test value: 720.89, p-value: &lt; 2.22e-16</code></pre>
+</div>
+</div>
+<p>In the spatial lag model, spatial dependence is represented by a single global parameter which means the strength of the spatial relationship between neighboring observations is assumed to be the same across the entire study area.</p>
+<p><strong>Q1. Using what you learned in the Regression tutorial, interpret the output of the OLS and SLM.</strong></p>
+</section>
+<section id="bym-model" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="bym-model"><span class="header-section-number">18.2</span> BYM Model</h2>
+<p>Bayesian modeling differs from the frequentist spatial models used earlier because it treats spatial dependence as part of the data-generating process rather than as a single adjustment parameter. In a Bayesian spatial model, the unexplained variation can instead be decomposed into tract-specific latent effects.</p>
+<p>Another advantage of the Bayesian framework is that all unknown quantities in the model are treated as random variables with probability distributions. This includes the regression coefficients and the spatial random effects. Bayesian inference combines the information from the data with prior assumptions about these parameters to produce <strong>posterior distributions</strong>, which represent updated beliefs about the parameters after observing the data.</p>
+<p>In this section, we introduce the Besag–York–Mollié (BYM) model, a Bayesian hierarchical model for areal spatial data.</p>
+<p>Let <span class="math inline">\(Y_i\)</span> be the logarithm of median home value in census tract <span class="math inline">\(i\)</span>, where <span class="math inline">\(i = 1, \ldots, n\)</span>. Because the outcome is continuous, we model it using a Gaussian probability distribution:</p>
+<p><span class="math display">\[
+Y_i \sim N(\mu_i, \sigma^2), \qquad i = 1, \ldots, n
+\]</span></p>
+<p>This distribution describes the likelihood, meaning how the observed data are generated given the parameters of the model. The mean of the distribution is modeled as</p>
+<p><span class="math display">\[
+\mu_i =
+\beta_0 +
+\beta_1 \, pct\_walk\_to\_work_i +
+\beta_2 \, median\_hh\_inc_i +
+\beta_3 \, med\_rent_i +
+\beta_4 \, med\_year\_structure\_built_i +
+b_i
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> is the intercept</li>
+<li><span class="math inline">\(\beta_1\)</span> through <span class="math inline">\(\beta_4\)</span> are the coefficients for the observed covariates</li>
+<li><span class="math inline">\(b_i\)</span> is the spatial random effect for tract <span class="math inline">\(i\)</span></li>
+</ul>
+<p>The spatial random effect captures the portion of housing values that remains spatially patterned after accounting for the observed covariates. In the original BYM model, the spatial random effect is split into two components:</p>
+<p><span class="math display">\[
+b_i = u_i + v_i
+\]</span></p>
+<p>These two terms represent <strong>two different sources of unexplained variation</strong>. The term <span class="math inline">\(u_i\)</span> is the <strong>spatially structured effect</strong>. This captures the idea that nearby census tracts tend to be similar to one another. If one tract has a higher-than-expected home value after accounting for the covariates, neighboring tracts may also tend to have higher values. This structured effect is modeled using a <strong>Conditional Autoregressive (CAR) prior</strong>. The CAR prior defines the value of <span class="math inline">\(u_i\)</span> relative to its neighboring tracts:</p>
+<p><span class="math display">\[
+u_i \mid u_{-i} \sim
+N\left(
+\frac{1}{n_i}\sum_{j \in \delta_i} u_j,\;
+\frac{\sigma_u^2}{n_i}
+\right)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\delta_i\)</span> is the set of neighboring tracts for tract <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(n_i\)</span> is the number of neighbors</li>
+<li>the mean of <span class="math inline">\(u_i\)</span> is the <strong>average spatial effect of neighboring tracts</strong></li>
+</ul>
+<p>Conceptually, this prior <strong>smooths values across space</strong>. Each tract’s spatial effect is encouraged to be similar to the average of its neighbors. The term <span class="math inline">\(v_i\)</span> represents <strong>unstructured variation</strong>, meaning tract-level randomness that is not spatially patterned. This component captures variation that cannot be explained by either the covariates or the neighborhood structure. This effect is modeled using an <strong>independent and identically distributed (IID) prior</strong>:</p>
+<p><span class="math display">\[
+v_i \sim N(0, \sigma_v^2)
+\]</span></p>
+<p>The IID prior assumes that each tract’s random noise is independent from the others and centered around zero. Together, these two components allow the model to separate <strong>spatial patterns</strong> from <strong>random local noise</strong>.</p>
+<p>For this tutorial, we use the <strong>BYM2 version</strong> of the model. BYM2 is a reparameterization of the original BYM model that combines the structured and unstructured components into a single spatial effect:</p>
+<p><span class="math display">\[
+b_i =
+\frac{1}{\sqrt{\tau_b}}
+\left(
+\sqrt{1-\phi} \, v_i^* +
+\sqrt{\phi} \, u_i^*
+\right)
+\]</span></p>
+<p>In this formulation:</p>
+<ul>
+<li><span class="math inline">\(u_i^*\)</span> is the <strong>scaled spatial (CAR) component</strong></li>
+<li><span class="math inline">\(v_i^*\)</span> is the <strong>scaled IID component</strong></li>
+<li><span class="math inline">\(\tau_b\)</span> controls the overall magnitude of the spatial variation</li>
+<li><span class="math inline">\(\phi\)</span> controls how much variation is spatially structured versus unstructured</li>
+</ul>
+<p>When <span class="math inline">\(\phi\)</span> is close to 1, most unexplained variation follows spatial neighborhood patterns. When <span class="math inline">\(\phi\)</span> is close to 0, most unexplained variation behaves like independent noise across tracts. One advantage of BYM2 is that it uses <strong>Penalized Complexity (PC) priors</strong>, which are weakly informative priors designed to avoid overfitting. These priors encourage the model to prefer simpler explanations unless the data provide strong evidence of spatial structure.</p>
+<p>To fit the model, we first create a neighborhood structure for the census tracts, similar to what we’ve done before, but creating it as a graph, not a neighborhood weight list.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nb_acs <span class="ot">&lt;-</span> <span class="fu">poly2nb</span>(acs_tract_nc)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nb2INLA</span>(<span class="st">"map.adj"</span>, nb_acs)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">inla.read.graph</span>(<span class="at">filename =</span> <span class="st">"map.adj"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we create an index variable so that each census tract has its own spatial random effect:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>acs_tract_nc<span class="sc">$</span>re_u <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(acs_tract_nc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then specify the BYM2 model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>formula <span class="ot">&lt;-</span> log_home_val <span class="sc">~</span> pct_walk_to_work <span class="sc">+</span> median_hh_inc <span class="sc">+</span> med_rent <span class="sc">+</span> med_year_structure_built <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">f</span>(re_u, <span class="at">model =</span> <span class="st">"bym2"</span>, <span class="at">graph =</span> g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This formula says that logged median home value is modeled as a function of the observed covariates plus a tract-level Bayesian spatial effect.</p>
+<p>We fit the model using <code>inla()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">inla</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  formula,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"gaussian"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> acs_tract_nc,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">control.predictor =</span> <span class="fu">list</span>(<span class="at">compute =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">control.compute =</span> <span class="fu">list</span>(<span class="at">return.marginals.predictor =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can look at the results for our fixed effects here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>summary.fixed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                 mean           sd   0.025quant     0.5quant
+(Intercept)              5.099402e+00 9.600908e-01 3.216447e+00 5.099453e+00
+pct_walk_to_work         4.765689e-04 9.814603e-05 2.840958e-04 4.765695e-04
+median_hh_inc            7.404912e-06 2.426157e-07 6.929051e-06 7.404940e-06
+med_rent                 4.892985e-05 1.877473e-05 1.211455e-05 4.892867e-05
+med_year_structure_built 3.390182e-03 4.860137e-04 2.437150e-03 3.390154e-03
+                           0.975quant         mode          kld
+(Intercept)              6.982069e+00 5.099453e+00 9.196372e-12
+pct_walk_to_work         6.690386e-04 4.765694e-04 9.233515e-12
+median_hh_inc            7.880612e-06 7.404940e-06 1.772857e-11
+med_rent                 8.575183e-05 4.892865e-05 9.830787e-12
+med_year_structure_built 4.343369e-03 3.390154e-03 9.359307e-12</code></pre>
+</div>
+</div>
+<p>Because this is a Bayesian model, the results are interpreted using <strong>posterior means and 95% credible intervals</strong> rather than p-values.</p>
+<p>The intercept has a posterior mean of <strong>5.10</strong>, with a 95% credible interval from <strong>3.21 to 6.98</strong>. Since the response variable is the logarithm of median home value, this represents the expected log home value when all covariates equal zero, after accounting for the spatial random effect.</p>
+<p>The coefficient for <strong>percent walking to work</strong> has a posterior mean of <strong>0.000476</strong>, with a 95% credible interval from <strong>0.000283 to 0.000669</strong>. Because the entire credible interval is positive, the model suggests that higher walk-to-work rates are associated with higher median home values, holding other variables constant.</p>
+<p>The coefficient for <strong>median household income</strong> has a posterior mean of <strong>7.40 × 10⁻⁶</strong>, with a 95% credible interval from <strong>6.93 × 10⁻⁶ to 7.88 × 10⁻⁶</strong>. This interval is entirely positive, indicating a strong positive relationship between household income and home value.</p>
+<p>The coefficient for <strong>median rent</strong> has a posterior mean of <strong>4.88 × 10⁻⁵</strong>, with a 95% credible interval from <strong>1.20 × 10⁻⁵ to 8.57 × 10⁻⁵</strong>. This suggests that tracts with higher rents also tend to have higher home values, which is consistent with overall housing market conditions.</p>
+<p>The coefficient for <strong>median year structure built</strong> has a posterior mean of <strong>0.00339</strong>, with a 95% credible interval from <strong>0.00244 to 0.00435</strong>. This indicates that tracts with newer housing stock tend to have higher home values.</p>
+<p>The fitted object contains <strong>posterior summaries</strong> for the model quantities. We first extract the posterior mean and 95% credible intervals for the fitted values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>acs_tract_nc<span class="sc">$</span>PM <span class="ot">&lt;-</span> res<span class="sc">$</span>summary.fitted.values[, <span class="st">"mean"</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>acs_tract_nc<span class="sc">$</span>LL <span class="ot">&lt;-</span> res<span class="sc">$</span>summary.fitted.values[, <span class="st">"0.025quant"</span>]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>acs_tract_nc<span class="sc">$</span>UL <span class="ot">&lt;-</span> res<span class="sc">$</span>summary.fitted.values[, <span class="st">"0.975quant"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For the BYM2 random effect, the first <span class="math inline">\(n\)</span> rows of <code>res$summary.random$re_u</code> correspond to the tract-level spatial effect <span class="math inline">\(b_i\)</span> that enters the model. We extract it as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(acs_tract_nc)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>acs_tract_nc<span class="sc">$</span>bym2_effect <span class="ot">&lt;-</span> res<span class="sc">$</span>summary.random<span class="sc">$</span>re_u<span class="sc">$</span>mean[<span class="dv">1</span><span class="sc">:</span>n]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, we can make the predictions. Remember, this is logged home value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(acs_tract_nc) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="st">"PM"</span>, <span class="at">fill.scale =</span> <span class="fu">tm_scale_intervals</span>(<span class="at">values =</span> <span class="st">"bu_pu"</span>, <span class="at">style =</span> <span class="st">"quantile"</span>), <span class="at">col_alpha =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="baysian_model_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can then map the posterior mean for the spatial random effect</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(acs_tract_nc) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="st">"bym2_effect"</span>, <span class="at">col_alpha =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="baysian_model_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>summary.hyperpar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                mean           sd  0.025quant
+Precision for the Gaussian observations 2.347924e+04 3.213903e+04 932.4062164
+Precision for re_u                      8.419199e+00 3.674144e-01   7.7036025
+Phi for re_u                            7.183577e-01 2.483100e-02   0.6691946
+                                            0.5quant   0.975quant        mode
+Precision for the Gaussian observations 1.315409e+04 1.070109e+05 2217.771015
+Precision for re_u                      8.416433e+00 9.149722e+00    8.422744
+Phi for re_u                            7.185049e-01 7.667943e-01    0.717568</code></pre>
+</div>
+</div>
+<p>This effect represents the portion of housing values that remains spatially patterned <strong>after accounting for the observed covariates</strong> in the model.</p>
+<p>Because the response variable is the <strong>log of median home value</strong>, the spatial effect shifts the predicted value on the log scale.</p>
+<ul>
+<li><strong>Positive values of</strong> <span class="math inline">\(b_i\)</span> (green areas) indicate tracts where home values are <strong>higher than expected</strong> given the covariates.</li>
+<li><strong>Negative values of</strong> <span class="math inline">\(b_i\)</span> (purple areas) indicate tracts where home values are <strong>lower than expected</strong> given the covariates.</li>
+</ul>
+<p>The model also estimates hyperparameters that describe the strength of the spatial structure. The parameter <span class="math inline">\(\phi\)</span> controls how much of the remaining variation is spatially structured versus random noise. In this model, the posterior mean of <span class="math inline">\(\phi\)</span> is approximately 0.72, meaning that about 72% of the remaining unexplained variation follows a spatial pattern, while the rest behaves like independent tract-level noise.</p>
+<p>Overall, this map highlights localized spatial patterns in housing prices that remain after accounting for the socioeconomic and housing variables included in the model.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,12 +1,267 @@
 # Bayesian Modeling
 
-In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.
+In this chapter, we will explore Bayesian modeling as an alternative to traditional spatial models. In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.
 
-In Bayesian spatial models, spatial dependence can be treated as a latent (unobserved) process, often using priors such as conditional autoregressive (CAR) structures. The unexplained variation is decomposed into:
+In Bayesian spatial models, spatial dependence can be treated as a latent (unobserved) process that is estimated at the level of each spatial unit, which allows for local heterogeneity rather than assuming a uniform effect across the entire study area. Bayesian models produce posterior distributions for both the regression coefficients and the latent spatial effects.
 
--   Spatially structured variation ($u_i$) captures dependence across neighboring units, reflecting local spatial correlation rather than a single global parameter.
--   Unstructured variation ($v_i$) captures independent, random noise not explained by spatial structure
+We will use data from the 5-year estimates from the American Community Survey for North Carolina Census tracts.
 
-Because these components are estimated at the level of each spatial unit, the Bayesian framework allows for local heterogeneity rather than assuming a uniform effect across the entire study area. The spatial effect is not constrained to be global; it can vary in magnitude across locations, depending on the latent process and neighborhood structure.
+**To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.**
 
-Frequentist models provide standard errors for coefficients that are adjusted for the global spatial parameter. These standard errors do not capture variation in the spatial effect across locations. Bayesian models produce posterior distributions for both the regression coefficients and the latent spatial effects.
+```{r, include = F}
+library(tidyverse)
+library(tmap)
+library(sf)
+library(spatialreg)
+library(spdep)
+library(INLA)
+#install INLA using this command:  install.packages("INLA",repos = "https://inla.r-inla-download.org/R/stable", dep = TRUE)
+
+#acs data for north carolina census tracts
+acs_tract_nc <- st_read("https://drive.google.com/uc?export=download&id=1cnz4xgdDRZvlXzN3IyvCxOETRWfrpw-0") |>  mutate(log_home_val = log(med_home_value))
+```
+
+```{r, eval = F}
+library(tidyverse)
+library(tmap)
+library(sf)
+library(spatialreg)
+library(spdep)
+library(INLA)
+#install INLA using this command:  install.packages("INLA",repos = "https://inla.r-inla-download.org/R/stable", dep = TRUE)
+
+#acs data for north carolina census tractws
+acs_tract_nc <- st_read("https://drive.google.com/uc?export=download&id=1cnz4xgdDRZvlXzN3IyvCxOETRWfrpw-0") |>  mutate(log_home_val = log(med_home_value))
+
+```
+
+## Traditional Spatial Modeling
+
+Suppose we are interested in modeling median home value (log normalized) as a response to several covariates:
+
+-   Accessibility (percent of people who walk to work)
+-   Median household income
+-   Median rent (for renter occupied units)
+-   Median year built of homes
+
+We can start with running an OLS (assume all assumptions are met except for independence).
+
+```{r, message = F, warning = F}
+#ols
+home_value_model <- lm(log_home_val ~ pct_walk_to_work + median_hh_inc + med_rent + med_year_structure_built, data = acs_tract_nc)
+
+summary(home_value_model)
+```
+
+We could then check our residual Moran's I
+
+```{r, message = F, warning = F}
+#add residuals as a variable
+acs_tract_nc <-acs_tract_nc |> mutate(olsresid = resid(home_value_model)) 
+
+#map residuals
+tm_shape(acs_tract_nc) + tm_polygons(fill = "olsresid",fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile", n = 5), col_alpha = 0)
+
+
+#calculate neighborhoods
+nb <- poly2nb(acs_tract_nc, queen = TRUE)
+
+#set neighborhood weight matrix
+#zero policy allows 0 neighbors (subgraph)
+nbw <- nb2listw(nb, style = "W", , zero.policy = TRUE)
+
+#calculate Morans I
+gmoran <- moran.test(acs_tract_nc$olsresid, nbw)
+gmoran
+```
+
+Because home value is a classic lag effect, we might choose to just run a lag model
+
+```{r}
+#lag model
+fit.lag<-lagsarlm(log_home_val ~ pct_walk_to_work + median_hh_inc + med_rent + med_year_structure_built, 
+                  data = acs_tract_nc,
+                  listw = nbw,
+                  zero.policy = TRUE) 
+#see results
+summary(fit.lag)
+```
+
+In the spatial lag model, spatial dependence is represented by a single global parameter which means the strength of the spatial relationship between neighboring observations is assumed to be the same across the entire study area.
+
+**Q1. Using what you learned in the Regression tutorial, interpret the output of the OLS and SLM.**
+
+## BYM Model
+
+Bayesian modeling differs from the frequentist spatial models used earlier because it treats spatial dependence as part of the data-generating process rather than as a single adjustment parameter. In a Bayesian spatial model, the unexplained variation can instead be decomposed into tract-specific latent effects.
+
+Another advantage of the Bayesian framework is that all unknown quantities in the model are treated as random variables with probability distributions. This includes the regression coefficients and the spatial random effects. Bayesian inference combines the information from the data with prior assumptions about these parameters to produce **posterior distributions**, which represent updated beliefs about the parameters after observing the data.
+
+In this section, we introduce the Besag–York–Mollié (BYM) model, a Bayesian hierarchical model for areal spatial data.
+
+Let $Y_i$ be the logarithm of median home value in census tract $i$, where $i = 1, \ldots, n$. Because the outcome is continuous, we model it using a Gaussian probability distribution:
+
+$$
+Y_i \sim N(\mu_i, \sigma^2), \qquad i = 1, \ldots, n
+$$
+
+This distribution describes the likelihood, meaning how the observed data are generated given the parameters of the model. The mean of the distribution is modeled as
+
+$$
+\mu_i =
+\beta_0 +
+\beta_1 \, pct\_walk\_to\_work_i +
+\beta_2 \, median\_hh\_inc_i +
+\beta_3 \, med\_rent_i +
+\beta_4 \, med\_year\_structure\_built_i +
+b_i
+$$
+
+-   $\beta_0$ is the intercept
+-   $\beta_1$ through $\beta_4$ are the coefficients for the observed covariates
+-   $b_i$ is the spatial random effect for tract $i$
+
+The spatial random effect captures the portion of housing values that remains spatially patterned after accounting for the observed covariates. In the original BYM model, the spatial random effect is split into two components:
+
+$$
+b_i = u_i + v_i
+$$
+
+These two terms represent **two different sources of unexplained variation**. The term $u_i$ is the **spatially structured effect**. This captures the idea that nearby census tracts tend to be similar to one another. If one tract has a higher-than-expected home value after accounting for the covariates, neighboring tracts may also tend to have higher values. This structured effect is modeled using a **Conditional Autoregressive (CAR) prior**. The CAR prior defines the value of $u_i$ relative to its neighboring tracts:
+
+$$
+u_i \mid u_{-i} \sim
+N\left(
+\frac{1}{n_i}\sum_{j \in \delta_i} u_j,\;
+\frac{\sigma_u^2}{n_i}
+\right)
+$$
+
+-   $\delta_i$ is the set of neighboring tracts for tract $i$
+-   $n_i$ is the number of neighbors
+-   the mean of $u_i$ is the **average spatial effect of neighboring tracts**
+
+Conceptually, this prior **smooths values across space**. Each tract's spatial effect is encouraged to be similar to the average of its neighbors. The term $v_i$ represents **unstructured variation**, meaning tract-level randomness that is not spatially patterned. This component captures variation that cannot be explained by either the covariates or the neighborhood structure. This effect is modeled using an **independent and identically distributed (IID) prior**:
+
+$$
+v_i \sim N(0, \sigma_v^2)
+$$
+
+The IID prior assumes that each tract's random noise is independent from the others and centered around zero. Together, these two components allow the model to separate **spatial patterns** from **random local noise**.
+
+For this tutorial, we use the **BYM2 version** of the model. BYM2 is a reparameterization of the original BYM model that combines the structured and unstructured components into a single spatial effect:
+
+$$
+b_i =
+\frac{1}{\sqrt{\tau_b}}
+\left(
+\sqrt{1-\phi} \, v_i^* +
+\sqrt{\phi} \, u_i^*
+\right)
+$$
+
+In this formulation:
+
+-   $u_i^*$ is the **scaled spatial (CAR) component**
+-   $v_i^*$ is the **scaled IID component**
+-   $\tau_b$ controls the overall magnitude of the spatial variation
+-   $\phi$ controls how much variation is spatially structured versus unstructured
+
+When $\phi$ is close to 1, most unexplained variation follows spatial neighborhood patterns. When $\phi$ is close to 0, most unexplained variation behaves like independent noise across tracts. One advantage of BYM2 is that it uses **Penalized Complexity (PC) priors**, which are weakly informative priors designed to avoid overfitting. These priors encourage the model to prefer simpler explanations unless the data provide strong evidence of spatial structure.
+
+To fit the model, we first create a neighborhood structure for the census tracts, similar to what we've done before, but creating it as a graph, not a neighborhood weight list.
+
+```{r, message = F, warning = F}
+nb_acs <- poly2nb(acs_tract_nc)
+
+nb2INLA("map.adj", nb_acs)
+g <- inla.read.graph(filename = "map.adj")
+```
+
+Next, we create an index variable so that each census tract has its own spatial random effect:
+
+```{r}
+acs_tract_nc$re_u <- 1:nrow(acs_tract_nc)
+```
+
+We then specify the BYM2 model:
+
+```{r}
+formula <- log_home_val ~ pct_walk_to_work + median_hh_inc + med_rent + med_year_structure_built +
+  f(re_u, model = "bym2", graph = g)
+```
+
+This formula says that logged median home value is modeled as a function of the observed covariates plus a tract-level Bayesian spatial effect.
+
+We fit the model using `inla()`:
+
+```{r}
+res <- inla(
+  formula,
+  family = "gaussian",
+  data = acs_tract_nc,
+  control.predictor = list(compute = TRUE),
+  control.compute = list(return.marginals.predictor = TRUE)
+)
+```
+
+We can look at the results for our fixed effects here:
+
+```{r}
+res$summary.fixed
+```
+
+Because this is a Bayesian model, the results are interpreted using **posterior means and 95% credible intervals** rather than p-values.
+
+The intercept has a posterior mean of **5.10**, with a 95% credible interval from **3.21 to 6.98**. Since the response variable is the logarithm of median home value, this represents the expected log home value when all covariates equal zero, after accounting for the spatial random effect.
+
+The coefficient for **percent walking to work** has a posterior mean of **0.000476**, with a 95% credible interval from **0.000283 to 0.000669**. Because the entire credible interval is positive, the model suggests that higher walk-to-work rates are associated with higher median home values, holding other variables constant.
+
+The coefficient for **median household income** has a posterior mean of **7.40 × 10⁻⁶**, with a 95% credible interval from **6.93 × 10⁻⁶ to 7.88 × 10⁻⁶**. This interval is entirely positive, indicating a strong positive relationship between household income and home value.
+
+The coefficient for **median rent** has a posterior mean of **4.88 × 10⁻⁵**, with a 95% credible interval from **1.20 × 10⁻⁵ to 8.57 × 10⁻⁵**. This suggests that tracts with higher rents also tend to have higher home values, which is consistent with overall housing market conditions.
+
+The coefficient for **median year structure built** has a posterior mean of **0.00339**, with a 95% credible interval from **0.00244 to 0.00435**. This indicates that tracts with newer housing stock tend to have higher home values.
+
+The fitted object contains **posterior summaries** for the model quantities. We first extract the posterior mean and 95% credible intervals for the fitted values:
+
+```{r}
+acs_tract_nc$PM <- res$summary.fitted.values[, "mean"]
+acs_tract_nc$LL <- res$summary.fitted.values[, "0.025quant"]
+acs_tract_nc$UL <- res$summary.fitted.values[, "0.975quant"]
+```
+
+For the BYM2 random effect, the first $n$ rows of `res$summary.random$re_u` correspond to the tract-level spatial effect $b_i$ that enters the model. We extract it as follows:
+
+```{r}
+n <- nrow(acs_tract_nc)
+
+acs_tract_nc$bym2_effect <- res$summary.random$re_u$mean[1:n]
+```
+
+Finally, we can make the predictions. Remember, this is logged home value.
+
+```{r, message = F, warning = F}
+tm_shape(acs_tract_nc) +
+  tm_polygons("PM", fill.scale = tm_scale_intervals(values = "bu_pu", style = "quantile"), col_alpha = 0)
+```
+
+We can then map the posterior mean for the spatial random effect
+
+```{r, message = F, warning = F}
+tm_shape(acs_tract_nc) +
+  tm_polygons("bym2_effect", col_alpha = 0)
+
+res$summary.hyperpar
+```
+
+This effect represents the portion of housing values that remains spatially patterned **after accounting for the observed covariates** in the model.
+
+Because the response variable is the **log of median home value**, the spatial effect shifts the predicted value on the log scale.
+
+-   **Positive values of** $b_i$ (green areas) indicate tracts where home values are **higher than expected** given the covariates.
+-   **Negative values of** $b_i$ (purple areas) indicate tracts where home values are **lower than expected** given the covariates.
+
+The model also estimates hyperparameters that describe the strength of the spatial structure. The parameter $\phi$ controls how much of the remaining variation is spatially structured versus random noise. In this model, the posterior mean of $\phi$ is approximately 0.72, meaning that about 72% of the remaining unexplained variation follows a spatial pattern, while the rest behaves like independent tract-level noise.
+
+Overall, this map highlights localized spatial patterns in housing prices that remain after accounting for the socioeconomic and housing variables included in the model.

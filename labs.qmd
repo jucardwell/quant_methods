@@ -516,7 +516,7 @@ This lab is designed to assess the [Concept 7 Competencies](https://jucardwell.g
     -   Test the quadrat count against CSR using a quadrat density test (use nx = 4, ny = 3). Add Monte Carlo simulations (n = 99) to the statistical testing
     -   Create a KDE for fire stations
     -   Run an ANN analysis that uses Monte Carlo simulations (n = 99) to create an empirical probability. You will need to determine if your simulations should homogeneous or inhomogeneous based on your global analysis.
-    -   Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis.
+    -   Evaluate the L-function and envelope (n = 99). You will need to determine if you should use the homogeneous or inhomogeneous function (and simulations) based on your global analysis. Because our border is not a rectangle, we can't use the "iso" correction, so use the "border" correction instead.
     -   In text below the chunk, identify whether there is evidence for the pattern of fire stations reflecting first-order processes, second-order processes, or a combination of both by clearly interpreting your analytical results. Propose one specific, plausible hypothesis about an underlying process that could be contributing to the spatial pattern.
 
 ## Lab 8
@@ -552,6 +552,7 @@ This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.g
     library(sf)
     library(tidyverse)
     library(spatstat)
+    library(spdep)
 
     school_sat <- st_read("https://drive.google.com/uc?export=download&id=1i-C2PF3ajbpHTlavh3m1QbWNObpobprZ") 
 
@@ -573,3 +574,65 @@ This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.g
 
     -   Calculate and map Local Indicators of Autocorrelation for both datasets
     -   Describe your results. What is the spatial pattern of clustering? Propose one reasonable hypothesis for why this pattern might exist.
+
+## Lab 9
+
+### Overview
+
+In the spatial modeling tutorials, we learned that spatial autocorrelation can appear in model residuals when nearby locations share similar values for reasons not fully captured by the observed covariates. We also learned that there are multiple ways to address this issue. Traditional spatial regression models, such as the spatial lag or spatial error model, treat spatial dependence as something to account for in order to improve inference. Bayesian spatial models, by contrast, treat spatial dependence as a latent process and estimate spatial effects directly.
+
+In this lab, you will practice building and comparing these approaches using American Community Survey data for North Carolina census tracts. You will first fit a standard OLS model, then test the residuals for spatial autocorrelation, then fit a traditional spatial regression model, and finally fit a Bayesian spatial model.
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
+
+### Specifications
+
+This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values). You'll be evaluated on the following specifications:
+
+| Specification |
+|------------------------------------------------------------------------|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand |
+| OLS Model: Student fits the specified OLS model and interprets the coefficient estimates in context |
+| Residual Spatial Dependence: Student defines a neighborhood structure, creates a spatial weights matrix, and tests OLS residuals for spatial autocorrelation. Written interpretation explains whether residual spatial structure is present |
+| Traditional Spatial Model: Student fits an appropriate spatial regression model and explains why it was chosen. Written interpretation compares the spatial model to the OLS model |
+| Bayesian Spatial Model: Student fits a Bayesian spatial model using INLA and maps the posterior mean spatial effect. Written interpretation explains the role of the spatial effect and compares the Bayesian model conceptually to the traditional spatial model. |
+
+### Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab8.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    library(sf)
+    library(tidyverse)
+    library(tmap)
+    library(spdep)
+    library(spatialreg)
+    library(INLA)
+
+    acs_tract_nc <- st_read("https://drive.google.com/uc?export=download&id=1cnz4xgdDRZvlXzN3IyvCxOETRWfrpw-0")
+
+    ```
+
+3.  Under a header called "OLS" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Fits an OLS model with a dependent variable of median_hh_inc and covariates pct_under_poverty_level, pct_renter, pop_density_mile, pct_bachelors_or_more
+    -   Describe the results of the OLS model. Interpret the relationship between median household income and each of the covariates, indicating which variables appear positively or negatively associated with income.
+
+4.  Under a header called "Residual Spatial Dependence" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Test the OLS residuals for spatial dependence
+    -   Interprets the Moran’s I statistic for the OLS residuals and explain what the result suggests about the presence and strength of spatial autocorrelation.
+
+5.  Under a header called "Traditional Spatial Model" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Determine whether an SEM or SLM is better suited for this dataset and run that model
+    -   Interpret the results of the spatial regression model, including the estimated spatial parameter. Describe how the coefficient estimates compare to the OLS model and explain how this model accounts for spatial dependence in the data.
+
+6.  Under a header called "Bayesian Spatial Model" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Runs a BYM2 model
+
+    -   Interpret the fixed effects from the Bayesian model and describe how they compare to the previous models. Then explain what the BYM2 spatial effect represents and describe the general spatial pattern observed in the map.
