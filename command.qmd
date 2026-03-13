@@ -351,30 +351,53 @@ data.ppp <- as.ppp(st_coordinates(DATA), W = boundary_owin)
 #create a quadrat count with 9 quadrats (modify the number of quadrats to fit your case)
 q_count <- quadratcount(data.ppp, nx = 3, ny = 3)
 
-q_test <- quadrat.test(data.ppp, nx = 3, ny = 3)
+#run quadrat test with monte carlo sims
+q_test <- quadrat.test(data.ppp, nx = 3, ny = 3, method= "MonteCarlo", nsim=9)
 ```
 
 ### Kernel Density
 
 ```{r, eval=F}
-#sigma represents the bandwidth of the kernel. It is in the unit of the data crs. 
-kernel_density <- density(data.ppp, 
-                          sigma = BANDWIDTH)
+#estimate KDE
+kernel_density <- density(data.ppp)
 ```
 
-### G-function
+### ANN Analysis
 
 ```{r, eval=F}
-g_pattern <- Gest(data.ppp, correction = "none")
+#compute observed ANN
+ANN_obs <- mean(nndist(data.ppp))
+
+nsim <- 999
+ANN_sim <- numeric(nsim)
+
+#MC simulations
+for(i in 1:nsim){
+  sim <- rpoispp(kernel_density) #simulate inhomogeneous Poisson using KDE if necessary
+  ANN_sim[i] <- mean(nndist(sim))
+}
+
+#monte Carlo p-value (two-sided)
+N_greater <- sum(ANN_sim >= ANN_obs)
+p_value <- 2 * min((N_greater + 1)/(nsim + 1), (nsim - N_greater + 1)/(nsim + 1))
+
+p_value
 ```
 
-### F-function
+### L-function
 
 ```{r, eval=F}
-f_pattern <- Fest(data.ppp, correction = "none")
+#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. 
+l_funct_pattern1 <- envelope(
+  data.ppp,
+  fun = Linhom, #inhomogenous, use Lest for homogenous
+  nsim = 99,
+  funargs = list(correction = "border"),
+  transform = expression(. - r)   
+)
 ```
 
-## Spatial Autocorrelation
+## Spatial Autocorrelation and Spatial Modeling
 
 ### Calculating Neighbors
 
@@ -432,4 +455,113 @@ DATASET <- DATASET %>%
            variablez < 0 & local_i > 0 ~ "Low-low",
            variablez < 0 & local_i < 0 ~ "Low-high"
          ))
+```
+
+### Traditional Spatial Models 
+```{r, eval=F}
+#lag model
+fit.lag<-lagsarlm(DEPENDENT ~ INDEPENDENT + INDEPENDENT,  
+                  data = DATA, 
+                  listw = nbw) 
+#see results
+summary(fit.lag)
+
+#error model
+fit.error<-errorsarlm(DEPENDENT ~ INDEPENDENT + INDEPENDENT,  
+                  data = DATA, 
+                  listw = nbw)  
+#see results
+summary(fit.error)
+```
+
+### Bayesian Model
+```{r, eval=F}
+nb <- poly2nb(DATA)
+
+nb2INLA("map.adj")
+g <- inla.read.graph(filename = "map.adj")
+
+DATA$re_u <- 1:nrow(DATA)
+
+formula <- DEPENDENT ~ INDEPENDENT + INDEPENDENT +
+  f(re_u, model = "bym2", graph = g)
+
+res <- inla(
+  formula,
+  family = "gaussian",
+  data = DATA,
+  control.predictor = list(compute = TRUE),
+  control.compute = list(return.marginals.predictor = TRUE)
+)
+```
+
+## Continuous Surfaces
+
+### IDW
+```{r, eval=F}
+# create a regular prediction grid. We say we want 2000 pixels
+grd <- as.data.frame(spsample(DATA, "regular", n = 2000))
+
+#set grid coordinates
+names(grd) <- c("X", "Y")
+coordinates(grd) <- c("X", "Y")
+gridded(grd) <- TRUE
+fullgrid(grd) <- TRUE
+
+#assign CRS
+crs(grd) <- crs(heatwave_sp)
+
+# run IDW interpolation using the best IDP from cross-validation
+idw <- idw(
+  formula = value ~ 1,
+  locations = DATA,
+  newdata = grd,
+  idp = 2
+)
+
+#rasterize interpolation output
+r <- rast(idw)
+
+#mask to boundaries
+r_m <- mask(r, BOUNDARY)
+```
+
+### Kriging
+
+```{r, eval=F}
+#compute empirical variogram
+v <- variogram(value ~ 1, data = DATA)
+
+#plot empirical variogram
+plot(v)
+
+#specify an initial variogram model
+vgm_initial <- vgm(
+  psill = FILL,
+  model = "FILL",
+  range = FILL,
+  nugget = FILL
+)
+
+#fit empirical to initial model
+vgm_fit <- fit.variogram(v, vgm_initial)
+
+#plot fitted variogram model 
+plot(v, vgm_fit)
+
+
+#fit kriging
+krig_pred <- krige(
+  formula = value ~ 1,
+  locations = DATA,
+  newdata = grd,
+  model = vgm_fit
+)
+
+#rasterize predictions
+krig_rast <- rast(krig_pred)
+
+#mask to boundary
+krig_mask <- mask(krig_rast, BOUNDARY)
+
 ```

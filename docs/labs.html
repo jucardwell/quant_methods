@@ -325,6 +325,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#specifications-8" id="toc-specifications-8" class="nav-link" data-scroll-target="#specifications-8"><span class="header-section-number">5.10.2</span> Specifications</a></li>
   <li><a href="#lab-instructions-7" id="toc-lab-instructions-7" class="nav-link" data-scroll-target="#lab-instructions-7"><span class="header-section-number">5.10.3</span> Lab Instructions</a></li>
   </ul></li>
+  <li><a href="#lab-10" id="toc-lab-10" class="nav-link" data-scroll-target="#lab-10"><span class="header-section-number">5.11</span> Lab 10</a>
+  <ul class="collapse">
+  <li><a href="#overview-9" id="toc-overview-9" class="nav-link" data-scroll-target="#overview-9"><span class="header-section-number">5.11.1</span> Overview</a></li>
+  <li><a href="#specifications-9" id="toc-specifications-9" class="nav-link" data-scroll-target="#specifications-9"><span class="header-section-number">5.11.2</span> Specifications</a></li>
+  <li><a href="#lab-instructions-8" id="toc-lab-instructions-8" class="nav-link" data-scroll-target="#lab-instructions-8"><span class="header-section-number">5.11.3</span> Lab Instructions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1103,7 +1109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="specifications-8" class="level3" data-number="5.10.2">
 <h3 data-number="5.10.2" class="anchored" data-anchor-id="specifications-8"><span class="header-section-number">5.10.2</span> Specifications</h3>
-<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values">Concept 8 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values">Concept 9 Competencies</a>. You’ll be evaluated on the following specifications:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 100%">
@@ -1138,7 +1144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="lab-instructions-7" class="level3" data-number="5.10.3">
 <h3 data-number="5.10.3" class="anchored" data-anchor-id="lab-instructions-7"><span class="header-section-number">5.10.3</span> Lab Instructions</h3>
 <ol type="1">
-<li><p>Create a new .Rmd named “LASTNAME_lab8.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Create a new .Rmd named “LASTNAME_lab9.Rmd”. Save it into your GEOG391 folder.</p></li>
 <li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
@@ -1169,6 +1175,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Runs a BYM2 model</p></li>
 <li><p>Interpret the fixed effects from the Bayesian model and describe how they compare to the previous models. Then explain what the BYM2 spatial effect represents and describe the general spatial pattern observed in the map.</p></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="lab-10" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="lab-10"><span class="header-section-number">5.11</span> Lab 10</h2>
+<section id="overview-9" class="level3" data-number="5.11.1">
+<h3 data-number="5.11.1" class="anchored" data-anchor-id="overview-9"><span class="header-section-number">5.11.1</span> Overview</h3>
+<p>In the continuous surfaces tutorial we learned several different approaches to making predictions at unmeasured locations for spatially continuous variables.</p>
+<p>In this lab, you will practice these approaches using PM2.5 data for the continental US for 2022.</p>
+<p><em>Remember that you can use the <a href="https://jucardwell.github.io/quant_methods/command.html"><strong>Command Compendium</strong></a> to help you modify R commands.</em></p>
+</section>
+<section id="specifications-9" class="level3" data-number="5.11.2">
+<h3 data-number="5.11.2" class="anchored" data-anchor-id="specifications-9"><span class="header-section-number">5.11.2</span> Specifications</h3>
+<p>This lab is designed to assess the <a href="https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values">Concept 10 Competencies</a>. You’ll be evaluated on the following specifications:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTML and RMD versions the R Markdown file have been submitted.</td>
+</tr>
+<tr class="even">
+<td>The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand</td>
+</tr>
+<tr class="odd">
+<td>IDW: Student fits the specified OLS model and interprets the coefficient estimates in context</td>
+</tr>
+<tr class="even">
+<td>Kriging: Student defines a neighborhood structure, creates a spatial weights matrix, and tests OLS residuals for spatial autocorrelation. Written interpretation explains whether residual spatial structure is present</td>
+</tr>
+<tr class="odd">
+<td>SPDE: Student fits an appropriate spatial regression model and explains why it was chosen. Written interpretation compares the spatial model to the OLS model</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lab-instructions-8" class="level3" data-number="5.11.3">
+<h3 data-number="5.11.3" class="anchored" data-anchor-id="lab-instructions-8"><span class="header-section-number">5.11.3</span> Lab Instructions</h3>
+<ol type="1">
+<li><p>Create a new .Rmd named “LASTNAME_lab10.Rmd”. Save it into your GEOG391 folder.</p></li>
+<li><p>Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gstat)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(INLA)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## THESE DATASETS HAVE A PCS IN METERS</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>us_boundary <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1nbJ_ND9qp0sPFvH3LqFjXny2MVxu-cuc"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1JLm928sALNKSjproYQz74Itin_Hv1VwN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Under a header called “IDW” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li>Select an appropriate IDP using cross-validation, choose a reasonable number of grid cells for the prediction surface, and run an IDW interpolation for PM2.5 across the continental United States</li>
+<li>Explain how the IDP was selected based on the cross-validation results and justify the grid resolution used for the prediction surface. Describe the spatial pattern of the predicted PM2.5 surface, noting any major regional trends or hotspots that appear in the map</li>
+</ul></li>
+<li><p>Under a header called “Kriging” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li>Calculate an empirical variogram, select an appropriate theoretical variogram model and parameters (sill, nugget, and range), and fit a kriging model.</li>
+<li>In the written section, explain how the variogram was interpreted and how the model parameters were chosen. Describe the spatial pattern of the kriging surface and interpret the kriging variance map, including where predictions appear more or less certain. Compare the kriging surface to the IDW surface and discuss any noticeable differences in spatial pattern or smoothness</li>
+</ul></li>
+<li><p>Under a header called “SPDE” add a code chunk, and a written analysis below the code chunk that does the following:</p>
+<ul>
+<li><p>Run an SPDE-based Bayesian spatial model on the dataset</p></li>
+<li><p>In the written section, interpret the predicted spatial surface and describe the uncertainty estimates produced by the model (credible intervals). Compare the Bayesian predictions to the IDW and kriging surfaces and discuss how the patterns and uncertainty representations differ across the three approaches</p></li>
 </ul></li>
 </ol>
 

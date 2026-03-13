@@ -195,18 +195,6 @@ l_funct_pattern1 <- envelope(
   funargs = list(correction = "iso"),
   transform = expression(. - r)   # subtract r from obs and simulated
 )
-#for inhomogenous pp with MC, we need to set an intensity, which is estimated by our KDE. This allows us to account for first-order pattern in our simulation envelope
-lambda1 <- density(sample_pattern_1)
-
-#run inhomogenous pp l function with simulations
-l_funct_pattern1 <- envelope(
-  sample_pattern_1,
-  fun = Linhom,
-  nsim = 99,
-  simulate = expression(rpoispp(lambda1)),
-  funargs = list(correction = "iso"),
-  transform = expression(. - r)
-)
 
 #plot
 plot(l_funct_pattern1, legend = FALSE)

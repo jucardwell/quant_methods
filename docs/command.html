@@ -250,8 +250,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./baysian_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bayesian Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
   </div>
 </li>
     </ul>
@@ -308,14 +314,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#quadrat-analysis" id="toc-quadrat-analysis" class="nav-link" data-scroll-target="#quadrat-analysis"><span class="header-section-number">7.8.1</span> Quadrat Analysis</a></li>
   <li><a href="#kernel-density" id="toc-kernel-density" class="nav-link" data-scroll-target="#kernel-density"><span class="header-section-number">7.8.2</span> Kernel Density</a></li>
-  <li><a href="#g-function" id="toc-g-function" class="nav-link" data-scroll-target="#g-function"><span class="header-section-number">7.8.3</span> G-function</a></li>
-  <li><a href="#f-function" id="toc-f-function" class="nav-link" data-scroll-target="#f-function"><span class="header-section-number">7.8.4</span> F-function</a></li>
+  <li><a href="#ann-analysis" id="toc-ann-analysis" class="nav-link" data-scroll-target="#ann-analysis"><span class="header-section-number">7.8.3</span> ANN Analysis</a></li>
+  <li><a href="#l-function" id="toc-l-function" class="nav-link" data-scroll-target="#l-function"><span class="header-section-number">7.8.4</span> L-function</a></li>
   </ul></li>
-  <li><a href="#spatial-autocorrelation" id="toc-spatial-autocorrelation" class="nav-link" data-scroll-target="#spatial-autocorrelation"><span class="header-section-number">7.9</span> Spatial Autocorrelation</a>
+  <li><a href="#spatial-autocorrelation-and-spatial-modeling" id="toc-spatial-autocorrelation-and-spatial-modeling" class="nav-link" data-scroll-target="#spatial-autocorrelation-and-spatial-modeling"><span class="header-section-number">7.9</span> Spatial Autocorrelation and Spatial Modeling</a>
   <ul class="collapse">
   <li><a href="#calculating-neighbors" id="toc-calculating-neighbors" class="nav-link" data-scroll-target="#calculating-neighbors"><span class="header-section-number">7.9.1</span> Calculating Neighbors</a></li>
   <li><a href="#global-morans-i" id="toc-global-morans-i" class="nav-link" data-scroll-target="#global-morans-i"><span class="header-section-number">7.9.2</span> Global Moran’s I</a></li>
   <li><a href="#lisa" id="toc-lisa" class="nav-link" data-scroll-target="#lisa"><span class="header-section-number">7.9.3</span> LISA</a></li>
+  <li><a href="#traditional-spatial-models" id="toc-traditional-spatial-models" class="nav-link" data-scroll-target="#traditional-spatial-models"><span class="header-section-number">7.9.4</span> Traditional Spatial Models</a></li>
+  <li><a href="#bayesian-model" id="toc-bayesian-model" class="nav-link" data-scroll-target="#bayesian-model"><span class="header-section-number">7.9.5</span> Bayesian Model</a></li>
+  </ul></li>
+  <li><a href="#continuous-surfaces" id="toc-continuous-surfaces" class="nav-link" data-scroll-target="#continuous-surfaces"><span class="header-section-number">7.10</span> Continuous Surfaces</a>
+  <ul class="collapse">
+  <li><a href="#idw" id="toc-idw" class="nav-link" data-scroll-target="#idw"><span class="header-section-number">7.10.1</span> IDW</a></li>
+  <li><a href="#kriging" id="toc-kriging" class="nav-link" data-scroll-target="#kriging"><span class="header-section-number">7.10.2</span> Kriging</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -679,32 +692,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#create a quadrat count with 9 quadrats (modify the number of quadrats to fit your case)</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>q_count <span class="ot">&lt;-</span> <span class="fu">quadratcount</span>(data.ppp, <span class="at">nx =</span> <span class="dv">3</span>, <span class="at">ny =</span> <span class="dv">3</span>)</span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>q_test <span class="ot">&lt;-</span> <span class="fu">quadrat.test</span>(data.ppp, <span class="at">nx =</span> <span class="dv">3</span>, <span class="at">ny =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#run quadrat test with monte carlo sims</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>q_test <span class="ot">&lt;-</span> <span class="fu">quadrat.test</span>(data.ppp, <span class="at">nx =</span> <span class="dv">3</span>, <span class="at">ny =</span> <span class="dv">3</span>, <span class="at">method=</span> <span class="st">"MonteCarlo"</span>, <span class="at">nsim=</span><span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="kernel-density" class="level3" data-number="7.8.2">
 <h3 data-number="7.8.2" class="anchored" data-anchor-id="kernel-density"><span class="header-section-number">7.8.2</span> Kernel Density</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sigma represents the bandwidth of the kernel. It is in the unit of the data crs. </span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>kernel_density <span class="ot">&lt;-</span> <span class="fu">density</span>(data.ppp, </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sigma =</span> BANDWIDTH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#estimate KDE</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>kernel_density <span class="ot">&lt;-</span> <span class="fu">density</span>(data.ppp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="g-function" class="level3" data-number="7.8.3">
-<h3 data-number="7.8.3" class="anchored" data-anchor-id="g-function"><span class="header-section-number">7.8.3</span> G-function</h3>
+<section id="ann-analysis" class="level3" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="ann-analysis"><span class="header-section-number">7.8.3</span> ANN Analysis</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>g_pattern <span class="ot">&lt;-</span> <span class="fu">Gest</span>(data.ppp, <span class="at">correction =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#compute observed ANN</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ANN_obs <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">nndist</span>(data.ppp))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">999</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>ANN_sim <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nsim)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#MC simulations</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsim){</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">rpoispp</span>(kernel_density) <span class="co">#simulate inhomogeneous Poisson using KDE if necessary</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  ANN_sim[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">nndist</span>(sim))</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#monte Carlo p-value (two-sided)</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>N_greater <span class="ot">&lt;-</span> <span class="fu">sum</span>(ANN_sim <span class="sc">&gt;=</span> ANN_obs)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>((N_greater <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>(nsim <span class="sc">+</span> <span class="dv">1</span>), (nsim <span class="sc">-</span> N_greater <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>(nsim <span class="sc">+</span> <span class="dv">1</span>))</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="f-function" class="level3" data-number="7.8.4">
-<h3 data-number="7.8.4" class="anchored" data-anchor-id="f-function"><span class="header-section-number">7.8.4</span> F-function</h3>
+<section id="l-function" class="level3" data-number="7.8.4">
+<h3 data-number="7.8.4" class="anchored" data-anchor-id="l-function"><span class="header-section-number">7.8.4</span> L-function</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>f_pattern <span class="ot">&lt;-</span> <span class="fu">Fest</span>(data.ppp, <span class="at">correction =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first point pattern demonstrated global structure, therefore we use an inhomogenous Poisson as comparison. Correction corrects for edge effects. </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>l_funct_pattern1 <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  data.ppp,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> Linhom, <span class="co">#inhomogenous, use Lest for homogenous</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nsim =</span> <span class="dv">99</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">funargs =</span> <span class="fu">list</span>(<span class="at">correction =</span> <span class="st">"border"</span>),</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">transform =</span> <span class="fu">expression</span>(. <span class="sc">-</span> r)   </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="spatial-autocorrelation" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="spatial-autocorrelation"><span class="header-section-number">7.9</span> Spatial Autocorrelation</h2>
+<section id="spatial-autocorrelation-and-spatial-modeling" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="spatial-autocorrelation-and-spatial-modeling"><span class="header-section-number">7.9</span> Spatial Autocorrelation and Spatial Modeling</h2>
 <section id="calculating-neighbors" class="level3" data-number="7.9.1">
 <h3 data-number="7.9.1" class="anchored" data-anchor-id="calculating-neighbors"><span class="header-section-number">7.9.1</span> Calculating Neighbors</h3>
 <div class="cell">
@@ -760,6 +796,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>           variablez <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> local_i <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Low-low"</span>,</span>
 <span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>           variablez <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> local_i <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Low-high"</span></span>
 <span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>         ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="traditional-spatial-models" class="level3" data-number="7.9.4">
+<h3 data-number="7.9.4" class="anchored" data-anchor-id="traditional-spatial-models"><span class="header-section-number">7.9.4</span> Traditional Spatial Models</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lag model</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>fit.lag<span class="ot">&lt;-</span><span class="fu">lagsarlm</span>(DEPENDENT <span class="sc">~</span> INDEPENDENT <span class="sc">+</span> INDEPENDENT,  </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> DATA, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">listw =</span> nbw) </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.lag)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#error model</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>fit.error<span class="ot">&lt;-</span><span class="fu">errorsarlm</span>(DEPENDENT <span class="sc">~</span> INDEPENDENT <span class="sc">+</span> INDEPENDENT,  </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> DATA, </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">listw =</span> nbw)  </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#see results</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bayesian-model" class="level3" data-number="7.9.5">
+<h3 data-number="7.9.5" class="anchored" data-anchor-id="bayesian-model"><span class="header-section-number">7.9.5</span> Bayesian Model</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">poly2nb</span>(DATA)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nb2INLA</span>(<span class="st">"map.adj"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">inla.read.graph</span>(<span class="at">filename =</span> <span class="st">"map.adj"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>DATA<span class="sc">$</span>re_u <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(DATA)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>formula <span class="ot">&lt;-</span> DEPENDENT <span class="sc">~</span> INDEPENDENT <span class="sc">+</span> INDEPENDENT <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">f</span>(re_u, <span class="at">model =</span> <span class="st">"bym2"</span>, <span class="at">graph =</span> g)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">inla</span>(</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  formula,</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"gaussian"</span>,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> DATA,</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">control.predictor =</span> <span class="fu">list</span>(<span class="at">compute =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">control.compute =</span> <span class="fu">list</span>(<span class="at">return.marginals.predictor =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="continuous-surfaces" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="continuous-surfaces"><span class="header-section-number">7.10</span> Continuous Surfaces</h2>
+<section id="idw" class="level3" data-number="7.10.1">
+<h3 data-number="7.10.1" class="anchored" data-anchor-id="idw"><span class="header-section-number">7.10.1</span> IDW</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a regular prediction grid. We say we want 2000 pixels</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>grd <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">spsample</span>(DATA, <span class="st">"regular"</span>, <span class="at">n =</span> <span class="dv">2000</span>))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#set grid coordinates</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(grd) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"Y"</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(grd) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"Y"</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gridded</span>(grd) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">fullgrid</span>(grd) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#assign CRS</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(grd) <span class="ot">&lt;-</span> <span class="fu">crs</span>(heatwave_sp)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># run IDW interpolation using the best IDP from cross-validation</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>idw <span class="ot">&lt;-</span> <span class="fu">idw</span>(</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> value <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> DATA,</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> grd,</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">idp =</span> <span class="dv">2</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="co">#rasterize interpolation output</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(idw)</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="co">#mask to boundaries</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>r_m <span class="ot">&lt;-</span> <span class="fu">mask</span>(r, BOUNDARY)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="kriging" class="level3" data-number="7.10.2">
+<h3 data-number="7.10.2" class="anchored" data-anchor-id="kriging"><span class="header-section-number">7.10.2</span> Kriging</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#compute empirical variogram</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">variogram</span>(value <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot empirical variogram</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(v)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#specify an initial variogram model</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>vgm_initial <span class="ot">&lt;-</span> <span class="fu">vgm</span>(</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">psill =</span> FILL,</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"FILL"</span>,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">range =</span> FILL,</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">nugget =</span> FILL</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">#fit empirical to initial model</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>vgm_fit <span class="ot">&lt;-</span> <span class="fu">fit.variogram</span>(v, vgm_initial)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">#plot fitted variogram model </span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(v, vgm_fit)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="co">#fit kriging</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>krig_pred <span class="ot">&lt;-</span> <span class="fu">krige</span>(</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> value <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> DATA,</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> grd,</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> vgm_fit</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a><span class="co">#rasterize predictions</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>krig_rast <span class="ot">&lt;-</span> <span class="fu">rast</span>(krig_pred)</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a><span class="co">#mask to boundary</span></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>krig_mask <span class="ot">&lt;-</span> <span class="fu">mask</span>(krig_rast, BOUNDARY)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

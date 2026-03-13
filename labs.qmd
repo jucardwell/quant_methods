@@ -587,7 +587,7 @@ In this lab, you will practice building and comparing these approaches using Ame
 
 ### Specifications
 
-This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values). You'll be evaluated on the following specifications:
+This lab is designed to assess the [Concept 9 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values). You'll be evaluated on the following specifications:
 
 | Specification |
 |------------------------------------------------------------------------|
@@ -600,7 +600,7 @@ This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.g
 
 ### Lab Instructions
 
-1.  Create a new .Rmd named "LASTNAME_lab8.Rmd". Save it into your GEOG391 folder.
+1.  Create a new .Rmd named "LASTNAME_lab9.Rmd". Save it into your GEOG391 folder.
 
 2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
 
@@ -636,3 +636,64 @@ This lab is designed to assess the [Concept 8 Competencies](https://jucardwell.g
     -   Runs a BYM2 model
 
     -   Interpret the fixed effects from the Bayesian model and describe how they compare to the previous models. Then explain what the BYM2 spatial effect represents and describe the general spatial pattern observed in the map.
+
+## Lab 10
+
+### Overview
+
+In the continuous surfaces tutorial we learned several different approaches to making predictions at unmeasured locations for spatially continuous variables.
+
+In this lab, you will practice these approaches using PM2.5 data for the continental US for 2022.
+
+*Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
+
+### Specifications
+
+This lab is designed to assess the [Concept 10 Competencies](https://jucardwell.github.io/quant_methods/competencies.html#concept-8-patterns-in-values). You'll be evaluated on the following specifications:
+
+| Specification |
+|------------------------------------------------------------------------|
+| HTML and RMD versions the R Markdown file have been submitted. |
+| The RMD is clearly organized (appropriate headings, code chunk formatting, and clean output) so that the analysis is easy to read and understand |
+| IDW: Student fits the specified OLS model and interprets the coefficient estimates in context |
+| Kriging: Student defines a neighborhood structure, creates a spatial weights matrix, and tests OLS residuals for spatial autocorrelation. Written interpretation explains whether residual spatial structure is present |
+| SPDE: Student fits an appropriate spatial regression model and explains why it was chosen. Written interpretation compares the spatial model to the OLS model |
+
+### Lab Instructions
+
+1.  Create a new .Rmd named "LASTNAME_lab10.Rmd". Save it into your GEOG391 folder.
+
+2.  Remove sample text (leaving the header and set-up chunk). Add a chunk for loading libraries and reading in data. Add the following code into that chunk:
+
+    ```{r, eval=F}
+    library(sf)
+    library(tidyverse)
+    library(gstat)
+    library(sp)
+    library(terra)
+    library(tmap)
+    library(INLA)
+
+    ## THESE DATASETS HAVE A PCS IN METERS
+    us_boundary <- st_read("https://drive.google.com/uc?export=download&id=1nbJ_ND9qp0sPFvH3LqFjXny2MVxu-cuc")
+
+    pm <- st_read("https://drive.google.com/uc?export=download&id=1JLm928sALNKSjproYQz74Itin_Hv1VwN")
+
+
+    ```
+
+3.  Under a header called "IDW" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Select an appropriate IDP using cross-validation, choose a reasonable number of grid cells for the prediction surface, and run an IDW interpolation for PM2.5 across the continental United States
+    -   Explain how the IDP was selected based on the cross-validation results and justify the grid resolution used for the prediction surface. Describe the spatial pattern of the predicted PM2.5 surface, noting any major regional trends or hotspots that appear in the map
+
+4.  Under a header called "Kriging" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Calculate an empirical variogram, select an appropriate theoretical variogram model and parameters (sill, nugget, and range), and fit a kriging model.
+    -   In the written section, explain how the variogram was interpreted and how the model parameters were chosen. Describe the spatial pattern of the kriging surface and interpret the kriging variance map, including where predictions appear more or less certain. Compare the kriging surface to the IDW surface and discuss any noticeable differences in spatial pattern or smoothness
+
+5.  Under a header called "SPDE" add a code chunk, and a written analysis below the code chunk that does the following:
+
+    -   Run an SPDE-based Bayesian spatial model on the dataset
+
+    -   In the written section, interpret the predicted spatial surface and describe the uncertainty estimates produced by the model (credible intervals). Compare the Bayesian predictions to the IDW and kriging surfaces and discuss how the patterns and uncertainty representations differ across the three approaches
