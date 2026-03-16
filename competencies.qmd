@@ -23,7 +23,7 @@
 **Guiding Question:** How do we summarize and describe variation in data?
 
 -   Classify different types of geographic data and variables (e.g., primary vs. secondary, individual vs. aggregated, qualitative vs. quantitative, level of measurement), and explain how these distinctions influence analysis
--   Explain the major sources and  key dimensions of geographic (coverage, resolution, scale, temporality, completeness, positional accuracy, and bias) and how these dimensions influence analysis.
+-   Explain the major sources and key dimensions of geographic (coverage, resolution, scale, temporality, completeness, positional accuracy, and bias) and how these dimensions influence analysis.
 -   Describe basic geographic data structures (vector/raster)
 -   Explain and evaluate measurement quality in geographic data, including precision, accuracy, validity, and reliability.
 -   Summarize and interpret attribute data using descriptive statistics (central tendency, dispersion, shape) and data visualizations
@@ -46,6 +46,10 @@
 
 **Guiding Question**: How can we use probability to quantify uncertainty and understand patterns in events?
 
+-   Explain the characteristics of stochastic processes and justify the use of probability theory in modeling systems with uncertainty
+-   Explain how empirical probability is used to interpret likelihood based on observations
+-   Explain how theoretical probability is used to interpret likelihood based on models of possible outcomes and their underlying assumptions
+-   Describe the assumptions of the binomial and normal distributions and interpret situations in which each model is applicable
 -   Compute and interpret simple event (empirical) probabilities using historical data
 -   Compute and interpret probabilities for discrete and continuous data using the binomial and normal distribution
 
@@ -53,8 +57,11 @@
 
 **Guiding Question**: How can we use sample data to understand and estimate characteristics of a population?
 
+-   Describe the key assumptions underlying classical statistical inference (e.g., independence, randomness in sampling)
 -   Explain the Central Limit Theorem and why it allows us to generalize from samples to populations
--   Describe the main spatial and non-spatial sampling designs (simple, systematic, stratified, cluster)
+-   Explain how sampling variability leads to differences between sample statistics and true population parameters
+-   Explain the role of the standard normal (z) and t distributions in statistical inference
+-   Describe the main spatial and non-spatial sampling designs (simple, systematic, stratified, cluster) and select an appropriate sampling strategy for a given research context
 -   Estimate and interpret population parameters (means and proportions) from samples (calculate point estimates and confidence intervals)
 
 ### Concept 6: Hypothesis Testing
