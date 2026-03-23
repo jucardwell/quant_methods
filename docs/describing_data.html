@@ -250,8 +250,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./baysian_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bayesian Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./continuous_surfaces.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Continuous Surfaces</span></span></a>
   </div>
 </li>
     </ul>
@@ -409,23 +415,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ruca_code) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())  <span class="sc">|&gt;</span>  <span class="fu">gt</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="grprfjkisc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#grprfjkisc table {
+<div id="idotgmkyty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#idotgmkyty table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#grprfjkisc thead, #grprfjkisc tbody, #grprfjkisc tfoot, #grprfjkisc tr, #grprfjkisc td, #grprfjkisc th {
+#idotgmkyty thead, #idotgmkyty tbody, #idotgmkyty tfoot, #idotgmkyty tr, #idotgmkyty td, #idotgmkyty th {
   border-style: none;
 }
 
-#grprfjkisc p {
+#idotgmkyty p {
   margin: 0;
   padding: 0;
 }
 
-#grprfjkisc .gt_table {
+#idotgmkyty .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -451,12 +457,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_caption {
+#idotgmkyty .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#grprfjkisc .gt_title {
+#idotgmkyty .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -468,7 +474,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#grprfjkisc .gt_subtitle {
+#idotgmkyty .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -480,7 +486,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#grprfjkisc .gt_heading {
+#idotgmkyty .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -492,13 +498,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_bottom_border {
+#idotgmkyty .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_col_headings {
+#idotgmkyty .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -513,7 +519,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_col_heading {
+#idotgmkyty .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -533,7 +539,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#grprfjkisc .gt_column_spanner_outer {
+#idotgmkyty .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -545,15 +551,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#grprfjkisc .gt_column_spanner_outer:first-child {
+#idotgmkyty .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#grprfjkisc .gt_column_spanner_outer:last-child {
+#idotgmkyty .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#grprfjkisc .gt_column_spanner {
+#idotgmkyty .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -565,11 +571,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#grprfjkisc .gt_spanner_row {
+#idotgmkyty .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#grprfjkisc .gt_group_heading {
+#idotgmkyty .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -595,7 +601,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#grprfjkisc .gt_empty_group_heading {
+#idotgmkyty .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -610,15 +616,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#grprfjkisc .gt_from_md > :first-child {
+#idotgmkyty .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#grprfjkisc .gt_from_md > :last-child {
+#idotgmkyty .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#grprfjkisc .gt_row {
+#idotgmkyty .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -637,7 +643,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#grprfjkisc .gt_stub {
+#idotgmkyty .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -650,7 +656,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#grprfjkisc .gt_stub_row_group {
+#idotgmkyty .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -664,15 +670,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#grprfjkisc .gt_row_group_first td {
+#idotgmkyty .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#grprfjkisc .gt_row_group_first th {
+#idotgmkyty .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#grprfjkisc .gt_summary_row {
+#idotgmkyty .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -682,16 +688,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#grprfjkisc .gt_first_summary_row {
+#idotgmkyty .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_first_summary_row.thick {
+#idotgmkyty .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#grprfjkisc .gt_last_summary_row {
+#idotgmkyty .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -701,7 +707,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_grand_summary_row {
+#idotgmkyty .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -711,7 +717,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#grprfjkisc .gt_first_grand_summary_row {
+#idotgmkyty .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -721,7 +727,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_last_grand_summary_row_top {
+#idotgmkyty .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -731,11 +737,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_striped {
+#idotgmkyty .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#grprfjkisc .gt_table_body {
+#idotgmkyty .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -744,7 +750,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_footnotes {
+#idotgmkyty .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -758,7 +764,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_footnote {
+#idotgmkyty .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -767,7 +773,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#grprfjkisc .gt_sourcenotes {
+#idotgmkyty .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -781,7 +787,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#grprfjkisc .gt_sourcenote {
+#idotgmkyty .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -789,72 +795,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#grprfjkisc .gt_left {
+#idotgmkyty .gt_left {
   text-align: left;
 }
 
-#grprfjkisc .gt_center {
+#idotgmkyty .gt_center {
   text-align: center;
 }
 
-#grprfjkisc .gt_right {
+#idotgmkyty .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#grprfjkisc .gt_font_normal {
+#idotgmkyty .gt_font_normal {
   font-weight: normal;
 }
 
-#grprfjkisc .gt_font_bold {
+#idotgmkyty .gt_font_bold {
   font-weight: bold;
 }
 
-#grprfjkisc .gt_font_italic {
+#idotgmkyty .gt_font_italic {
   font-style: italic;
 }
 
-#grprfjkisc .gt_super {
+#idotgmkyty .gt_super {
   font-size: 65%;
 }
 
-#grprfjkisc .gt_footnote_marks {
+#idotgmkyty .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#grprfjkisc .gt_asterisk {
+#idotgmkyty .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#grprfjkisc .gt_indent_1 {
+#idotgmkyty .gt_indent_1 {
   text-indent: 5px;
 }
 
-#grprfjkisc .gt_indent_2 {
+#idotgmkyty .gt_indent_2 {
   text-indent: 10px;
 }
 
-#grprfjkisc .gt_indent_3 {
+#idotgmkyty .gt_indent_3 {
   text-indent: 15px;
 }
 
-#grprfjkisc .gt_indent_4 {
+#idotgmkyty .gt_indent_4 {
   text-indent: 20px;
 }
 
-#grprfjkisc .gt_indent_5 {
+#idotgmkyty .gt_indent_5 {
   text-indent: 25px;
 }
 
-#grprfjkisc .katex-display {
+#idotgmkyty .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#grprfjkisc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#idotgmkyty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -995,23 +1001,23 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span></span>
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="oeguljvhve" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oeguljvhve table {
+<div id="dzpzmncvra" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dzpzmncvra table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oeguljvhve thead, #oeguljvhve tbody, #oeguljvhve tfoot, #oeguljvhve tr, #oeguljvhve td, #oeguljvhve th {
+#dzpzmncvra thead, #dzpzmncvra tbody, #dzpzmncvra tfoot, #dzpzmncvra tr, #dzpzmncvra td, #dzpzmncvra th {
   border-style: none;
 }
 
-#oeguljvhve p {
+#dzpzmncvra p {
   margin: 0;
   padding: 0;
 }
 
-#oeguljvhve .gt_table {
+#dzpzmncvra .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1037,12 +1043,12 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-left-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_caption {
+#dzpzmncvra .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oeguljvhve .gt_title {
+#dzpzmncvra .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1054,7 +1060,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-width: 0;
 }
 
-#oeguljvhve .gt_subtitle {
+#dzpzmncvra .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1066,7 +1072,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-width: 0;
 }
 
-#oeguljvhve .gt_heading {
+#dzpzmncvra .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1078,13 +1084,13 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_bottom_border {
+#dzpzmncvra .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_col_headings {
+#dzpzmncvra .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1099,7 +1105,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_col_heading {
+#dzpzmncvra .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1119,7 +1125,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#oeguljvhve .gt_column_spanner_outer {
+#dzpzmncvra .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1131,15 +1137,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 4px;
 }
 
-#oeguljvhve .gt_column_spanner_outer:first-child {
+#dzpzmncvra .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oeguljvhve .gt_column_spanner_outer:last-child {
+#dzpzmncvra .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oeguljvhve .gt_column_spanner {
+#dzpzmncvra .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1151,11 +1157,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   width: 100%;
 }
 
-#oeguljvhve .gt_spanner_row {
+#dzpzmncvra .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oeguljvhve .gt_group_heading {
+#dzpzmncvra .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1181,7 +1187,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   text-align: left;
 }
 
-#oeguljvhve .gt_empty_group_heading {
+#dzpzmncvra .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1196,15 +1202,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: middle;
 }
 
-#oeguljvhve .gt_from_md > :first-child {
+#dzpzmncvra .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oeguljvhve .gt_from_md > :last-child {
+#dzpzmncvra .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oeguljvhve .gt_row {
+#dzpzmncvra .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1223,7 +1229,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   overflow-x: hidden;
 }
 
-#oeguljvhve .gt_stub {
+#dzpzmncvra .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1236,7 +1242,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#oeguljvhve .gt_stub_row_group {
+#dzpzmncvra .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1250,15 +1256,15 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   vertical-align: top;
 }
 
-#oeguljvhve .gt_row_group_first td {
+#dzpzmncvra .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oeguljvhve .gt_row_group_first th {
+#dzpzmncvra .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oeguljvhve .gt_summary_row {
+#dzpzmncvra .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1268,16 +1274,16 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#oeguljvhve .gt_first_summary_row {
+#dzpzmncvra .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_first_summary_row.thick {
+#dzpzmncvra .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oeguljvhve .gt_last_summary_row {
+#dzpzmncvra .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1287,7 +1293,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_grand_summary_row {
+#dzpzmncvra .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1297,7 +1303,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#oeguljvhve .gt_first_grand_summary_row {
+#dzpzmncvra .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1307,7 +1313,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-top-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_last_grand_summary_row_top {
+#dzpzmncvra .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1317,11 +1323,11 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_striped {
+#dzpzmncvra .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oeguljvhve .gt_table_body {
+#dzpzmncvra .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1330,7 +1336,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-bottom-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_footnotes {
+#dzpzmncvra .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1344,7 +1350,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_footnote {
+#dzpzmncvra .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1353,7 +1359,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#oeguljvhve .gt_sourcenotes {
+#dzpzmncvra .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1367,7 +1373,7 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   border-right-color: #D3D3D3;
 }
 
-#oeguljvhve .gt_sourcenote {
+#dzpzmncvra .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1375,72 +1381,72 @@ $ geometry         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-76.74294 3..., MUL
   padding-right: 5px;
 }
 
-#oeguljvhve .gt_left {
+#dzpzmncvra .gt_left {
   text-align: left;
 }
 
-#oeguljvhve .gt_center {
+#dzpzmncvra .gt_center {
   text-align: center;
 }
 
-#oeguljvhve .gt_right {
+#dzpzmncvra .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oeguljvhve .gt_font_normal {
+#dzpzmncvra .gt_font_normal {
   font-weight: normal;
 }
 
-#oeguljvhve .gt_font_bold {
+#dzpzmncvra .gt_font_bold {
   font-weight: bold;
 }
 
-#oeguljvhve .gt_font_italic {
+#dzpzmncvra .gt_font_italic {
   font-style: italic;
 }
 
-#oeguljvhve .gt_super {
+#dzpzmncvra .gt_super {
   font-size: 65%;
 }
 
-#oeguljvhve .gt_footnote_marks {
+#dzpzmncvra .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oeguljvhve .gt_asterisk {
+#dzpzmncvra .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oeguljvhve .gt_indent_1 {
+#dzpzmncvra .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oeguljvhve .gt_indent_2 {
+#dzpzmncvra .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oeguljvhve .gt_indent_3 {
+#dzpzmncvra .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oeguljvhve .gt_indent_4 {
+#dzpzmncvra .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oeguljvhve .gt_indent_5 {
+#dzpzmncvra .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oeguljvhve .katex-display {
+#dzpzmncvra .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oeguljvhve div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dzpzmncvra div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

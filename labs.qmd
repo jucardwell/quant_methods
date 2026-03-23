@@ -634,7 +634,6 @@ This lab is designed to assess the [Concept 9 Competencies](https://jucardwell.g
 6.  Under a header called "Bayesian Spatial Model" add a code chunk, and a written analysis below the code chunk that does the following:
 
     -   Runs a BYM2 model
-
     -   Interpret the fixed effects from the Bayesian model and describe how they compare to the previous models. Then explain what the BYM2 spatial effect represents and describe the general spatial pattern observed in the map.
 
 ## Lab 10

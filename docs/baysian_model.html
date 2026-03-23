@@ -563,17 +563,17 @@ b_i =
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>summary.fixed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                 mean           sd   0.025quant     0.5quant
-(Intercept)              5.099402e+00 9.600908e-01 3.216447e+00 5.099453e+00
-pct_walk_to_work         4.765689e-04 9.814603e-05 2.840958e-04 4.765695e-04
-median_hh_inc            7.404912e-06 2.426157e-07 6.929051e-06 7.404940e-06
-med_rent                 4.892985e-05 1.877473e-05 1.211455e-05 4.892867e-05
-med_year_structure_built 3.390182e-03 4.860137e-04 2.437150e-03 3.390154e-03
+(Intercept)              5.098200e+00 9.599668e-01 3.215494e+00 5.098249e+00
+pct_walk_to_work         4.763261e-04 9.812302e-05 2.838989e-04 4.763266e-04
+median_hh_inc            7.403549e-06 2.425104e-07 6.927920e-06 7.403568e-06
+med_rent                 4.889016e-05 1.876975e-05 1.208460e-05 4.888902e-05
+med_year_structure_built 3.390866e-03 4.859476e-04 2.437965e-03 3.390839e-03
                            0.975quant         mode          kld
-(Intercept)              6.982069e+00 5.099453e+00 9.196372e-12
-pct_walk_to_work         6.690386e-04 4.765694e-04 9.233515e-12
-median_hh_inc            7.880612e-06 7.404940e-06 1.772857e-11
-med_rent                 8.575183e-05 4.892865e-05 9.830787e-12
-med_year_structure_built 4.343369e-03 3.390154e-03 9.359307e-12</code></pre>
+(Intercept)              6.980621e+00 5.098250e+00 9.863344e-12
+pct_walk_to_work         6.687506e-04 4.763266e-04 9.912646e-12
+median_hh_inc            7.879066e-06 7.403568e-06 1.672782e-11
+med_rent                 8.570217e-05 4.888901e-05 1.042608e-11
+med_year_structure_built 4.343920e-03 3.390839e-03 1.002671e-11</code></pre>
 </div>
 </div>
 <p>Because this is a Bayesian model, the results are interpreted using <strong>posterior means and 95% credible intervals</strong> rather than p-values.</p>
@@ -619,14 +619,14 @@ med_year_structure_built 4.343369e-03 3.390154e-03 9.359307e-12</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>summary.hyperpar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                                mean           sd  0.025quant
-Precision for the Gaussian observations 2.347924e+04 3.213903e+04 932.4062164
-Precision for re_u                      8.419199e+00 3.674144e-01   7.7036025
-Phi for re_u                            7.183577e-01 2.483100e-02   0.6691946
+<pre><code>                                                mean           sd   0.025quant
+Precision for the Gaussian observations 2.392013e+04 3.188375e+04 1481.4212980
+Precision for re_u                      8.419691e+00 3.675290e-01    7.7119976
+Phi for re_u                            7.181759e-01 2.475281e-02    0.6680895
                                             0.5quant   0.975quant        mode
-Precision for the Gaussian observations 1.315409e+04 1.070109e+05 2217.771015
-Precision for re_u                      8.416433e+00 9.149722e+00    8.422744
-Phi for re_u                            7.185049e-01 7.667943e-01    0.717568</code></pre>
+Precision for the Gaussian observations 1.412002e+04 1.058577e+05 3938.988397
+Precision for re_u                      8.414186e+00 9.158747e+00    8.408631
+Phi for re_u                            7.186726e-01 7.654304e-01    0.719317</code></pre>
 </div>
 </div>
 <p>This effect represents the portion of housing values that remains spatially patterned <strong>after accounting for the observed covariates</strong> in the model.</p>
