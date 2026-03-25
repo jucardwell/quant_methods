@@ -449,20 +449,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>nbw <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(nb, <span class="at">style =</span> <span class="st">"W"</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate Morans I</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>gmoran <span class="ot">&lt;-</span> <span class="fu">moran.test</span>(tracts_sf<span class="sc">$</span>med_hh_inc, nbw)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>gmoran <span class="ot">&lt;-</span> <span class="fu">moran.mc</span>(tracts_sf<span class="sc">$</span>med_hh_inc, nbw, <span class="at">nsim =</span> <span class="dv">99</span>)</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>gmoran</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    Moran I test under randomisation
+    Monte-Carlo simulation of Moran I
 
-data:  tracts_sf$med_hh_inc  
-weights: nbw    
+data:  tracts_sf$med_hh_inc 
+weights: nbw  
+number of simulations + 1: 100 
 
-Moran I statistic standard deviate = 51.74, p-value &lt; 2.2e-16
-alternative hypothesis: greater
-sample estimates:
-Moran I statistic       Expectation          Variance 
-     0.5886766588     -0.0003806624      0.0001296167 </code></pre>
+statistic = 0.58868, observed rank = 100, p-value = 0.01
+alternative hypothesis: greater</code></pre>
 </div>
 </div>
 <p>Our Moran’s I indicates strong clustering (.59) at a highly statistically significant level (very small p-value). Therefore, we now know that, at the global scale, this dataset is clustered.</p>
@@ -493,21 +491,18 @@ sub-graphs</code></pre>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nbw_school <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(nb_school, <span class="at">style =</span> <span class="st">"W"</span>, <span class="at">zero.policy =</span> T)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate Morans I</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>gmoran_school <span class="ot">&lt;-</span> <span class="fu">moran.test</span>(schools_sf<span class="sc">$</span>pre_covid_pct, nbw_school)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>gmoran_school <span class="ot">&lt;-</span> <span class="fu">moran.mc</span>(schools_sf<span class="sc">$</span>pre_covid_pct, nbw_school, <span class="at">nsim =</span> <span class="dv">99</span>)</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>gmoran_school</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    Moran I test under randomisation
+    Monte-Carlo simulation of Moran I
 
-data:  schools_sf$pre_covid_pct  
+data:  schools_sf$pre_covid_pct 
 weights: nbw_school  
-n reduced by no-neighbour observations  
+number of simulations + 1: 100 
 
-Moran I statistic standard deviate = 15.434, p-value &lt; 2.2e-16
-alternative hypothesis: greater
-sample estimates:
-Moran I statistic       Expectation          Variance 
-     0.2181149958     -0.0004965243      0.0002006250 </code></pre>
+statistic = 0.21811, observed rank = 100, p-value = 0.01
+alternative hypothesis: greater</code></pre>
 </div>
 </div>
 <p><strong>Q3: What does our Moran I value tell us about the spatial structure of our data?</strong></p>

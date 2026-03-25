@@ -327,6 +327,7 @@ window.Quarto = {
 
 
 <p>In this chapter, we will explore Bayesian modeling as an alternative to traditional spatial models. In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.</p>
+<p>In frequentist spatial models, spatial dependence is represented either through relationships among observed outcomes (spatial lag models) or through spatially correlated error terms (spatial error models), whereas in Bayesian spatial models it is represented as a latent spatial process that enters the mean structure and can vary across locations.</p>
 <p>In Bayesian spatial models, spatial dependence can be treated as a latent (unobserved) process that is estimated at the level of each spatial unit, which allows for local heterogeneity rather than assuming a uniform effect across the entire study area. Bayesian models produce posterior distributions for both the regression coefficients and the latent spatial effects.</p>
 <p>We will use data from the 5-year estimates from the American Community Survey for North Carolina Census tracts.</p>
 <p><strong>To follow along with this tutorial, make a new .Rmd document. As you move through the tutorial add chunks, headers, and relevant text to your document.</strong></p>
@@ -563,17 +564,17 @@ b_i =
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>summary.fixed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                 mean           sd   0.025quant     0.5quant
-(Intercept)              5.098200e+00 9.599668e-01 3.215494e+00 5.098249e+00
-pct_walk_to_work         4.763261e-04 9.812302e-05 2.838989e-04 4.763266e-04
-median_hh_inc            7.403549e-06 2.425104e-07 6.927920e-06 7.403568e-06
-med_rent                 4.889016e-05 1.876975e-05 1.208460e-05 4.888902e-05
-med_year_structure_built 3.390866e-03 4.859476e-04 2.437965e-03 3.390839e-03
+(Intercept)              5.097923e+00 9.600268e-01 3.215117e+00 5.097970e+00
+pct_walk_to_work         4.762694e-04 9.812044e-05 2.838482e-04 4.762699e-04
+median_hh_inc            7.403241e-06 2.424027e-07 6.927831e-06 7.403259e-06
+med_rent                 4.887840e-05 1.876974e-05 1.207287e-05 4.887733e-05
+med_year_structure_built 3.391024e-03 4.859743e-04 2.438071e-03 3.390999e-03
                            0.975quant         mode          kld
-(Intercept)              6.980621e+00 5.098250e+00 9.863344e-12
-pct_walk_to_work         6.687506e-04 4.763266e-04 9.912646e-12
-median_hh_inc            7.879066e-06 7.403568e-06 1.672782e-11
-med_rent                 8.570217e-05 4.888901e-05 1.042608e-11
-med_year_structure_built 4.343920e-03 3.390839e-03 1.002671e-11</code></pre>
+(Intercept)              6.980461e+00 5.097971e+00 1.132826e-11
+pct_walk_to_work         6.686880e-04 4.762698e-04 1.143596e-11
+median_hh_inc            7.878552e-06 7.403259e-06 1.730068e-11
+med_rent                 8.569003e-05 4.887732e-05 1.185277e-11
+med_year_structure_built 4.344122e-03 3.390999e-03 1.147945e-11</code></pre>
 </div>
 </div>
 <p>Because this is a Bayesian model, the results are interpreted using <strong>posterior means and 95% credible intervals</strong> rather than p-values.</p>
@@ -619,14 +620,14 @@ med_year_structure_built 4.343920e-03 3.390839e-03 1.002671e-11</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>summary.hyperpar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                                mean           sd   0.025quant
-Precision for the Gaussian observations 2.392013e+04 3.188375e+04 1481.4212980
-Precision for re_u                      8.419691e+00 3.675290e-01    7.7119976
-Phi for re_u                            7.181759e-01 2.475281e-02    0.6680895
-                                            0.5quant   0.975quant        mode
-Precision for the Gaussian observations 1.412002e+04 1.058577e+05 3938.988397
-Precision for re_u                      8.414186e+00 9.158747e+00    8.408631
-Phi for re_u                            7.186726e-01 7.654304e-01    0.719317</code></pre>
+<pre><code>                                                mean           sd  0.025quant
+Precision for the Gaussian observations 2.033344e+04 1.799219e+04 1300.838633
+Precision for re_u                      8.416736e+00 3.676848e-01    7.711577
+Phi for re_u                            7.179693e-01 2.478955e-02    0.667605
+                                            0.5quant   0.975quant         mode
+Precision for the Gaussian observations 1.492438e+04 6.676419e+04 3535.4755483
+Precision for re_u                      8.410266e+00 9.158965e+00    8.4006882
+Phi for re_u                            7.185354e-01 7.650927e-01    0.7194705</code></pre>
 </div>
 </div>
 <p>This effect represents the portion of housing values that remains spatially patterned <strong>after accounting for the observed covariates</strong> in the model.</p>

@@ -138,7 +138,7 @@ nb <- poly2nb(tracts_sf, queen = TRUE) # queen shares point or border
 nbw <- nb2listw(nb, style = "W")
 
 #calculate Morans I
-gmoran <- moran.test(tracts_sf$med_hh_inc, nbw)
+gmoran <- moran.mc(tracts_sf$med_hh_inc, nbw, nsim = 99)
 gmoran
 
 
@@ -166,7 +166,7 @@ nb_school <- dnearneigh(schools_sf, d1 = 0, d2 = 26400)
 nbw_school <- nb2listw(nb_school, style = "W", zero.policy = T)
 
 #calculate Morans I
-gmoran_school <- moran.test(schools_sf$pre_covid_pct, nbw_school)
+gmoran_school <- moran.mc(schools_sf$pre_covid_pct, nbw_school, nsim = 99)
 gmoran_school
 ```
 

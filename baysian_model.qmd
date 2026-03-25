@@ -2,6 +2,8 @@
 
 In this chapter, we will explore Bayesian modeling as an alternative to traditional spatial models. In frequentist spatial models like OLS with spatial lag (SLM) or spatial error models (SEM), spatial dependence is typically represented by a single parameter (e.g., ρ in SLM or λ in SEM). This parameter is applied uniformly across the study area, meaning the spatial effect is global and assumes a homogeneous influence of neighboring observations. The focus is on adjusting coefficient estimates to account for spatial autocorrelation, not explicitly modeling spatial heterogeneity.
 
+In frequentist spatial models, spatial dependence is represented either through relationships among observed outcomes (spatial lag models) or through spatially correlated error terms (spatial error models), whereas in Bayesian spatial models it is represented as a latent spatial process that enters the mean structure and can vary across locations.
+
 In Bayesian spatial models, spatial dependence can be treated as a latent (unobserved) process that is estimated at the level of each spatial unit, which allows for local heterogeneity rather than assuming a uniform effect across the entire study area. Bayesian models produce posterior distributions for both the regression coefficients and the latent spatial effects.
 
 We will use data from the 5-year estimates from the American Community Survey for North Carolina Census tracts.
