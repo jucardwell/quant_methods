@@ -133,6 +133,14 @@ We can formalize this by calculating Moran's I using Queens Case neighbors
 #calculate neighborhoods
 nb <- poly2nb(tracts_sf, queen = TRUE) # queen shares point or border
 
+#if you wanted to do k nearest neighbors
+coords <- st_coordinates(st_centroid(tracts_sf))
+knn <- knearneigh(coords, k = 5) #number of neighbors
+nb_k5 <- knn2nb(knn) #put in nbw command below
+
+#if you wanted to do fixed distance then put nb_d in nbw command
+nb_d <- dnearneigh(coords, d1 = 0, d2 = 50000) #d2 is how far in units (in our case ft)
+
 #set neighborhood weight matrix
 nbw <- nb2listw(nb, style = "W")
 
@@ -160,6 +168,11 @@ We can then calculate Moran's I using a our 20-mile distance-based neighborhood 
 ```{r}
 #calculate neighborhoods
 nb_school <- dnearneigh(schools_sf, d1 = 0, d2 = 26400) 
+
+###if you wanted to do knearest neighbor
+knn <- knearneigh(schools_sf, k = 5) #number of neighbors
+nb_k5 <- knn2nb(knn) #put in nbw command below
+
 
 #set neighborhood weight matrix
 nbw_school <- nb2listw(nb_school, style = "W", zero.policy = T)
