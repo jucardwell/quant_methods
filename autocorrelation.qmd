@@ -41,10 +41,9 @@ library(sf)
 
 #Note that the crs 
 #of the datasets is NAD83/ North Carolina, meaning that the units are feet
-tracts_sf <- st_read("https://drive.google.com/uc?export=download&id=1_X3s6sTw5zeIuXa6wDQ61r8Px7_tI7Nr")
+tracts_sf <- st_read("https://drive.google.com/uc?export=download&id=1mUxk0R_lqcfuJppw_A-1vy-pcB9XdCnS")
 
-schools_sf <- st_read("https://drive.google.com/uc?export=download&id=1mUxk0R_lqcfuJppw_A-1vy-pcB9XdCnS")
-
+schools_sf <- st_read("https://drive.google.com/uc?export=download&id=1_X3s6sTw5zeIuXa6wDQ61r8Px7_tI7Nr")
 ```
 
 ## Defining Neighbors

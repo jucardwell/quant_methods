@@ -37,7 +37,7 @@ county_covid <- st_read("https://drive.google.com/uc?export=download&id=15njmLhQ
 
 Correlation provides a single summary measure of the strength and direction of association between two numeric variables. The Pearson correlation coefficient ranges from −1 to 1, where values closer to −1 or 1 indicate stronger linear relationships, and values near 0 indicate little to no linear association. Correlation is useful as an initial diagnostic
 
-```{r, eval = F}
+```{r}
 #test correlation
 cor(county_covid$pct_bachelors, county_covid$workplace_change)
 
@@ -49,9 +49,9 @@ cor(county_covid$pct_bachelors, county_covid$workplace_change)
 
 One of the simplest visualizations we can use to explore bivariate relationships is a scatterplot. For instance, if we want to explore the relationship between our no health insurance variable and our poverty variable, we could do the following
 
-```{r, eval = F}
+```{r}
 
-ggplot(county_covid, aes(x = pct_bachelors, y= workplace_change))  + geom_point()
+ggplot(county_covid, aes(x = pct_bachelors, y= workplace_change))  + geom_point() 
 
 ```
 
@@ -59,7 +59,7 @@ ggplot(county_covid, aes(x = pct_bachelors, y= workplace_change))  + geom_point(
 
 While scatterplots ignore geography, bivariate maps allow us to explore how two variables co-vary across space. A bivariate map classifies each variable into categories (for instance, quantiles) and combines them into a single color scheme, making it possible to identify areas where both variables are simultaneously high or low.
 
-```{r, eval=F}
+```{r, warning=F, message=F}
 #bivariate map based on quantiles
 tm_shape(county_covid) + 
   tm_polygons(fill = tm_vars(c("pct_bachelors", "workplace_change"), multivariate = TRUE),
@@ -77,7 +77,7 @@ Linear regression provides a formal statistical framework for modeling the relat
 
 For the following model, assume that the assumptions (besides independence) have been met to use an OLS. To interpret the strength, direction, and significance of the model below, we will examine the coefficients, adjusted R-squared, and the p-values of the coefficient and the model overall. For example, this model tells us that the baseline percent change (with 0% bachelor degree) is 17%, that every .5% increase in Bachelor's degree percentage is associated with a 1% increase in workplace change (decreased mobility). This coefficient is statistically significant. Our Adjusted R-squared value tells us that our model explains 63% of the variation in workplace change and our model p-value tells us that the model itself is statistically significant.
 
-```{r, eval = F}
+```{r}
 #traditional regression
 ols_model <- lm(workplace_change ~ pct_bachelors, data = county_covid)
 
@@ -87,7 +87,7 @@ summary(ols_model)
 
 However, OLS regression relies on several assumptions, including that observations are independent. One way to evaluate whether spatial dependence is present is to examine the residuals from an OLS regression. If the model has adequately captured the underlying process, residuals should be randomly distributed across space. Spatial clustering in residuals suggests that important spatial structure remains unmodeled. A statistically significant Moran’s I indicates that the independence assumption of OLS has been violated and that a spatial regression approach may be more appropriate.
 
-```{r, eval = F}
+```{r}
 #add residuals as a variable
 county_covid <-county_covid |> mutate(olsresid = resid(ols_model)) 
 
@@ -119,7 +119,7 @@ The spatial lag model includes a spatially lagged version of the dependent varia
 
 The spatial error model, in contrast, assumes that spatial dependence operates through the error term rather than through direct interaction between dependent variables. This approach is appropriate when unobserved spatial processes affect the outcome but are not explicitly included in the model.
 
-```{r, eval = F}
+```{r}
 #lag model
 fit.lag<-lagsarlm(workplace_change ~ pct_bachelors,  
                   data = county_covid, 
