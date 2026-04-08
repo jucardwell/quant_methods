@@ -1212,9 +1212,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>Kriging: Student defines a neighborhood structure, creates a spatial weights matrix, and tests OLS residuals for spatial autocorrelation. Written interpretation explains whether residual spatial structure is present</td>
 </tr>
-<tr class="odd">
-<td>SPDE: Student fits an appropriate spatial regression model and explains why it was chosen. Written interpretation compares the spatial model to the OLS model</td>
-</tr>
 </tbody>
 </table>
 </section>
@@ -1246,11 +1243,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Calculate an empirical variogram, select an appropriate theoretical variogram model and parameters (sill, nugget, and range), and fit a kriging model.</li>
 <li>In the written section, explain how the variogram was interpreted and how the model parameters were chosen. Describe the spatial pattern of the kriging surface and interpret the kriging variance map, including where predictions appear more or less certain. Compare the kriging surface to the IDW surface and discuss any noticeable differences in spatial pattern or smoothness</li>
-</ul></li>
-<li><p>Under a header called “SPDE” add a code chunk, and a written analysis below the code chunk that does the following:</p>
-<ul>
-<li><p>Run an SPDE-based Bayesian spatial model on the dataset</p></li>
-<li><p>In the written section, interpret the predicted spatial surface and describe the uncertainty estimates produced by the model (credible intervals). Compare the Bayesian predictions to the IDW and kriging surfaces and discuss how the patterns and uncertainty representations differ across the three approaches</p></li>
 </ul></li>
 </ol>
 

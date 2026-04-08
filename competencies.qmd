@@ -88,11 +88,13 @@
 
 **Guiding Question:** How can we assess the distribution/pattern of individual events in space?
 
--   Distinguish random, clustered, and regular event patterns
--   Compute and interpret quadrat tests to assess spatial randomness (CSR) and determine statistical significance
--   Compute and interpret nearest neighbor statistics to assess spatial randomness and determine statistical significance
--   Visualize event patterns using point maps and density surfaces (kernel density estimation)
--   Evaluate the effects of scale and edge boundaries on event pattern analysis
+-   Define spatial point pattern data and identify datasets that qualify as point data
+-   Distinguish between first-order (intensity) and second-order (interaction) spatial processes
+-   Explain the null hypothesis of Complete Spatial Randomness (CSR) and its representation using a homogeneous Poisson process
+-   Compute and interpret quadrat test statistics to assess first-order spatial randomness and statistical significance
+-   Determine when an inhomogeneous Poisson process is required to account for spatial heterogeneity in intensity prior to conducting second-order analyses
+-   Calculate and interpret nearest neighbor statistics (e.g., ANN, L-function) to evaluate second-order spatial patterns and departures from CSR.
+-   Explain why Monte Carlo simulations are used to generate empirical probability distributions for assessing statistical significance in spatial point pattern analysis
 
 ### Concept 8: Patterns in Values
 
