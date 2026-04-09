@@ -385,42 +385,46 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="concept-7-patterns-in-events"><span class="header-section-number">4.3.2</span> Concept 7: Patterns in Events</h3>
 <p><strong>Guiding Question:</strong> How can we assess the distribution/pattern of individual events in space?</p>
 <ul>
-<li>Distinguish random, clustered, and regular event patterns</li>
-<li>Compute and interpret quadrat tests to assess spatial randomness (CSR) and determine statistical significance</li>
-<li>Compute and interpret nearest neighbor statistics to assess spatial randomness and determine statistical significance</li>
-<li>Visualize event patterns using point maps and density surfaces (kernel density estimation)</li>
-<li>Evaluate the effects of scale and edge boundaries on event pattern analysis</li>
+<li>Define spatial point pattern data and identify datasets that qualify as point data</li>
+<li>Distinguish between first-order (intensity) and second-order (interaction) spatial processes</li>
+<li>Explain the null hypothesis of Complete Spatial Randomness (CSR) and its representation using a homogeneous Poisson process</li>
+<li>Compute and interpret quadrat test statistics to assess first-order spatial randomness and statistical significance</li>
+<li>Determine when an inhomogeneous Poisson process is required to account for spatial heterogeneity in intensity prior to conducting second-order analyses</li>
+<li>Calculate and interpret nearest neighbor statistics (e.g., ANN, L-function) to evaluate second-order spatial patterns and departures from CSR.</li>
+<li>Explain why Monte Carlo simulations are used to generate empirical probability distributions for assessing statistical significance in spatial point pattern analysis</li>
 </ul>
 </section>
 <section id="concept-8-patterns-in-values" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="concept-8-patterns-in-values"><span class="header-section-number">4.3.3</span> Concept 8: Patterns in Values</h3>
 <p><strong>Guiding Question:</strong> How can we detect patterns in attribute values across points or areas?</p>
 <ul>
-<li>Define spatial influence (neighborhoods) for point and aerial data using KNN, Queens Case, and distance-based measures</li>
-<li>Compute and interpret measures of global autocorrelation (Moran’s I)</li>
-<li>Compute and interpret measures of local autocorrelation (LISA) and use mapping to identify and analyze spatial patterns (hot-spots, cold-spots)</li>
-<li>Discuss how scale, zoning, and MAUP influence patterns</li>
+<li>Define and justify alternative spatial neighborhood structures (k-nearest neighbors, contiguity such as Queen’s case, and distance-based thresholds) for different data types and hypothesized spatial processes</li>
+<li>Compute and interpret global spatial autocorrelation statistics (e.g., Moran’s I), including statistical significance under appropriate null hypotheses of spatial randomness</li>
+<li>Decompose and evaluate local spatial autocorrelation (LISA) results to identify and classify spatial regimes (hot spots, cold spots, spatial outliers), and critically interpret their statistical reliability and spatial meaning</li>
+<li>Diagnose and explain how first-order and second-order spatial processes generate observed autocorrelation patterns</li>
 </ul>
 </section>
 <section id="concept-9-bivariate-spatial-relationships" class="level3" data-number="4.3.4">
 <h3 data-number="4.3.4" class="anchored" data-anchor-id="concept-9-bivariate-spatial-relationships"><span class="header-section-number">4.3.4</span> Concept 9: Bivariate Spatial Relationships</h3>
 <p><strong>Guiding Question:</strong> How can we examine and model relationships between two variables across space?</p>
 <ul>
-<li>Visualize and interpret bivariate relationships using maps and scatterplots</li>
-<li>Explain how linear regression extends hypothesis testing to relationships between two variables</li>
-<li>Estimate and interpret simple bivariate regression models in a geographic context</li>
-<li>Diagnose spatial dependence in regression residuals using spatial autocorrelation measures</li>
-<li>Estimate and interpret spatial regression models&nbsp;</li>
-<li>Compare non-spatial regression results with spatial regression results to pick an appropriate model</li>
+<li>Visualize and diagnose bivariate relationships using maps and scatterplots, and formulate directional, theory-informed hypotheses about underlying spatial processes</li>
+<li>Estimate and interpret simple OLS models, including coefficients, residuals, and model fit, in relation to geographic processes</li>
+<li>Diagnose violations of OLS assumptions by testing for spatial autocorrelation in residuals and interpreting implications for inference</li>
+<li>Differentiate and apply spatial regression models (e.g., spatial lag vs.&nbsp;spatial error) based on hypothesized spatial processes (diffusion vs.&nbsp;unobserved spatial structure).</li>
+<li>Compare and justify model selection between non-spatial and spatial regression approaches using both statistical evidence and theoretical expectations</li>
 </ul>
 </section>
 <section id="concept-10-spatially-continuous-surfaces" class="level3" data-number="4.3.5">
 <h3 data-number="4.3.5" class="anchored" data-anchor-id="concept-10-spatially-continuous-surfaces"><span class="header-section-number">4.3.5</span> Concept 10: Spatially Continuous Surfaces</h3>
 <p><strong>Guiding Question:</strong> How can we estimate values at unsampled locations and understand spatial clustering and uncertainty across continuous surfaces?</p>
 <ul>
-<li>Compute point estimates at unsampled locations using Thiessen polygons, IDW, and k-point means.</li>
-<li>Define and interpret the semivariogram to understand spatial clustering, correlation, and range of influence.</li>
-<li>Approximate uncertainty for predictions using sample variance or semivariogram-based approaches and interpret the implications.</li>
+<li><p>Explain and apply inverse distance weighting (IDW) to estimate values at unsampled locations, and interpret how distance-based weighting influences predicted surfaces</p></li>
+<li><p>Evaluate and justify IDW parameter choices (e.g., inverse distance power) using cross-validation metrics (e.g., RMSE), and assess how parameter changes alter spatial smoothness vs.&nbsp;locality</p></li>
+<li><p>Interpret semivariograms by identifying nugget, range, and sill, and explain what these features indicate about spatial autocorrelation and scale of influence</p></li>
+<li><p>Select and justify an appropriate semivariogram model (e.g., spherical, exponential) based on empirical patterns and theoretical considerations</p></li>
+<li><p>Explain the conceptual differences between deterministic interpolation (IDW) and probabilistic approaches (kriging), including assumptions about spatial processes and treatment of uncertainty.</p></li>
+<li><p>Estimate and interpret kriging models as realizations of an underlying spatial process and assess how prediction reliability varies across space</p></li>
 </ul>
 
 

@@ -100,26 +100,33 @@
 
 **Guiding Question:** How can we detect patterns in attribute values across points or areas?
 
--   Define spatial influence (neighborhoods) for point and aerial data using KNN, Queens Case, and distance-based measures
--   Compute and interpret measures of global autocorrelation (Moran’s I)
--   Compute and interpret measures of local autocorrelation (LISA) and use mapping to identify and analyze spatial patterns (hot-spots, cold-spots)
--   Discuss how scale, zoning, and MAUP influence patterns
+-   Define and justify alternative spatial neighborhood structures (k-nearest neighbors, contiguity such as Queen’s case, and distance-based thresholds) for different data types and hypothesized spatial processes
+-   Compute and interpret global spatial autocorrelation statistics (e.g., Moran’s I), including statistical significance under appropriate null hypotheses of spatial randomness
+-   Decompose and evaluate local spatial autocorrelation (LISA) results to identify and classify spatial regimes (hot spots, cold spots, spatial outliers), and critically interpret their statistical reliability and spatial meaning
+-   Diagnose and explain how first-order and second-order spatial processes generate observed autocorrelation patterns
 
 ### Concept 9: Bivariate Spatial Relationships
 
 **Guiding Question:** How can we examine and model relationships between two variables across space?
 
--   Visualize and interpret bivariate relationships using maps and scatterplots
--   Explain how linear regression extends hypothesis testing to relationships between two variables
--   Estimate and interpret simple bivariate regression models in a geographic context
--   Diagnose spatial dependence in regression residuals using spatial autocorrelation measures
--   Estimate and interpret spatial regression models 
--   Compare non-spatial regression results with spatial regression results to pick an appropriate model
+-   Visualize and diagnose bivariate relationships using maps and scatterplots, and formulate directional, theory-informed hypotheses about underlying spatial processes
+-   Estimate and interpret simple OLS models, including coefficients, residuals, and model fit, in relation to geographic processes
+-   Diagnose violations of OLS assumptions by testing for spatial autocorrelation in residuals and interpreting implications for inference
+-   Differentiate and apply spatial regression models (e.g., spatial lag vs. spatial error) based on hypothesized spatial processes (diffusion vs. unobserved spatial structure).
+-   Compare and justify model selection between non-spatial and spatial regression approaches using both statistical evidence and theoretical expectations
 
 ### Concept 10: Spatially Continuous Surfaces
 
 **Guiding Question:** How can we estimate values at unsampled locations and understand spatial clustering and uncertainty across continuous surfaces?
 
--   Compute point estimates at unsampled locations using Thiessen polygons, IDW, and k-point means.
--   Define and interpret the semivariogram to understand spatial clustering, correlation, and range of influence.
--   Approximate uncertainty for predictions using sample variance or semivariogram-based approaches and interpret the implications.
+-   Explain and apply inverse distance weighting (IDW) to estimate values at unsampled locations, and interpret how distance-based weighting influences predicted surfaces
+
+-   Evaluate and justify IDW parameter choices (e.g., inverse distance power) using cross-validation metrics (e.g., RMSE), and assess how parameter changes alter spatial smoothness vs. locality
+
+-   Interpret semivariograms by identifying nugget, range, and sill, and explain what these features indicate about spatial autocorrelation and scale of influence
+
+-   Select and justify an appropriate semivariogram model (e.g., spherical, exponential) based on empirical patterns and theoretical considerations
+
+-   Explain the conceptual differences between deterministic interpolation (IDW) and probabilistic approaches (kriging), including assumptions about spatial processes and treatment of uncertainty.
+
+-   Estimate and interpret kriging models as realizations of an underlying spatial process and assess how prediction reliability varies across space
