@@ -99,7 +99,7 @@ tm_shape(county_covid) + tm_polygons(fill = "olsresid",fill.scale = tm_scale_int
 nb <- poly2nb(county_covid, queen = TRUE)
 
 #set neighborhood weight matrix
-nbw <- nb2listw(nb, style = "W")
+nbw <- nb2listw(nb, style = "W", zero.policy = T)
 
 #calculate Morans I
 gmoran <- moran.test(county_covid$olsresid, nbw)
@@ -123,14 +123,14 @@ The spatial error model, in contrast, assumes that spatial dependence operates t
 #lag model
 fit.lag<-lagsarlm(workplace_change ~ pct_bachelors,  
                   data = county_covid, 
-                  listw = nbw) 
+                  listw = nbw, zero.policy = T) 
 #see results
 summary(fit.lag)
 
 #error model
 fit.error<-errorsarlm(workplace_change ~ pct_bachelors,  
                   data = county_covid, 
-                  listw = nbw)  
+                  listw = nbw, zero.policy = T)  
 #see results
 summary(fit.error)
 ```

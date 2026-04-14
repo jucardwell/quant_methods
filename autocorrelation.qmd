@@ -142,7 +142,7 @@ nb_k5 <- knn2nb(knn) #put in nbw command below
 nb_d <- dnearneigh(coords, d1 = 0, d2 = 50000) #d2 is how far in units (in our case ft)
 
 #set neighborhood weight matrix
-nbw <- nb2listw(nb, style = "W")
+nbw <- nb2listw(nb, style = "W", zero.policy = T)
 
 #calculate Morans I
 gmoran <- moran.mc(tracts_sf$med_hh_inc, nbw, nsim = 99)

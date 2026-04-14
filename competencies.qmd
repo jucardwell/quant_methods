@@ -120,13 +120,8 @@
 **Guiding Question:** How can we estimate values at unsampled locations and understand spatial clustering and uncertainty across continuous surfaces?
 
 -   Explain and apply inverse distance weighting (IDW) to estimate values at unsampled locations, and interpret how distance-based weighting influences predicted surfaces
-
 -   Evaluate and justify IDW parameter choices (e.g., inverse distance power) using cross-validation metrics (e.g., RMSE), and assess how parameter changes alter spatial smoothness vs. locality
-
 -   Interpret semivariograms by identifying nugget, range, and sill, and explain what these features indicate about spatial autocorrelation and scale of influence
-
 -   Select and justify an appropriate semivariogram model (e.g., spherical, exponential) based on empirical patterns and theoretical considerations
-
 -   Explain the conceptual differences between deterministic interpolation (IDW) and probabilistic approaches (kriging), including assumptions about spatial processes and treatment of uncertainty.
-
 -   Estimate and interpret kriging models as realizations of an underlying spatial process and assess how prediction reliability varies across space
