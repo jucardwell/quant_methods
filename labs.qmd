@@ -642,7 +642,7 @@ This lab is designed to assess the [Concept 9 Competencies](https://jucardwell.g
 
 In the continuous surfaces tutorial we learned several different approaches to making predictions at unmeasured locations for spatially continuous variables.
 
-In this lab, you will practice these approaches using PM2.5 data for the continental US for 2022.
+In this lab, you will practice these approaches using PM2.5 data for North Carolina in 2022.
 
 *Remember that you can use the [**Command Compendium**](https://jucardwell.github.io/quant_methods/command.html) to help you modify R commands.*
 
@@ -670,20 +670,19 @@ This lab is designed to assess the [Concept 10 Competencies](https://jucardwell.
     library(sp)
     library(terra)
     library(tmap)
-    library(INLA)
 
-    ## THESE DATASETS HAVE A PCS IN METERS
-    us_boundary <- st_read("https://drive.google.com/uc?export=download&id=1nbJ_ND9qp0sPFvH3LqFjXny2MVxu-cuc")
+    ## THESE DATASETS HAVE A PCS IN FEET
+    nc_boundary <- st_read("https://drive.google.com/uc?export=download&id=1SNy838Q7f7rvL6TFLmIZm-sKyRO7Htjw")
 
-    pm <- st_read("https://drive.google.com/uc?export=download&id=1JLm928sALNKSjproYQz74Itin_Hv1VwN")
+    jan_temp <- st_read("https://drive.google.com/uc?export=download&id=1Mtc7SXpWAx-atL5u1aFUuZli0wTMVTcT")
 
 
     ```
 
 3.  Under a header called "IDW" add a code chunk, and a written analysis below the code chunk that does the following:
 
-    -   Select an appropriate IDP using cross-validation, choose a reasonable number of grid cells for the prediction surface, and run an IDW interpolation for PM2.5 across the continental United States
-    -   Explain how the IDP was selected based on the cross-validation results and justify the grid resolution used for the prediction surface. Describe the spatial pattern of the predicted PM2.5 surface, noting any major regional trends or hotspots that appear in the map
+    -   Select an appropriate IDP using cross-validation, choose a reasonable number of grid cells for the prediction surface, and run an IDW interpolation for average daily maximum temp in January across North Carolina.
+    -   Explain how the IDP was selected based on the cross-validation results and justify the grid resolution used for the prediction surface. Describe the spatial pattern of the predicted temperature surface, noting any major regional trends or hotspots that appear in the map
 
 4.  Under a header called "Kriging" add a code chunk, and a written analysis below the code chunk that does the following:
 
