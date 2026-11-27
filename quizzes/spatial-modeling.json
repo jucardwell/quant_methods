@@ -1,0 +1,44 @@
+{
+ "reading": "spatial-modeling",
+ "questions": [
+  {
+   "q": "Under the Queen's case, a neighbor is any feature that…",
+   "options": [
+    "shares an edge",
+    "touches the feature, even at a single corner",
+    "lies within 10 km"
+   ],
+   "answer": 1,
+   "why": "Rook's case requires a shared edge. Queen's case counts any touch."
+  },
+  {
+   "q": "Median household income by NC census tract has a Moran's I of 0.59. This suggests…",
+   "options": [
+    "strong clustering",
+    "a random pattern",
+    "strong dispersion"
+   ],
+   "answer": 0,
+   "why": "Moran's I runs from -1 to 1. Positive values mean similar values sit near each other."
+  },
+  {
+   "q": "What does LISA tell you that a global Moran's I does not?",
+   "options": [
+    "Whether the data are normally distributed",
+    "Where significant clusters and outliers are",
+    "The regression coefficient for each tract"
+   ],
+   "answer": 1,
+   "why": "LISA calculates a statistic for every location, so you can map where the clustering is."
+  },
+  {
+   "q": "You think high house prices spill over into neighboring tracts. Which model fits that hypothesis?",
+   "options": [
+    "Spatial lag model",
+    "Spatial error model"
+   ],
+   "answer": 0,
+   "why": "The lag model lets outcomes in one place depend on outcomes next door. The error model is for spatially structured variables you didn't measure."
+  }
+ ]
+}

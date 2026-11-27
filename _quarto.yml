@@ -1,40 +1,56 @@
 project:
-  type: book
-  output-dir: docs
+  type: website
+  output-dir: _site
+  # Rebuilds the schedule, tutorial index, readings, labs and "This week"
+  # data from course/*.csv, quizzes/*.json and slides/ before every render.
+  pre-render: python3 scripts/build_course.py
+  # Encrypts the answer key on each tutorial (see scripts/lock_keys.py).
+  post-render: python3 scripts/post_render.py
+  render:
+    - "*.qmd"
+    - "!baysian_model.qmd"
+    - "!competencies.qmd"
+    - "!syllabus.qmd"
+    - "!schedule.qmd"
+    - "!ppt.qmd"
+  resources:
+    - assets/
+    - slides/*.pdf
+    - slides/*.pptx
+    - readings/media/
 
-book:
-  title: "quant_methods"
-  author: "Julia Cardwell"
-  date: "10/22/2025"
-  chapters:
-    - index.qmd
-    - syllabus.qmd
-    - schedule.qmd
-    - ppt.qmd
-    - competencies.qmd
-    - labs.qmd
-    - basic_R.qmd
-    - command.qmd
-    - describing_data.qmd
-    - tmap.qmd
-    - describing_spatial_data.qmd
-    - probability.qmd
-    - clt.qmd
-    - estimation_sampling.qmd
-    - hypothesis_testing.qmd
-    - ppa.qmd
-    - autocorrelation.qmd
-    - regression.qmd
-    - baysian_model.qmd
-    - continuous_surfaces.qmd
+website:
+  title: "GEOG 391 · Quantitative Methods in Geography"
+  site-url: https://jucardwell.github.io/quant_methods/
+  page-navigation: false
+  search: false
 
 format:
   html:
     theme:
       - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
+      - styles/mapsheet.scss
+    toc: true
+    toc-location: left
+    toc-title: "On this page"
+    toc-depth: 2
+    grid:
+      sidebar-width: 260px
+      body-width: 820px
+      margin-width: 120px
+      gutter-width: 2rem
+    number-sections: false
+    code-copy: true
+    lang: en
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    include-before-body: assets/header.html
+    include-after-body: assets/footer.html
+
+execute:
+  warning: false
+  message: false
 
 editor: visual
-

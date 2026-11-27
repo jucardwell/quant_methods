@@ -1,0 +1,89 @@
+---
+title: "How this course works"
+toc-title: "On this page"
+---
+
+## Course information
+
+::: facts
+Class meetings
+: {{< var meetings >}} in {{< var room >}}
+
+Instructor
+: {{< var instructor >}}, office hours {{< var office_hours >}}, {{< var office >}}
+
+TA
+: {{< var ta >}}
+
+Course material
+: Everything is on this website. Canvas is only for turning in labs.
+:::
+
+## Course description and goals
+
+[Description and goals, revised from the Spring 2026 syllabus to match the four units.]
+
+## Student learning outcomes
+
+[Outcomes for the four units: foundations and probability; classical inference; spatial patterns and relationships; new methods and surfaces.]
+
+## Course philosophy
+
+In a rapidly changing educational landscape, our time in class is becoming increasingly valuable. I strongly believe that in-class peer engagement, real-time critical thinking and real-world application of course concepts are the strongest facilitators of learning right now. This class is built around that belief, so in-class work makes up 65% of your grade.
+
+[Student agency and co-creation paragraph, carried over from the fall courses.]
+
+## Course expectations
+
+::: expect
+::: {}
+### What you can expect from me
+
+- I'll treat you with respect and as a collaborator
+- I'll be clear about expectations and deadlines
+- I'll listen to feedback and adjust
+- I won't assign anything that doesn't serve your learning
+:::
+
+::: {}
+### What I expect from you
+
+- Come to class with a charged computer, paper and a pen
+- Be engaged and collaborate during class
+- Do the reading and its quiz before class
+- Respect the course policies
+:::
+:::
+
+## Course AI policy
+
+AI is not used during class. The rest of the policy is written together on Friday, January 8.
+
+## Grading
+
+```{=html}
+<table class="grade-table"><tbody>
+<tr><td><b>In-class activities and partner tutorials</b><br><span class="muted">Nearly every class, graded on meaningful effort. Three misses allowed.</span></td><td>40%</td></tr>
+<tr><td><b>Case studies (4)</b><br><span class="muted">6.25% each. Closed book and handwritten, with a prep day before each one.</span></td><td>25%</td></tr>
+<tr><td><b>Final project</b><br><span class="muted">Pairs compare two formerly redlined cities, presented in the exam slot.</span></td><td>20%</td></tr>
+<tr><td><b>Labs (10)</b><br><span class="muted">R labs, graded on accuracy with a rubric.</span></td><td>15%</td></tr>
+</tbody></table>
+```
+
+Reading quizzes are ungraded.
+
+```{=html}
+<table class="scale-table"><tbody>
+<tr><td><b>A</b> 93.5+</td><td><b>A-</b> 89.5–93.4</td><td><b>B+</b> 86.5–89.4</td><td><b>B</b> 82.5–86.4</td></tr>
+<tr><td><b>B-</b> 79.5–82.4</td><td><b>C+</b> 76.5–79.4</td><td><b>C</b> 72.5–76.4</td><td><b>C-</b> 69.5–72.4</td></tr>
+<tr><td><b>D+</b> 66.5–69.4</td><td><b>D</b> 59.5–66.4</td><td><b>F</b> below 59.5</td><td></td></tr>
+</tbody></table>
+```
+
+## Late work and absences
+
+Contact me as soon as possible if you will miss a deadline. Without an approved extension, late work loses 10% per day, up to a maximum of 30%. In-class work missed for a University Excused Absence can be made up in office hours within two weeks. You can miss three in-class activities with no effect on your grade.
+
+## IDEAs in Action
+
+[Focus capacity outcomes for GEOG 391.]

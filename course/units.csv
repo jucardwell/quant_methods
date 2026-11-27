@@ -1,0 +1,5 @@
+unit_no,name,concepts
+1,Foundations and probability,"Concepts 1–4: the Quantitative Revolution, data, spatial description, probability"
+2,Classical inference,"Concepts 5–6: sampling, estimation, hypothesis testing, plus causation"
+3,Spatial patterns and relationships,"Concepts 7–9: point patterns, autocorrelation, regression"
+4,New methods and surfaces,"GWR, geodemographic clustering, Concept 10: continuous surfaces"

@@ -1,0 +1,43 @@
+{
+ "reading": "continuous-surfaces",
+ "questions": [
+  {
+   "q": "Why is IDW called deterministic?",
+   "options": [
+    "It always uses exactly 12 neighbors",
+    "Predictions come entirely from the sample points and the weighting scheme, with no model of uncertainty",
+    "It only works on elevation data"
+   ],
+   "answer": 1,
+   "why": "IDW gives no estimate of how uncertain each prediction is. Kriging does."
+  },
+  {
+   "q": "Raising the inverse distance power (p) from 1 to 3 makes the surface…",
+   "options": [
+    "smoother and more general",
+    "more local, shaped mostly by the closest points"
+   ],
+   "answer": 1,
+   "why": "A higher power makes influence fall off faster with distance."
+  },
+  {
+   "q": "On a semivariogram, the distance where the curve flattens is the…",
+   "options": [
+    "nugget",
+    "sill",
+    "range"
+   ],
+   "answer": 2,
+   "why": "Beyond the range, observations are no longer spatially correlated. The sill is the plateau's height and the nugget is where the curve starts."
+  },
+  {
+   "q": "Where would you expect the kriging variance to be highest?",
+   "options": [
+    "Right next to a weather station",
+    "Far from any weather station"
+   ],
+   "answer": 1,
+   "why": "Kriging variance is lowest where there are dense, strongly correlated observations nearby."
+  }
+ ]
+}

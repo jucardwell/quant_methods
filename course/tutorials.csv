@@ -1,0 +1,16 @@
+file,title,concept,status
+basic_R,Working in R and RStudio,R toolkit,ready
+command,Command compendium,R toolkit,ready
+describing_data,Describing data,Concept 2,ready
+tmap,Mapping with tmap,Concept 3,ready
+describing_spatial_data,Describing spatial data,Concept 3,ready
+probability,Probability and probability distributions,Concept 4,ready
+clt,Central limit theorem,Concept 5,ready
+estimation_sampling,Estimation in sampling,Concept 5,ready
+hypothesis_testing,Hypothesis testing,Concept 6,ready
+ppa,Point pattern analysis,Concept 7,ready
+autocorrelation,Spatial autocorrelation,Concept 8,ready
+regression,Regression and spatial regression,Concept 9,ready
+gwr,Geographically weighted regression,New,coming soon
+clustering,Geodemographic clustering,New,coming soon
+continuous_surfaces,Continuous surfaces,Concept 10,ready

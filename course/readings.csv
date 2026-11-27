@@ -1,0 +1,12 @@
+slug,title,status,covers
+quantitative-revolution,Quantitative Revolution,coming soon,"Eras of geography, the QR, early laws (Tobler, gravity, central place), critiques, lasting legacy"
+introduction-to-space,Introduction to Space,ready,"Spatial is special; data sources, categories, vector and raster"
+describing-data,Describing Data,coming soon,"Levels of measurement, central tendency, dispersion, shape, histograms and boxplots, MAUP"
+describing-spatial-data,Describing Spatial Data,coming soon,"Visual variables, classification schemes, how maps mislead; mean center, standard distance, SD ellipse"
+probability,Probability in Geography,ready,"Distributions, simple events, natural samples"
+sampling-and-estimation,Sampling and Estimation,coming soon,Sampling designs incl. spatial; CLT; point estimates and confidence intervals
+hypothesis-testing,Hypothesis Testing,coming soon,"H0 and H1, Type I and II error, p-values, t-tests, chi-square, significance vs. importance"
+point-pattern-analysis,Point Pattern Analysis,ready,"CSR, first- and second-order structure, workflow"
+spatial-modeling,Spatial Modeling,ready,"Neighborhoods, Moran's I, LISA, SLM, SEM; cut the BYM section"
+beyond-one-model,Beyond One Model: GWR and Clustering,coming soon,"GWR (bandwidth, local coefficients, reading coefficient maps); clustering (standardizing, k-means, choosing k, naming clusters)"
+continuous-surfaces,Continuous Surfaces,ready,"IDW, kriging, semivariogram, covariates"

@@ -1,0 +1,252 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: Calibri, Carlito, "Segoe UI", sans-serif;
+$font-family-monospace: Menlo, Consolas, "Liberation Mono", monospace;
+$headings-font-family: $font-family-sans-serif;
+$font-size-base: 1.0625rem;
+$line-height-base: 1.6;
+$body-bg: #FFFFFF;
+$body-color: #1A1A1A;
+$link-color: #2F6EA5;
+$link-hover-color: #1A1A1A;
+$headings-font-weight: 700;
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$enable-shadows: false;
+$code-color: #1A1A1A;
+$code-block-bg: #F7F6F2;
+$toc-color: #1A1A1A;
+
+/*-- scss:rules --*/
+$ink: #1A1A1A;
+$brown: #9C5B2E;
+$water: #2F6EA5;
+$red: #C8352B;
+$green: #3E7B2E;
+$muted: #555049;
+$rule: #D9D6CF;
+$tint: #F4EFE6;
+$hatch: repeating-linear-gradient(135deg, #FFFFFF 0 7px, #F1EEE8 7px 8px);
+
+html { background: #FFFFFF; }
+
+// The map-sheet frame: a heavy neatline with a thin inner line 4px inside it.
+body {
+  max-width: 1200px;
+  margin: 20px auto;
+  border: 3px solid $ink;
+  outline: 1px solid $ink;
+  outline-offset: -8px;
+  padding: 8px;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 700px) {
+  body { margin: 8px; }
+}
+
+a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+.muted { color: $muted; }
+
+// Course nav row
+.course-nav {
+  display: flex; flex-wrap: wrap; gap: 0 28px;
+  padding: 4px 32px; border-bottom: 1px solid $ink;
+  a { font-weight: 700; font-size: 15px; color: $ink; text-decoration: none; padding: 10px 0; }
+  a:hover { color: $brown; }
+}
+
+.course-foot {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+  padding: 10px 24px; border-top: 1px solid $ink; font-size: 12px; color: $muted;
+}
+
+#quarto-content { padding-top: 24px; }
+#title-block-header { border-bottom: 2px solid $ink; padding-bottom: 14px; margin-bottom: 24px; }
+h1.title { font-size: 2.6rem; line-height: 1.05; }
+.quarto-title-meta-heading { display: none; }
+h2 { font-size: 1.6rem; margin-top: 2rem; border-bottom: 0; }
+h3 { font-size: 1.3rem; }
+
+// Left sidebar (table of contents and the boxes site.js adds above and below it)
+#TOC, .sidebar nav[role="doc-toc"] {
+  font-size: 15px;
+  h2, .toc-title { font-size: 15px; font-weight: 700; margin: 0 0 6px; }
+  .nav-link { color: $water; padding: 4px 0; }
+  .nav-link.active { color: $ink; font-weight: 700; border-left-color: $ink; }
+}
+.side-block { font-size: 15px; line-height: 1.45; margin-bottom: 22px; display: flex; flex-direction: column; gap: 4px; }
+.side-block .side-title { font-weight: 700; }
+
+.adjoining {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 1px 0 0 1px; margin-top: 4px;
+  a, span {
+    border: 1px solid $ink; margin: -1px 0 0 -1px; min-height: 52px; padding: 5px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-size: 12px; line-height: 1.2; color: $ink; text-decoration: none; hyphens: auto;
+  }
+  a:hover { background: $tint; }
+  .here { background: $ink; color: #FFFFFF; font-weight: 700; }
+}
+
+.concept-line { color: $brown; font-weight: 700; font-size: 15px; display: block; margin-bottom: 4px; }
+
+.sheet-pager {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid $ink; margin-top: 40px;
+  a { padding: 14px 18px; color: $ink; text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
+  a + a { border-left: 1px solid $ink; text-align: right; }
+  a:hover { background: $tint; }
+  small { color: $muted; font-size: 13px; }
+  b { font-size: 16px; }
+}
+
+// Code: monospace, ruled on the left in water blue
+div.sourceCode, pre.sourceCode { border: 0; border-left: 3px solid $water; background: $code-block-bg; }
+code { font-family: $font-family-monospace; }
+
+// ---- Course page --------------------------------------------------------
+.course-page #title-block-header { display: none; }
+.course-page #quarto-content { padding-top: 0; }
+.course-page main > section.level1, .course-page main > section.level2 { padding: 36px 0; border-bottom: 1px solid $ink; }
+.course-page main h2 { font-size: 2rem; margin: 0 0 18px; }
+
+.this-week {
+  position: relative; overflow: hidden; padding: 36px 32px; margin: 0 -1.5rem;
+  border-bottom: 1px solid $ink; display: flex; flex-wrap: wrap; gap: 28px;
+  .contours { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .week-head { position: relative; flex: 1 1 220px; max-width: 280px; display: flex; flex-direction: column; gap: 8px; }
+  .week-head h2 { font-size: 2rem; margin: 0; }
+  .week-days {
+    position: relative; flex: 999 1 540px; min-width: 0; background: #FFFFFF;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid $ink;
+  }
+  .day { padding: 16px; display: flex; flex-direction: column; gap: 6px; min-height: 150px; }
+  .day + .day { border-left: 1px solid $ink; }
+  .day.off { background: $hatch; }
+  .day-date { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .day.case .day-date { color: $red; }
+  .day-topic { font-weight: 700; }
+  .day-sub { font-size: 15px; color: $muted; }
+  .day-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: 15px; }
+  .day-due { font-size: 13px; }
+}
+@media (max-width: 760px) {
+  .this-week .week-days { grid-template-columns: 1fr; }
+  .this-week .day + .day { border-left: 0; border-top: 1px solid $ink; }
+}
+
+.legend-row, .legend-row p { display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: 14px; margin-bottom: 14px; }
+
+.schedule-scroll { overflow-x: auto; }
+table.schedule {
+  width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14.5px; line-height: 1.4; table-layout: fixed;
+  th:nth-child(1) { width: 30px; } th:nth-child(2) { width: 96px; } th:nth-child(3) { width: 58px; }
+  th:nth-child(4) { width: 24%; } th:nth-child(5) { width: 26%; } th:nth-child(6) { width: 22%; } th:nth-child(7) { width: 90px; }
+  th { text-align: left; font-size: 13px; font-weight: 700; border-bottom: 2px solid $ink; padding: 6px 8px; }
+  td { padding: 8px; border-bottom: 1px solid $rule; vertical-align: baseline; }
+  td.sym { width: 26px; text-align: center; font-size: 13px; }
+  td.concept { color: $brown; font-size: 13px; white-space: nowrap; }
+  td:nth-child(2) { white-space: nowrap; }
+  tr.unit td { border-bottom: 2px solid $ink; padding-top: 24px; font-weight: 700; font-size: 17px; }
+  .unit-no { color: $brown; font-size: 13px; margin-right: 10px; }
+  tr.k-off { background: $hatch; color: $muted; }
+  tr.k-case { background: #FBEDEA; }
+  tr.k-workshop .sym { color: $water; }
+  tr.k-prep .sym, tr.k-case .sym { color: $red; }
+  tr.k-new .sym { color: $green; }
+  tr.today td { box-shadow: inset 0 -2px 0 $brown; }
+}
+.s-ws { color: $water; } .s-prep, .s-cs { color: $red; } .s-new { color: $green; }
+
+.sheet-index {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  border-top: 1px solid $ink; border-left: 1px solid $ink;
+}
+.sheet {
+  border-right: 1px solid $ink; border-bottom: 1px solid $ink; padding: 14px 16px; min-height: 88px;
+  display: flex; flex-direction: column; gap: 6px; color: $ink; text-decoration: none;
+  &:hover { background: $tint; }
+  &.soon { background: #EEF4E8; }
+}
+.sheet-code { color: $brown; font-size: 13px; }
+.sheet-title { font-weight: 700; line-height: 1.25; }
+
+table.plain-list {
+  width: 100%; border-collapse: collapse; border-top: 2px solid $ink;
+  td { padding: 10px 8px; border-bottom: 1px solid $rule; vertical-align: baseline; }
+  td.num { width: 40px; color: $brown; font-weight: 700; }
+}
+
+// ---- Reading quizzes ----------------------------------------------------
+.reading-quiz { border: 1px solid $ink; padding: 18px 20px; display: flex; flex-direction: column; gap: 22px; }
+.quiz-q { display: flex; flex-direction: column; gap: 8px; }
+.quiz-q > p { font-weight: 700; margin: 0; }
+.quiz-opt {
+  display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border: 1px solid $rule; cursor: pointer;
+  input { margin-top: 6px; }
+  &.right { border-color: $green; background: #EEF4E8; }
+  &.wrong { border-color: $red; background: #FBEDEA; }
+}
+.quiz-why { margin: 0; font-size: 15px; }
+.quiz-why.right { color: #2F5E22; }
+.quiz-why.wrong { color: #8E2A22; }
+
+// ---- Case studies -------------------------------------------------------
+.case-tabs .nav-tabs {
+  border: 1px solid $ink; border-bottom: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  .nav-item + .nav-item { border-left: 1px solid $ink; }
+  .nav-link { border: 0; margin: 0; color: $ink; font-weight: 700; padding: 12px 14px; height: 100%; text-align: left; }
+  .nav-link.active { background: $ink; color: #FFFFFF; }
+  .nav-link .tab-date { display: block; font-weight: 400; font-size: 13px; color: $red; }
+  .nav-link.active .tab-date { color: #F2B8B2; }
+}
+.case-tabs .tab-content { border: 1px solid $ink; padding: 0; }
+.case-body { display: flex; flex-wrap: wrap; }
+.case-side { flex: 1 1 240px; max-width: 300px; border-right: 1px solid $ink; padding: 22px; font-size: 15px; line-height: 1.45; display: flex; flex-direction: column; gap: 14px; }
+.case-main { flex: 999 1 520px; min-width: 0; padding: 22px 28px; }
+.case-main h3 { margin-top: 0; }
+.legend-box {
+  border: 1px solid $ink; padding: 12px 14px; display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 6px 8px;
+  .legend-title { grid-column: 1 / -1; font-weight: 700; text-align: center; border-bottom: 1px solid $ink; padding-bottom: 6px; margin-bottom: 2px; }
+  .sym.prep, .sym.case { color: $red; }
+}
+.case-side p { margin: 0; }
+.case-downloads { display: flex; flex-direction: column; gap: 3px; }
+@media (max-width: 760px) {
+  .case-tabs .nav-tabs { grid-template-columns: 1fr 1fr; }
+  .case-side { max-width: none; border-right: 0; border-bottom: 1px solid $ink; }
+}
+
+// ---- How this course works ---------------------------------------------
+.facts dl { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px 20px; }
+.facts dt { font-weight: 700; }
+.facts dd { margin: 0; }
+.grade-table, .scale-table { width: 100%; border-collapse: collapse; }
+.grade-table { border-top: 2px solid $ink; }
+.grade-table td { padding: 10px 6px; border-bottom: 1px solid $rule; vertical-align: baseline; }
+.grade-table td:last-child { text-align: right; font-weight: 700; font-size: 20px; width: 70px; }
+.scale-table td { border: 1px solid $ink; padding: 6px 10px; }
+.expect { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); border-top: 1px solid $ink; border-left: 1px solid $ink; }
+.expect > div { border-right: 1px solid $ink; border-bottom: 1px solid $ink; padding: 14px 18px; }
+.expect h3 { font-size: 1.05rem; margin: 0 0 6px; }
+
+// Tutorial callouts used by the tutorial pages
+.plan, .why, .reading, .deliver { border-left: 3px solid $water; background: #F4F7FA; padding: 12px 16px; margin: 1rem 0; }
+.why { border-left-color: $brown; background: $tint; }
+.deliver { border-left-color: $green; background: #EEF4E8; }
+.partners { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); border: 1px solid $ink; margin: 1rem 0; }
+.partner { padding: 14px 16px; }
+.partner + .partner { border-left: 1px solid $ink; }
+.partner-a { background: #FFFFFF; }
+.partner-b { background: #F7F6F2; }
+.answer-key { border: 1px solid $ink; padding: 14px 18px; margin-top: 2rem; }
+form.key-unlock { display: flex; gap: 8px; flex-wrap: wrap; }
+form.key-unlock input { border: 1px solid $ink; padding: 4px 8px; font: inherit; }
+form.key-unlock button { border: 1px solid $ink; background: $ink; color: #FFFFFF; padding: 4px 14px; font: inherit; }
+.key-msg { color: $red; font-size: 15px; }
+
+// Quarto chrome we don't use
+.quarto-title-banner { display: none; }
+.callout { border-radius: 0; }
+#title-block-header:not(:has(h1)) { display: none; }
+.course-page main.content { margin-top: 0; padding-top: 0; } .course-page .this-week { margin-top: -1rem; }

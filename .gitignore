@@ -4,3 +4,6 @@
 .Ruserdata
 
 /.quarto/
+/_site/
+/_generated/
+/assets/course.js

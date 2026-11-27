@@ -1,5 +1,29 @@
-# Preface {.unnumbered}
+---
+title: "GEOG 391 · Quantitative Methods in Geography"
+pagetitle: "GEOG 391 · Spring 2027"
+toc: false
+page-layout: full
+body-classes: course-page
+---
 
-This site includes the material for GEOG391: Quantitative Methods in Geography at UNC Chapel Hill.
+{{< include _generated/week.md >}}
 
-Anyone is free to share or adapt this material under the [CC BY-NC 4.0 license.](https://creativecommons.org/licenses/by-nc/4.0/deed.en)
+## Schedule {#schedule}
+
+::: legend-row
+<span>■ Concept day</span> <span class="s-ws">▲ Lab workshop</span> <span class="s-new">● New this year</span> <span class="s-prep">○ Case study prep</span> <span class="s-cs">★ Case study</span> <span class="muted">— No class</span>
+:::
+
+{{< include _generated/schedule.md >}}
+
+## Tutorials {#tutorials}
+
+{{< include _generated/tutorials.md >}}
+
+## Readings {#readings}
+
+{{< include _generated/readings.md >}}
+
+## Labs {#labs}
+
+{{< include _generated/labs.md >}}

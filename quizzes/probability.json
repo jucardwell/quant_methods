@@ -1,0 +1,34 @@
+{
+ "reading": "probability",
+ "questions": [
+  {
+   "q": "The number of floods in a decade is a…",
+   "options": [
+    "discrete variable",
+    "continuous variable"
+   ],
+   "answer": 0,
+   "why": "It takes countable values (0, 1, 2…), so probabilities can be assigned to exact values."
+  },
+  {
+   "q": "A normal distribution is…",
+   "options": [
+    "skewed to the right",
+    "bell shaped and symmetric around its mean",
+    "flat, with every value equally likely"
+   ],
+   "answer": 1,
+   "why": "Most observations sit near the mean, with fewer in the tails."
+  },
+  {
+   "q": "We have data for every county in North Carolina. Why do geographers still use probability?",
+   "options": [
+    "We don't. With the whole population, probability doesn't apply",
+    "The observed pattern is treated as one possible outcome of an underlying process",
+    "Because counties are always a random sample"
+   ],
+   "answer": 1,
+   "why": "This is the idea of a natural sample: the map we see is one realization of a process that could have played out differently."
+  }
+ ]
+}

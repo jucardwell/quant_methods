@@ -1,0 +1,33 @@
+{
+ "reading": "point-pattern-analysis",
+ "questions": [
+  {
+   "q": "Under complete spatial randomness, events will be…",
+   "options": [
+    "evenly spaced across the study region",
+    "equally likely anywhere, so chance clusters and gaps can still appear"
+   ],
+   "answer": 1,
+   "why": "Random does not mean evenly spaced. Apparent clusters or gaps can arise by chance alone."
+  },
+  {
+   "q": "Crime incidents cluster near bars because bars draw people in. What kind of structure is this?",
+   "options": [
+    "First-order",
+    "Second-order"
+   ],
+   "answer": 0,
+   "why": "The bars are an external factor that raises the intensity of the process in part of the region. Second-order structure comes from events interacting with each other."
+  },
+  {
+   "q": "A point pattern has an average nearest neighbor ratio of R = 0.6. What does that suggest?",
+   "options": [
+    "Clustering",
+    "Randomness",
+    "Dispersion"
+   ],
+   "answer": 0,
+   "why": "R below 1 means points are closer to their nearest neighbors than expected under CSR."
+  }
+ ]
+}

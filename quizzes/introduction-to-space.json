@@ -1,0 +1,45 @@
+{
+ "reading": "introduction-to-space",
+ "questions": [
+  {
+   "q": "Tobler's First Law says that…",
+   "options": [
+    "everything is related to everything else, but near things are more related than distant things",
+    "spatial data always follow a normal distribution",
+    "nearby places are always identical"
+   ],
+   "answer": 0,
+   "why": "This is why spatial data break the classical assumption that observations are independent."
+  },
+  {
+   "q": "Restaurant locations with a star rating attached to each point are an example of…",
+   "options": [
+    "unmarked point data",
+    "marked point data",
+    "areal data",
+    "a continuous surface"
+   ],
+   "answer": 1,
+   "why": "The rating is a mark: extra information attached to each location."
+  },
+  {
+   "q": "Which data model represents space as a grid of equal-sized cells?",
+   "options": [
+    "Vector",
+    "Raster"
+   ],
+   "answer": 1,
+   "why": "Rasters are arrays of regularly spaced pixels. Vector data are points, lines and polygons."
+  },
+  {
+   "q": "The relationship between home value and distance to jobs is strong in Durham but weak in Raleigh. This is an example of…",
+   "options": [
+    "spatial dependence",
+    "spatial non-stationarity",
+    "the minimum mapping unit"
+   ],
+   "answer": 1,
+   "why": "Non-stationarity means a process works differently in different places. GWR is one way to explore it."
+  }
+ ]
+}

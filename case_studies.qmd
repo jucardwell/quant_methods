@@ -1,0 +1,53 @@
+---
+title: "Case studies"
+toc: false
+page-layout: full
+---
+
+::: {.panel-tabset .case-tabs}
+
+## Case Study 1 {#case-study-1}
+
+::: case-body
+::: case-side
+{{< include _generated/case_1.md >}}
+:::
+::: case-main
+{{< include case_studies/cs1.md >}}
+:::
+:::
+
+## Case Study 2 {#case-study-2}
+
+::: case-body
+::: case-side
+{{< include _generated/case_2.md >}}
+:::
+::: case-main
+{{< include case_studies/cs2.md >}}
+:::
+:::
+
+## Case Study 3 {#case-study-3}
+
+::: case-body
+::: case-side
+{{< include _generated/case_3.md >}}
+:::
+::: case-main
+{{< include case_studies/cs3.md >}}
+:::
+:::
+
+## Case Study 4 {#case-study-4}
+
+::: case-body
+::: case-side
+{{< include _generated/case_4.md >}}
+:::
+::: case-main
+{{< include case_studies/cs4.md >}}
+:::
+:::
+
+:::
